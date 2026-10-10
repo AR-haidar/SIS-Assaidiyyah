@@ -1,0 +1,1223 @@
+/* =============================================
+   LANDING PAGE — SIS MI Assa'idiyyah
+   Font: Inter | Sesuai Foto Referensi Part 1 s/d Part 4
+   ============================================= */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.home-page {
+    min-height: 100vh;
+    background-color: #f8fafc;
+    color: #1e293b;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =============================================
+   TOPBAR / NAVBAR (DIPERTAHANKAN)
+   ============================================= */
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    z-index: 1000;
+}
+
+.navbar-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    flex-shrink: 0;
+}
+
+.logo-slot {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #f1f5f9;
+    border: 1.5px dashed #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #475569;
+    flex-shrink: 0;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-title {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    color: #0f172a;
+    line-height: 1.2;
+}
+
+.brand-subtitle {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.nav-link {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #475569;
+    text-decoration: none;
+    padding: 6px 2px;
+    position: relative;
+    transition: color 0.15s ease;
+}
+
+.nav-link:hover {
+    color: #0f172a;
+}
+
+.nav-link.active {
+    color: #1e40af;
+    font-weight: 600;
+}
+
+.navbar-action {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.btn-portal {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #1e40af;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.15s ease;
+}
+
+.btn-portal:hover {
+    background-color: #1d4ed8;
+}
+
+/* =============================================
+   MAIN CONTAINER
+   ============================================= */
+.home-main-container {
+    max-width: 1240px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 24px 72px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+/* Base Section Block */
+.section-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title-wrap {
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.section-pre-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #2563eb;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.section-heading {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+    line-height: 1.25;
+    margin-bottom: 6px;
+}
+
+.section-caption {
+    font-size: 13.5px;
+    color: #64748b;
+}
+
+.section-title-split {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.section-title-right-label {
+    font-size: 12.5px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.section-link-right {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.section-link-right:hover {
+    text-decoration: underline;
+}
+
+/* =============================================
+   PART 1 — SECTION 1: HERO SECTION
+   ============================================= */
+.section-hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hero-tag-badge {
+    display: inline-block;
+    background-color: #eff6ff;
+    border: 1px solid #dbeafe;
+    color: #2563eb;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.hero-headline {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.6px;
+    color: #0f172a;
+    margin-bottom: 16px;
+}
+
+.hero-description-text {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #475569;
+    margin-bottom: 18px;
+    max-width: 580px;
+}
+
+.hero-skeleton-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 28px;
+}
+
+.skeleton-line {
+    height: 7px;
+    background-color: #f1f5f9;
+    border-radius: 4px;
+}
+
+.skeleton-line.full { width: 100%; }
+.skeleton-line.partial { width: 75%; }
+
+.hero-cta-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+    background-color: #1d4ed8;
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+.btn-hero-primary:hover {
+    background-color: #1e40af;
+}
+
+.btn-hero-secondary {
+    background-color: #eff6ff;
+    border: 1.5px solid #dbeafe;
+    color: #1d4ed8;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+.btn-hero-secondary:hover {
+    background-color: #dbeafe;
+}
+
+.hero-footer-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.meta-bullet {
+    color: #94a3b8;
+}
+
+/* Card Visual Hero Kanan */
+.hero-right-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-photo-card {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.hero-photo-inner-dashed {
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 10px;
+    background-color: #f8fafc;
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 240px;
+}
+
+.hero-photo-icon-box {
+    color: #3b82f6;
+    margin-bottom: 12px;
+}
+
+.hero-photo-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.hero-photo-sub {
+    font-size: 11.5px;
+    color: #64748b;
+}
+
+.hero-photo-bottom-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 11px;
+    color: #64748b;
+    padding: 0 4px;
+}
+
+/* =============================================
+   PART 1 — SECTION 2: VISI & MISI MADRASAH
+   ============================================= */
+.visimisi-two-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.visimisi-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.visimisi-card-header {
+    padding: 14px 20px;
+    background-color: #f8fafc;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.visimisi-card-title-left {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #1e3a8a;
+    text-transform: uppercase;
+}
+
+.visimisi-card-title-right {
+    font-size: 11.5px;
+    color: #64748b;
+}
+
+.visimisi-card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.visi-quote-box {
+    border-left: 3px solid #2563eb;
+    background-color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+}
+
+.visi-quote-text {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 700;
+    color: #1e40af;
+    line-height: 1.45;
+}
+
+.visi-explanation {
+    font-size: 12.5px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.visimisi-card-footer {
+    padding: 12px 20px;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11.5px;
+    color: #64748b;
+}
+
+/* Misi List Items */
+.visimisi-card-body-list {
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.misi-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background-color: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 8px;
+    padding: 12px 16px;
+}
+
+.misi-number-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.misi-item-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.misi-item-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.misi-item-desc {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* =============================================
+   PART 2 — SECTION 1: PROGRAM UNGGULAN MADRASAH
+   ============================================= */
+.programs-three-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.program-box-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.program-img-placeholder {
+    height: 180px;
+    background-color: #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-img-icon-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #94a3b8;
+    font-size: 11.5px;
+}
+
+.program-box-body {
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.program-category-pill {
+    display: inline-block;
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.program-item-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.program-item-summary {
+    font-size: 12.5px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.program-box-footer {
+    padding: 12px 20px;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11.5px;
+}
+
+.program-jenjang-text {
+    color: #64748b;
+}
+
+.program-detail-link {
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.program-detail-link:hover {
+    text-decoration: underline;
+}
+
+/* =============================================
+   PART 2 — SECTION 2: FASILITAS PENUNJANG BELAJAR
+   ============================================= */
+.facilities-four-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.facility-box-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.facility-img-box {
+    height: 160px;
+    background-color: #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-img-icon-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #94a3b8;
+    font-size: 11.5px;
+}
+
+.facility-box-body {
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.facility-item-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.facility-item-desc {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.55;
+}
+
+/* =============================================
+   PART 3 — SECTION 1: BERITA & AGENDA TERKINI
+   ============================================= */
+.news-three-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.news-box-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.news-img-placeholder {
+    height: 180px;
+    background-color: #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.n-img-icon-wrap {
+    color: #94a3b8;
+    font-size: 11.5px;
+}
+
+.news-box-body {
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.news-meta-category-date {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    color: #2563eb;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.n-date {
+    color: #64748b;
+    font-weight: 400;
+}
+
+.n-bullet {
+    color: #cbd5e1;
+}
+
+.news-item-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+    line-height: 1.35;
+}
+
+.news-item-summary {
+    font-size: 12.5px;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    flex: 1;
+}
+
+.news-read-more-link {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.news-read-more-link:hover {
+    text-decoration: underline;
+}
+
+/* =============================================
+   PART 3 — SECTION 2: PERPUSTAKAAN DIGITAL
+   ============================================= */
+.dlib-banner-frame {
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.dlib-banner-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.dlib-tag-pill {
+    display: inline-block;
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.dlib-banner-heading {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.dlib-banner-paragraph {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #475569;
+    margin-bottom: 22px;
+    max-width: 620px;
+}
+
+.dlib-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-open-dlib {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #1d4ed8;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+.btn-open-dlib:hover {
+    background-color: #1e40af;
+}
+
+.dlib-support-caption {
+    font-size: 11.5px;
+    color: #64748b;
+}
+
+/* Box Dashed Preview Kanan */
+.dlib-banner-right {
+    display: flex;
+    justify-content: center;
+}
+
+.dlib-dashed-preview-box {
+    width: 190px;
+    border: 1.5px dashed #93c5fd;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    padding: 32px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+}
+
+.dlib-doc-badge-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background-color: #dbeafe;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.dlib-preview-text-main {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1e3a8a;
+    line-height: 1.35;
+}
+
+.dlib-preview-text-sub {
+    font-size: 10.5px;
+    color: #64748b;
+}
+
+/* =============================================
+   PART 4 — SECTION 1: HUBUNGI KAMI
+   ============================================= */
+.contact-two-columns-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 28px;
+    align-items: flex-start;
+}
+
+.contact-left-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-info-list-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.c-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.c-info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.c-info-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #1e40af;
+    text-transform: uppercase;
+}
+
+.c-info-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.c-info-sub {
+    font-size: 11px;
+    color: #64748b;
+}
+
+/* Card Embed Peta Placeholder */
+.contact-map-placeholder-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.map-placeholder-inner {
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    padding: 32px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+}
+
+.map-placeholder-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.map-placeholder-sub {
+    font-size: 11px;
+    color: #64748b;
+}
+
+/* Card Form Kanan */
+.contact-form-box-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.c-form-heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.c-actual-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #334155;
+}
+
+.form-input-control,
+.form-textarea-control {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: 'Inter', inherit;
+    color: #0f172a;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.form-input-control:focus,
+.form-textarea-control:focus {
+    border-color: #2563eb;
+}
+
+.form-textarea-control {
+    resize: vertical;
+    min-height: 84px;
+}
+
+.btn-send-message {
+    align-self: flex-start;
+    padding: 10px 22px;
+    border-radius: 7px;
+    border: none;
+    background-color: #1d4ed8;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Inter', inherit;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    margin-top: 4px;
+}
+
+.btn-send-message:hover {
+    background-color: #1e40af;
+}
+
+/* =============================================
+   PART 4 — SECTION 2: FOOTER BOTTOMBAR GELAP
+   ============================================= */
+.site-dark-footer {
+    width: 100%;
+    background-color: #0f3769; /* Warna Biru Navy Pekat Sesuai Foto */
+    color: #f1f5f9;
+    padding: 52px 24px 28px 24px;
+    margin-top: 40px;
+}
+
+.dark-footer-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.dark-footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.dark-footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.dark-footer-brand-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+    letter-spacing: -0.2px;
+}
+
+.dark-footer-brand-desc {
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: #94a3b8;
+    margin-bottom: 14px;
+}
+
+.dark-footer-akreditasi-text {
+    font-size: 11.5px;
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.dark-footer-col-heading {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #cbd5e1;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.dark-footer-nav-list,
+.dark-footer-contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.dark-footer-nav-list li a {
+    font-size: 12.5px;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.dark-footer-nav-list li a:hover {
+    color: #ffffff;
+}
+
+.dark-footer-contact-list li {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+}
+
+.dark-footer-highlight-item {
+    color: #cbd5e1 !important;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.dark-footer-divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.12);
+    margin-bottom: 24px;
+}
+
+.dark-footer-bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.dark-footer-copy-text {
+    color: #94a3b8;
+}
+
+.dark-footer-policy-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dark-footer-policy-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.dark-footer-policy-links a:hover {
+    color: #ffffff;
+}
+
+.policy-dot {
+    color: #64748b;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+    .programs-three-grid,
+    .news-three-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .facilities-four-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .dark-footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+}
+
+@media (max-width: 900px) {
+    .section-hero {
+        grid-template-columns: 1fr;
+    }
+    .visimisi-two-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    .dlib-banner-frame {
+        grid-template-columns: 1fr;
+    }
+    .contact-two-columns-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .home-main-container {
+        padding: 24px 16px 48px 16px;
+        gap: 48px;
+    }
+    .hero-headline {
+        font-size: 28px;
+    }
+    .programs-three-grid,
+    .news-three-grid,
+    .facilities-four-grid {
+        grid-template-columns: 1fr;
+    }
+    .dark-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .dark-footer-bottom-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

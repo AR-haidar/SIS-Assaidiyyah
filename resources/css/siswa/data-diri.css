@@ -1,0 +1,442 @@
+/* =============================================
+   DATA DIRI SISWA — SIS MI Assa'idiyyah
+   Font: Inter | Sesuai Foto Referensi Data Diri.png
+   ============================================= */
+
+/* Header Halaman */
+.dd-page-header {
+    margin-bottom: 20px;
+}
+
+.dd-page-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.dd-page-sub {
+    font-size: 13.5px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+/* =============================================
+   1. TOP PROFILE BANNER (HORIZONTAL)
+   ============================================= */
+.dd-top-profile-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    margin-bottom: 24px;
+}
+
+/* Pasfoto Persegi Panjang (Format 3x4) */
+.dd-pasfoto-box {
+    width: 88px;
+    height: 114px;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex-shrink: 0;
+    color: #3b82f6;
+}
+
+.dd-pasfoto-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dd-pasfoto-text {
+    font-size: 9.5px;
+    font-weight: 600;
+    color: #64748b;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.dd-pasfoto-size {
+    font-size: 9px;
+    color: #94a3b8;
+}
+
+/* Info Cepat Profil Sisi Kanan */
+.dd-profile-quick-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dd-profile-tags-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dd-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #2563eb;
+    background-color: #eff6ff;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.dd-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #2563eb;
+}
+
+.dd-ta-text {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.dd-profile-name {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    color: #111827;
+}
+
+.dd-profile-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dd-meta-pill {
+    background-color: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    color: #475569;
+    font-weight: 500;
+    min-width: 140px;
+}
+
+/* =============================================
+   2. MAIN CONTENT: 2 KOLOM (KIRI & KANAN)
+   ============================================= */
+.dd-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.dd-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Base Card Style */
+.dd-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* Card Header dengan latar soft */
+.dd-card-header {
+    background-color: #f8fafc;
+    padding: 12px 18px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.dd-card-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1e3a8a;
+    letter-spacing: -0.1px;
+}
+
+.dd-card-body {
+    padding: 18px;
+}
+
+/* Grid Fields (2 Kolom per Card) */
+.dd-field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+}
+
+.dd-field-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dd-field-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.dd-field-val {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dd-field-item.full-width {
+    grid-column: 1 / -1;
+}
+
+/* List Style untuk Informasi Akademik */
+.dd-list-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dd-list-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.dd-list-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.dd-list-label {
+    font-size: 12.5px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.dd-list-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+/* Banner Rekapitulasi Presensi */
+.dd-presensi-banner {
+    margin-top: 14px;
+    background-color: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.dd-presensi-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dd-presensi-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+    background-color: #dbeafe;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.dd-presensi-texts {
+    display: flex;
+    flex-direction: column;
+}
+
+.dd-presensi-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #1e40af;
+}
+
+.dd-presensi-sub {
+    font-size: 11px;
+    color: #64748b;
+}
+
+.dd-presensi-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.dd-presensi-link:hover {
+    text-decoration: underline;
+}
+
+/* Kelengkapan Berkas Administrasi */
+.dd-berkas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.dd-berkas-item {
+    background-color: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.dd-berkas-name {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.dd-berkas-format {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.btn-ajukan-berkas {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 9px 14px;
+    border-radius: 8px;
+    border: 1.5px solid #e2e8f0;
+    background-color: #ffffff;
+    color: #2563eb;
+    font-size: 12.5px;
+    font-weight: 600;
+    font-family: 'Inter', inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.btn-ajukan-berkas:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+/* =============================================
+   3. BOTTOM NOTE BANNER (FULL WIDTH)
+   ============================================= */
+.dd-bottom-note {
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.dd-note-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex: 1;
+}
+
+.dd-note-icon {
+    color: #2563eb;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.dd-note-text {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #1e3a8a;
+}
+
+.dd-note-text strong {
+    font-weight: 700;
+}
+
+.dd-note-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #2563eb;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.dd-note-link:hover {
+    text-decoration: underline;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 960px) {
+    .dd-main-grid {
+        grid-template-columns: 1fr;
+    }
+    .dd-top-profile-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .dd-profile-meta-row {
+        flex-wrap: wrap;
+    }
+    .dd-bottom-note {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .dd-field-grid {
+        grid-template-columns: 1fr;
+    }
+    .dd-meta-pill {
+        width: 100%;
+    }
+}
