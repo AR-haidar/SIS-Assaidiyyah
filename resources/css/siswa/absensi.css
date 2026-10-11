@@ -11,14 +11,14 @@
 .abs-page-title {
     font-size: 26px;
     font-weight: 800;
-    color: #111827;
+    color: #173f75;
     letter-spacing: -0.5px;
     line-height: 1.2;
 }
 
 .abs-page-sub {
     font-size: 13.5px;
-    color: #6b7280;
+    color: #7185a1;
     margin-top: 4px;
 }
 
@@ -27,7 +27,7 @@
    ============================================= */
 .abs-student-info-card {
     background-color: #ffffff;
-    border: 1.5px solid #e5e7eb;
+    border: 1.5px solid #dfe7f1;
     border-radius: 12px;
     padding: 16px 24px;
     display: grid;
@@ -47,14 +47,14 @@
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    color: #64748b;
+    color: #7185a1;
     text-transform: uppercase;
 }
 
 .abs-info-val {
     font-size: 14px;
     font-weight: 600;
-    color: #0f172a;
+    color: #173f75;
 }
 
 /* =============================================
@@ -62,7 +62,7 @@
    ============================================= */
 .abs-filter-card {
     background-color: #ffffff;
-    border: 1.5px solid #e5e7eb;
+    border: 1.5px solid #dfe7f1;
     border-radius: 12px;
     padding: 16px 20px;
     display: grid;
@@ -85,11 +85,11 @@
     gap: 6px;
     font-size: 12px;
     font-weight: 600;
-    color: #475569;
+    color: #536b89;
 }
 
 .abs-filter-label svg {
-    color: #64748b;
+    color: #7185a1;
 }
 
 .abs-select-wrapper {
@@ -100,12 +100,12 @@
 .abs-select-input {
     width: 100%;
     padding: 9px 36px 9px 12px;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid #dfe7f1;
     border-radius: 8px;
     font-size: 13px;
     font-family: 'Inter', inherit;
-    color: #1e293b;
-    background-color: #f8fafc;
+    color: #173f75;
+    background-color: #f5f8fc;
     outline: none;
     cursor: pointer;
     appearance: none;
@@ -114,7 +114,7 @@
 }
 
 .abs-select-input:focus {
-    border-color: #2563eb;
+    border-color: #2168c6;
     background-color: #ffffff;
 }
 
@@ -124,7 +124,7 @@
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: #64748b;
+    color: #7185a1;
 }
 
 .btn-terapkan-filter {
@@ -134,7 +134,7 @@
     padding: 10px 18px;
     border-radius: 8px;
     border: none;
-    background-color: #1d4ed8;
+    background-color: #2168c6;
     color: #ffffff;
     font-size: 13px;
     font-weight: 600;
@@ -147,7 +147,7 @@
 }
 
 .btn-terapkan-filter:hover {
-    background-color: #1e40af;
+    background-color: #173f75;
 }
 
 .btn-terapkan-filter:active {
@@ -166,7 +166,7 @@
 
 .abs-stat-box {
     background-color: #ffffff;
-    border: 1.5px solid #e5e7eb;
+    border: 1.5px solid #dfe7f1;
     border-radius: 12px;
     padding: 16px 20px;
     display: flex;
@@ -199,8 +199,8 @@
 .abs-stat-box.hadir .abs-status-dot { background-color: #059669; }
 .abs-stat-box.hadir .abs-status-title { color: #059669; }
 
-.abs-stat-box.izin .abs-status-dot { background-color: #2563eb; }
-.abs-stat-box.izin .abs-status-title { color: #2563eb; }
+.abs-stat-box.izin .abs-status-dot { background-color: #2168c6; }
+.abs-stat-box.izin .abs-status-title { color: #2168c6; }
 
 .abs-stat-box.sakit .abs-status-dot { background-color: #d97706; }
 .abs-stat-box.sakit .abs-status-title { color: #d97706; }
@@ -211,7 +211,7 @@
 .abs-stat-value-text {
     font-size: 15px;
     font-weight: 600;
-    color: #475569;
+    color: #536b89;
     margin-top: 2px;
 }
 
@@ -220,7 +220,7 @@
    ============================================= */
 .abs-table-card {
     background-color: #ffffff;
-    border: 1.5px solid #e5e7eb;
+    border: 1.5px solid #dfe7f1;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
@@ -232,13 +232,13 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f5f8fc;
 }
 
 .abs-table-title {
     font-size: 14.5px;
     font-weight: 700;
-    color: #0f172a;
+    color: #173f75;
     letter-spacing: -0.2px;
 }
 
@@ -248,7 +248,7 @@
     gap: 6px;
     font-size: 11.5px;
     font-weight: 600;
-    color: #2563eb;
+    color: #2168c6;
     background-color: #eff6ff;
     padding: 5px 12px;
     border-radius: 6px;
@@ -267,15 +267,15 @@
 }
 
 .abs-table thead th {
-    background-color: #f8fafc;
+    background-color: #f5f8fc;
     padding: 14px 24px;
     text-align: left;
     font-size: 11.5px;
     font-weight: 800;
     letter-spacing: 0.5px;
-    color: #1e3a8a;
+    color: #173f75;
     text-transform: uppercase;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f5f8fc;
 }
 
 .abs-table thead th:nth-child(1) { width: 30%; }

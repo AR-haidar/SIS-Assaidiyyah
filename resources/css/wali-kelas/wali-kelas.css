@@ -1,0 +1,1278 @@
+/* Dashboard wali kelas */
+.wali-page {
+     font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+     background: #f5f8fc;
+
+}
+.wali-main {
+     padding: 24px 16px 40px;
+     color: #173f75;
+
+}
+.wali-page-heading {
+     margin: 0 0 16px;
+
+}
+.wali-page-heading h1 {
+     color: #173f75;
+     font-size: 30px;
+     line-height: 1.2;
+     font-weight: 700;
+     letter-spacing: -0.6px;
+
+}
+.wali-page-heading p {
+     margin-top: 5px;
+     color: #7185a1;
+     font-size: 13px;
+
+}
+.wali-class-summary {
+     min-height: 69px;
+     margin-bottom: 15px;
+     padding: 14px 16px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 20px;
+     background: #fff;
+     border: 1px solid #edf1f6;
+     border-radius: 9px;
+     box-shadow: 0 1px 2px rgba(19, 52, 91, .025);
+
+}
+.wali-class-title span {
+     display: block;
+     color: #7185a1;
+     font-size: 10px;
+     letter-spacing: 1px;
+
+}
+.wali-class-title h2 {
+     margin-top: 3px;
+     color: #173f75;
+     font-size: 15px;
+     font-weight: 650;
+
+}
+.wali-class-meta {
+     display: flex;
+     align-items: center;
+     gap: 8px;
+
+}
+.wali-class-meta span {
+     min-width: 80px;
+     padding: 7px 12px;
+     border-radius: 5px;
+     background: #f5f8fc;
+     color: #70839e;
+     font-size: 10px;
+     text-align: center;
+     white-space: nowrap;
+
+}
+.wali-class-meta span:first-child {
+     background: #eaf2ff;
+
+}
+.wali-class-meta strong {
+     color: #173f75;
+     font-weight: 600;
+
+}
+.wali-stat-grid {
+     display: grid;
+     grid-template-columns: repeat(4, minmax(0, 1fr));
+     gap: 14px;
+     margin-bottom: 19px;
+
+}
+.wali-stat-card {
+     min-height: 140px;
+     padding: 23px 22px 18px;
+     border: 1px solid #edf1f6;
+     border-radius: 9px;
+     background: #fff;
+     box-shadow: 0 1px 2px rgba(19, 52, 91, .025);
+
+}
+.wali-stat-card h2 {
+     color: #637895;
+     font-size: 11px;
+     font-weight: 500;
+
+}
+.wali-stat-card p {
+     margin-top: 31px;
+     color: #173f75;
+     font-size: 32px;
+     line-height: 1;
+     font-weight: 700;
+
+}
+.wali-students-card {
+     overflow: hidden;
+     border: 1px solid #edf1f6;
+     border-radius: 9px;
+     background: #fff;
+     box-shadow: 0 1px 2px rgba(19, 52, 91, .025);
+
+}
+.wali-table-toolbar {
+     min-height: 121px;
+     padding: 24px 22px;
+     display: grid;
+     grid-template-columns: minmax(250px, 1fr) minmax(210px, 248px) auto;
+     align-items: start;
+     gap: 18px;
+
+}
+.wali-table-heading h2 {
+     color: #173f75;
+     font-size: 19px;
+     line-height: 1.3;
+     font-weight: 600;
+
+}
+.wali-table-heading p {
+     margin-top: 4px;
+     color: #7185a1;
+     font-size: 11px;
+
+}
+.wali-search-box {
+     height: 38px;
+     margin-top: 9px;
+     padding: 0 12px;
+     display: flex;
+     align-items: center;
+     gap: 9px;
+     border: 1px solid #f0f3f8;
+     border-radius: 6px;
+     background: #f8fafc;
+     color: #627994;
+
+}
+.wali-search-box input {
+     width: 100%;
+     min-width: 0;
+     border: 0;
+     outline: 0;
+     background: transparent;
+     color: #173f75;
+     font: inherit;
+     font-size: 12px;
+
+}
+.wali-search-box input::placeholder {
+     color: #9aa8bb;
+
+}
+.wali-export-button {
+     height: 38px;
+     margin-top: 9px;
+     padding: 0 14px;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     gap: 7px;
+     border: 1px solid #f0f3f8;
+     border-radius: 6px;
+     background: #f8fafc;
+     color: #1766d1;
+     font: inherit;
+     font-size: 12px;
+     font-weight: 500;
+     white-space: nowrap;
+
+}
+.wali-table-scroll {
+     overflow-x: auto;
+
+}
+.wali-students-table {
+     width: 100%;
+     border-collapse: collapse;
+     text-align: left;
+
+}
+.wali-students-table thead {
+     background: #f6f9fc;
+
+}
+.wali-students-table th {
+     height: 46px;
+     padding: 0 15px;
+     color: #173f75;
+     font-size: 10px;
+     font-weight: 700;
+     letter-spacing: .25px;
+     text-transform: uppercase;
+     white-space: nowrap;
+
+}
+.wali-students-table th:first-child, .wali-students-table td:first-child {
+     width: 11%;
+     padding-left: 7%;
+     text-align: center;
+
+}
+.wali-students-table td {
+     height: 57px;
+     padding: 7px 15px;
+     color: #6f829d;
+     font-size: 12px;
+     white-space: nowrap;
+
+}
+.wali-name-placeholder, .wali-attendance-placeholder {
+     display: inline-flex;
+     align-items: center;
+     gap: 8px;
+
+}
+.wali-skeleton {
+     display: inline-block;
+     background: #e5efff;
+
+}
+.wali-skeleton-id {
+     width: 92px;
+     height: 12px;
+     border-radius: 4px;
+
+}
+.wali-skeleton-avatar {
+     width: 27px;
+     height: 27px;
+     border-radius: 50%;
+
+}
+.wali-skeleton-name {
+     width: 169px;
+     height: 13px;
+     border-radius: 4px;
+
+}
+.wali-skeleton-progress {
+     width: 62px;
+     height: 8px;
+     border-radius: 5px;
+
+}
+.wali-skeleton-status {
+     width: 61px;
+     height: 20px;
+     border-radius: 4px;
+
+}
+@media (max-width: 1050px) {
+     .wali-table-toolbar {
+         grid-template-columns: minmax(200px, 1fr) minmax(190px, 240px);
+
+    }
+    .wali-export-button {
+         grid-column: 2;
+         justify-self: end;
+         margin-top: -8px;
+
+    }
+}
+@media (max-width: 768px) {
+     .wali-main {
+         padding: 22px 16px 36px;
+
+    }
+    .wali-page-heading h1 {
+         font-size: 26px;
+
+    }
+    .wali-class-summary {
+         align-items: flex-start;
+         flex-direction: column;
+
+    }
+    .wali-class-meta {
+         width: 100%;
+         flex-wrap: wrap;
+
+    }
+    .wali-class-meta span {
+         flex: 1;
+
+    }
+    .wali-stat-grid {
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+         gap: 10px;
+
+    }
+    .wali-stat-card {
+         min-height: 115px;
+         padding: 18px;
+
+    }
+    .wali-stat-card p {
+         margin-top: 24px;
+         font-size: 28px;
+
+    }
+    .wali-table-toolbar {
+         grid-template-columns: 1fr;
+         gap: 10px;
+         padding: 20px 16px;
+
+    }
+    .wali-search-box, .wali-export-button {
+         width: 100%;
+         margin: 0;
+         grid-column: auto;
+
+    }
+    .wali-students-table {
+         min-width: 760px;
+
+    }
+}
+@media (max-width: 480px) {
+     .wali-main {
+         padding: 20px 12px 30px;
+
+    }
+    .wali-stat-card h2 {
+         font-size: 10px;
+
+    }
+}
+/* Halaman data siswa wali kelas */
+.wali-data-main {
+     padding-top: 24px;
+
+}
+.wali-data-heading {
+     margin-bottom: 18px;
+
+}
+.wali-data-heading h1 {
+     font-size: 30px;
+
+}
+.wali-data-stat-grid {
+     display: grid;
+     grid-template-columns: repeat(3, minmax(0, 1fr));
+     gap: 14px;
+     margin-bottom: 22px;
+
+}
+.wali-data-stat-card {
+     min-height: 115px;
+     padding: 17px 16px 14px;
+     border: 1px solid #dfe7f1;
+     border-radius: 9px;
+     background: #fff;
+     box-shadow: 0 1px 2px rgba(19, 52, 91, .035);
+
+}
+.wali-data-stat-card span {
+     display: block;
+     color: #7185a1;
+     font-size: 10px;
+     letter-spacing: .6px;
+
+}
+.wali-data-stat-card p {
+     margin-top: 38px;
+     color: #173f75;
+     font-size: 23px;
+     line-height: 1;
+     font-weight: 650;
+
+}
+.wali-data-filter {
+     display: grid;
+     grid-template-columns: minmax(180px, 1.2fr) minmax(180px, 1fr) minmax(170px, .9fr) auto auto;
+     align-items: center;
+     gap: 14px;
+     margin-bottom: 12px;
+     padding: 15px 16px;
+     border: 1px solid #dfe7f1;
+     border-radius: 9px;
+     background: #fff;
+     box-shadow: 0 1px 2px rgba(19, 52, 91, .035);
+
+}
+.wali-data-search, .wali-data-select-label {
+     height: 39px;
+     min-width: 0;
+     display: flex;
+     align-items: center;
+     gap: 9px;
+     padding: 0 12px;
+     border: 1px solid #dbe4ef;
+     border-radius: 5px;
+     background: #fff;
+     color: #657b97;
+
+}
+.wali-data-search input, .wali-data-select-label select {
+     width: 100%;
+     min-width: 0;
+     border: 0;
+     outline: 0;
+     background: transparent;
+     color: #334963;
+     font: inherit;
+     font-size: 12px;
+
+}
+.wali-data-search input::placeholder {
+     color: #8192a8;
+
+}
+.wali-data-select-label select {
+     height: 100%;
+     cursor: pointer;
+
+}
+.wali-data-apply {
+     height: 39px;
+     padding: 0 14px;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     gap: 6px;
+     border: 1px solid #2168c6;
+     border-radius: 5px;
+     background: #2168c6;
+     color: #fff;
+     font: inherit;
+     font-size: 12px;
+     white-space: nowrap;
+     cursor: pointer;
+
+}
+.wali-data-apply:hover {
+     background: #1959ad;
+
+}
+.wali-data-reset {
+     padding: 8px 5px;
+     border: 0;
+     background: transparent;
+     color: #1766d1;
+     font: inherit;
+     font-size: 12px;
+     cursor: pointer;
+
+}
+.wali-data-reset:hover {
+     color: #124e9f;
+     text-decoration: underline;
+
+}
+.wali-data-table-card {
+     overflow: hidden;
+     border: 1px solid #dfe7f1;
+     border-radius: 9px;
+     background: #fff;
+     box-shadow: 0 1px 2px rgba(19, 52, 91, .035);
+
+}
+.wali-data-table-scroll {
+     overflow-x: auto;
+
+}
+.wali-data-table {
+     width: 100%;
+     border-collapse: collapse;
+     text-align: left;
+
+}
+.wali-data-table thead {
+     background: #f6f9fc;
+
+}
+.wali-data-table th {
+     height: 36px;
+     padding: 0 20px;
+     border-bottom: 1px solid #e5ebf3;
+     color: #173f75;
+     font-size: 11px;
+     font-weight: 600;
+     text-transform: uppercase;
+     white-space: nowrap;
+
+}
+.wali-data-table th:first-child {
+     width: 6%;
+     padding-left: 20px;
+
+}
+.wali-data-empty {
+     min-height: 202px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     padding: 28px 18px;
+     text-align: center;
+
+}
+.wali-data-empty strong {
+     color: #173f75;
+     font-size: 14px;
+     font-weight: 600;
+
+}
+.wali-data-empty p {
+     margin-top: 6px;
+     color: #7185a1;
+     font-size: 13px;
+     line-height: 1.7;
+
+}
+@media (max-width: 1000px) {
+     .wali-data-filter {
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+         gap: 10px;
+
+    }
+    .wali-data-apply {
+         width: 100%;
+
+    }
+    .wali-data-reset {
+         justify-self: center;
+
+    }
+}
+@media (max-width: 768px) {
+     .wali-data-main {
+         padding-top: 22px;
+
+    }
+    .wali-data-heading h1 {
+         font-size: 26px;
+
+    }
+    .wali-data-stat-grid {
+         gap: 10px;
+
+    }
+    .wali-data-stat-card {
+         min-height: 105px;
+         padding: 15px 12px;
+
+    }
+    .wali-data-stat-card p {
+         margin-top: 32px;
+         font-size: 20px;
+
+    }
+    .wali-data-table {
+         min-width: 680px;
+
+    }
+}
+@media (max-width: 520px) {
+     .wali-data-stat-grid {
+         grid-template-columns: 1fr;
+
+    }
+    .wali-data-stat-card {
+         min-height: 90px;
+
+    }
+    .wali-data-stat-card p {
+         margin-top: 19px;
+
+    }
+    .wali-data-filter {
+         grid-template-columns: 1fr;
+
+    }
+    .wali-data-reset {
+         justify-self: end;
+
+    }
+    .wali-data-empty p {
+         font-size: 12px;
+
+    }
+    .desktop-break {
+         display: none;
+
+    }
+}
+/* Halaman rekapitulasi presensi dan absensi wali kelas */
+.wali-attendance-main {
+     padding-top: 24px;
+
+}
+.wali-attendance-heading {
+     margin-bottom: 35px;
+
+}
+.wali-attendance-heading h1 {
+     font-size: 30px;
+
+}
+.wali-attendance-heading p {
+     margin-top: 3px;
+
+}
+.wali-attendance-stats {
+     display: grid;
+     grid-template-columns: repeat(2, minmax(0, 1fr));
+     gap: 15px;
+     margin-bottom: 22px;
+
+}
+.wali-attendance-stat-card {
+     min-height: 106px;
+     padding: 15px 16px;
+     border: 1px solid #edf1f6;
+     border-radius: 9px;
+     background: #fff;
+
+}
+.wali-attendance-stat-card span {
+     display: block;
+     color: #7185a1;
+     font-size: 10px;
+     line-height: 1.4;
+     letter-spacing: .6px;
+
+}
+.wali-attendance-stat-card p {
+     margin-top: 6px;
+     color: #173f75;
+     font-size: 30px;
+     line-height: 1.1;
+     font-weight: 650;
+
+}
+.wali-attendance-workspace {
+     display: grid;
+     grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+     align-items: start;
+     gap: 22px;
+
+}
+.wali-attendance-chart-card, .wali-attendance-table-card {
+     min-width: 0;
+     border: 1px solid #edf1f6;
+     border-radius: 9px;
+     background: #fff;
+
+}
+.wali-attendance-chart-card {
+     padding: 22px;
+
+}
+.wali-attendance-chart-card h2, .wali-attendance-table-card h2 {
+     color: #173f75;
+     font-size: 18px;
+     font-weight: 550;
+
+}
+.wali-attendance-chart {
+     position: relative;
+     height: 328px;
+     margin-top: 16px;
+     padding: 35px 15px 17px;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+     overflow: hidden;
+     border-radius: 9px;
+     background: #f8fafc;
+
+}
+.wali-chart-grid-lines {
+     position: absolute;
+     inset: 39px 15px 58px;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+
+}
+.wali-chart-grid-lines span {
+     display: block;
+     width: 100%;
+     border-top: 1px dashed #e7edf6;
+
+}
+.wali-chart-grid-lines span:last-child {
+     border-top-style: solid;
+
+}
+.wali-chart-weeks {
+     position: relative;
+     display: flex;
+     justify-content: space-around;
+     color: #7185a1;
+     font-size: 11px;
+
+}
+.wali-attendance-legend {
+     margin-top: 16px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-wrap: wrap;
+     gap: 14px;
+     color: #4b5563;
+     font-size: 10px;
+
+}
+.wali-attendance-legend span {
+     display: inline-flex;
+     align-items: center;
+     gap: 5px;
+     white-space: nowrap;
+
+}
+.wali-attendance-legend i {
+     width: 12px;
+     height: 12px;
+     display: inline-block;
+
+}
+.legend-hadir {
+     background: #2168c6;
+
+}
+.legend-izin {
+     background: #3285f6;
+
+}
+.legend-sakit {
+     background: #9bbcff;
+
+}
+.legend-alpa {
+     background: #c62828;
+
+}
+.wali-attendance-table-card {
+     padding: 22px 22px 15px;
+
+}
+.wali-attendance-table-card h2 {
+     margin-bottom: 16px;
+
+}
+.wali-attendance-table-scroll {
+     overflow-x: auto;
+
+}
+.wali-attendance-table {
+     width: 100%;
+     border-collapse: collapse;
+     text-align: left;
+
+}
+.wali-attendance-table thead {
+     background: #f6f9fc;
+
+}
+.wali-attendance-table th {
+     height: 35px;
+     padding: 0 9px;
+     color: #173f75;
+     font-size: 10px;
+     font-weight: 650;
+     text-transform: uppercase;
+     white-space: nowrap;
+
+}
+.wali-attendance-empty {
+     min-height: 150px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     padding: 20px 10px;
+     text-align: center;
+
+}
+.wali-attendance-empty strong {
+     color: #173f75;
+     font-size: 13px;
+     font-weight: 600;
+
+}
+.wali-attendance-empty p {
+     margin-top: 6px;
+     color: #7185a1;
+     font-size: 12px;
+     line-height: 1.6;
+
+}
+.wali-attendance-pagination {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 8px;
+     color: #7185a1;
+     font-size: 10px;
+
+}
+.wali-attendance-pagination nav {
+     display: flex;
+     align-items: center;
+     gap: 4px;
+
+}
+.wali-attendance-pagination button {
+     min-width: 20px;
+     height: 22px;
+     padding: 0 3px;
+     border: 0;
+     background: transparent;
+     color: #9aa9bc;
+     font: inherit;
+     font-size: 15px;
+
+}
+.wali-attendance-pagination button:disabled {
+     cursor: default;
+
+}
+.wali-attendance-pagination .current-page {
+     width: 20px;
+     height: 21px;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     background: #8eacd5;
+     color: #fff;
+     font-size: 11px;
+
+}
+@media (max-width: 1000px) {
+     .wali-attendance-workspace {
+         grid-template-columns: 1fr;
+
+    }
+    .wali-attendance-chart {
+         height: 270px;
+
+    }
+}
+@media (max-width: 768px) {
+     .wali-attendance-heading {
+         margin-bottom: 24px;
+
+    }
+    .wali-attendance-heading h1 {
+         font-size: 26px;
+
+    }
+    .wali-attendance-stats {
+         gap: 10px;
+
+    }
+    .wali-attendance-stat-card {
+         min-height: 100px;
+         padding: 14px;
+
+    }
+    .wali-attendance-stat-card p {
+         font-size: 25px;
+
+    }
+    .wali-attendance-chart-card, .wali-attendance-table-card {
+         padding: 18px 15px;
+
+    }
+    .wali-attendance-chart-card h2, .wali-attendance-table-card h2 {
+         font-size: 16px;
+
+    }
+    .wali-attendance-table {
+         min-width: 570px;
+
+    }
+}
+@media (max-width: 480px) {
+     .wali-attendance-stats {
+         grid-template-columns: 1fr;
+
+    }
+    .wali-attendance-legend {
+         gap: 9px;
+
+    }
+    .wali-attendance-empty p {
+         font-size: 11px;
+
+    }
+    .attendance-desktop-break {
+         display: none;
+
+    }
+}
+/* Halaman status pembayaran SPP wali kelas */
+.wali-finance-main {
+     padding-top: 24px;
+
+}
+.wali-finance-titlebar {
+     margin-bottom: 40px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 20px;
+
+}
+.wali-finance-titlebar .wali-page-heading {
+     margin: 0;
+
+}
+.wali-finance-titlebar .wali-page-heading h1 {
+     font-size: 30px;
+
+}
+.wali-finance-actions {
+     display: flex;
+     align-items: center;
+     gap: 9px;
+
+}
+.wali-finance-semester {
+     min-height: 31px;
+     padding: 0 10px;
+     display: inline-flex;
+     align-items: center;
+     gap: 7px;
+     border-radius: 4px;
+     background: #e7f0ff;
+     color: #17457d;
+     font-size: 11px;
+     white-space: nowrap;
+
+}
+.wali-finance-semester i {
+     width: 6px;
+     height: 6px;
+     border-radius: 50%;
+     background: #2873d1;
+
+}
+.wali-finance-download {
+     min-height: 36px;
+     padding: 0 13px;
+     display: inline-flex;
+     align-items: center;
+     gap: 6px;
+     border: 1px solid #edf1f6;
+     border-radius: 4px;
+     background: #fff;
+     color: #1766d1;
+     font: inherit;
+     font-size: 12px;
+     white-space: nowrap;
+     cursor: pointer;
+
+}
+.wali-finance-download:hover {
+     background: #f7faff;
+
+}
+.wali-finance-stats {
+     display: grid;
+     grid-template-columns: repeat(3, minmax(0, 1fr));
+     gap: 15px;
+     margin: 0 0 27px;
+
+}
+.wali-finance-stat-card {
+     min-height: 70px;
+     padding: 14px 16px;
+     border-radius: 9px;
+     background: #fff;
+
+}
+.wali-finance-stat-card > span {
+     display: block;
+     color: #7185a1;
+     font-size: 10px;
+     letter-spacing: .6px;
+
+}
+.wali-finance-stat-card p {
+     margin-top: 5px;
+     color: #173f75;
+     font-size: 20px;
+     line-height: 1;
+     font-weight: 650;
+
+}
+.wali-finance-stat-card small {
+     color: #7185a1;
+     font-size: 11px;
+     font-weight: 400;
+
+}
+.wali-finance-filter {
+     margin-bottom: 20px;
+     padding: 17px 16px;
+     display: grid;
+     grid-template-columns: repeat(3, minmax(0, 1fr));
+     align-items: start;
+     gap: 18px 28px;
+     border-radius: 9px;
+     background: #fff;
+
+}
+.wali-finance-field {
+     min-width: 0;
+     display: flex;
+     flex-direction: column;
+     gap: 7px;
+     color: #26384e;
+     font-size: 12px;
+     font-weight: 500;
+
+}
+.wali-finance-search-control, .wali-finance-field select {
+     width: 100%;
+     height: 37px;
+     min-width: 0;
+     padding: 0 11px;
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     border: 0;
+     border-radius: 4px;
+     background: #f7f9fc;
+     color: #627994;
+
+}
+.wali-finance-search-control input, .wali-finance-field select {
+     color: #334963;
+     font: inherit;
+     font-size: 12px;
+
+}
+.wali-finance-search-control input {
+     width: 100%;
+     border: 0;
+     outline: 0;
+     background: transparent;
+
+}
+.wali-finance-search-control input::placeholder {
+     color: #8192a8;
+
+}
+.wali-finance-field select {
+     cursor: pointer;
+
+}
+.wali-finance-filter-actions {
+     grid-column: 1 / -1;
+     display: flex;
+     align-items: center;
+     justify-content: flex-end;
+     gap: 18px;
+
+}
+.wali-finance-reset {
+     padding: 8px 5px;
+     border: 0;
+     background: transparent;
+     color: #627994;
+     font: inherit;
+     font-size: 12px;
+     cursor: pointer;
+
+}
+.wali-finance-reset:hover {
+     color: #1766d1;
+
+}
+.wali-finance-apply {
+     min-height: 36px;
+     padding: 0 14px;
+     display: inline-flex;
+     align-items: center;
+     gap: 6px;
+     border: 0;
+     border-radius: 4px;
+     background: #2168c6;
+     color: #fff;
+     font: inherit;
+     font-size: 12px;
+     cursor: pointer;
+
+}
+.wali-finance-apply:hover {
+     background: #1959ad;
+
+}
+.wali-finance-table-card {
+     overflow: hidden;
+     border-radius: 9px;
+     background: #fff;
+
+}
+.wali-finance-table-scroll {
+     overflow-x: auto;
+
+}
+.wali-finance-table {
+     width: 100%;
+     border-collapse: collapse;
+     text-align: left;
+
+}
+.wali-finance-table thead {
+     background: #f6f9fc;
+
+}
+.wali-finance-table th {
+     height: 36px;
+     padding: 0 16px;
+     color: #173f75;
+     font-size: 10px;
+     font-weight: 650;
+     letter-spacing: .25px;
+     text-transform: uppercase;
+     white-space: nowrap;
+
+}
+.wali-finance-table th:first-child {
+     padding-left: 16px;
+
+}
+.wali-finance-table th:last-child {
+     text-align: right;
+     padding-right: 18px;
+
+}
+.wali-finance-empty {
+     min-height: 230px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     padding: 25px 16px;
+     text-align: center;
+
+}
+.wali-finance-empty strong {
+     color: #173f75;
+     font-size: 19px;
+     font-weight: 500;
+
+}
+.wali-finance-empty p {
+     margin-top: 6px;
+     color: #7185a1;
+     font-size: 13px;
+     line-height: 1.7;
+
+}
+.wali-finance-pagination {
+     min-height: 48px;
+     padding: 0 16px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 12px;
+     background: #f8fafc;
+     color: #7185a1;
+     font-size: 10px;
+
+}
+.wali-finance-pagination nav {
+     display: flex;
+     align-items: center;
+     gap: 4px;
+
+}
+.wali-finance-pagination button {
+     min-width: 19px;
+     height: 21px;
+     padding: 0 2px;
+     border: 0;
+     background: transparent;
+     color: #9aa9bc;
+     font: inherit;
+     font-size: 14px;
+
+}
+.wali-finance-pagination button:disabled {
+     cursor: default;
+
+}
+.wali-finance-pagination .current-page {
+     width: 21px;
+     height: 21px;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 2px;
+     background: #e6efff;
+     color: #17457d;
+     font-size: 11px;
+
+}
+@media (max-width: 1000px) {
+     .wali-finance-titlebar {
+         align-items: flex-start;
+         flex-direction: column;
+         margin-bottom: 25px;
+
+    }
+    .wali-finance-stats {
+         gap: 10px;
+
+    }
+    .wali-finance-filter {
+         gap: 15px;
+
+    }
+}
+@media (max-width: 768px) {
+     .wali-finance-titlebar .wali-page-heading h1 {
+         font-size: 26px;
+
+    }
+    .wali-finance-actions {
+         flex-wrap: wrap;
+
+    }
+    .wali-finance-stats {
+         grid-template-columns: 1fr;
+
+    }
+    .wali-finance-stat-card {
+         min-height: 64px;
+
+    }
+    .wali-finance-filter {
+         grid-template-columns: 1fr;
+         gap: 14px;
+
+    }
+    .wali-finance-filter-actions {
+         grid-column: auto;
+
+    }
+    .wali-finance-empty p {
+         font-size: 12px;
+
+    }
+    .finance-desktop-break {
+         display: none;
+
+    }
+    .wali-finance-table {
+         min-width: 600px;
+
+    }
+}

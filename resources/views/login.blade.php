@@ -98,7 +98,7 @@
                 </div>
 
                 {{-- Form --}}
-                <form action="#" method="POST">
+                <form action="#" method="POST" id="demoLoginForm">
                     @csrf
 
                     {{-- Input: Username / NIP / Email --}}
@@ -310,6 +310,11 @@
                 isiperingatan.textContent = 'Belum memiliki akun atau lupa PIN? Silakan hubungi Wali Kelas masing-masing atau layanan Tata Usaha Madrasah. ';
             }
         }
+
+        document.getElementById('demoLoginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            window.location.assign(@json(url('/?demo_login=1')));
+        });
 
         (function () {
             const toggleBtn = document.getElementById('togglePassword');

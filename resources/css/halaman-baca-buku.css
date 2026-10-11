@@ -1,0 +1,53 @@
+/* Pembaca buku digital */
+.digital-reader-page{width:100%;height:100vh;min-height:420px;display:flex;flex-direction:column;overflow:hidden;background:#f7f8fc;color:#173f75;font-family:'Inter',ui-sans-serif,system-ui,sans-serif}
+.digital-reader-topbar{height:28px;flex:none;padding:0 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e5eaf2;background:#fff}
+.digital-reader-back{display:inline-flex;align-items:center;gap:2px;color:#075bb5;font-size:7px;text-decoration:none}
+.digital-reader-back:hover{text-decoration:underline}
+.digital-reader-page-status{color:#536b89;font-size:6px}
+.digital-reader-page-status b{font-weight:500}
+.digital-reader-main{min-height:0;flex:1;padding:27px 18px;display:flex;align-items:center;justify-content:center}
+.digital-reader-paper{height:min(100%,605px);width:min(86vw,377px);aspect-ratio:.624;flex:none;border-radius:3px;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.18)}
+.digital-reader-controls{height:24px;flex:none;padding:0 max(12px,calc((100% - 382px)/2));display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;background:#fff}
+.digital-reader-controls button{min-height:17px;padding:0 7px;display:inline-flex;align-items:center;justify-content:center;gap:3px;border:0;border-radius:2px;background:transparent;color:#173f75;font:inherit;font-size:6px;white-space:nowrap;cursor:pointer}
+.digital-reader-controls button:hover{background:#edf3fa}
+.digital-reader-previous{justify-self:start}
+.digital-reader-next{justify-self:end;background:#2168c6!important;color:#fff!important}
+.digital-reader-next:hover{background:#1959ad!important}
+.digital-reader-page-picker{display:flex;align-items:center;gap:5px;color:#536b89;font-size:6px;white-space:nowrap}
+.digital-reader-page-picker input{width:24px;height:16px;padding:0 3px;border:0;border-radius:2px;background:#e8f1ff;color:#173f75;font:inherit;font-size:7px;text-align:center;appearance:textfield}
+.digital-reader-page-picker input::-webkit-inner-spin-button,.digital-reader-page-picker input::-webkit-outer-spin-button{appearance:none;margin:0}
+.digital-reader-page-picker strong{font-weight:600}
+@media(max-width:520px){.digital-reader-main{padding:18px 12px}.digital-reader-paper{width:min(88vw,calc((100vh - 110px)*.624));height:auto;max-height:100%;aspect-ratio:.624}.digital-reader-controls{padding:0 8px;gap:3px}.digital-reader-controls button{font-size:6px;padding:0 4px}.digital-reader-back{font-size:7px}}
+
+
+/* Pembaca buku: ukuran lebih mudah dibaca */
+.digital-reader-page{height:auto;min-height:100vh;overflow-x:hidden;overflow-y:auto}
+.digital-reader-topbar{height:44px;padding:0 20px}
+.digital-reader-back{gap:5px;font-size:12px}
+.digital-reader-back svg{width:16px;height:16px}
+.digital-reader-page-status{font-size:11px}
+.digital-reader-main{min-height:calc(100vh - 96px);padding:16px 18px}
+.digital-reader-paper{width:min(88vw,420px);height:auto;aspect-ratio:.624}
+.digital-reader-controls{position:sticky;bottom:0;z-index:2;height:44px;padding:0 max(18px,calc((100% - 470px)/2));gap:12px;border-top:1px solid #e5eaf2;box-shadow:0 -2px 7px rgba(15,23,42,.04)}
+.digital-reader-controls button{min-height:29px;padding:0 11px;gap:5px;font-size:10px}
+.digital-reader-controls button span{font-size:17px;line-height:1}
+.digital-reader-page-picker{gap:7px;font-size:10px}
+.digital-reader-page-picker input{width:38px;height:27px;font-size:11px}
+.digital-reader-page-picker strong{font-size:10px}
+@media(max-width:520px){
+    .digital-reader-topbar{height:42px;padding:0 12px}
+    .digital-reader-back{font-size:11px}
+    .digital-reader-page-status{font-size:10px}
+    .digital-reader-main{min-height:calc(100vh - 90px);padding:14px 10px}
+    .digital-reader-paper{width:min(92vw,420px)}
+    .digital-reader-controls{height:48px;padding:0 7px;gap:3px}
+    .digital-reader-controls button{min-height:29px;padding:0 5px;font-size:8px}
+    .digital-reader-page-picker{gap:4px;font-size:8px}
+    .digital-reader-page-picker input{width:34px;height:25px;font-size:10px}
+}
+
+
+/* Kanvas buku lebih luas untuk menampung isi halaman */
+.digital-reader-main{align-items:flex-start;padding:24px 18px 32px}
+.digital-reader-paper{width:min(90vw,760px);max-width:100%;aspect-ratio:.704;min-height:900px}
+@media(max-width:520px){.digital-reader-main{padding:16px 10px 24px}.digital-reader-paper{width:92vw;min-height:720px;aspect-ratio:.68}}

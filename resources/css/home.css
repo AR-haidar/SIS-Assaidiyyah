@@ -11,8 +11,8 @@
 
 body.home-page {
     min-height: 100vh;
-    background-color: #f8fafc;
-    color: #1e293b;
+    background-color: #f5f8fc;
+    color: #173f75;
     font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@ body.home-page {
     top: 0;
     width: 100%;
     background-color: #ffffff;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #dfe7f1;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
     z-index: 1000;
 }
@@ -54,12 +54,12 @@ body.home-page {
     width: 40px;
     height: 40px;
     border-radius: 8px;
-    background-color: #f1f5f9;
-    border: 1.5px dashed #cbd5e1;
+    background-color: #f5f8fc;
+    border: 1.5px dashed #dfe7f1;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #475569;
+    color: #536b89;
     flex-shrink: 0;
 }
 
@@ -72,13 +72,13 @@ body.home-page {
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 0.3px;
-    color: #0f172a;
+    color: #173f75;
     line-height: 1.2;
 }
 
 .brand-subtitle {
     font-size: 11px;
-    color: #64748b;
+    color: #7185a1;
     font-weight: 400;
     margin-top: 2px;
 }
@@ -92,7 +92,7 @@ body.home-page {
 .nav-link {
     font-size: 13.5px;
     font-weight: 500;
-    color: #475569;
+    color: #536b89;
     text-decoration: none;
     padding: 6px 2px;
     position: relative;
@@ -100,11 +100,11 @@ body.home-page {
 }
 
 .nav-link:hover {
-    color: #0f172a;
+    color: #173f75;
 }
 
 .nav-link.active {
-    color: #1e40af;
+    color: #173f75;
     font-weight: 600;
 }
 
@@ -118,7 +118,7 @@ body.home-page {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background-color: #1e40af;
+    background-color: #173f75;
     color: #ffffff;
     font-size: 13px;
     font-weight: 600;
@@ -130,7 +130,7 @@ body.home-page {
 }
 
 .btn-portal:hover {
-    background-color: #1d4ed8;
+    background-color: #2168c6;
 }
 
 /* =============================================
@@ -163,7 +163,7 @@ body.home-page {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.8px;
-    color: #2563eb;
+    color: #2168c6;
     margin-bottom: 6px;
     text-transform: uppercase;
 }
@@ -171,7 +171,7 @@ body.home-page {
 .section-heading {
     font-size: 28px;
     font-weight: 800;
-    color: #0f172a;
+    color: #173f75;
     letter-spacing: -0.5px;
     line-height: 1.25;
     margin-bottom: 6px;
@@ -179,7 +179,7 @@ body.home-page {
 
 .section-caption {
     font-size: 13.5px;
-    color: #64748b;
+    color: #7185a1;
 }
 
 .section-title-split {
@@ -192,14 +192,14 @@ body.home-page {
 
 .section-title-right-label {
     font-size: 12.5px;
-    color: #64748b;
+    color: #7185a1;
     font-weight: 500;
 }
 
 .section-link-right {
     font-size: 13px;
     font-weight: 600;
-    color: #2563eb;
+    color: #2168c6;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -230,7 +230,7 @@ body.home-page {
     display: inline-block;
     background-color: #eff6ff;
     border: 1px solid #dbeafe;
-    color: #2563eb;
+    color: #2168c6;
     font-size: 11.5px;
     font-weight: 600;
     padding: 4px 12px;
@@ -243,14 +243,14 @@ body.home-page {
     font-weight: 800;
     line-height: 1.2;
     letter-spacing: -0.6px;
-    color: #0f172a;
+    color: #173f75;
     margin-bottom: 16px;
 }
 
 .hero-description-text {
     font-size: 13.5px;
     line-height: 1.7;
-    color: #475569;
+    color: #536b89;
     margin-bottom: 18px;
     max-width: 580px;
 }
@@ -266,7 +266,7 @@ body.home-page {
 
 .skeleton-line {
     height: 7px;
-    background-color: #f1f5f9;
+    background-color: #f5f8fc;
     border-radius: 4px;
 }
 
@@ -282,7 +282,7 @@ body.home-page {
 }
 
 .btn-hero-primary {
-    background-color: #1d4ed8;
+    background-color: #2168c6;
     color: #ffffff;
     font-size: 13.5px;
     font-weight: 600;
@@ -293,13 +293,13 @@ body.home-page {
 }
 
 .btn-hero-primary:hover {
-    background-color: #1e40af;
+    background-color: #173f75;
 }
 
 .btn-hero-secondary {
     background-color: #eff6ff;
     border: 1.5px solid #dbeafe;
-    color: #1d4ed8;
+    color: #2168c6;
     font-size: 13.5px;
     font-weight: 600;
     padding: 9px 18px;
@@ -317,11 +317,11 @@ body.home-page {
     align-items: center;
     gap: 8px;
     font-size: 12px;
-    color: #64748b;
+    color: #7185a1;
 }
 
 .meta-bullet {
-    color: #94a3b8;
+    color: #8a9fba;
 }
 
 /* Card Visual Hero Kanan */
@@ -333,16 +333,16 @@ body.home-page {
 .hero-photo-card {
     width: 100%;
     background-color: #ffffff;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid #dfe7f1;
     border-radius: 14px;
     padding: 16px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .hero-photo-inner-dashed {
-    border: 1.5px dashed #cbd5e1;
+    border: 1.5px dashed #dfe7f1;
     border-radius: 10px;
-    background-color: #f8fafc;
+    background-color: #f5f8fc;
     padding: 48px 24px;
     display: flex;
     flex-direction: column;
@@ -353,20 +353,20 @@ body.home-page {
 }
 
 .hero-photo-icon-box {
-    color: #3b82f6;
+    color: #3285f6;
     margin-bottom: 12px;
 }
 
 .hero-photo-title {
     font-size: 14px;
     font-weight: 700;
-    color: #1e293b;
+    color: #173f75;
     margin-bottom: 4px;
 }
 
 .hero-photo-sub {
     font-size: 11.5px;
-    color: #64748b;
+    color: #7185a1;
 }
 
 .hero-photo-bottom-meta {
@@ -375,7 +375,7 @@ body.home-page {
     justify-content: space-between;
     margin-top: 12px;
     font-size: 11px;
-    color: #64748b;
+    color: #7185a1;
     padding: 0 4px;
 }
 
@@ -391,7 +391,7 @@ body.home-page {
 
 .visimisi-card {
     background-color: #ffffff;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid #dfe7f1;
     border-radius: 12px;
     overflow: hidden;
     display: flex;
@@ -401,8 +401,8 @@ body.home-page {
 
 .visimisi-card-header {
     padding: 14px 20px;
-    background-color: #f8fafc;
-    border-bottom: 1px solid #f1f5f9;
+    background-color: #f5f8fc;
+    border-bottom: 1px solid #f5f8fc;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -412,13 +412,13 @@ body.home-page {
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 0.5px;
-    color: #1e3a8a;
+    color: #173f75;
     text-transform: uppercase;
 }
 
 .visimisi-card-title-right {
     font-size: 11.5px;
-    color: #64748b;
+    color: #7185a1;
 }
 
 .visimisi-card-body {
@@ -430,8 +430,8 @@ body.home-page {
 }
 
 .visi-quote-box {
-    border-left: 3px solid #2563eb;
-    background-color: #f8fafc;
+    border-left: 3px solid #2168c6;
+    background-color: #f5f8fc;
     padding: 12px 16px;
     border-radius: 0 6px 6px 0;
 }
@@ -440,24 +440,24 @@ body.home-page {
     font-size: 14px;
     font-style: italic;
     font-weight: 700;
-    color: #1e40af;
+    color: #173f75;
     line-height: 1.45;
 }
 
 .visi-explanation {
     font-size: 12.5px;
-    color: #64748b;
+    color: #7185a1;
     line-height: 1.6;
 }
 
 .visimisi-card-footer {
     padding: 12px 20px;
-    border-top: 1px solid #f1f5f9;
+    border-top: 1px solid #f5f8fc;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 11.5px;
-    color: #64748b;
+    color: #7185a1;
 }
 
 /* Misi List Items */
@@ -473,8 +473,8 @@ body.home-page {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    background-color: #f8fafc;
-    border: 1px solid #f1f5f9;
+    background-color: #f5f8fc;
+    border: 1px solid #f5f8fc;
     border-radius: 8px;
     padding: 12px 16px;
 }
@@ -483,7 +483,7 @@ body.home-page {
     width: 28px;
     height: 28px;
     border-radius: 6px;
-    background-color: #2563eb;
+    background-color: #2168c6;
     color: #ffffff;
     font-size: 12px;
     font-weight: 700;
@@ -502,12 +502,12 @@ body.home-page {
 .misi-item-title {
     font-size: 13px;
     font-weight: 700;
-    color: #0f172a;
+    color: #173f75;
 }
 
 .misi-item-desc {
     font-size: 12px;
-    color: #64748b;
+    color: #7185a1;
     line-height: 1.5;
 }
 
@@ -522,7 +522,7 @@ body.home-page {
 
 .program-box-card {
     background-color: #ffffff;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid #dfe7f1;
     border-radius: 12px;
     overflow: hidden;
     display: flex;
@@ -532,8 +532,8 @@ body.home-page {
 
 .program-img-placeholder {
     height: 180px;
-    background-color: #f1f5f9;
-    border-bottom: 1px solid #e2e8f0;
+    background-color: #f5f8fc;
+    border-bottom: 1px solid #dfe7f1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -544,7 +544,7 @@ body.home-page {
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    color: #94a3b8;
+    color: #8a9fba;
     font-size: 11.5px;
 }
 
@@ -559,7 +559,7 @@ body.home-page {
 .program-category-pill {
     display: inline-block;
     background-color: #eff6ff;
-    color: #2563eb;
+    color: #2168c6;
     font-size: 11px;
     font-weight: 600;
     padding: 3px 10px;
@@ -570,19 +570,19 @@ body.home-page {
 .program-item-name {
     font-size: 15px;
     font-weight: 700;
-    color: #0f172a;
+    color: #173f75;
     margin-bottom: 6px;
 }
 
 .program-item-summary {
     font-size: 12.5px;
-    color: #64748b;
+    color: #7185a1;
     line-height: 1.6;
 }
 
 .program-box-footer {
     padding: 12px 20px;
-    border-top: 1px solid #f1f5f9;
+    border-top: 1px solid #f5f8fc;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -590,12 +590,12 @@ body.home-page {
 }
 
 .program-jenjang-text {
-    color: #64748b;
+    color: #7185a1;
 }
 
 .program-detail-link {
     font-weight: 600;
-    color: #2563eb;
+    color: #2168c6;
     text-decoration: none;
 }
 
@@ -614,7 +614,7 @@ body.home-page {
 
 .facility-box-card {
     background-color: #ffffff;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid #dfe7f1;
     border-radius: 12px;
     overflow: hidden;
     display: flex;
@@ -624,8 +624,8 @@ body.home-page {
 
 .facility-img-box {
     height: 160px;
-    background-color: #f1f5f9;
-    border-bottom: 1px solid #e2e8f0;
+    background-color: #f5f8fc;
+    border-bottom: 1px solid #dfe7f1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -636,7 +636,7 @@ body.home-page {
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    color: #94a3b8;
+    color: #8a9fba;
     font-size: 11.5px;
 }
 
@@ -651,12 +651,12 @@ body.home-page {
 .facility-item-title {
     font-size: 14px;
     font-weight: 700;
-    color: #0f172a;
+    color: #173f75;
 }
 
 .facility-item-desc {
     font-size: 12px;
-    color: #64748b;
+    color: #7185a1;
     line-height: 1.55;
 }
 
@@ -671,7 +671,7 @@ body.home-page {
 
 .news-box-card {
     background-color: #ffffff;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid #dfe7f1;
     border-radius: 12px;
     overflow: hidden;
     display: flex;
@@ -681,15 +681,15 @@ body.home-page {
 
 .news-img-placeholder {
     height: 180px;
-    background-color: #f1f5f9;
-    border-bottom: 1px solid #e2e8f0;
+    background-color: #f5f8fc;
+    border-bottom: 1px solid #dfe7f1;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .n-img-icon-wrap {
-    color: #94a3b8;
+    color: #8a9fba;
     font-size: 11.5px;
 }
 
@@ -705,31 +705,31 @@ body.home-page {
     align-items: center;
     gap: 6px;
     font-size: 11.5px;
-    color: #2563eb;
+    color: #2168c6;
     font-weight: 600;
     margin-bottom: 8px;
 }
 
 .n-date {
-    color: #64748b;
+    color: #7185a1;
     font-weight: 400;
 }
 
 .n-bullet {
-    color: #cbd5e1;
+    color: #dfe7f1;
 }
 
 .news-item-title {
     font-size: 15px;
     font-weight: 700;
-    color: #0f172a;
+    color: #173f75;
     margin-bottom: 8px;
     line-height: 1.35;
 }
 
 .news-item-summary {
     font-size: 12.5px;
-    color: #64748b;
+    color: #7185a1;
     line-height: 1.6;
     margin-bottom: 18px;
     flex: 1;
@@ -738,7 +738,7 @@ body.home-page {
 .news-read-more-link {
     font-size: 12.5px;
     font-weight: 600;
-    color: #2563eb;
+    color: #2168c6;
     text-decoration: none;
 }
 
@@ -751,7 +751,7 @@ body.home-page {
    ============================================= */
 .dlib-banner-frame {
     background-color: #ffffff;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid #dfe7f1;
     border-radius: 16px;
     padding: 36px 40px;
     display: grid;
@@ -770,7 +770,7 @@ body.home-page {
 .dlib-tag-pill {
     display: inline-block;
     background-color: #eff6ff;
-    color: #2563eb;
+    color: #2168c6;
     font-size: 11px;
     font-weight: 600;
     padding: 4px 12px;
@@ -781,7 +781,7 @@ body.home-page {
 .dlib-banner-heading {
     font-size: 28px;
     font-weight: 800;
-    color: #0f172a;
+    color: #173f75;
     letter-spacing: -0.5px;
     margin-bottom: 12px;
 }
@@ -789,7 +789,7 @@ body.home-page {
 .dlib-banner-paragraph {
     font-size: 13px;
     line-height: 1.7;
-    color: #475569;
+    color: #536b89;
     margin-bottom: 22px;
     max-width: 620px;
 }
@@ -805,7 +805,7 @@ body.home-page {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background-color: #1d4ed8;
+    background-color: #2168c6;
     color: #ffffff;
     font-size: 13px;
     font-weight: 600;
@@ -816,12 +816,12 @@ body.home-page {
 }
 
 .btn-open-dlib:hover {
-    background-color: #1e40af;
+    background-color: #173f75;
 }
 
 .dlib-support-caption {
     font-size: 11.5px;
-    color: #64748b;
+    color: #7185a1;
 }
 
 /* Box Dashed Preview Kanan */
@@ -833,7 +833,7 @@ body.home-page {
 .dlib-dashed-preview-box {
     width: 190px;
     border: 1.5px dashed #93c5fd;
-    background-color: #f8fafc;
+    background-color: #f5f8fc;
     border-radius: 12px;
     padding: 32px 18px;
     display: flex;
@@ -848,7 +848,7 @@ body.home-page {
     height: 44px;
     border-radius: 8px;
     background-color: #dbeafe;
-    color: #2563eb;
+    color: #2168c6;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -858,13 +858,13 @@ body.home-page {
 .dlib-preview-text-main {
     font-size: 12px;
     font-weight: 700;
-    color: #1e3a8a;
+    color: #173f75;
     line-height: 1.35;
 }
 
 .dlib-preview-text-sub {
     font-size: 10.5px;
-    color: #64748b;
+    color: #7185a1;
 }
 
 /* =============================================
@@ -885,7 +885,7 @@ body.home-page {
 
 .contact-info-list-card {
     background-color: #ffffff;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid #dfe7f1;
     border-radius: 12px;
     padding: 22px;
     display: flex;
@@ -899,7 +899,7 @@ body.home-page {
     flex-direction: column;
     gap: 3px;
     padding-bottom: 12px;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f5f8fc;
 }
 
 .c-info-item:last-child {
@@ -911,33 +911,33 @@ body.home-page {
     font-size: 10.5px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    color: #1e40af;
+    color: #173f75;
     text-transform: uppercase;
 }
 
 .c-info-val {
     font-size: 13px;
     font-weight: 600;
-    color: #0f172a;
+    color: #173f75;
 }
 
 .c-info-sub {
     font-size: 11px;
-    color: #64748b;
+    color: #7185a1;
 }
 
 /* Card Embed Peta Placeholder */
 .contact-map-placeholder-card {
     background-color: #ffffff;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid #dfe7f1;
     border-radius: 12px;
     padding: 14px;
 }
 
 .map-placeholder-inner {
-    border: 1.5px dashed #cbd5e1;
+    border: 1.5px dashed #dfe7f1;
     border-radius: 8px;
-    background-color: #f8fafc;
+    background-color: #f5f8fc;
     padding: 32px 18px;
     display: flex;
     flex-direction: column;
@@ -950,18 +950,18 @@ body.home-page {
 .map-placeholder-title {
     font-size: 12.5px;
     font-weight: 700;
-    color: #1e293b;
+    color: #173f75;
 }
 
 .map-placeholder-sub {
     font-size: 11px;
-    color: #64748b;
+    color: #7185a1;
 }
 
 /* Card Form Kanan */
 .contact-form-box-card {
     background-color: #ffffff;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid #dfe7f1;
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
@@ -970,7 +970,7 @@ body.home-page {
 .c-form-heading {
     font-size: 16px;
     font-weight: 700;
-    color: #0f172a;
+    color: #173f75;
     margin-bottom: 20px;
 }
 
@@ -989,18 +989,18 @@ body.home-page {
 .form-field-label {
     font-size: 12px;
     font-weight: 500;
-    color: #334155;
+    color: #536b89;
 }
 
 .form-input-control,
 .form-textarea-control {
     width: 100%;
     padding: 9px 12px;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid #dfe7f1;
     border-radius: 7px;
     font-size: 13px;
     font-family: 'Inter', inherit;
-    color: #0f172a;
+    color: #173f75;
     background-color: #ffffff;
     outline: none;
     transition: border-color 0.15s ease;
@@ -1008,7 +1008,7 @@ body.home-page {
 
 .form-input-control:focus,
 .form-textarea-control:focus {
-    border-color: #2563eb;
+    border-color: #2168c6;
 }
 
 .form-textarea-control {
@@ -1021,7 +1021,7 @@ body.home-page {
     padding: 10px 22px;
     border-radius: 7px;
     border: none;
-    background-color: #1d4ed8;
+    background-color: #2168c6;
     color: #ffffff;
     font-size: 13px;
     font-weight: 600;
@@ -1032,7 +1032,7 @@ body.home-page {
 }
 
 .btn-send-message:hover {
-    background-color: #1e40af;
+    background-color: #173f75;
 }
 
 /* =============================================
@@ -1040,8 +1040,8 @@ body.home-page {
    ============================================= */
 .site-dark-footer {
     width: 100%;
-    background-color: #0f3769; /* Warna Biru Navy Pekat Sesuai Foto */
-    color: #f1f5f9;
+    background-color: #173f75; /* Warna Biru Navy Pekat Sesuai Foto */
+    color: #f5f8fc;
     padding: 52px 24px 28px 24px;
     margin-top: 40px;
 }
@@ -1076,13 +1076,13 @@ body.home-page {
 .dark-footer-brand-desc {
     font-size: 12.5px;
     line-height: 1.65;
-    color: #94a3b8;
+    color: #8a9fba;
     margin-bottom: 14px;
 }
 
 .dark-footer-akreditasi-text {
     font-size: 11.5px;
-    color: #cbd5e1;
+    color: #dfe7f1;
     font-weight: 500;
 }
 
@@ -1090,7 +1090,7 @@ body.home-page {
     font-size: 11.5px;
     font-weight: 700;
     letter-spacing: 0.8px;
-    color: #cbd5e1;
+    color: #dfe7f1;
     text-transform: uppercase;
     margin-bottom: 14px;
 }
@@ -1105,7 +1105,7 @@ body.home-page {
 
 .dark-footer-nav-list li a {
     font-size: 12.5px;
-    color: #94a3b8;
+    color: #8a9fba;
     text-decoration: none;
     transition: color 0.15s ease;
 }
@@ -1116,12 +1116,12 @@ body.home-page {
 
 .dark-footer-contact-list li {
     font-size: 12.5px;
-    color: #94a3b8;
+    color: #8a9fba;
     line-height: 1.5;
 }
 
 .dark-footer-highlight-item {
-    color: #cbd5e1 !important;
+    color: #dfe7f1 !important;
     font-weight: 500;
     margin-top: 4px;
 }
@@ -1140,11 +1140,11 @@ body.home-page {
     gap: 16px;
     flex-wrap: wrap;
     font-size: 12px;
-    color: #94a3b8;
+    color: #8a9fba;
 }
 
 .dark-footer-copy-text {
-    color: #94a3b8;
+    color: #8a9fba;
 }
 
 .dark-footer-policy-links {
@@ -1154,7 +1154,7 @@ body.home-page {
 }
 
 .dark-footer-policy-links a {
-    color: #94a3b8;
+    color: #8a9fba;
     text-decoration: none;
     transition: color 0.15s ease;
 }
@@ -1164,7 +1164,7 @@ body.home-page {
 }
 
 .policy-dot {
-    color: #64748b;
+    color: #7185a1;
 }
 
 /* =============================================
@@ -1221,3 +1221,11 @@ body.home-page {
         align-items: flex-start;
     }
 }
+
+
+
+/* Penanda posisi aktif pada navigasi publik */
+.nav-link{padding-bottom:8px}
+.nav-link::after{position:absolute;right:2px;bottom:1px;left:2px;height:2px;border-radius:2px;background:#2168c6;content:"";transform:scaleX(0);transform-origin:left center;transition:transform .16s ease}
+.nav-link.active{color:#2168c6;font-weight:600}
+.nav-link.active::after{transform:scaleX(1)}

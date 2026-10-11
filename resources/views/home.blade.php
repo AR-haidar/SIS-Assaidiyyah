@@ -39,13 +39,13 @@
                 <a href="#program" class="nav-link">Program</a>
                 <a href="#fasilitas" class="nav-link">Fasilitas</a>
                 <a href="#berita" class="nav-link">Berita</a>
-                <a href="#perpustakaan" class="nav-link">Perpustakaan</a>
+                <a href="{{ url('/perpustakaan-digital') }}" data-section="#perpustakaan" class="nav-link">Perpustakaan</a>
                 <a href="#kontak" class="nav-link">Kontak</a>
             </nav>
 
             {{-- Sisi Kanan: Tombol Portal Login / Dashboard --}}
             <div class="navbar-action">
-                @auth
+                @if(auth()->check() || request()->query('demo_login') === '1')
                     <a href="{{ url('/siswa/dashboard') }}" class="btn-portal">
                         <span class="btn-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
@@ -69,7 +69,7 @@
                         </span>
                         <span>Portal Login</span>
                     </a>
-                @endauth
+                @endif
             </div>
 
         </div>
@@ -476,7 +476,7 @@
                         [Deskripsi Layanan: Akses modul pembelajaran tematik Kemenag, buku pegangan santri, dan literatur Islam secara daring tanpa proses sirkulasi fisik. Pembaca terautentikasi dapat langsung membuka katalog bacaan secara cuma-cuma.]
                     </p>
                     <div class="dlib-actions-row">
-                        <a href="#" class="btn-open-dlib">
+                        <a href="{{ url('/perpustakaan-digital') }}" class="btn-open-dlib">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
@@ -667,5 +667,44 @@
         </div>
     </footer>
 
+    <script>
+        (function () {
+            const menuLinks = Array.from(document.querySelectorAll('.navbar-menu .nav-link'));
+            const observedSections = menuLinks.map(function (link) {
+                const selector = link.dataset.section || (link.getAttribute('href') || '').startsWith('#') ? (link.dataset.section || link.getAttribute('href')) : null;
+                return selector ? { link: link, section: document.querySelector(selector) } : null;
+            }).filter(function (item) { return item && item.section; });
+
+            function activate(link) {
+                menuLinks.forEach(function (item) {
+                    const isActive = item === link;
+                    item.classList.toggle('active', isActive);
+                    if (isActive) item.setAttribute('aria-current', 'page');
+                    else item.removeAttribute('aria-current');
+                });
+            }
+
+            function updateActiveSection() {
+                if (!observedSections.length) return;
+                let current = observedSections[0];
+                observedSections.forEach(function (item) {
+                    if (item.section.getBoundingClientRect().top <= 145) current = item;
+                });
+                if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 3) {
+                    current = observedSections[observedSections.length - 1];
+                }
+                activate(current.link);
+            }
+
+            menuLinks.forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (link.dataset.section || (link.getAttribute('href') || '').startsWith('#')) activate(link);
+                });
+            });
+            window.addEventListener('scroll', updateActiveSection, { passive: true });
+            window.addEventListener('resize', updateActiveSection);
+            updateActiveSection();
+        })();
+    </script>
 </body>
 </html>

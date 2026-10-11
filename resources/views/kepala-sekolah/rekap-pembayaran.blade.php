@@ -1,0 +1,18 @@
+@extends('kepala-sekolah.layout')
+@section('title', 'Rekap Pembayaran')
+@section('page-class', 'ks-payments-page')
+@section('content')
+    <header class="ks-page-heading ks-heading-with-action"><div><h1>Rekapitulasi Pembayaran SPP MI Assaidiyyah</h1></div><button type="button" class="ks-outline-button"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Cetak Rekap Finansial (PDF)</button></header>
+    <section class="ks-panel ks-payment-filters">
+        <label><span class="ks-payment-label"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Periode Akademik</span><select aria-label="Periode akademik"><option value="">Pilih periode</option><option>2024/2025</option></select></label>
+        <label><span class="ks-payment-label"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> Tingkat</span><select aria-label="Tingkat"><option>Semua Tingkat</option><option>Kelas I</option><option>Kelas II</option></select></label>
+        <label><span class="ks-payment-label"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg> Status Pembayaran</span><select aria-label="Status pembayaran"><option>Semua Status</option><option>Lunas</option><option>Belum Lunas</option></select></label>
+        <button class="ks-filter-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16l-6.5 7.5V19l-3 1v-7.5L4 5Z"/></svg>Terapkan Filter</button>
+    </section>
+    <section class="ks-payment-kpis"><article><span>TARGET PAGU ANGGARAN</span><strong>Rp -</strong></article><article><span>TOTAL TUNGGAKAN</span><strong>Rp -</strong></article></section>
+    <section class="ks-panel ks-payment-table-card">
+        <div class="ks-payment-table-heading"><div><strong>Rincian Kolektivitas per Kelas</strong><span>Akademik 2024/2025</span></div><small><i class="ks-sync-dot"></i> Sinkronisasi EMIS: Siap Diproses</small></div>
+        <div class="ks-table-scroll"><table class="ks-data-table"><thead><tr><th>No</th><th>Tingkat / Kelas</th><th>Jumlah Siswa</th><th>Target (Rp)</th><th>Realisasi Terkumpul (Rp)</th><th>Sisa Tunggakan (Rp)</th><th>Rasio (%)</th><th>Status</th></tr></thead></table></div>
+        <div class="ks-empty-state"><strong>Belum Ada Data Rekapitulasi Finansial</strong><p>Pilih periode tahun ajaran dan klik tombol filter untuk memuat agregat realisasi<br> pembayaran SPP.</p></div>
+    </section>
+@endsection
