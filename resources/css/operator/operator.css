@@ -1,0 +1,321 @@
+/* Gaya konten dashboard Operator */
+.operator-page .operator-main{display:block;min-width:0;padding:12px 10px 28px;overflow-x:hidden}
+.operator-page .operator-heading{margin:0 0 30px}
+.operator-page .operator-heading h1{margin:0;color:#173f75;font-size:21px;line-height:1.3;font-weight:650;letter-spacing:-.35px}
+.operator-page .operator-heading p{margin:5px 0 0;color:#7185a1;font-size:12px;line-height:1.45}
+.operator-page .operator-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:0 0 14px}
+.operator-page .operator-stat-card,.operator-page .operator-card{min-width:0;border:1px solid #e7edf5;border-radius:9px;background:#fff;box-shadow:0 1px 2px rgba(23,63,117,.025)}
+.operator-page .operator-stat-card{min-height:121px;padding:15px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.operator-page .operator-stat-card span{color:#7185a1;font-size:10px;line-height:1.45;letter-spacing:.45px;text-transform:uppercase}
+.operator-page .operator-stat-card strong{color:#173f75;font-size:21px;line-height:1.2;font-weight:650}
+.operator-page .operator-columns{display:grid;grid-template-columns:minmax(0,2.05fr) minmax(270px,1fr);align-items:stretch;gap:21px}
+.operator-page .operator-card{padding:15px}
+.operator-page .operator-card h2{margin:0 0 15px;color:#173f75;font-size:15px;line-height:1.4;font-weight:650}
+.operator-page .operator-activity{min-height:351px;display:flex;flex-direction:column}
+.operator-page .operator-filters{display:grid;grid-template-columns:minmax(180px,1.5fr) minmax(110px,.75fr) minmax(110px,.75fr);align-items:center;gap:4px;margin:0 0 14px;padding:6px;border-radius:5px;background:#f8fafc}
+.operator-page .operator-search{min-width:0;height:34px;padding:0 9px;display:flex;align-items:center;gap:8px;border:1px solid #edf1f6;border-radius:3px;background:#fff}
+.operator-page .operator-search svg{flex:none;color:#536b89}
+.operator-page .operator-search input{width:100%;min-width:0;height:100%;padding:0;border:0;outline:0;background:transparent;color:#536b89;font:inherit;font-size:11px}
+.operator-page .operator-search input::placeholder{color:#7185a1;opacity:1}
+.operator-page .operator-filters select{width:100%;min-width:0;height:34px;padding:0 9px;border:1px solid #edf1f6;border-radius:3px;background:#fff;color:#7185a1;font:inherit;font-size:11px}
+.operator-page .operator-table-scroll{width:100%;overflow-x:auto}
+.operator-page .operator-activity table{width:100%;border-collapse:collapse;text-align:left}
+.operator-page .operator-activity th{height:38px;padding:0 10px;background:#f8fafc;color:#173f75;font-size:10px;font-weight:650;letter-spacing:.35px;text-transform:uppercase;white-space:nowrap}
+.operator-page .operator-activity td.operator-empty-cell{height:158px;padding:16px 12px;text-align:center;vertical-align:middle}
+.operator-page .operator-activity td strong{display:block;color:#173f75;font-size:13px;font-weight:650}
+.operator-page .operator-activity td p{max-width:440px;margin:7px auto 0;color:#7185a1;font-size:11px;line-height:1.55}
+.operator-page .operator-count{margin-top:auto;padding-top:12px;color:#7185a1;font-size:10px}
+.operator-page .operator-side{min-width:0;display:flex;flex-direction:column;gap:14px}
+.operator-page .operator-announcement{min-height:215px}
+.operator-page .operator-empty{min-height:151px;padding:20px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:5px;background:#f8fafc;text-align:center}
+.operator-page .operator-empty strong{color:#173f75;font-size:13px;font-weight:650}
+.operator-page .operator-empty p{max-width:230px;margin:7px 0 14px;color:#7185a1;font-size:11px;line-height:1.45}
+.operator-page .operator-empty>a{min-height:27px;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border-radius:3px;background:#2168c6;color:#fff;font-size:10px;text-decoration:none}
+.operator-page .operator-empty>a:hover{background:#1959ad}
+.operator-page .operator-empty>a svg{flex:none}
+.operator-page .operator-quick{min-height:122px;background:#eef5fd}
+.operator-page .operator-quick h2{margin-bottom:11px;font-size:10px;letter-spacing:.45px;text-transform:uppercase}
+.operator-page .operator-quick-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.operator-page .operator-quick-links a{min-height:30px;padding:6px 8px;display:flex;align-items:center;gap:7px;border-radius:3px;background:#fff;color:#173f75;font-size:10px;text-decoration:none}
+.operator-page .operator-quick-links a svg{flex:none;color:#2168c6}
+.operator-page .operator-quick-links a:hover{background:#f8fafc}
+@media(max-width:900px){.operator-page .operator-columns{grid-template-columns:minmax(0,1.7fr) minmax(240px,1fr);gap:14px}.operator-page .operator-stats{gap:10px}}
+@media(max-width:720px){.operator-page .operator-main{padding:20px 14px 32px}.operator-page .operator-columns{grid-template-columns:1fr}.operator-page .operator-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.operator-page .operator-stat-card{min-height:100px}}
+@media(max-width:560px){.operator-page .operator-main{padding:20px 12px 30px}.operator-page .operator-heading{margin-bottom:18px}.operator-page .operator-heading h1{font-size:20px}.operator-page .operator-heading p{font-size:11px}.operator-page .operator-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.operator-page .operator-stat-card{min-height:90px;padding:11px;gap:9px}.operator-page .operator-stat-card span{font-size:9px}.operator-page .operator-stat-card strong{font-size:16px}.operator-page .operator-side{grid-template-columns:1fr}.operator-page .operator-filters{grid-template-columns:1fr}.operator-page .operator-activity{min-height:0}.operator-page .operator-activity table{min-width:540px}}
+
+/* Data Siswa Operator */
+.operator-students{width:100%;min-width:0;color:#173f75}
+.operator-students-heading{min-height:34px;margin-bottom:19px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.operator-students-heading h1{margin:0;color:#173f75;font-size:22px;line-height:1.3;font-weight:650;letter-spacing:-.3px}
+.operator-primary-button{min-height:34px;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid #2168c6;border-radius:4px;background:#2168c6;color:#fff;text-decoration:none;font:inherit;font-size:12px;white-space:nowrap;cursor:pointer}
+.operator-primary-button:hover{background:#1959ad;border-color:#1959ad}
+.operator-student-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:24px}
+.operator-student-stats article{min-height:73px;padding:13px 14px;display:flex;flex-direction:column;justify-content:center;gap:5px;border:1px solid #e7edf5;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(23,63,117,.025)}
+.operator-student-stats article span{color:#7185a1;font-size:10px;line-height:1.35;letter-spacing:.4px;text-transform:uppercase}
+.operator-student-stats article strong{color:#173f75;font-size:19px;line-height:1.2;font-weight:650}
+.operator-student-filters{min-height:63px;margin:0 0 15px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid #edf1f6;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(23,63,117,.025)}
+.operator-student-search{width:min(320px,55%);height:35px;padding:0 10px;display:flex;align-items:center;gap:9px;border-radius:4px;background:#f7f9fc;color:#7185a1}
+.operator-student-search svg{flex:none}
+.operator-student-search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#173f75;font:inherit;font-size:12px}
+.operator-student-search input::placeholder{color:#7185a1;opacity:1}
+.operator-student-filter-actions{display:flex;align-items:center;gap:10px}
+.operator-student-reset{padding:8px 5px;border:0;background:transparent;color:#7185a1;font:inherit;font-size:12px;cursor:pointer}
+.operator-student-reset:hover{color:#173f75}
+.operator-student-table-card{overflow:hidden;border:1px solid #edf1f6;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(23,63,117,.025)}
+.operator-student-table-scroll{width:100%;overflow-x:auto}
+.operator-student-table-card table{width:100%;border-collapse:collapse;text-align:left}
+.operator-student-table-card thead{background:#f8fafc}
+.operator-student-table-card th{height:36px;padding:0 14px;color:#173f75;font-size:10px;font-weight:650;letter-spacing:.35px;text-transform:uppercase;white-space:nowrap}
+.operator-student-empty{height:244px;padding:24px;text-align:center;vertical-align:middle}
+.operator-student-empty strong{display:block;color:#173f75;font-size:17px;line-height:1.35;font-weight:650}
+.operator-student-empty p{margin:5px 0 23px;color:#7185a1;font-size:12px;line-height:1.7}
+.operator-student-empty .operator-primary-button{min-height:34px;padding:0 13px}
+.operator-student-table-footer{min-height:51px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#f8fafc;color:#7185a1;font-size:10px}
+.operator-student-table-footer strong{color:#173f75;font-weight:600}
+.operator-student-table-footer nav{display:flex;align-items:center;gap:5px}
+.operator-student-table-footer button,.operator-current-page{width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:4px;background:#fff;color:#9aabc0;font:inherit;font-size:16px}
+.operator-student-table-footer button:disabled{opacity:.6}
+.operator-current-page{color:#2168c6;font-size:12px;font-weight:600}
+@media(max-width:720px){.operator-students-heading h1{font-size:19px}.operator-student-stats{gap:9px}.operator-student-filters{gap:10px}}
+@media(max-width:560px){.operator-students-heading{align-items:flex-start;flex-direction:column;margin-bottom:15px}.operator-student-stats{grid-template-columns:1fr;gap:8px;margin-bottom:14px}.operator-student-stats article{min-height:62px}.operator-student-filters{align-items:stretch;flex-direction:column}.operator-student-search{width:100%}.operator-student-filter-actions{justify-content:flex-end}.operator-student-table-card table{min-width:680px}.operator-student-empty{height:220px}.operator-student-desktop-break{display:none}}
+
+/* Status aktif sidebar Operator saja */
+.operator-page .sidebar-nav-item.active{background:#2168c6;color:#fff;font-weight:600}
+.operator-page .sidebar-nav-item.active:hover{background:#1959ad;color:#fff}
+
+/* Direktori Data Guru Operator */
+.operator-teachers{width:100%;min-width:0;color:#173f75}
+.operator-teachers-heading{min-height:62px;margin-bottom:14px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.operator-teachers-heading h1{margin:0;color:#173f75;font-size:22px;line-height:1.3;font-weight:650;letter-spacing:-.3px}
+.operator-teachers-heading p{margin:5px 0 0;color:#7185a1;font-size:12px;line-height:1.45}
+.operator-teachers-heading>.operator-primary-button{min-height:35px;margin-top:-1px}
+.operator-teacher-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:23px}
+.operator-teacher-stats article{min-height:82px;padding:14px 15px;display:flex;flex-direction:column;justify-content:center;gap:9px;border:1px solid #e7edf5;border-radius:9px;background:#fff;box-shadow:0 1px 2px rgba(23,63,117,.025)}
+.operator-teacher-stats span{color:#7185a1;font-size:10px;line-height:1.4;letter-spacing:.4px;text-transform:uppercase}
+.operator-teacher-stats strong{color:#173f75;font-size:21px;line-height:1;font-weight:650}
+.operator-teacher-filters{min-height:67px;margin:0 0 15px;padding:13px 15px;display:grid;grid-template-columns:minmax(200px,1fr) minmax(180px,1.2fr) auto auto;align-items:center;gap:14px;border:1px solid #edf1f6;border-radius:9px;background:#fff;box-shadow:0 1px 2px rgba(23,63,117,.025)}
+.operator-teacher-search{height:36px;padding:0 10px;display:flex;align-items:center;gap:9px;background:#f7f9fc;color:#7185a1}
+.operator-teacher-search svg{flex:none}.operator-teacher-search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#173f75;font:inherit;font-size:12px}
+.operator-teacher-search input::placeholder{color:#7185a1;opacity:1}
+.operator-teacher-filters select{height:36px;padding:0 12px;border:0;border-radius:3px;background:#f7f9fc;color:#173f75;font:inherit;font-size:12px}
+.operator-teacher-apply{min-height:36px;padding:0 13px;display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:3px;background:#eaf2ff;color:#1766d1;font:inherit;font-size:12px;white-space:nowrap;cursor:pointer}
+.operator-teacher-apply:hover{background:#dceaff}
+.operator-teacher-reset{padding:8px 3px;border:0;background:transparent;color:#7185a1;font:inherit;font-size:12px;cursor:pointer}
+.operator-teacher-reset:hover{color:#173f75}
+.operator-teacher-table-card{min-height:435px;overflow:hidden;border:1px solid #edf1f6;border-radius:9px;background:#fff;box-shadow:0 1px 2px rgba(23,63,117,.025)}
+.operator-teacher-table-scroll{width:100%;overflow-x:auto}
+.operator-teacher-table-card table{width:100%;border-collapse:collapse;text-align:left}
+.operator-teacher-table-card thead{background:#f8fafc}
+.operator-teacher-table-card th{height:39px;padding:0 14px;color:#173f75;font-size:10px;font-weight:500;letter-spacing:.35px;text-transform:uppercase;white-space:nowrap}
+.operator-teacher-empty{height:354px;padding:24px;text-align:center;vertical-align:middle}
+.operator-teacher-empty strong{display:block;color:#173f75;font-size:18px;line-height:1.35;font-weight:650}
+.operator-teacher-empty p{margin:6px 0 30px;color:#7185a1;font-size:13px;line-height:1.5}
+.operator-teacher-empty .operator-primary-button{min-height:35px;padding:0 14px}
+.operator-teacher-table-card>footer{min-height:39px;padding:0 15px;display:flex;align-items:center;background:#f8fafc;color:#7185a1;font-size:11px}
+.operator-teacher-table-card>footer strong{margin:0 3px;color:#173f75;font-weight:600}
+@media(max-width:850px){.operator-teacher-filters{grid-template-columns:minmax(170px,1fr) minmax(150px,1fr) auto auto;gap:8px}}
+@media(max-width:620px){.operator-teachers-heading{min-height:0;align-items:flex-start;flex-direction:column;margin-bottom:16px}.operator-teachers-heading h1{font-size:20px}.operator-teacher-stats{gap:8px;margin-bottom:14px}.operator-teacher-stats article{min-height:72px;padding:11px}.operator-teacher-stats span{font-size:9px}.operator-teacher-filters{grid-template-columns:1fr 1fr;gap:8px;padding:10px}.operator-teacher-search{grid-column:1/-1}.operator-teacher-apply,.operator-teacher-reset{width:100%}.operator-teacher-table-card table{min-width:780px}.operator-teacher-table-card{min-height:0}.operator-teacher-empty{height:300px}}
+@media(max-width:420px){.operator-teacher-stats{grid-template-columns:1fr}.operator-teacher-filters{grid-template-columns:1fr}.operator-teacher-search{grid-column:auto}}
+
+/* Profil Data Sekolah Operator */
+.operator-school{width:100%;min-width:0;color:#173f75}
+.operator-school-heading{margin:0 0 18px}
+.operator-school-heading h1{margin:0;color:#173f75;font-size:19px;line-height:1.35;font-weight:650;letter-spacing:-.2px}
+.operator-school-heading p{margin:3px 0 0;color:#7185a1;font-size:11px;line-height:1.45}
+.operator-school-form{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.9fr);align-items:start;gap:14px}
+.operator-school-primary{min-width:0}
+.operator-school-card{min-width:0;margin-bottom:14px;overflow:hidden;border:1px solid #edf1f6;border-radius:8px;background:#fff}
+.operator-school-card>h2{min-height:44px;margin:0;padding:12px 17px;display:flex;align-items:center;background:#f8fafc;color:#173f75;font-size:14px;font-weight:500}
+.operator-school-fields{padding:13px 17px 17px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 13px}
+.operator-school-field{min-width:0;display:flex;flex-direction:column;gap:6px;color:#173f75;font-size:10px;line-height:1.35}
+.operator-school-field b{display:inline;color:#d84949;font-weight:600}
+.operator-school-field input,.operator-school-field select,.operator-school-field textarea{width:100%;min-width:0;height:34px;padding:0 10px;border:1px solid #f0f2f6;border-radius:2px;background:#fff;color:#173f75;font:inherit;font-size:11px}
+.operator-school-field input::placeholder,.operator-school-field textarea::placeholder{color:#7185a1;opacity:1}
+.operator-school-field select{appearance:auto}
+.operator-school-field textarea{height:54px;padding:10px;resize:vertical}
+.operator-school-wide{grid-column:1/-1}
+.operator-school-contact .operator-school-fields{padding-top:14px;gap:12px}
+.operator-school-contact .operator-school-wide textarea{height:54px}
+.operator-school-input-icon{position:relative;display:flex;align-items:center}
+.operator-school-input-icon svg{position:absolute;left:10px;color:#7185a1}
+.operator-school-input-icon input{padding-left:31px}
+.operator-school-actions{grid-column:1/-1;margin-top:-1px;display:flex;align-items:center;gap:9px}
+.operator-school-reset,.operator-school-save{min-height:30px;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #e7edf5;border-radius:2px;background:#fff;color:#2168c6;font:inherit;font-size:10px;text-decoration:none;cursor:pointer}
+.operator-school-save{border-color:#2168c6;background:#2168c6;color:#fff}
+.operator-school-save:hover{border-color:#1959ad;background:#1959ad}
+@media(max-width:760px){.operator-school-form{grid-template-columns:1fr}.operator-school-form>.operator-school-card{grid-column:auto}.operator-school-actions{grid-column:auto}}
+@media(max-width:500px){.operator-school-heading h1{font-size:18px}.operator-school-fields{gap:10px;padding:12px}.operator-school-field:not(.operator-school-wide){grid-column:1/-1}.operator-school-actions{align-items:stretch;flex-direction:column}.operator-school-actions button{width:100%}}
+
+/* Manajemen Pengumuman Operator */
+.operator-announcements{width:100%;min-width:0;color:#173f75}
+.operator-announcement-heading{min-height:55px;margin-bottom:16px;padding:0 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.operator-announcement-heading h1{margin:0;color:#173f75;font-size:19px;line-height:1.35;font-weight:650;letter-spacing:-.2px}
+.operator-announcement-heading p{margin:3px 0 0;color:#7185a1;font-size:11px;line-height:1.45}
+.operator-announcement-create{min-height:28px;padding:0 11px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border:1px solid #2168c6;border-radius:3px;background:#2168c6;color:#fff;text-decoration:none;font:inherit;font-size:10px;white-space:nowrap}
+.operator-announcement-create:hover{background:#1959ad}
+.operator-announcement-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 16px}
+.operator-announcement-stats article{position:relative;min-height:60px;padding:10px 45px 9px 12px;border:1px solid #edf1f6;border-radius:8px;background:#fff}
+.operator-announcement-stats article>span{display:block;color:#7185a1;font-size:9px;letter-spacing:.35px;text-transform:uppercase}
+.operator-announcement-stats article>strong{display:block;margin-top:4px;color:#173f75;font-size:17px;line-height:1;font-weight:650}
+.operator-ann-icon{position:absolute;top:13px;right:11px;width:29px;height:29px;display:flex;align-items:center;justify-content:center;border-radius:3px;background:#eaf2ff;color:#2168c6}
+.operator-ann-icon-muted{background:#f8fafc;color:#7185a1}
+.operator-announcement-controls{margin-bottom:10px;padding:16px 17px 17px;border:1px solid #edf1f6;border-radius:8px;background:#fff}
+.operator-announcement-tabs{display:flex;align-items:center;gap:5px;margin-bottom:14px}
+.operator-announcement-tabs button{min-height:22px;padding:0 11px;border:0;border-radius:12px;background:#f5f7fa;color:#7185a1;font:inherit;font-size:9px;white-space:nowrap;cursor:pointer}
+.operator-announcement-tabs button.active{background:#eaf2ff;color:#2168c6}
+.operator-announcement-filters{display:grid;grid-template-columns:minmax(180px,1.5fr) minmax(130px,.9fr) minmax(115px,.65fr) 112px;gap:8px;align-items:stretch}
+.operator-announcement-search,.operator-announcement-select{min-width:0;height:35px;padding:0 9px;display:flex;align-items:center;gap:7px;border-radius:3px;background:#f8fafc;color:#7185a1}
+.operator-announcement-search svg,.operator-announcement-select svg{flex:none}
+.operator-announcement-search input,.operator-announcement-select select{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#173f75;font:inherit;font-size:10px}
+.operator-announcement-search input::placeholder{color:#7185a1;opacity:1}
+.operator-announcement-apply{min-height:35px;padding:0 10px;display:flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:3px;background:#eaf2ff;color:#2168c6;font:inherit;font-size:10px;cursor:pointer}
+.operator-announcement-apply:hover{background:#dceaff}
+.operator-announcement-table-card{overflow:hidden;background:#fff}
+.operator-announcement-table-scroll{width:100%;overflow-x:auto}
+.operator-announcement-table-card table{width:100%;border-collapse:collapse;text-align:left}
+.operator-announcement-table-card thead{background:#f8fafc}
+.operator-announcement-table-card th{height:33px;padding:0 11px;color:#536b89;font-size:8px;font-weight:500;letter-spacing:.35px;text-transform:uppercase;white-space:nowrap}
+.operator-announcement-empty{height:193px;padding:18px;text-align:center;vertical-align:middle}
+.operator-announcement-empty strong{display:block;color:#173f75;font-size:15px;line-height:1.35;font-weight:500}
+.operator-announcement-empty p{margin:6px 0 17px;color:#7185a1;font-size:10px;line-height:1.5}
+.operator-announcement-empty .operator-announcement-create{min-height:27px;padding:0 12px;font-size:10px}
+.operator-announcement-table-card>footer{min-height:33px;padding:0 17px;display:flex;align-items:center;justify-content:space-between;background:#f8fafc;color:#7185a1;font-size:9px}
+.operator-announcement-table-card>footer nav{display:flex;align-items:center;gap:5px}
+.operator-announcement-table-card>footer nav button,.operator-announcement-table-card>footer nav span{width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:2px;background:#fff;color:#7185a1;font:inherit;font-size:10px}
+.operator-announcement-table-card>footer nav span{background:#eaf2ff;color:#2168c6}
+@media(max-width:850px){.operator-announcement-filters{grid-template-columns:minmax(150px,1.4fr) minmax(120px,1fr) minmax(110px,1fr)}.operator-announcement-apply{grid-column:1/-1}}
+@media(max-width:600px){.operator-announcement-heading{padding:0;align-items:flex-start;flex-direction:column}.operator-announcement-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.operator-announcement-controls{padding:12px}.operator-announcement-tabs{flex-wrap:wrap}.operator-announcement-filters{grid-template-columns:1fr}.operator-announcement-apply{grid-column:auto}.operator-announcement-table-card table{min-width:760px}.operator-announcement-empty{height:160px}.operator-ann-desktop-break{display:none}}
+
+/* Form tambah guru Operator */
+.operator-teacher-create{width:100%;min-width:0;color:#173f75}
+.operator-teacher-create>h1{margin:0 0 17px;color:#173f75;font-size:16px;line-height:1.35;font-weight:650}
+.operator-teacher-create-grid{display:grid;grid-template-columns:minmax(0,2.05fr) minmax(210px,.96fr);align-items:start;gap:14px}
+.operator-teacher-create-main{min-width:0}
+.operator-teacher-form-card,.operator-teacher-photo-card{margin-bottom:12px;overflow:hidden;border:1px solid #edf1f6;border-radius:8px;background:#fff}
+.operator-teacher-form-card>header,.operator-teacher-photo-card>header{min-height:46px;padding:10px 15px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f8fafc}
+.operator-teacher-form-card>header h2,.operator-teacher-photo-card>header h2{margin:0;color:#173f75;font-size:11px;line-height:1.35;font-weight:650}
+.operator-teacher-form-card>header p,.operator-teacher-photo-card>header p{margin:2px 0 0;color:#7185a1;font-size:8px;line-height:1.35}
+.operator-teacher-form-card>header>span{padding:3px 6px;background:#eaf2ff;color:#2168c6;font-size:8px;white-space:nowrap}
+.operator-teacher-fields{padding:13px 15px 15px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 11px}
+.operator-teacher-field{min-width:0;display:flex;flex-direction:column;gap:5px;color:#173f75;font-size:9px;line-height:1.35}
+.operator-teacher-field b{color:#d84949;font-weight:600}
+.operator-teacher-field input:not([type=radio]),.operator-teacher-field select,.operator-teacher-field textarea{width:100%;min-width:0;height:28px;padding:0 9px;border:0;border-radius:2px;background:#f7f9fc;color:#173f75;font:inherit;font-size:9px}
+.operator-teacher-field input::placeholder,.operator-teacher-field textarea::placeholder{color:#7185a1;opacity:1}
+.operator-teacher-field textarea{height:58px;padding:9px;resize:vertical}
+.operator-teacher-field small{color:#7185a1;font-size:8px;line-height:1.4}
+.operator-teacher-field.wide{grid-column:1/-1}
+.operator-teacher-field fieldset,.operator-teacher-gender,.operator-teacher-certification{margin:0;padding:0;border:0}
+.operator-teacher-gender legend,.operator-teacher-certification legend{margin-bottom:7px}
+.operator-teacher-gender label,.operator-teacher-certification label{display:inline-flex;align-items:center;gap:5px;margin-right:10px;color:#173f75;font-size:9px}
+.operator-teacher-gender input,.operator-teacher-certification input{width:12px;height:12px;margin:0;accent-color:#2168c6}
+.operator-teacher-certification{gap:7px}
+.operator-teacher-certification label{display:flex;margin:0}
+.operator-teacher-photo-card{padding-bottom:14px}
+.operator-teacher-photo-card>header{display:block;min-height:48px}
+.operator-teacher-upload{min-height:145px;margin:13px 14px 0;padding:17px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:5px;background:#f8fafc;text-align:center;cursor:pointer}
+.operator-teacher-camera{width:42px;height:42px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#e4efff;color:#2168c6}
+.operator-teacher-upload strong{color:#173f75;font-size:9px;font-weight:600}
+.operator-teacher-upload small{margin-top:3px;color:#7185a1;font-size:8px}
+.operator-teacher-pick{margin-top:8px;padding:4px 9px;border-radius:3px;background:#fff;color:#2168c6;font-size:8px}
+.operator-teacher-upload input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.operator-teacher-actions{grid-column:1/-1;margin-top:-1px;display:flex;align-items:center;gap:7px}
+.operator-teacher-actions a,.operator-teacher-actions button{min-height:25px;padding:0 11px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border:1px solid #e7edf5;border-radius:2px;background:#fff;color:#2168c6;font:inherit;font-size:9px;text-decoration:none;cursor:pointer}
+.operator-teacher-actions button.primary{border-color:#2168c6;background:#2168c6;color:#fff}
+.operator-teacher-actions button.primary:hover{border-color:#1959ad;background:#1959ad}
+@media(max-width:720px){.operator-teacher-create-grid{grid-template-columns:minmax(0,1fr) minmax(190px,.7fr)}}
+@media(max-width:560px){.operator-teacher-create>h1{font-size:15px}.operator-teacher-create-grid{grid-template-columns:1fr}.operator-teacher-photo-card{grid-row:2}.operator-teacher-fields{padding:12px;gap:10px}.operator-teacher-field:not(.wide){grid-column:1/-1}.operator-teacher-actions{grid-column:auto;flex-wrap:wrap}.operator-teacher-actions>*{flex:1}}
+
+/* Form Tambah Siswa Operator */
+.operator-student-create{width:100%;min-width:0;color:#173f75}
+.operator-student-back{margin:0 0 12px;display:inline-flex;align-items:center;gap:3px;color:#2168c6;font-size:9px;text-decoration:none}
+.operator-student-back:hover{text-decoration:underline}
+.operator-student-create>h1{margin:0 0 17px;color:#173f75;font-size:15px;line-height:1.35;font-weight:650}
+.operator-student-step{margin-bottom:14px;overflow:hidden;border:1px solid #edf1f6;border-radius:7px;background:#fff}
+.operator-student-step>header{min-height:40px;padding:8px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f8fafc}
+.operator-student-step>header h2{margin:0;color:#173f75;font-size:11px;line-height:1.35;font-weight:500}
+.operator-student-step>header p{margin:2px 0 0;color:#7185a1;font-size:8px;line-height:1.35}
+.operator-student-step>header>span{padding:3px 6px;background:#eaf2ff;color:#2168c6;font-size:8px;white-space:nowrap}
+.operator-student-fields{padding:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px 10px}
+.operator-student-fields>label{min-width:0;display:flex;flex-direction:column;gap:4px;color:#173f75;font-size:8px;line-height:1.35}
+.operator-student-fields b{color:#d84949;font-weight:600}
+.operator-student-fields small{color:#7185a1;font-size:7px;line-height:1.3}
+.operator-student-fields input:not([type=radio]),.operator-student-fields select,.operator-student-fields textarea{width:100%;min-width:0;height:25px;padding:0 8px;border:0;border-radius:2px;background:#f7f9fc;color:#173f75;font:inherit;font-size:8px}
+.operator-student-fields input::placeholder,.operator-student-fields textarea::placeholder{color:#7185a1;opacity:1}
+.operator-student-fields textarea{height:48px;padding:8px;resize:vertical}
+.operator-student-fields .wide{grid-column:1/-1}
+.operator-student-fields fieldset{min-width:0;margin:0;padding:0;border:0;color:#173f75;font-size:8px}
+.operator-student-fields legend{margin-bottom:5px}
+.operator-student-fields fieldset label{display:inline-flex;align-items:center;gap:4px;margin-right:8px}
+.operator-student-fields input[type=radio]{width:11px;height:11px;margin:0;accent-color:#2168c6}
+.operator-student-academic{grid-template-columns:repeat(3,minmax(0,1fr))}
+.operator-student-biodata{grid-template-columns:repeat(3,minmax(0,1fr))}
+.operator-student-gender{grid-column:1/-1}
+.operator-student-parents{grid-template-columns:repeat(3,minmax(0,1fr))}
+.operator-student-uploads{padding:12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.operator-student-uploads>label{min-height:88px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:5px;background:#f7f9fc;text-align:center;cursor:pointer}
+.operator-student-upload-icon{width:27px;height:27px;margin-bottom:5px;display:flex;align-items:center;justify-content:center;border-radius:7px;background:#e4efff;color:#2168c6}
+.operator-student-upload-icon.muted{background:#e9effa;color:#536b89}
+.operator-student-uploads strong{color:#173f75;font-size:8px;font-weight:500}
+.operator-student-uploads small{margin-top:3px;color:#7185a1;font-size:7px;line-height:1.35}
+.operator-student-uploads input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.operator-student-create-actions{margin:0 0 14px;display:flex;align-items:center;gap:7px}
+.operator-student-create-actions>a,.operator-student-create-actions>button{min-height:25px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border:1px solid #e7edf5;border-radius:2px;background:#fff;color:#2168c6;font:inherit;font-size:8px;text-decoration:none;cursor:pointer}
+.operator-student-create-actions>button.secondary{background:#eaf2ff}
+.operator-student-create-actions>button.primary{border-color:#2168c6;background:#2168c6;color:#fff}
+.operator-student-create-actions>button.primary:hover{border-color:#1959ad;background:#1959ad}
+@media(max-width:780px){.operator-student-fields,.operator-student-academic,.operator-student-biodata,.operator-student-parents{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.operator-student-create>h1{font-size:14px}.operator-student-fields,.operator-student-academic,.operator-student-biodata,.operator-student-parents{grid-template-columns:1fr}.operator-student-fields .wide,.operator-student-gender{grid-column:auto}.operator-student-uploads{grid-template-columns:1fr}.operator-student-create-actions{align-items:stretch;flex-wrap:wrap}.operator-student-create-actions>*{flex:1}}
+
+
+/* Form pembuatan pengumuman Operator */
+.operator-announcement-create-page{width:100%;min-width:0;color:#173f75;font-family:'Inter',sans-serif}
+.operator-announcement-create-heading{margin:0 0 17px;padding:0 17px}
+.operator-announcement-create-heading h1{margin:0;color:#173f75;font-size:16px;line-height:1.35;font-weight:650;letter-spacing:-.2px}
+.operator-announcement-create-heading p{margin:3px 0 0;color:#7185a1;font-size:9px;line-height:1.5}
+.operator-announcement-create-form{min-width:0}
+.operator-announcement-create-grid{display:grid;grid-template-columns:minmax(0,2.05fr) minmax(205px,.96fr);align-items:start;gap:14px}
+.operator-announcement-content-card,.operator-announcement-publish-card{min-width:0;overflow:hidden;border:1px solid #edf1f6;border-radius:7px;background:#fff}
+.operator-announcement-form-card-heading{min-height:34px;padding:0 15px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#f8fafc}
+.operator-announcement-form-card-heading h2{margin:0;color:#173f75;font-size:9px;line-height:1.4;font-weight:650}
+.operator-announcement-form-card-heading>span{color:#7185a1;font-size:7px;white-space:nowrap}
+.operator-announcement-form-card-heading>span b,.operator-announcement-field b,.operator-announcement-recipients legend b{color:#d84949;font-weight:600}
+.operator-announcement-content-fields{padding:12px 15px 14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 12px}
+.operator-announcement-field{min-width:0;display:flex;flex-direction:column;gap:5px;color:#173f75;font-size:8px;line-height:1.35}
+.operator-announcement-field>span:first-child{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.operator-announcement-field>span small{color:#7185a1;font-size:7px;font-weight:400}
+.operator-announcement-field input:not([type=file]),.operator-announcement-field select,.operator-announcement-field textarea{width:100%;min-width:0;height:26px;padding:0 8px;border:0;border-radius:2px;background:#f7f9fc;color:#173f75;font:inherit;font-size:8px}
+.operator-announcement-field input::placeholder,.operator-announcement-field textarea::placeholder{color:#7185a1;opacity:1}
+.operator-announcement-field select{appearance:auto}
+.operator-announcement-field-wide,.operator-announcement-recipients,.operator-announcement-editor,.operator-announcement-attachment{grid-column:1/-1}
+.operator-announcement-recipients{min-width:0;margin:0;padding:0;border:0}
+.operator-announcement-recipients legend{margin-bottom:6px;padding:0;color:#173f75;font-size:8px}
+.operator-announcement-recipient-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.operator-announcement-recipient-options>label{min-width:0;min-height:34px;padding:5px 6px;display:flex;align-items:flex-start;gap:5px;border-radius:3px;background:#f7f9fc;cursor:pointer}
+.operator-announcement-recipient-options input,.operator-announcement-status input,.operator-announcement-pin>input{flex:none;width:10px;height:10px;margin:2px 0 0;accent-color:#2168c6}
+.operator-announcement-recipient-options span,.operator-announcement-status span,.operator-announcement-pin span{min-width:0;display:flex;flex-direction:column;gap:2px}
+.operator-announcement-recipient-options strong,.operator-announcement-status strong,.operator-announcement-pin strong{color:#173f75;font-size:7px;line-height:1.3;font-weight:500}
+.operator-announcement-recipient-options small,.operator-announcement-status small,.operator-announcement-pin small{color:#7185a1;font-size:6px;line-height:1.35}
+.operator-announcement-editor textarea{height:152px;padding:10px;resize:vertical;background:#fff;border:1px solid #e8edf4;box-shadow:0 2px 3px rgba(23,63,117,.12)}
+.operator-announcement-attachment{gap:5px}
+.operator-announcement-upload-box{position:relative;min-height:81px;padding:11px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-radius:5px;background:#f7f9fc;text-align:center;cursor:pointer}
+.operator-announcement-upload-icon{width:29px;height:29px;margin-bottom:2px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:#e4efff;color:#2168c6}
+.operator-announcement-upload-box strong{color:#173f75;font-size:7px;line-height:1.35;font-weight:500}
+.operator-announcement-upload-box small{color:#7185a1;font-size:6px;line-height:1.3}
+.operator-announcement-upload-box input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.operator-announcement-publish-card{padding-bottom:13px}
+.operator-announcement-publish-card>.operator-announcement-form-card-heading{min-height:34px}
+.operator-announcement-status{margin:0;padding:12px 12px 0;border:0}
+.operator-announcement-status legend{margin-bottom:7px;padding:0;color:#7185a1;font-size:7px;letter-spacing:.55px;text-transform:uppercase}
+.operator-announcement-status>label{min-height:34px;margin-bottom:5px;padding:5px 6px;display:flex;align-items:flex-start;gap:5px;border-radius:3px;background:#f7f9fc;cursor:pointer}
+.operator-announcement-status>label:has(input:checked){background:#f2f6fc}
+.operator-announcement-schedule{padding:7px 12px 0;display:grid;gap:8px}
+.operator-announcement-schedule .operator-announcement-field{gap:4px;font-size:7px}
+.operator-announcement-schedule .operator-announcement-field input{height:26px}
+.operator-announcement-pin{min-height:36px;margin:12px 12px 0;padding:6px;display:flex;align-items:flex-start;gap:5px;border-radius:3px;background:#f7f9fc;cursor:pointer}
+.operator-announcement-create-actions{margin:13px 10px 0;display:flex;align-items:center;gap:6px}
+.operator-announcement-create-actions>a,.operator-announcement-create-actions>button{min-height:25px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid #e7edf5;border-radius:2px;background:#fff;color:#2168c6;font:inherit;font-size:8px;text-decoration:none;white-space:nowrap;cursor:pointer}
+.operator-announcement-create-actions>button.secondary{background:#fff}
+.operator-announcement-create-actions>button.primary{border-color:#2168c6;background:#2168c6;color:#fff}
+.operator-announcement-create-actions>button.primary:hover{border-color:#1959ad;background:#1959ad}
+@media(max-width:700px){.operator-announcement-create-grid{grid-template-columns:minmax(0,1.6fr) minmax(190px,.9fr)}}
+@media(max-width:560px){.operator-announcement-create-heading{padding:0}.operator-announcement-create-heading h1{font-size:14px}.operator-announcement-create-grid{grid-template-columns:1fr}.operator-announcement-publish-card{grid-row:2}.operator-announcement-content-fields{padding:11px;gap:10px}.operator-announcement-field:not(.operator-announcement-field-wide):not(.operator-announcement-editor):not(.operator-announcement-attachment){grid-column:1/-1}.operator-announcement-recipient-options{grid-template-columns:1fr}.operator-announcement-recipient-options>label{min-height:31px}.operator-announcement-editor textarea{height:130px}.operator-announcement-create-actions{margin-right:0;margin-left:0;align-items:stretch;flex-wrap:wrap}.operator-announcement-create-actions>*{flex:1}}

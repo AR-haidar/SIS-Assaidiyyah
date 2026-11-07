@@ -1,0 +1,31 @@
+/* Katalog publik Perpustakaan Digital */
+.dlib-public-page{background:#f7f8fc;color:#173f75}
+.dlib-public-main{width:100%;max-width:1440px;margin:0 auto;padding:18px 6px 24px;font-family:'Inter',sans-serif}
+.dlib-public-heading{margin:0 0 16px}
+.dlib-public-heading h1{margin:0;color:#173f75;font-size:18px;line-height:1.35;font-weight:650;letter-spacing:-.2px}
+.dlib-public-heading p{margin:3px 0 0;color:#7185a1;font-size:9px;line-height:1.45}
+.dlib-public-controls{margin-bottom:18px;padding:9px 13px 8px;border:1px solid #dfe7f1;border-radius:6px;background:#fff;box-shadow:0 1px 2px rgba(23,63,117,.04)}
+.dlib-public-control-row{display:grid;grid-template-columns:minmax(190px,1.3fr) minmax(140px,.9fr) auto;gap:10px;align-items:center}
+.dlib-public-search,.dlib-public-select{height:29px;min-width:0;display:flex;align-items:center;border-radius:3px;background:#f8fafc}
+.dlib-public-search{padding:0 8px;gap:7px;color:#7185a1}
+.dlib-public-search input,.dlib-public-select select{width:100%;min-width:0;height:100%;border:0;outline:0;background:transparent;color:#536b89;font:inherit;font-size:8px}
+.dlib-public-search input::placeholder{color:#7185a1;opacity:1}
+.dlib-public-select select{padding:0 8px}
+.dlib-public-reset{min-height:27px;padding:0 9px;display:inline-flex;align-items:center;justify-content:center;gap:4px;border:0;border-radius:3px;background:#f8fafc;color:#536b89;font:inherit;font-size:8px;white-space:nowrap;cursor:pointer}
+.dlib-public-categories{margin-top:7px;display:flex;align-items:center;gap:4px;overflow-x:auto}
+.dlib-public-categories button{min-height:18px;padding:0 8px;border:0;border-radius:3px;background:#f7f9fc;color:#536b89;font:inherit;font-size:7px;white-space:nowrap;cursor:pointer}
+.dlib-public-categories button.active{background:#2168c6;color:#fff}
+.dlib-public-list>h2{margin:0 0 9px;color:#173f75;font-size:13px;line-height:1.35;font-weight:600}
+.dlib-public-book-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.dlib-public-book-card{min-width:0;padding:8px;display:flex;flex-direction:column;border:1px solid #edf1f6;border-radius:6px;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.12)}
+.dlib-public-cover{width:100%;aspect-ratio:3/4;max-height:194px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-radius:3px;background:#f7f9fc;color:#7185a1;font-size:7px}
+.dlib-public-cover small{padding:2px 4px;background:#fff;color:#7185a1;font-size:7px}
+.dlib-public-badge{width:max-content;max-width:100%;margin-top:7px;padding:2px 4px;border-radius:2px;background:#eaf2ff;color:#2168c6;font-size:7px;white-space:nowrap}
+.dlib-public-book-card h3{margin:4px 0;color:#173f75;font-size:9px;line-height:1.3;font-weight:600}
+.dlib-public-book-card>p{margin:0 0 7px;color:#7185a1;font-size:8px}
+.dlib-public-book-card footer{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:4px}
+.dlib-public-book-card footer>span{min-width:0;overflow:hidden;color:#7185a1;font-size:6px;text-overflow:ellipsis;white-space:nowrap}
+.dlib-public-book-card footer>a{min-height:21px;padding:0 7px;display:inline-flex;align-items:center;justify-content:center;gap:3px;border-radius:3px;background:#2168c6;color:#fff;font-size:7px;text-decoration:none}
+.dlib-public-book-card footer>a:hover{background:#1959ad}
+@media(max-width:900px){.dlib-public-book-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:640px){.dlib-public-main{padding:16px 12px 22px}.dlib-public-control-row{grid-template-columns:minmax(0,1fr) auto}.dlib-public-select{grid-column:1/-1;grid-row:2}.dlib-public-reset{grid-column:2;grid-row:1}.dlib-public-book-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
