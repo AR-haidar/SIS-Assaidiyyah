@@ -87,6 +87,11 @@ body.siswa-page {
     flex-shrink: 0;
 }
 
+/* Use the official landscape school logo in role topbars. */
+.topbar-logo-slot{width:72px;border:0;border-radius:4px;background-color:transparent;background-image:url('/images/logo-assaidiyyah.png');background-position:center;background-repeat:no-repeat;background-size:contain}
+.topbar-logo-slot svg{display:none}
+@media(max-width:600px){.topbar-logo-slot{width:58px}}
+
 .topbar-brand-text {
     display: flex;
     flex-direction: column;

@@ -51,6 +51,8 @@ body.login-page {
     color: #7185a1;
     flex-shrink: 0;
 }
+.logo-placeholder{width:62px;border:0;border-radius:4px;background-color:transparent;background-image:url('/images/logo-assaidiyyah.png');background-position:center;background-repeat:no-repeat;background-size:contain}
+.logo-placeholder svg{display:none}
 
 .topbar-brand {
     font-size: 15px;

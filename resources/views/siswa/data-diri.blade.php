@@ -199,7 +199,7 @@
                     {{-- Card: Data Orang Tua / Wali Murid --}}
                     <div class="dd-card">
                         <div class="dd-card-header">
-                            <h2 class="dd-card-title">Data Orang Tua / Wali Murid</h2>
+                            <div class="dd-parent-card-title"><h2 class="dd-card-title">Data Orang Tua / Wali Murid</h2><button type="button" class="dd-parent-edit-button" data-parent-edit-toggle aria-expanded="false" aria-controls="parentDataEditor">Edit Data Orang Tua</button></div>
                         </div>
                         <div class="dd-card-body">
                             <div class="dd-field-grid">
@@ -233,6 +233,18 @@
                                     <span class="dd-field-val">—</span>
                                 </div>
                             </div>
+                            <form class="dd-parent-editor" id="parentDataEditor" data-parent-editor hidden>
+                                {{-- Backend integration target: bind fields to the student's parent/guardian profile and save with the existing profile endpoint. --}}
+                                <div class="dd-parent-editor-grid">
+                                    <label>Nama Ayah Kandung<input name="fatherName" type="text" autocomplete="name"></label>
+                                    <label>Pekerjaan Ayah<input name="fatherJob" type="text"></label>
+                                    <label>Nama Ibu Kandung<input name="motherName" type="text" autocomplete="name"></label>
+                                    <label>Pekerjaan Ibu<input name="motherJob" type="text"></label>
+                                    <label>Nomor WhatsApp / HP Aktif<input name="phone" type="tel" autocomplete="tel"></label>
+                                    <label class="dd-parent-editor-wide">Alamat Domisili Orang Tua / Wali<textarea name="address" rows="2" autocomplete="street-address"></textarea></label>
+                                </div>
+                                <div class="dd-parent-editor-actions"><button type="button" data-parent-edit-cancel>Batal</button><button type="submit">Simpan Perubahan</button></div>
+                            </form>
                         </div>
                     </div>
 
@@ -352,6 +364,47 @@
         const sidebar = document.getElementById('siswaSidebar');
         toggleBtn.addEventListener('click', function () {
             sidebar.classList.toggle('collapsed');
+        });
+
+        const parentEditor = document.querySelector('[data-parent-editor]');
+        const parentEditToggle = document.querySelector('[data-parent-edit-toggle]');
+        const parentCard = parentEditor.closest('.dd-card');
+        const parentFieldKeys = ['fatherName', 'fatherJob', 'motherName', 'motherJob', 'phone', 'address'];
+        const parentStorageKey = 'sis-demo-parent-profile';
+        const getParentData = () => JSON.parse(localStorage.getItem(parentStorageKey) || '{}');
+        const parentFields = [...parentCard.querySelectorAll('.dd-field-grid .dd-field-item')];
+        const getDisplayedParentData = () => Object.fromEntries(parentFieldKeys.map((key, index) => {
+            const value = parentFields[index].querySelector('.dd-field-val');
+            const text = ((index === 4 ? value.lastChild?.textContent : value.textContent) || '').trim();
+            return [key, text === '—' ? '' : text];
+        }));
+        const displayParentData = data => parentFields.forEach((field, index) => {
+            const value = field.querySelector('.dd-field-val');
+            const text = data[parentFieldKeys[index]] || '—';
+            if (index === 4 && value.lastChild) value.lastChild.textContent = ` ${text}`;
+            else value.textContent = text;
+        });
+        displayParentData(getParentData());
+        parentEditToggle.addEventListener('click', () => {
+            const open = parentEditor.hidden;
+            parentEditor.hidden = !open;
+            parentEditToggle.setAttribute('aria-expanded', String(open));
+            parentEditToggle.textContent = open ? 'Tutup Form Edit' : 'Edit Data Orang Tua';
+            if (open) Object.entries({ ...getDisplayedParentData(), ...getParentData() }).forEach(([key, value]) => { if (parentEditor.elements[key]) parentEditor.elements[key].value = value; });
+        });
+        parentEditor.querySelector('[data-parent-edit-cancel]').addEventListener('click', () => {
+            parentEditor.hidden = true;
+            parentEditToggle.setAttribute('aria-expanded', 'false');
+            parentEditToggle.textContent = 'Edit Data Orang Tua';
+        });
+        parentEditor.addEventListener('submit', event => {
+            event.preventDefault();
+            const data = Object.fromEntries(new FormData(parentEditor));
+            localStorage.setItem(parentStorageKey, JSON.stringify(data));
+            displayParentData(data);
+            parentEditor.hidden = true;
+            parentEditToggle.setAttribute('aria-expanded', 'false');
+            parentEditToggle.textContent = 'Edit Data Orang Tua';
         });
     </script>
 </body>

@@ -130,12 +130,16 @@ function renderOperatorStudents() {
 function renderTeacherAttendance() {
     const body = document.querySelector('[data-teacher-attendance]'); if (!body) return;
     const rows = [
-        { name: 'Ahmad Fauzi, S.Pd.I', present: 20, leave: 1, sick: 0, absent: 0 },
-        { name: 'Siti Rahmawati, S.Pd.', present: 19, leave: 0, sick: 1, absent: 1 },
-        { name: 'Dedi Kurniawan, S.Pd.I', present: 18, leave: 1, sick: 1, absent: 1 },
+        { name: 'Ahmad Fauzi, S.Pd.I', present: 20, leave: 1, sick: 0, absent: 0, month: 'November', year: '2026' },
+        { name: 'Siti Rahmawati, S.Pd.', present: 19, leave: 0, sick: 1, absent: 1, month: 'November', year: '2026' },
+        { name: 'Dedi Kurniawan, S.Pd.I', present: 18, leave: 1, sick: 1, absent: 1, month: 'November', year: '2026' },
     ];
-    const search = document.querySelector('[data-attendance-filters] input').value.toLowerCase();
-    body.innerHTML = rows.filter(row => row.name.toLowerCase().includes(search)).map(row => `<tr><td>${escapeHtml(row.name)}</td><td>${row.present}</td><td>${row.leave}</td><td>${row.sick}</td><td>${row.absent}</td><td><button type="button" class="keuangan-button" data-attendance-detail="${escapeHtml(row.name)}">Detail</button></td></tr>`).join('');
+    const form = document.querySelector('[data-attendance-filters]');
+    const search = form.elements.search.value.trim().toLowerCase();
+    const month = form.elements.month.value;
+    const year = form.elements.year.value;
+    const filtered = rows.filter(row => row.name.toLowerCase().includes(search) && (!month || row.month === month) && (!year || row.year === year));
+    body.innerHTML = filtered.length ? filtered.map(row => `<tr><td>${escapeHtml(row.name)}</td><td>${row.present}</td><td>${row.leave}</td><td>${row.sick}</td><td>${row.absent}</td><td><button type="button" class="keuangan-button" data-attendance-detail="${escapeHtml(row.name)}">Detail</button></td></tr>`).join('') : '<tr><td colspan="6" class="attendance-empty-cell">Tidak ada data absensi untuk filter ini.</td></tr>';
     body.querySelectorAll('[data-attendance-detail]').forEach(button => button.addEventListener('click', () => alert(`Rekap absensi ${button.dataset.attendanceDetail}: hadir, izin, sakit, dan tanpa keterangan.`)));
 }
 renderInvoices(); renderAnnouncements(); renderStudentInvoices(); populatePaymentInvoices(); renderOperatorStudents();
@@ -143,7 +147,7 @@ renderKeuanganRows(); renderStudentAnnouncements(); renderTeacherAttendance();
 document.querySelectorAll('[data-dashboard-bills]').forEach(el => { const pending = currentStudentInvoices().filter(item => ['Belum Dibayar', 'Jatuh Tempo'].includes(item.status)); el.innerHTML = pending.length ? `🔔 <strong>${pending.length} tagihan belum dibayar</strong>: ${pending.map(item => `${escapeHtml(item.type)} Rp ${Number(item.amount).toLocaleString('id-ID')} (jatuh tempo ${escapeHtml(item.dueAt)})`).join('; ')}. <a href="/siswa/tagihan-spp">Lihat detail</a>` : 'Tidak ada tagihan yang belum dibayar.'; });
 document.querySelectorAll('[data-bill-count]').forEach(el => { const count = currentStudentInvoices().filter(item => ['Belum Dibayar', 'Jatuh Tempo'].includes(item.status)).length; el.textContent = count; el.hidden = !count; });
 document.querySelectorAll('[data-keuangan-filters]').forEach(form => { form.addEventListener('input', renderKeuanganRows); form.addEventListener('change', renderKeuanganRows); form.addEventListener('reset', () => setTimeout(renderKeuanganRows)); });
-document.querySelectorAll('[data-attendance-filters]').forEach(form => { form.addEventListener('input', renderTeacherAttendance); form.addEventListener('change', renderTeacherAttendance); });
+document.querySelectorAll('[data-attendance-filters]').forEach(form => form.addEventListener('submit', event => { event.preventDefault(); renderTeacherAttendance(); }));
 document.querySelectorAll('.operator-student-filters').forEach(form => { form.addEventListener('input', renderOperatorStudents); form.addEventListener('change', renderOperatorStudents); form.addEventListener('reset', () => setTimeout(renderOperatorStudents)); });
 document.querySelectorAll('.spp-filter-card select').forEach(select => select.addEventListener('change', renderStudentInvoices));
 document.querySelectorAll('[data-apply-student-filters]').forEach(button => button.addEventListener('click', renderStudentInvoices));
