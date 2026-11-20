@@ -124,6 +124,8 @@
                 <article class="wali-stat-card"><h2>Tanpa Keterangan</h2><p>-</p></article>
             </section>
 
+            <section class="dashboard-announcement-panel" aria-labelledby="waliAnnouncementsTitle"><h2 id="waliAnnouncementsTitle">Pengumuman Madrasah</h2>@include('shared.announcement-controls', ['announcementStats' => [['key' => 'total', 'label' => 'Total Pengumuman', 'value' => 0], ['key' => 'active', 'label' => 'Pengumuman Aktif', 'value' => 0], ['key' => 'class', 'label' => 'Informasi Kelas', 'value' => 0], ['key' => 'archive', 'label' => 'Arsip Pengumuman', 'value' => 0]], 'announcementTabs' => [['value' => 'all', 'label' => 'Semua Warta'], ['value' => 'class', 'label' => 'Kelas Binaan'], ['value' => 'academic', 'label' => 'Akademik'], ['value' => 'general', 'label' => 'Umum']], 'announcementCategories' => ['Kelas Binaan', 'Akademik', 'Kesiswaan', 'Informasi Umum'], 'announcementSearch' => 'Cari pengumuman kelas dan madrasah'])<div class="shared-announcement-empty"><span class="shared-announcement-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h2l8 5V4l-8 5H5a2 2 0 0 0-2 2Z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg></span><strong>Belum Ada Pengumuman Diterbitkan</strong><p>Pengumuman resmi untuk siswa dan wali kelas akan ditampilkan di sini jika tersedia.</p></div></section>
+
             <section class="wali-students-card" aria-labelledby="waliStudentsTitle">
                 <div class="wali-table-toolbar">
                     <div class="wali-table-heading">

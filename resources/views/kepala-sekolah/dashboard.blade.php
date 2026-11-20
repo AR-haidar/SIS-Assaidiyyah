@@ -47,6 +47,7 @@
         <section class="ks-panel ks-announcement-summary">
             <div class="ks-panel-heading"><h2>Pengumuman</h2><a href="{{ url('/kepala-sekolah/pengumuman') }}">Kelola</a></div>
             <div class="ks-announcement-empty">
+                <span class="shared-announcement-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h2l8 5V4l-8 5H5a2 2 0 0 0-2 2Z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg></span>
                 <strong>Belum Ada Pengumuman Diterbitkan</strong>
                 <p>Pengumuman dan instruksi resmi Kepala Madrasah akan tampil di sini untuk siswa dan dewan guru.</p>
                 <a class="ks-primary-button" href="{{ url('/kepala-sekolah/pengumuman') }}"><span>+</span> Buat Pengumuman Baru</a>

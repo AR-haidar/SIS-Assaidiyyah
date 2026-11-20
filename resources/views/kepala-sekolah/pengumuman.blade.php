@@ -23,7 +23,7 @@
     </section>
     <section class="ks-announcement-table-card">
         <div class="ks-table-scroll"><table class="ks-data-table"><thead><tr><th>No</th><th>Judul Pengumuman</th><th>Kategori</th><th>Nomor Surat / Edaran</th><th>Tanggal Terbit</th><th>Sasaran</th><th>Status</th><th>Aksi</th></tr></thead></table></div>
-        <div class="ks-empty-state"><strong>Belum Ada Pengumuman Diterbitkan</strong><p>Seluruh pengumuman dan surat edaran resmi yang dibuat akan terdaftar di sini</p><button class="ks-primary-button" type="button">+ Buat Pengumuman Baru</button></div>
+        <div class="ks-empty-state"><div class="shared-announcement-empty"><span class="shared-announcement-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h2l8 5V4l-8 5H5a2 2 0 0 0-2 2Z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg></span><strong>Belum Ada Pengumuman Diterbitkan</strong><p>Seluruh pengumuman dan surat edaran resmi yang dibuat akan terdaftar di sini.</p><button class="ks-primary-button" type="button">+ Buat Pengumuman Baru</button></div></div>
         <footer class="ks-table-footer"><span>Menampilkan 0 dari 0 pengumuman</span><div class="ks-pagination"><button disabled><</button><span>1</span><button disabled>></button></div></footer>
     </section>
 @endsection

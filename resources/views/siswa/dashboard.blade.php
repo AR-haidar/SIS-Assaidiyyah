@@ -365,7 +365,6 @@
                             Riwayat Setoran
                         </a>
                     </div>
-                    <div class="student-finance-announcements" data-finance-announcements></div>
                 </div>
 
             </div>
@@ -388,8 +387,12 @@
                     <span class="pengumuman-badge">Papan Informasi</span>
                 </div>
 
+                @include('shared.announcement-controls', ['announcementStats' => [['key' => 'total', 'label' => 'Total Pengumuman', 'value' => 0], ['key' => 'active', 'label' => 'Pengumuman Aktif', 'value' => 0], ['key' => 'finance', 'label' => 'Informasi Keuangan', 'value' => 0], ['key' => 'archive', 'label' => 'Arsip Pengumuman', 'value' => 0]], 'announcementTabs' => [['value' => 'all', 'label' => 'Semua Warta'], ['value' => 'academic', 'label' => 'Akademik'], ['value' => 'student', 'label' => 'Kesiswaan'], ['value' => 'finance', 'label' => 'Keuangan']], 'announcementCategories' => ['Akademik', 'Kesiswaan', 'Keuangan', 'Informasi Umum'], 'announcementSearch' => 'Cari pengumuman madrasah'])
+
+                <div class="student-finance-announcements" data-finance-announcements></div>
+
                 {{-- Empty State --}}
-                <div class="pengumuman-empty">
+                <div class="pengumuman-empty shared-announcement-empty" hidden>
                     <div class="empty-icon-box">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -397,7 +400,7 @@
                             <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
                         </svg>
                     </div>
-                    <h4 class="empty-title">Belum Ada Pengumuman Baru</h4>
+                    <h4 class="empty-title">Belum Ada Pengumuman Diterbitkan</h4>
                     <p class="empty-desc">
                         Pengumuman resmi dari madrasah akan ditampilkan di sini. Silakan periksa kembali secara berkala untuk pembaruan agenda.
                     </p>

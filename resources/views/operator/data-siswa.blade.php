@@ -34,7 +34,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>No</th><th>Nama Siswa</th><th>NIS / NISN</th><th>Kelas</th><th>Rombel</th><th>Jenis Kelamin</th><th>Status Kesiswaan</th><th>Aksi</th>
+                            <th>No</th><th>Nama Siswa</th><th>NISN</th><th>Kelas</th><th>Rombel</th><th>Jenis Kelamin</th><th>Status Kesiswaan</th><th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody data-operator-students>

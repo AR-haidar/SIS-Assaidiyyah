@@ -23,7 +23,7 @@
 
     <section class="keuangan-payment-table-card" aria-label="Daftar pembayaran siswa">
         <div class="keuangan-payment-table-scroll"><table>
-            <thead><tr><th>No</th><th>Nama Siswa</th><th>NIS / NISN</th><th>Kelas/Rombel</th><th>Jenis Tagihan</th><th>Nominal</th><th>Jatuh Tempo</th><th>Status</th></tr></thead>
+            <thead><tr><th>No</th><th>Nama Siswa</th><th>NISN</th><th>Kelas/Rombel</th><th>Jenis Tagihan</th><th>Nominal</th><th>Jatuh Tempo</th><th>Status</th></tr></thead>
             <tbody data-keuangan-transactions><tr><td colspan="8" class="keuangan-payment-empty"><strong>Menyiapkan data pembayaran...</strong></td></tr></tbody>
         </table></div>
     </section>

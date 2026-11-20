@@ -397,12 +397,9 @@
                     <span class="section-pre-tag">INFORMASI PUBLIK</span>
                     <h2 class="section-heading">Berita &amp; Agenda Terkini</h2>
                 </div>
-                <div>
-                    <a href="#" class="section-link-right">Lihat Semua Berita &rarr;</a>
-                </div>
             </div>
 
-            <div class="news-three-grid">
+            <div class="news-three-grid public-news-placeholder">
                 
                 {{-- Card Berita 1 --}}
                 <article class="news-box-card">
@@ -462,6 +459,7 @@
                 </article>
 
             </div>
+            <div class="dashboard-announcement-panel public-announcement-panel">@include('shared.announcement-controls', ['announcementStats' => [['key' => 'total', 'label' => 'Total Publikasi', 'value' => 0], ['key' => 'active', 'label' => 'Informasi Terbit', 'value' => 0], ['key' => 'agenda', 'label' => 'Agenda Mendatang', 'value' => 0], ['key' => 'archive', 'label' => 'Arsip Berita', 'value' => 0]], 'announcementTabs' => [['value' => 'all', 'label' => 'Semua Informasi'], ['value' => 'announcement', 'label' => 'Pengumuman'], ['value' => 'agenda', 'label' => 'Agenda'], ['value' => 'news', 'label' => 'Berita']], 'announcementCategories' => ['Akademik', 'Kegiatan Madrasah', 'Kesiswaan', 'Informasi Umum'], 'announcementSearch' => 'Cari berita dan agenda madrasah'])<div class="shared-announcement-empty"><span class="shared-announcement-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h2l8 5V4l-8 5H5a2 2 0 0 0-2 2Z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg></span><strong>Belum Ada Pengumuman Diterbitkan</strong><p>Berita, agenda, dan pengumuman resmi madrasah akan ditampilkan di sini jika tersedia.</p></div></div>
         </section>
 
         {{-- ========================================================

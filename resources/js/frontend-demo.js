@@ -77,7 +77,7 @@ function renderInvoices() {
 function renderAnnouncements() {
     const list = document.querySelector('[data-announcement-list]'); if (!list) return;
     const items = read('announcements'); if (!items.length) return;
-    list.innerHTML = items.map((item, index) => `<article><h2>${escapeHtml(item.title)}</h2><p>${escapeHtml(item.body)}</p><small>${escapeHtml(item.publishedAt)} · ${escapeHtml(item.attachment || 'Tanpa lampiran')}</small><a class="keuangan-button" href="/keuangan/pengumuman/${index}/edit">Edit</a></article>`).join('');
+    list.innerHTML = items.map((item, index) => `<tr><td>${index + 1}</td><td>${escapeHtml(item.title)}<small class="announcement-table-description">${escapeHtml(item.body)}</small></td><td>${escapeHtml(item.publishedAt)}</td><td>${escapeHtml(item.attachment || 'Tanpa lampiran')}</td><td><a class="keuangan-button" href="/keuangan/pengumuman/${index}/edit">Edit</a></td></tr>`).join('');
 }
 function renderStudentInvoices() {
     const body = document.querySelector('[data-student-invoices]'); if (!body) return;
@@ -109,7 +109,8 @@ function renderKeuanganRows() {
 }
 function renderStudentAnnouncements() {
     const target = document.querySelector('[data-finance-announcements]'); if (!target) return;
-    target.innerHTML = read('announcements').map(item => `<article><h4>${escapeHtml(item.title)}</h4><p>${escapeHtml(item.body)}</p><small>${escapeHtml(item.publishedAt)} · ${escapeHtml(item.attachment || 'Tanpa lampiran')}</small></article>`).join('');
+    const items = read('announcements');
+    target.innerHTML = items.length ? items.map(item => `<article><h4>${escapeHtml(item.title)}</h4><p>${escapeHtml(item.body)}</p><small>${escapeHtml(item.publishedAt)} · ${escapeHtml(item.attachment || 'Tanpa lampiran')}</small></article>`).join('') : `<div class="shared-announcement-empty shared-announcement-empty-compact"><span class="shared-announcement-icon" aria-hidden="true">📣</span><strong>Belum Ada Informasi Keuangan</strong><p>Pengumuman keuangan madrasah akan tampil di sini.</p></div>`;
 }
 function renderOperatorStudents() {
     const body = document.querySelector('[data-operator-students]'); if (!body) return;
@@ -146,3 +147,67 @@ document.querySelectorAll('[data-attendance-filters]').forEach(form => { form.ad
 document.querySelectorAll('.operator-student-filters').forEach(form => { form.addEventListener('input', renderOperatorStudents); form.addEventListener('change', renderOperatorStudents); form.addEventListener('reset', () => setTimeout(renderOperatorStudents)); });
 document.querySelectorAll('.spp-filter-card select').forEach(select => select.addEventListener('change', renderStudentInvoices));
 document.querySelectorAll('[data-apply-student-filters]').forEach(button => button.addEventListener('click', renderStudentInvoices));
+
+// Keep announcement summaries and filters in sync with the browser demo data.
+function renderFilteredAnnouncements() {
+    const list = document.querySelector('[data-announcement-list]');
+    if (!list) return;
+    const all = read('announcements');
+    const controls = document.querySelector('[data-shared-announcement-controls][data-announcement-source="finance"]');
+    const form = controls?.querySelector('[data-announcement-filter-form]');
+    const search = form?.elements.search.value.trim().toLowerCase() || '';
+    const category = form?.elements.category.value || '';
+    const status = form?.elements.status.value || '';
+    const tab = controls?.querySelector('[data-announcement-tab].active')?.dataset.announcementTab || 'all';
+    let items = all.map((item, index) => ({ ...item, index }));
+    if (search) items = items.filter(item => `${item.title} ${item.body}`.toLowerCase().includes(search));
+    if (category) items = items.filter(item => (item.category || 'Informasi Umum') === category);
+    if (status && status !== 'Terbit') items = [];
+    if (['draft', 'archive'].includes(tab)) items = [];
+    list.innerHTML = items.length
+        ? items.map((item, index) => `<tr><td>${index + 1}</td><td>${escapeHtml(item.title)}<small class="announcement-table-description">${escapeHtml(item.body)}</small></td><td>${escapeHtml(item.publishedAt)}</td><td>${escapeHtml(item.attachment || 'Tanpa lampiran')}</td><td><a class="keuangan-button" href="/keuangan/pengumuman/${item.index}/edit">Edit</a></td></tr>`).join('')
+        : `<tr><td colspan="5"><div class="shared-announcement-empty shared-announcement-empty-compact"><strong>${all.length ? 'Tidak ada pengumuman yang cocok' : 'Belum Ada Pengumuman Keuangan'}</strong><p>${all.length ? 'Ubah kata kunci atau filter untuk melihat hasil lainnya.' : 'Informasi pembayaran dan tagihan dari madrasah akan ditampilkan di sini.'}</p></div></td></tr>`;
+    controls?.querySelectorAll('[data-announcement-stat="total"], [data-announcement-stat="active"]').forEach(node => { node.textContent = all.length; });
+    controls?.querySelectorAll('[data-announcement-tab-count]').forEach(node => { node.textContent = all.length; });
+    const visible = document.querySelector('[data-announcement-visible]');
+    const total = document.querySelector('[data-announcement-total]');
+    if (visible) visible.textContent = items.length;
+    if (total) total.textContent = all.length;
+}
+
+function renderFilteredStudentAnnouncements() {
+    const target = document.querySelector('[data-finance-announcements]');
+    if (!target) return;
+    const all = read('announcements');
+    const controls = document.querySelector('[data-shared-announcement-controls][data-announcement-source="finance"]');
+    const form = controls?.querySelector('[data-announcement-filter-form]');
+    const search = form?.elements.search.value.trim().toLowerCase() || '';
+    const category = form?.elements.category.value || '';
+    const tab = controls?.querySelector('[data-announcement-tab].active')?.dataset.announcementTab || 'all';
+    let items = all;
+    if (search) items = items.filter(item => `${item.title} ${item.body}`.toLowerCase().includes(search));
+    if (category) items = items.filter(item => (item.category || 'Informasi Umum') === category);
+    if (tab === 'academic') items = items.filter(item => item.category === 'Akademik');
+    if (tab === 'student') items = items.filter(item => item.category === 'Kesiswaan');
+    if (tab === 'finance') items = items.filter(item => ['Tagihan', 'Pembayaran', 'Keuangan'].includes(item.category));
+    target.innerHTML = items.length
+        ? items.map(item => `<article><h4>${escapeHtml(item.title)}</h4><p>${escapeHtml(item.body)}</p><small>${escapeHtml(item.publishedAt)} · ${escapeHtml(item.attachment || 'Tanpa lampiran')}</small></article>`).join('')
+        : `<div class="shared-announcement-empty shared-announcement-empty-compact"><strong>${all.length ? 'Tidak ada pengumuman yang cocok' : 'Belum Ada Informasi Keuangan'}</strong><p>${all.length ? 'Ubah kata kunci atau filter untuk melihat informasi lainnya.' : 'Pengumuman keuangan madrasah akan tampil di sini.'}</p></div>`;
+    controls?.querySelectorAll('[data-announcement-stat="total"], [data-announcement-stat="active"], [data-announcement-stat="finance"]').forEach(node => { node.textContent = all.length; });
+    controls?.querySelectorAll('[data-announcement-tab-count]').forEach(node => { node.textContent = all.length; });
+}
+
+document.querySelectorAll('[data-shared-announcement-controls]').forEach(controls => {
+    controls.querySelectorAll('[data-announcement-tab]').forEach(button => button.addEventListener('click', () => {
+        controls.querySelectorAll('[data-announcement-tab]').forEach(tab => { tab.classList.toggle('active', tab === button); tab.setAttribute('aria-pressed', String(tab === button)); });
+        renderFilteredAnnouncements();
+        renderFilteredStudentAnnouncements();
+    }));
+    controls.querySelector('[data-announcement-filter-form]')?.addEventListener('submit', event => {
+        event.preventDefault();
+        renderFilteredAnnouncements();
+        renderFilteredStudentAnnouncements();
+    });
+});
+renderFilteredAnnouncements();
+renderFilteredStudentAnnouncements();

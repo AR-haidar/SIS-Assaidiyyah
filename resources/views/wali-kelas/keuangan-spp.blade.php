@@ -157,7 +157,7 @@
                 <div class="wali-finance-category-list">Kategori tagihan: Infaq · Uang Buku · Wisata · Seragam · Tagihan Lainnya</div>
                 <div class="wali-finance-table-scroll">
                     <table class="wali-finance-table">
-                        <thead><tr><th>Nama Siswa</th><th>NIS / NISN</th><th>Kelas</th><th>Status Tagihan</th><th>Aksi</th></tr></thead>
+                        <thead><tr><th>Nama Siswa</th><th>NISN</th><th>Kelas</th><th>Status Tagihan</th><th>Aksi</th></tr></thead>
                     </table>
                 </div>
                 <div class="wali-finance-empty">

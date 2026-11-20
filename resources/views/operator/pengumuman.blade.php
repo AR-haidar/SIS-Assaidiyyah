@@ -42,11 +42,12 @@
             <div class="operator-announcement-table-scroll">
                 <table>
                     <thead><tr><th>No</th><th>Judul Pengumuman</th><th>Kategori</th><th>Nomor Surat / Edaran</th><th>Tanggal Terbit</th><th>Sasaran</th><th>Status</th><th>Aksi</th></tr></thead>
-                    <tbody><tr><td colspan="8" class="operator-announcement-empty">
+                    <tbody><tr><td colspan="8" class="operator-announcement-empty"><div class="shared-announcement-empty">
+                        <span class="shared-announcement-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h2l8 5V4l-8 5H5a2 2 0 0 0-2 2Z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg></span>
                         <strong>Belum Ada Pengumuman Diterbitkan</strong>
                         <p>Seluruh pengumuman dan surat edaran resmi yang dibuat oleh Kepala<br class="operator-ann-desktop-break"> Madrasah akan terdaftar di sini.</p>
                         <a class="operator-announcement-create" href="{{ url('/operator/pengumuman/tambah') }}">+ Buat Pengumuman Baru</a>
-                    </td></tr></tbody>
+                    </div></td></tr></tbody>
                 </table>
             </div>
             <footer><span>Menampilkan 0 dari 0 pengumuman</span><nav aria-label="Navigasi halaman"><button type="button" disabled aria-label="Halaman sebelumnya">&lsaquo;</button><span>1</span><button type="button" disabled aria-label="Halaman berikutnya">&rsaquo;</button></nav></footer>

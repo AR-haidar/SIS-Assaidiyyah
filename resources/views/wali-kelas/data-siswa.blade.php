@@ -143,7 +143,7 @@
                 <div class="wali-data-table-scroll">
                     <table class="wali-data-table">
                         <thead>
-                            <tr><th>No</th><th>Nama Siswa</th><th>NIS / NISN</th><th>Kelas</th><th>Status</th><th>Aksi</th></tr>
+                            <tr><th>No</th><th>Nama Siswa</th><th>NISN</th><th>Kelas</th><th>Status</th><th>Aksi</th></tr>
                         </thead>
                     </table>
                 </div>
