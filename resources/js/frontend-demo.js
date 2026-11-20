@@ -37,6 +37,10 @@ document.querySelectorAll('[data-demo-form="invoice"]').forEach(form => {
 document.querySelectorAll('[data-demo-form="announcement"]').forEach(form => {
     const items = read('announcements'); const id = form.dataset.announcementId;
     if (id && items[id]) { form.elements.title.value = items[id].title; form.elements.publishedAt.value = items[id].publishedAt; form.elements.body.value = items[id].body; form.querySelector('[data-file-name]').textContent = items[id].attachment || 'Pilih foto atau dokumen'; }
+    form.querySelector('[data-delete-announcement]')?.addEventListener('click', () => {
+        if (!items[id] || !confirm('Yakin ingin menghapus pengumuman ini?')) return;
+        items.splice(Number(id), 1); write('announcements', items); alert('Pengumuman berhasil dihapus.'); location.href = '/keuangan/pengumuman';
+    });
     form.addEventListener('submit', event => {
         event.preventDefault(); const data = Object.fromEntries(new FormData(form)); data.attachment = form.elements.attachment.files[0]?.name || (id && items[id]?.attachment) || ''; 
         if (id && items[id]) items[id] = data; else items.push(data);
