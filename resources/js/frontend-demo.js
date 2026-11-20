@@ -1,7 +1,6 @@
 const read = key => JSON.parse(localStorage.getItem(`sis-demo-${key}`) || '[]');
 const write = (key, data) => localStorage.setItem(`sis-demo-${key}`, JSON.stringify(data));
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
-const currentStudentInvoices = () => read('invoices').filter(item => item.student.toLowerCase().includes('muhammad rizki'));
 if (!localStorage.getItem('sis-demo-invoices')) write('invoices', [
     { student: 'Muhammad Rizki — Kelas 5B', type: 'Infaq', amount: 150000, issuedAt: '2026-11-01', dueAt: '2026-11-30', status: 'Belum Dibayar', note: 'Infaq bulanan' },
     { student: 'Muhammad Rizki — Kelas 5B', type: 'Uang Buku', amount: 85000, issuedAt: '2026-11-01', dueAt: '2026-12-10', status: 'Menunggu Verifikasi', note: 'Buku semester' },
@@ -81,7 +80,8 @@ function renderAnnouncements() {
 }
 function renderStudentInvoices() {
     const body = document.querySelector('[data-student-invoices]'); if (!body) return;
-    let items = currentStudentInvoices();
+    // Data tagihan siswa disediakan backend untuk siswa yang sedang login; jangan tampilkan fixture keuangan demo sebagai tagihan nyata.
+    let items = Array.isArray(window.studentInvoices) ? window.studentInvoices : [];
     const selectors = document.querySelectorAll('.spp-filter-card select');
     const category = selectors[1]?.value; const status = selectors[2]?.value;
     if (category && category !== 'all') items = items.filter(item => category === 'Lainnya' ? !['Infaq', 'Uang Buku', 'Wisata', 'Seragam'].includes(item.type) : item.type === category);

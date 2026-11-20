@@ -29,3 +29,33 @@
 .dlib-public-book-card footer>a:hover{background:#1959ad}
 @media(max-width:900px){.dlib-public-book-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:640px){.dlib-public-main{padding:16px 12px 22px}.dlib-public-control-row{grid-template-columns:minmax(0,1fr) auto}.dlib-public-select{grid-column:1/-1;grid-row:2}.dlib-public-reset{grid-column:2;grid-row:1}.dlib-public-book-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
+
+/* Public catalog scale aligned with the home page content and typography. */
+.dlib-public-main{max-width:1240px;padding:28px 24px 40px}
+.dlib-public-heading{margin-bottom:22px}
+.dlib-public-heading h1{font-size:28px;line-height:1.25;letter-spacing:-.45px}
+.dlib-public-heading p{margin-top:7px;font-size:14px;line-height:1.55}
+.dlib-public-controls{margin-bottom:26px;padding:16px 18px 14px;border-radius:9px}
+.dlib-public-control-row{gap:12px}
+.dlib-public-search,.dlib-public-select{height:42px;border:1px solid #e5ebf3;border-radius:6px}
+.dlib-public-search{padding:0 12px;gap:9px}
+.dlib-public-search svg{width:17px;height:17px;flex:none}
+.dlib-public-search input,.dlib-public-select select{font-size:13px}
+.dlib-public-select select{padding:0 12px}
+.dlib-public-reset{min-height:40px;padding:0 13px;gap:7px;border-radius:6px;font-size:12px}
+.dlib-public-categories{margin-top:12px;gap:7px}
+.dlib-public-categories button{min-height:29px;padding:0 12px;border-radius:15px;font-size:11px}
+.dlib-public-list>h2{margin-bottom:13px;font-size:20px}
+.dlib-public-book-grid{gap:16px}
+.dlib-public-book-card{padding:12px;border-radius:9px}
+.dlib-public-cover{max-height:250px;gap:7px;border-radius:5px;font-size:11px}
+.dlib-public-cover small{padding:4px 7px;font-size:10px}
+.dlib-public-badge{margin-top:10px;padding:4px 7px;border-radius:4px;font-size:10px}
+.dlib-public-book-card h3{margin:7px 0;font-size:14px;line-height:1.45}
+.dlib-public-book-card>p{margin-bottom:11px;font-size:12px}
+.dlib-public-book-card footer{gap:8px}
+.dlib-public-book-card footer>span{font-size:10px}
+.dlib-public-book-card footer>a{min-height:32px;padding:0 10px;gap:6px;border-radius:5px;font-size:11px}
+.dlib-public-book-card footer>a svg{width:15px;height:15px}
+@media(max-width:900px){.dlib-public-main{padding:24px 20px 32px}.dlib-public-book-grid{gap:12px}.dlib-public-cover{max-height:220px}}
+@media(max-width:640px){.dlib-public-main{padding:20px 14px 28px}.dlib-public-heading h1{font-size:24px}.dlib-public-heading p{font-size:13px}.dlib-public-controls{padding:12px;margin-bottom:20px}.dlib-public-control-row{gap:8px}.dlib-public-search,.dlib-public-select{height:40px}.dlib-public-categories button{min-height:28px}.dlib-public-list>h2{font-size:18px}.dlib-public-book-grid{gap:10px}.dlib-public-book-card{padding:9px}.dlib-public-cover{max-height:none}.dlib-public-book-card h3{font-size:13px}}

@@ -228,7 +228,7 @@
                             </tr>
                         </thead>
                         <tbody data-student-invoices>
-                            {{-- Backend integration target: render tagihan milik siswa aktif; frontend menampilkan empty state jika daftar kosong. --}}
+                            {{-- BACKEND: sediakan window.studentInvoices dari tagihan milik siswa yang sedang login (jenis, nominal, jatuh tempo, status, detail); biarkan array kosong bila belum ada tagihan. --}}
                         </tbody>
                     </table>
                 </div>

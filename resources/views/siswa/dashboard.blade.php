@@ -202,7 +202,7 @@
                 <div class="card-section-header">
                     <div>
                         <div class="card-section-title">Identitas Siswa</div>
-                        <div class="card-section-sub">Data primer terdaftar pada database pokok madrasah (EMIS/Simpatika)</div>
+                        <div class="card-section-sub">Data primer terdaftar pada database pokok madrasah</div>
                     </div>
                 </div>
                 <div class="card-identitas-body">

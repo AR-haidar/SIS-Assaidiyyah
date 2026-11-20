@@ -294,3 +294,15 @@
         align-items: flex-start;
     }
 }
+
+/* Give the student invoice table comfortable spacing and a clear empty state. */
+.spp-table-card{padding:8px 12px 12px}
+.spp-table-container{border:1px solid #e3eaf3;border-radius:8px;background:#fff}
+.spp-table thead th{height:46px;padding:0 16px;border-bottom:1px solid #dce5f0;white-space:nowrap}
+.spp-table thead th+th,.spp-table tbody td+td{border-left:1px solid #edf1f6}
+.spp-table tbody td{height:46px;padding:10px 16px;border-bottom:1px solid #e7edf4;line-height:1.45}
+.spp-table tbody tr:nth-child(even) td{background:#fbfcfe}
+.spp-table tbody tr:last-child td{border-bottom:0}
+.spp-table tbody td:last-child{text-align:center}
+.spp-table tbody td.spp-table-empty-container{display:table-cell!important;width:100%;height:190px;padding:28px 18px;border:0;background:#fff;color:#7185a1;font-size:13px!important;text-align:center!important;vertical-align:middle}
+@media(max-width:640px){.spp-table-card{padding:7px}.spp-table{min-width:680px}.spp-table thead th,.spp-table tbody td{padding-left:12px;padding-right:12px}}
