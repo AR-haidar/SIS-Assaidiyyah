@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keuangan & SPP - SIS MI Assa'idiyyah</title>
+    <title>Keuangan & Tagihan - SIS MI Assa'idiyyah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -81,7 +81,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><path d="M16 15h2"/>
                     </svg>
-                    Keuangan &amp; SPP
+                    Keuangan &amp; Tagihan
                 </a>
             </nav>
             <div class="sidebar-footer">
@@ -103,7 +103,7 @@
             <header class="wali-finance-titlebar">
                 <div class="wali-page-heading">
                     <h1>Data Siswa &amp; Status Pembayaran</h1>
-                    <p>Pemantauan riwayat administrasi SPP</p>
+                    <p>Pemantauan seluruh tagihan siswa pada kelas yang menjadi tanggung jawab</p>
                 </div>
                 <div class="wali-finance-actions">
                     <span class="wali-finance-semester"><i></i>Semester Ganjil 2024/2025</span>
@@ -114,7 +114,7 @@
                 </div>
             </header>
 
-            <section class="wali-finance-stats" aria-label="Ringkasan administrasi SPP">
+            <section class="wali-finance-stats" aria-label="Ringkasan seluruh tagihan">
                 <article class="wali-finance-stat-card"><span>TOTAL SISWA TERDATA</span><p>-<small>Siswa</small></p></article>
                 <article class="wali-finance-stat-card"><span>SISWA TERVERIFIKASI</span><p>- <small>Siswa</small></p></article>
                 <article class="wali-finance-stat-card"><span>BEBAN TUNGGAKAN BERJALAN</span><p>- <small>Siswa</small></p></article>
@@ -132,9 +132,9 @@
                     <span>Status Pembayaran</span>
                     <select id="paymentStatus" aria-label="Filter status pembayaran">
                         <option value="all">Semua Status Pembayaran</option>
-                        <option value="verified">Terverifikasi</option>
+                        <option value="verified">Lunas</option>
                         <option value="pending">Menunggu Verifikasi</option>
-                        <option value="unpaid">Belum Bayar</option>
+                        <option value="unpaid">Belum Dibayar</option>
                     </select>
                 </label>
                 <label class="wali-finance-field">
@@ -154,6 +154,7 @@
             </section>
 
             <section class="wali-finance-table-card" aria-label="Daftar status pembayaran siswa">
+                <div class="wali-finance-category-list">Kategori tagihan: Infaq · Uang Buku · Wisata · Seragam · Tagihan Lainnya</div>
                 <div class="wali-finance-table-scroll">
                     <table class="wali-finance-table">
                         <thead><tr><th>Nama Siswa</th><th>NIS / NISN</th><th>Kelas</th><th>Status Tagihan</th><th>Aksi</th></tr></thead>

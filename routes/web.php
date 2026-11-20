@@ -64,10 +64,16 @@ Route::get('/operator/pengumuman', function () { return view('operator.pengumuma
 Route::get('/operator/pengumuman/tambah', function () { return view('operator.tambah-pengumuman'); });
 Route::get('/operator/data-guru/tambah', function () { return view('operator.tambah-guru'); });
 Route::get('/operator/data-siswa/tambah', function () { return view('operator.tambah-siswa'); });
+Route::get('/operator/data-siswa/{id}/edit', function ($id) { return view('operator.edit-siswa', ['studentId' => $id]); });
 
 Route::get('/keuangan/dashboard', function () { return view('keuangan.dashboard'); });
 Route::get('/keuangan/pembayaran-siswa', function () { return view('keuangan.pembayaran-siswa'); });
 Route::get('/keuangan/pembayaran-siswa/detail', function () { return view('keuangan.detail-pembayaran'); });
+Route::get('/keuangan/tagihan/tambah', function () { return view('keuangan.tambah-tagihan'); });
+Route::get('/keuangan/rekap-absensi-guru', function () { return view('keuangan.rekap-absensi-guru'); });
+Route::get('/keuangan/pengumuman', function () { return view('keuangan.pengumuman'); });
+Route::get('/keuangan/pengumuman/tambah', function () { return view('keuangan.tambah-pengumuman'); });
+Route::get('/keuangan/pengumuman/{id}/edit', function ($id) { return view('keuangan.tambah-pengumuman', ['announcementId' => $id]); });
 
 Route::get('/perpustakaan/dashboard', function () { return view('perpustakaan.dashboard'); });
 Route::get('/perpustakaan/data-buku', function () { return view('perpustakaan.data-buku'); });

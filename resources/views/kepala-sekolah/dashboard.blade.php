@@ -4,13 +4,13 @@
 @section('content')
     <header class="ks-page-heading">
         <h1>Dashboard Kepala MI Assaidiyyah</h1>
-        <p>Ringkasan pemantauan terpadu presensi madrasah, ketercapaian pembayaran SPP, dan edaran resmi.</p>
+        <p>Ringkasan pemantauan terpadu presensi madrasah, ketercapaian pembayaran Infaq dan tagihan lain, serta edaran resmi.</p>
     </header>
     <section class="ks-summary-grid" aria-label="Ringkasan madrasah">
         <article class="ks-summary-card"><span>PRESENSI SISWA HARIAN</span><strong>- %</strong></article>
         <article class="ks-summary-card"><span>KEHADIRAN GURU &amp; STAF HARIAN</span><strong>- %</strong></article>
-        <article class="ks-summary-card"><span>REALISASI SPP SEMESTER INI</span><strong>Rp -</strong></article>
-        <article class="ks-summary-card"><span>TUNGGAKAN SPP BERJALAN</span><strong>Rp -</strong></article>
+        <article class="ks-summary-card"><span>REALISASI INFAQ &amp; TAGIHAN SEMESTER INI</span><strong>Rp -</strong></article>
+        <article class="ks-summary-card"><span>TUNGGAKAN TAGIHAN BERJALAN</span><strong>Rp -</strong></article>
     </section>
     <div class="ks-dashboard-grid">
         <div class="ks-dashboard-primary">

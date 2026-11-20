@@ -18,8 +18,10 @@ export default defineConfig({
                 'resources/css/siswa/tagihan-spp.css',
                 'resources/css/operator/operator.css',
                 'resources/css/keuangan/keuangan.css',
+                'resources/css/keuangan/revisi.css',
                 'resources/css/perpustakaan/perpustakaan.css',
-                'resources/js/app.js'
+                'resources/js/app.js',
+                'resources/js/frontend-demo.js'
             ],
             refresh: true,
         }),

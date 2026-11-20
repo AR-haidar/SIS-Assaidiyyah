@@ -4,7 +4,7 @@
 <title>@yield('title') - SIS MI Assa'idiyyah</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-@vite(['resources/css/app.css', 'resources/css/siswa/siswa.css', 'resources/css/keuangan/keuangan.css', 'resources/js/app.js'])
+@vite(['resources/css/app.css', 'resources/css/siswa/siswa.css', 'resources/css/keuangan/keuangan.css', 'resources/css/keuangan/revisi.css', 'resources/js/app.js', 'resources/js/frontend-demo.js'])
 </head><body class="siswa-page keuangan-page">
 @include('keuangan.partials.topbar')
 <div class="siswa-layout">@include('keuangan.partials.sidebar')

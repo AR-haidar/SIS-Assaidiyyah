@@ -66,6 +66,7 @@
 .operator-student-table-card table{width:100%;border-collapse:collapse;text-align:left}
 .operator-student-table-card thead{background:#f8fafc}
 .operator-student-table-card th{height:36px;padding:0 14px;color:#173f75;font-size:10px;font-weight:650;letter-spacing:.35px;text-transform:uppercase;white-space:nowrap}
+.operator-student-table-card th{border-bottom:1px solid #dce5f0}.operator-student-table-card th+th,.operator-student-table-card td+td{border-left:1px solid #edf1f6}.operator-student-table-card td{height:42px;padding:8px 14px;border-bottom:1px solid #e7edf5;color:#173f75;font-size:12px;line-height:1.45;vertical-align:middle}.operator-student-table-card tbody tr:nth-child(even){background:#fbfcfe}.operator-student-table-card tbody tr:hover{background:#f3f7fc}.operator-student-table-card tbody tr:last-child td{border-bottom:0}.operator-student-table-card td a{color:#075bb5;font-weight:600;text-decoration:none}.operator-student-table-card td a:hover{text-decoration:underline}.operator-student-table-footer{border-top:1px solid #e7edf5}
 .operator-student-empty{height:244px;padding:24px;text-align:center;vertical-align:middle}
 .operator-student-empty strong{display:block;color:#173f75;font-size:17px;line-height:1.35;font-weight:650}
 .operator-student-empty p{margin:5px 0 23px;color:#7185a1;font-size:12px;line-height:1.7}

@@ -2,7 +2,7 @@
 @section('title', 'Detail Pembayaran')
 @section('content')
 <section class="keuangan-payment-detail">
-    <header class="keuangan-detail-heading"><h1>Detail Pembayaran</h1><p>Peninjauan bukti transaksi dan penetapan status verifikasi SPP siswa</p></header>
+    <header class="keuangan-detail-heading"><h1>Detail Pembayaran</h1><p>Peninjauan bukti transaksi dan penetapan status pembayaran</p></header>
     <div class="keuangan-detail-grid">
         <div class="keuangan-detail-main">
             <section class="keuangan-detail-card">
@@ -22,8 +22,8 @@
                     <span class="keuangan-detail-method-badge">Metode: Transfer / Tunai</span>
                 </header>
                 <div class="keuangan-detail-payment-fields">
-                    <div class="keuangan-detail-data"><span>Jenis Iuran</span><strong class="keuangan-detail-value">SPP Bulanan <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18l-2 10H5L3 7z"/><path d="M7 7a5 5 0 0 1 10 0M9 12h.01M15 12h.01"/></svg></strong></div>
-                    <div class="keuangan-detail-data"><span>Periode SPP</span><strong>&mdash;</strong></div>
+                    <div class="keuangan-detail-data"><span>Jenis Tagihan</span><strong class="keuangan-detail-value">Infaq / tagihan terkait</strong></div>
+                    <div class="keuangan-detail-data"><span>Periode Tagihan</span><strong>&mdash;</strong></div>
                     <div class="keuangan-detail-amount"><span>Total Nominal Pembayaran</span><div><strong>Rp &mdash;</strong><small>Tagihan Pokok</small></div></div>
                     <div class="keuangan-detail-data"><span>Metode Pembayaran</span><strong>&mdash; (Transfer Bank / Tunai)</strong></div>
                     <div class="keuangan-detail-data"><span>Nomor Referensi Transaksi</span><strong>&mdash;</strong></div>

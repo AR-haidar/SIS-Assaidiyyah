@@ -1,0 +1,5 @@
+@extends('operator.layout')
+@section('title', 'Edit Penempatan Siswa')
+@section('content')
+<section class="operator-student-create"><a class="operator-student-back" href="{{ url('/operator/data-siswa') }}">Kembali ke Data Siswa</a><h1>Edit Data Siswa</h1><form class="operator-student-create-form" data-student-placement="{{ $studentId }}"><section class="operator-student-step"><header><div><h2>Penempatan Kelas</h2><p>Perbarui kelas dan rombongan belajar siswa</p></div></header><div class="operator-student-fields operator-student-academic"><label>Kelas <b>*</b><select name="kelas" required><option value="">Pilih Kelas</option>@foreach(range(1,6) as $kelas)<option value="{{ $kelas }}">Kelas {{ $kelas }}</option>@endforeach</select></label><label>Rombel <b>*</b><select name="rombel" required disabled><option value="">Pilih kelas terlebih dahulu</option><option>A</option><option>B</option><option>C</option></select></label></div></section><div class="operator-student-create-actions"><a href="{{ url('/operator/data-siswa') }}">Batal</a><button class="primary">Simpan Perubahan</button></div></form></section>
+@endsection

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/css/siswa/siswa.css', 'resources/css/siswa/tagihan-spp.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/siswa/siswa.css', 'resources/css/siswa/tagihan-spp.css', 'resources/css/keuangan/revisi.css', 'resources/js/app.js', 'resources/js/frontend-demo.js'])
 </head>
 <body class="siswa-page">
 
@@ -44,6 +44,7 @@
                 <span class="topbar-user-role">Siswa</span>
                 <span class="topbar-user-nip">NIP. 198204122010011008</span>
             </div>
+            <a class="student-bell" href="#daftar-tagihan" aria-label="Notifikasi tagihan"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10 21h4"/></svg><b data-bill-count>2</b></a>
             <div class="topbar-avatar-box" title="Profil Saya">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
@@ -85,13 +86,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
                     </svg>
-                    Tagihan SPP
-                </a>
-                <a href="#" class="sidebar-nav-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                    </svg>
-                    Perpustakaan Digital
+                    Tagihan
                 </a>
             </nav>
             <div class="sidebar-footer">
@@ -115,7 +110,8 @@
             {{-- 1. Header Halaman --}}
             <div class="spp-page-header">
                 <h1 class="spp-page-title">Tagihan</h1>
-                <p class="spp-page-sub">Informasi rekapitulasi tagihan SPP siswa</p>
+                <p class="spp-page-sub">Informasi seluruh tagihan dan status pembayaran siswa</p>
+                <div class="frontend-bill-alert" data-dashboard-bills></div>
             </div>
 
             {{-- 2. Card Profil Siswa Singkat (Horizontal) --}}
@@ -177,16 +173,11 @@
                 </div>
 
                 <div class="spp-filter-group">
-                    <label class="spp-filter-label">Bulan Tagihan</label>
+                    <label class="spp-filter-label">Jenis Tagihan</label>
                     <div class="spp-select-wrapper">
                         <select class="spp-select-input">
-                            <option value="all" selected>Semua Bulan</option>
-                            <option value="7">Juli</option>
-                            <option value="8">Agustus</option>
-                            <option value="9">September</option>
-                            <option value="10">Oktober</option>
-                            <option value="11">November</option>
-                            <option value="12">Desember</option>
+                            <option value="all" selected>Semua Jenis</option>
+                            <option>Infaq</option><option>Uang Buku</option><option>Wisata</option><option>Seragam</option><option>Lainnya</option>
                         </select>
                         <span class="spp-select-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -202,7 +193,8 @@
                         <select class="spp-select-input">
                             <option value="all" selected>Semua Status</option>
                             <option value="lunas">Lunas</option>
-                            <option value="belum">Belum Bayar</option>
+                            <option value="belum">Belum Dibayar</option>
+                            <option value="overdue">Jatuh Tempo</option>
                             <option value="pending">Menunggu Verifikasi</option>
                         </select>
                         <span class="spp-select-icon">
@@ -213,7 +205,7 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn-terapkan-spp-filter">
+                <button type="button" class="btn-terapkan-spp-filter" data-apply-student-filters>
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
                     </svg>
@@ -223,26 +215,20 @@
 
             {{-- 5. Card Tabel Tagihan & Riwayat Pembayaran --}}
             <div class="spp-table-card">
+                <span id="daftar-tagihan"></span>
                 <div class="spp-table-container">
                     <table class="spp-table">
                         <thead>
                             <tr>
-                                <th>PERIODE</th>
+                                <th>JENIS TAGIHAN</th>
                                 <th>NOMINAL</th>
                                 <th>JATUH TEMPO</th>
                                 <th>STATUS</th>
                                 <th>AKSI</th>
                             </tr>
                         </thead>
+                        <tbody data-student-invoices></tbody>
                     </table>
-
-                    {{-- Empty State Sesuai Foto Referensi --}}
-                    <div class="spp-table-empty-container">
-                        <div class="spp-empty-main-title">Tidak Ada Tagihan Ditemukan</div>
-                        <div class="spp-empty-sub-desc">
-                            Daftar tagihan atau status setoran untuk parameter filter yang dipilih belum tersedia di server madrasah.
-                        </div>
-                    </div>
                 </div>
             </div>
 

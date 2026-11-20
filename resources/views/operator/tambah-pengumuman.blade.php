@@ -22,7 +22,7 @@
                     <label class="operator-announcement-field operator-announcement-editor"><span>Editor Naskah Pengumuman <b>*</b></span><textarea placeholder="Ketikkan isi lengkap pengumuman resmi di sini..." required></textarea></label>
                     <label class="operator-announcement-field operator-announcement-attachment"><span>Unggah Dokumen Lampiran Resmi (PDF)</span><span class="operator-announcement-upload-box">
                         <span class="operator-announcement-upload-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M20 16.5v2A1.5 1.5 0 0 1 18.5 20h-13A1.5 1.5 0 0 1 4 18.5v-2"/></svg></span>
-                        <strong>Unggah salinan surat edaran bertandatangan (PDF, maks. 15MB)</strong><small>Tarik &amp; lepas file di sini, atau klik untuk memilih</small><input type="file" accept="application/pdf,.pdf" aria-label="Unggah dokumen lampiran PDF">
+                        <strong>Unggah lampiran (JPG, PNG, PDF, DOC, DOCX)</strong><small data-file-name>Foto atau dokumen, maks. 15MB</small><input type="file" accept="image/jpeg,image/png,.pdf,.doc,.docx" aria-label="Unggah foto atau dokumen lampiran">
                     </span></label>
                 </div>
             </section>

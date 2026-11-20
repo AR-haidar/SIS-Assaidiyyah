@@ -81,7 +81,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><path d="M16 15h2"/>
                     </svg>
-                    Keuangan &amp; SPP
+                    Keuangan &amp; Tagihan
                 </a>
             </nav>
             <div class="sidebar-footer">
@@ -147,7 +147,7 @@
                 <div class="wali-table-scroll">
                     <table class="wali-students-table">
                         <thead>
-                            <tr><th>No</th><th>NISN</th><th>Nama Siswa</th><th>Jenis Kelamin</th><th>Kehadiran (%)</th><th>Status SPP</th></tr>
+                            <tr><th>No</th><th>NISN</th><th>Nama Siswa</th><th>Jenis Kelamin</th><th>Kehadiran (%)</th><th>Status Tagihan</th></tr>
                         </thead>
                         <tbody>
                             @for ($row = 1; $row <= 5; $row++)

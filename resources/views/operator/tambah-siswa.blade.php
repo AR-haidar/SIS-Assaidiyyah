@@ -8,14 +8,15 @@
         </a>
         <h1>Formulir Pembaruan Data Siswa</h1>
 
-        <form class="operator-student-create-form">
+        <form class="operator-student-create-form" data-student-create>
             <section class="operator-student-step">
                 <header><div><h2>Informasi Akademik &amp; Penempatan Kelas</h2><p>Keterkaitan penempatan kelas dan sinkronisasi sistem siswa</p></div><span>Langkah 1/4</span></header>
                 <div class="operator-student-fields operator-student-academic">
                     <label>Nomor Induk Siswa Lokal (NIS) <small>(Otomatis/Manual)</small><input type="text" placeholder="Contoh: 2425001"><small>Format registrasi internal MI Assaidiyyah</small></label>
                     <label>Nomor Induk Siswa Nasional (NISN) <b>*</b><input type="text" placeholder="10 digit nomor NISN Kemenag"><small>Wajib valid terdaftar pada database</small></label>
                     <label>Tahun Masuk / Angkatan <b>*</b><select><option>Pilih Tahun Masuk</option></select></label>
-                    <label>Kelas <b>*</b><select><option>Pilih Kelas</option></select></label>
+                    <label>Kelas <b>*</b><select name="kelas" required><option value="">Pilih Kelas</option>@foreach (range(1, 6) as $kelas)<option value="{{ $kelas }}">Kelas {{ $kelas }}</option>@endforeach</select></label>
+                    <label>Rombel <b>*</b><select name="rombel" required disabled><option value="">Pilih kelas terlebih dahulu</option><option>A</option><option>B</option><option>C</option></select></label>
                     <fieldset><legend>Status Masuk <b>*</b></legend><label><input type="radio" name="entry-status" value="baru"> Siswa Baru</label><label><input type="radio" name="entry-status" value="mutasi"> Pindahan / Mutasi</label></fieldset>
                 </div>
             </section>
@@ -55,7 +56,7 @@
             <div class="operator-student-create-actions">
                 <a href="{{ url('/operator/data-siswa') }}">Batal</a>
                 <button type="button" class="secondary">Simpan sebagai Draf</button>
-                <button type="button" class="primary"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h9"/><path d="m16 3 5 5-9 9-4 1 1-4z"/></svg>Simpan &amp; Verifikasi Data Siswa</button>
+                <button type="submit" class="primary"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h9"/><path d="m16 3 5 5-9 9-4 1 1-4z"/></svg>Simpan &amp; Verifikasi Data Siswa</button>
             </div>
         </form>
     </section>

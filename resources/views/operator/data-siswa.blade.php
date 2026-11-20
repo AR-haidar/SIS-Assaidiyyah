@@ -21,6 +21,8 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
                 <input type="search" name="search" placeholder="Cari nama siswa atau NISN" aria-label="Cari nama siswa atau NISN">
             </label>
+            <select aria-label="Filter Kelas" data-student-filter="kelas"><option value="">Semua Kelas</option>@foreach(range(1,6) as $kelas)<option value="{{ $kelas }}">Kelas {{ $kelas }}</option>@endforeach</select>
+            <select aria-label="Filter Rombel" data-student-filter="rombel"><option value="">Semua Rombel</option><option>A</option><option>B</option><option>C</option></select>
             <div class="operator-student-filter-actions">
                 <button class="operator-student-reset" type="reset">Reset</button>
                 <button class="operator-primary-button" type="submit">Terapkan Filter</button>
@@ -32,12 +34,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>No</th><th>Nama Siswa</th><th>NIS / NISN</th><th>Kelas</th><th>Jenis Kelamin</th><th>Status Kesiswaan</th>
+                            <th>No</th><th>Nama Siswa</th><th>NIS / NISN</th><th>Kelas</th><th>Rombel</th><th>Jenis Kelamin</th><th>Status Kesiswaan</th><th>Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody data-operator-students>
                         <tr>
-                            <td colspan="6" class="operator-student-empty">
+                            <td colspan="8" class="operator-student-empty">
                                 <strong>Belum Ada Data Siswa Dimuat</strong>
                                 <p>Gunakan tombol di atas untuk menambah santri baru secara manual<br class="operator-student-desktop-break"> atau sinkronkan data dari pangkalan data EMIS Kemenag.</p>
                                 <a class="operator-primary-button" href="{{ url('/operator/data-siswa/tambah') }}">
@@ -50,7 +52,7 @@
                 </table>
             </div>
             <footer class="operator-student-table-footer">
-                <span>Menampilkan <strong>0</strong> dari <strong>0</strong> siswa</span>
+                <span>Menampilkan <strong data-visible-students>0</strong> dari <strong data-total-students>0</strong> siswa</span>
                 <nav aria-label="Navigasi halaman">
                     <button type="button" aria-label="Halaman sebelumnya" disabled>&lsaquo;</button>
                     <span class="operator-current-page">1</span>

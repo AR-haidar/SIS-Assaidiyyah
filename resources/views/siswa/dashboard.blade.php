@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/css/siswa/siswa.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/siswa/siswa.css', 'resources/css/keuangan/revisi.css', 'resources/js/app.js', 'resources/js/frontend-demo.js'])
 </head>
 <body class="siswa-page">
 
@@ -67,6 +67,7 @@
             </div>
 
             {{-- Avatar --}}
+            <a class="student-bell" href="{{ url('/siswa/tagihan-spp') }}" aria-label="Notifikasi tagihan"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10 21h4"/></svg><b data-bill-count>2</b></a>
             <div class="topbar-avatar-box" title="Profil Saya">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -137,7 +138,7 @@
                         <rect x="2" y="5" width="20" height="14" rx="2"/>
                         <line x1="2" y1="10" x2="22" y2="10"/>
                     </svg>
-                    Tagihan SPP
+                    Tagihan
                 </a>
             </nav>
 
@@ -317,9 +318,10 @@
 
                 {{-- Card Status Tagihan SPP --}}
                 <div class="card-spp">
+                    <div class="frontend-bill-alert" data-dashboard-bills>🔔 Ada tagihan yang belum dibayar. <a href="{{ url('/siswa/tagihan-spp') }}">Lihat detail tagihan</a></div>
                     <div class="card-section-header">
                         <div>
-                            <div class="card-section-title">Status Tagihan SPP</div>
+                            <div class="card-section-title">Status Tagihan Infaq &amp; Lainnya</div>
                         </div>
                     </div>
                     <div class="spp-body">
@@ -363,6 +365,7 @@
                             Riwayat Setoran
                         </a>
                     </div>
+                    <div class="student-finance-announcements" data-finance-announcements></div>
                 </div>
 
             </div>
