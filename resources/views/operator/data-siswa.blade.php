@@ -41,7 +41,7 @@
                         <tr>
                             <td colspan="8" class="operator-student-empty">
                                 <strong>Belum Ada Data Siswa Dimuat</strong>
-                                <p>Gunakan tombol di atas untuk menambah santri baru secara manual<br class="operator-student-desktop-break"> atau sinkronkan data dari pangkalan data EMIS Kemenag.</p>
+                                <p>Gunakan tombol di atas untuk menambah siswa baru secara manual<br class="operator-student-desktop-break"> atau sinkronkan data dari pangkalan data EMIS Kemenag.</p>
                                 <a class="operator-primary-button" href="{{ url('/operator/data-siswa/tambah') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a6 6 0 0 1 12 0v1M19 8v6M16 11h6"/></svg>
                                     Tambah Siswa Baru

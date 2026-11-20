@@ -1,9 +1,11 @@
 <section class="shared-announcement-controls" data-shared-announcement-controls data-announcement-source="{{ $announcementSource ?? (request()->is('keuangan/pengumuman*') || request()->is('siswa/dashboard') ? 'finance' : 'school') }}" aria-label="Ringkasan dan filter pengumuman">
+    @unless(($hideAnnouncementStats ?? false) || request()->is('siswa/dashboard') || request()->is('guru/dashboard') || request()->is('wali-kelas/dashboard'))
     <div class="shared-announcement-stats">
         @foreach ($announcementStats as $stat)
             <article><span>{{ $stat['label'] }}</span><strong data-announcement-stat="{{ $stat['key'] }}">{{ $stat['value'] }}</strong><i aria-hidden="true">{{ $loop->first ? '◉' : ($loop->last ? '▤' : '✓') }}</i></article>
         @endforeach
     </div>
+    @endunless
     <nav class="shared-announcement-tabs" aria-label="Kategori pengumuman">
         @foreach ($announcementTabs as $tab)
             <button type="button" class="{{ $loop->first ? 'active' : '' }}" data-announcement-tab="{{ $tab['value'] }}">{{ $tab['label'] }} (<span data-announcement-tab-count>{{ $tab['count'] ?? 0 }}</span>)</button>

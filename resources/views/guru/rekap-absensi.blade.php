@@ -17,7 +17,7 @@
     </section>
     <section class="guru-attendance-table-card">
         <div class="guru-attendance-table-heading"><h2>Riwayat Presensi Mandiri Pendidik</h2><span>0 data dimuat</span></div>
-        <div class="guru-table-scroll"><table class="guru-attendance-table"><thead><tr><th>No</th><th>Tanggal</th><th>Status Kehadiran</th><th>Keterangan</th><th>Validasi Tata Usaha</th></tr></thead></table></div>
+        <div class="guru-table-scroll"><table class="guru-attendance-table"><thead><tr><th>No</th><th>Tanggal</th><th>Status Kehadiran</th><th>Keterangan</th></tr></thead></table></div>
         <div class="guru-attendance-empty"><strong>Belum Ada Catatan Kehadiran untuk Periode Terpilih</strong><p>Data log kehadiran ditarik secara otomatis dari mesin presensi<br class="guru-desktop-break"> biometrik madrasah setelah rekonsiliasi harian oleh bagian Tata<br class="guru-desktop-break"> Usaha.</p></div>
     </section>
 @endsection

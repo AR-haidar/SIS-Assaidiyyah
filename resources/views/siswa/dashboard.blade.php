@@ -170,7 +170,7 @@
             <div class="dashboard-header">
                 <div class="dashboard-header-left">
                     <h1>Dashboard Siswa</h1>
-                    <p>Informasi akademik, presensi harian, dan administrasi kewajiban santri</p>
+                    <p>Informasi akademik, presensi harian, dan administrasi kewajiban siswa</p>
                 </div>
                 <div class="dashboard-header-right">
                     <div class="identity-card-btn">
@@ -197,16 +197,12 @@
                 </div>
             </div>
 
-            {{-- Card Identitas Santri --}}
+            {{-- Card Identitas Siswa --}}
             <div class="card-identitas">
                 <div class="card-section-header">
                     <div>
-                        <div class="card-section-title">Identitas Santri</div>
+                        <div class="card-section-title">Identitas Siswa</div>
                         <div class="card-section-sub">Data primer terdaftar pada database pokok madrasah (EMIS/Simpatika)</div>
-                    </div>
-                    <div class="sync-badge">
-                        <span class="sync-dot"></span>
-                        SINKRONISASI SISTEM
                     </div>
                 </div>
                 <div class="card-identitas-body">

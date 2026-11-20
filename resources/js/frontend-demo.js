@@ -86,7 +86,7 @@ function renderStudentInvoices() {
     const category = selectors[1]?.value; const status = selectors[2]?.value;
     if (category && category !== 'all') items = items.filter(item => category === 'Lainnya' ? !['Infaq', 'Uang Buku', 'Wisata', 'Seragam'].includes(item.type) : item.type === category);
     if (status && status !== 'all') items = items.filter(item => item.status === ({ lunas: 'Lunas', belum: 'Belum Dibayar', pending: 'Menunggu Verifikasi', overdue: 'Jatuh Tempo' }[status] || status));
-    body.innerHTML = items.length ? items.map(item => `<tr><td>${escapeHtml(item.type)}</td><td>Rp ${Number(item.amount).toLocaleString('id-ID')}</td><td>${escapeHtml(item.dueAt)}</td><td>${escapeHtml(item.status)}</td><td><button type="button" class="keuangan-button" data-invoice-detail="${escapeHtml(item.note || item.type)}">Lihat Detail</button></td></tr>`).join('') : `<tr><td colspan="5" class="spp-table-empty-container">Belum ada tagihan pada data demonstrasi.</td></tr>`;
+    body.innerHTML = items.length ? items.map(item => `<tr><td>${escapeHtml(item.type)}</td><td>Rp ${Number(item.amount).toLocaleString('id-ID')}</td><td>${escapeHtml(item.dueAt)}</td><td>${escapeHtml(item.status)}</td><td><button type="button" class="keuangan-button" data-invoice-detail="${escapeHtml(item.note || item.type)}">Lihat Detail</button></td></tr>`).join('') : `<tr><td colspan="5" class="spp-table-empty-container">Belum ada data tagihan untuk periode ini.</td></tr>`;
     body.querySelectorAll('[data-invoice-detail]').forEach(button => button.addEventListener('click', () => alert(button.dataset.invoiceDetail)));
 }
 function populatePaymentInvoices() {

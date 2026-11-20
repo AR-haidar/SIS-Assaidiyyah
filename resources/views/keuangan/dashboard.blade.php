@@ -3,7 +3,7 @@
 @section('content')
 <section class="keuangan-dashboard">
 <header class="keuangan-dashboard-heading"><div><h1>Dashboard Keuangan</h1><p>Ringkasan pemantauan transaksi seluruh kategori tagihan</p></div>
-<div class="keuangan-dashboard-actions"><a href="{{ url('/keuangan/tagihan/tambah') }}" class="keuangan-button keuangan-button-light">Input Tagihan</a><a href="{{ url('/keuangan/pembayaran-siswa') }}" class="keuangan-button keuangan-button-primary">Input Pembayaran</a></div></header>
+<div class="keuangan-dashboard-actions"><a href="{{ url('/keuangan/tagihan/tambah') }}" class="keuangan-button keuangan-button-light">Input Tagihan</a></div></header>
 <div class="keuangan-status-cards" aria-label="Ringkasan status pembayaran">
 <article class="keuangan-status-card"><span>Status Antrean</span><h2>Menunggu Verifikasi</h2><p><strong>&mdash;</strong> Transaksi</p></article>
 <article class="keuangan-status-card"><span>Status Valid</span><h2>Pembayaran Disetujui</h2><p><strong>&mdash;</strong> Transaksi</p></article>

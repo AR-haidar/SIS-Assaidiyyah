@@ -154,7 +154,10 @@
             </section>
 
             <section class="wali-finance-table-card" aria-label="Daftar status pembayaran siswa">
-                <div class="wali-finance-category-list">Kategori tagihan: Infaq · Uang Buku · Wisata · Seragam · Tagihan Lainnya</div>
+                <div class="wali-finance-category-list" aria-label="Kategori tagihan">
+                    <span class="wali-finance-category-label">Kategori Tagihan</span>
+                    <div class="wali-finance-category-pills"><span>Infaq</span><span>Uang Buku</span><span>Wisata</span><span>Seragam</span><span>Tagihan Lainnya</span></div>
+                </div>
                 <div class="wali-finance-table-scroll">
                     <table class="wali-finance-table">
                         <thead><tr><th>Nama Siswa</th><th>NISN</th><th>Kelas</th><th>Status Tagihan</th><th>Aksi</th></tr></thead>

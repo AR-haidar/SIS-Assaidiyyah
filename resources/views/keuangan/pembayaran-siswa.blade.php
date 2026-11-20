@@ -5,7 +5,6 @@
     <header class="keuangan-payments-heading">
         <div><h1>Rekapitulasi Pembayaran Siswa</h1><p>Daftar seluruh tagihan dan status pembayaran siswa</p></div>
     </header>
-    <details class="keuangan-inline-payment"><summary class="keuangan-button keuangan-button-primary">Input Pembayaran</summary><form class="keuangan-revision-form" data-demo-form="payment"><label>Pilih Tagihan<select name="invoice" required><option value="">Pilih siswa dan tagihan</option></select></label><label>Nominal Pembayaran<input name="amount" type="number" min="1" required></label><label>Tanggal Pembayaran<input name="paidAt" type="date" required></label><label>Status<select name="status"><option>Menunggu Verifikasi</option><option>Lunas</option></select></label><label class="form-wide">Bukti pembayaran<input type="file" accept="image/jpeg,image/png,.pdf"><small data-file-name>JPG, PNG, PDF</small></label><div class="form-wide form-actions"><button class="keuangan-button keuangan-button-primary">Simpan Pembayaran</button></div></form></details>
 
     <section class="keuangan-payment-stats" aria-label="Ringkasan pembayaran">
         <article class="keuangan-payment-stat"><span class="keuangan-payment-stat-icon blue"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h11v17H5V7z"/><path d="M8 4v4H5M9 12h7M9 16h7M9 8h4"/></svg></span><span>Semua Pengajuan</span></article>

@@ -149,7 +149,7 @@
                 </div>
                 <div class="wali-data-empty">
                     <strong>Belum Ada Data Siswa Dimuat</strong>
-                    <p>Daftar peserta didik kelas binaan akan disinkronkan langsung dari<br class="desktop-break"> basis data kesiswaan madrasah (EMIS/Simpatika).</p>
+                    <p>Daftar peserta didik kelas binaan akan disinkronkan langsung dari<br class="desktop-break"> basis data kesiswaan madrasah.</p>
                 </div>
             </section>
         </main>

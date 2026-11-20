@@ -29,6 +29,9 @@ body :is(.operator-teacher-table-scroll,.operator-student-table-scroll,.operator
 body :is(.operator-teacher-table-scroll,.operator-student-table-scroll,.operator-announcement-table-scroll,.wali-attendance-table-scroll,.wali-finance-table-scroll,.wali-data-table-scroll) tbody tr:hover td{background:#f2f7ff}
 body :is(.operator-teacher-table-scroll,.operator-student-table-scroll,.operator-announcement-table-scroll,.wali-attendance-table-scroll,.wali-finance-table-scroll,.wali-data-table-scroll) tbody tr:last-child td{border-bottom:0}
 
+/* Minimum readable type size on roles called out in the UI revision. */
+body:is(.operator-page,.keuangan-page,.kepala-sekolah-page) :is(p,span,small,label,button,a,th,td,input,select,textarea){font-size:12px!important}
+
 .shared-announcement-empty{min-height:190px;padding:24px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:#fff;text-align:center}
 .shared-announcement-icon{width:44px;height:44px;margin-bottom:3px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #dce8f6;border-radius:12px;background:#edf4fc;color:#3674b9}
 .shared-announcement-empty>strong,.shared-announcement-empty>.empty-title{margin:0;color:#173f75;font-size:16px;line-height:1.4;font-weight:600}

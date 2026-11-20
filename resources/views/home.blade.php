@@ -37,8 +37,8 @@
                 <a href="#beranda" class="nav-link active">Beranda</a>
                 <a href="#profil" class="nav-link">Profile &amp; Visi Misi</a>
                 <a href="#program" class="nav-link">Program</a>
-                <a href="#fasilitas" class="nav-link">Fasilitas</a>
-                <a href="#berita" class="nav-link">Berita</a>
+                <a href="#guru" class="nav-link">Profil Guru</a>
+                <a href="#prestasi" class="nav-link">Prestasi Siswa</a>
                 <a href="{{ url('/perpustakaan-digital') }}" data-section="#perpustakaan" class="nav-link">Perpustakaan</a>
                 <a href="#kontak" class="nav-link">Kontak</a>
             </nav>
@@ -92,7 +92,7 @@
                 </h1>
 
                 <p class="hero-description-text">
-                    [Deskripsi Sekolah: Platform resmi layanan administrasi madrasah, pusat literasi digital, pemantauan presensi dan akademik terpadu bagi seluruh santri, wali murid, pendidik, dan tenaga kependidikan.]
+                    Portal informasi, akademik, administrasi, dan layanan digital MI Assaidiyyah untuk siswa, orang tua, guru, dan tenaga kependidikan.
                 </p>
 
                 {{-- Skeleton line decoration --}}
@@ -106,7 +106,7 @@
                     <a href="#program" class="btn-hero-secondary">Program Unggulan</a>
                 </div>
 
-                <div class="hero-footer-meta">
+                <div class="hero-footer-meta" hidden>
                     <span>Kurikulum Merdeka &amp; Kemenag RI</span>
                     <span class="meta-bullet">•</span>
                     <span>Portal Terintegrasi 7 Peran</span>
@@ -125,10 +125,10 @@
                                 <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
                             </svg>
                         </div>
-                        <h3 class="hero-photo-title">[Foto Gedung &amp; Lingkungan Madrasah]</h3>
-                        <p class="hero-photo-sub">Slot foto resmi MI Assaidiyyah (Rasio 4:3, format lanskap)</p>
+                        <h3 class="hero-photo-title" hidden>[Foto Gedung &amp; Lingkungan Madrasah]</h3>
+                        <p class="hero-photo-sub" hidden>Slot foto resmi MI Assaidiyyah (Rasio 4:3, format lanskap)</p>
                     </div>
-                    <div class="hero-photo-bottom-meta">
+                    <div class="hero-photo-bottom-meta" hidden>
                         <span>[Keterangan Foto Madrasah]</span>
                         <span>Dimensi Rekomendasi: 800 × 600</span>
                     </div>
@@ -152,19 +152,12 @@
                 <div class="visimisi-card">
                     <div class="visimisi-card-header">
                         <span class="visimisi-card-title-left">VISI UTAMA</span>
-                        <span class="visimisi-card-title-right">[Visi Madrasah]</span>
+                        <span class="visimisi-card-title-right">MI Assaidiyyah</span>
                     </div>
                     <div class="visimisi-card-body">
                         <div class="visi-quote-box">
-                            <p class="visi-quote-text">“[Pernyataan Visi Resmi MI Assaidiyyah]”</p>
+                            <p class="visi-quote-text">Membentuk Pribadi Islami Nan Mandiri, Berbudi Pekerti dan Bermoderasi di Era Digitalisasi</p>
                         </div>
-                        <p class="visi-explanation">
-                            [Deskripsi penjabaran orientasi nilai religius, keunggulan sains, dan pembentukan akhlak karimah santri dasar.]
-                        </p>
-                    </div>
-                    <div class="visimisi-card-footer">
-                        <span>Status: Menunggu Konfirmasi Pimpinan</span>
-                        <span>Dokumen Renstra</span>
                     </div>
                 </div>
 
@@ -172,7 +165,7 @@
                 <div class="visimisi-card">
                     <div class="visimisi-card-header">
                         <span class="visimisi-card-title-left">MISI MADRASAH</span>
-                        <span class="visimisi-card-title-right">Struktur Komponen Misi</span>
+                        <span class="visimisi-card-title-right">Komitmen Madrasah</span>
                     </div>
                     <div class="visimisi-card-body-list">
                         
@@ -180,8 +173,7 @@
                         <div class="misi-list-item">
                             <div class="misi-number-badge">01</div>
                             <div class="misi-item-text">
-                                <h4 class="misi-item-title">[Judul Komponen Misi 1]</h4>
-                                <p class="misi-item-desc">[Deskripsi ringkas pelaksanaan program kurikulum dan pembiasaan amaliyah Islamiyah.]</p>
+                                <p class="misi-item-desc">Menanamkan keimanan dan ketakwaan melalui pengamalan karakter keislaman.</p>
                             </div>
                         </div>
 
@@ -189,8 +181,7 @@
                         <div class="misi-list-item">
                             <div class="misi-number-badge">02</div>
                             <div class="misi-item-text">
-                                <h4 class="misi-item-title">[Judul Komponen Misi 2]</h4>
-                                <p class="misi-item-desc">[Deskripsi penguatan literasi digital, sains madrasah, dan penguasaan bahasa dasar.]</p>
+                                <p class="misi-item-desc">Membina kemandirian peserta didik melalui kegiatan pembiasaan kewirausahaan dan pengembangan diri.</p>
                             </div>
                         </div>
 
@@ -198,10 +189,12 @@
                         <div class="misi-list-item">
                             <div class="misi-number-badge">03</div>
                             <div class="misi-item-text">
-                                <h4 class="misi-item-title">[Judul Komponen Misi 3]</h4>
-                                <p class="misi-item-desc">[Deskripsi pembinaan tata kelola madrasah yang akuntabel, transparan, dan partisipatif.]</p>
+                                <p class="misi-item-desc">Mengoptimalkan proses pembelajaran dan bimbingan.</p>
                             </div>
                         </div>
+
+                        <div class="misi-list-item"><div class="misi-number-badge">04</div><div class="misi-item-text"><p class="misi-item-desc">Mengembangkan ilmu pengetahuan dan teknologi berdasarkan minat, bakat, dan potensi.</p></div></div>
+                        <div class="misi-list-item"><div class="misi-number-badge">05</div><div class="misi-item-text"><p class="misi-item-desc">Menjalin kerja sama yang harmonis antarwarga sekolah dan lembaga lain yang terkait.</p></div></div>
 
                     </div>
                 </div>
@@ -218,7 +211,6 @@
                     <span class="section-pre-tag">KURIKULUM &amp; EKSTRAKURIKULER</span>
                     <h2 class="section-heading">Program Unggulan Madrasah</h2>
                 </div>
-                <div class="section-title-right-label">[Pola Struktur Komponen Program]</div>
             </div>
 
             <div class="programs-three-grid">
@@ -233,17 +225,15 @@
                                 <circle cx="9" cy="9" r="2"/>
                                 <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
                             </svg>
-                            <span>[Placeholder Foto Program]</span>
                         </div>
                     </div>
                     <div class="program-box-body">
                         <span class="program-category-pill">Program Utama</span>
-                        <h3 class="program-item-name">[Nama Program 1]</h3>
-                        <p class="program-item-summary">[Deskripsi ringkas program unggulan, target kompetensi siswa, serta integrasi nilai keislaman dan akademik.]</p>
+                        <h3 class="program-item-name">Pembiasaan Keislaman</h3>
+                        <p class="program-item-summary">Penguatan karakter, keimanan, dan amaliyah Islam dalam kegiatan belajar sehari-hari.</p>
                     </div>
                     <div class="program-box-footer">
                         <span class="program-jenjang-text">Jenjang: Kelas I - VI</span>
-                        <a href="#" class="program-detail-link">Detail Program &rarr;</a>
                     </div>
                 </div>
 
@@ -257,17 +247,15 @@
                                 <circle cx="9" cy="9" r="2"/>
                                 <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
                             </svg>
-                            <span>[Placeholder Foto Program]</span>
                         </div>
                     </div>
                     <div class="program-box-body">
                         <span class="program-category-pill">Program Utama</span>
-                        <h3 class="program-item-name">[Nama Program 2]</h3>
-                        <p class="program-item-summary">[Deskripsi ringkas program penguatan tahfidz quran, hafalan juz amma, dan pemahaman dasar tajwid.]</p>
+                        <h3 class="program-item-name">Tahfidz Al-Qur’an</h3>
+                        <p class="program-item-summary">Pembinaan hafalan Al-Qur’an dan pemahaman dasar tajwid sesuai jenjang siswa.</p>
                     </div>
                     <div class="program-box-footer">
                         <span class="program-jenjang-text">Jenjang: Reguler &amp; Khusus</span>
-                        <a href="#" class="program-detail-link">Detail Program &rarr;</a>
                     </div>
                 </div>
 
@@ -281,17 +269,15 @@
                                 <circle cx="9" cy="9" r="2"/>
                                 <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
                             </svg>
-                            <span>[Placeholder Foto Program]</span>
                         </div>
                     </div>
                     <div class="program-box-body">
                         <span class="program-category-pill">Pengembangan Minat</span>
-                        <h3 class="program-item-name">[Nama Program 3]</h3>
-                        <p class="program-item-summary">[Deskripsi program literasi digital, sains anak, seni kaligrafi Islam, dan kegiatan kepramukaan madrasah.]</p>
+                        <h3 class="program-item-name">Literasi dan Pengembangan Minat</h3>
+                        <p class="program-item-summary">Kegiatan untuk mengembangkan literasi, sains, seni, dan kepramukaan siswa.</p>
                     </div>
                     <div class="program-box-footer">
-                        <span class="program-jenjang-text">Peminatan Santri</span>
-                        <a href="#" class="program-detail-link">Detail Program &rarr;</a>
+                        <span class="program-jenjang-text">Kegiatan Pengembangan Diri</span>
                     </div>
                 </div>
 
@@ -301,165 +287,34 @@
         {{-- ========================================================
              PART 2 — SECTION 2: FASILITAS PENUNJANG BELAJAR
              ======================================================== --}}
-        <section class="section-block" id="fasilitas">
+        <section class="section-block" id="guru">
             <div class="section-title-wrap">
-                <span class="section-pre-tag">SARANA &amp; PRASARANA</span>
-                <h2 class="section-heading">Fasilitas Penunjang Belajar</h2>
-                <p class="section-caption">Prasarana penunjang kenyamanan kegiatan belajar mengajar santri di lingkungan madrasah.</p>
+                <span class="section-pre-tag">TENAGA PENDIDIK</span>
+                <h2 class="section-heading">Profil Guru</h2>
+                <p class="section-caption">Kenali tenaga pendidik dan staf yang mendampingi kegiatan belajar siswa.</p>
             </div>
-
-            <div class="facilities-four-grid">
-                
-                {{-- Fasilitas 1: Ruang Kelas --}}
-                <div class="facility-box-card">
-                    <div class="facility-img-box">
-                        <div class="f-img-icon-wrap">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/>
-                                <path d="M2 20h20"/>
-                                <path d="M14 12v.01"/>
-                            </svg>
-                            <span>[Foto Ruang Kelas]</span>
-                        </div>
-                    </div>
-                    <div class="facility-box-body">
-                        <h3 class="facility-item-title">Ruang Kelas</h3>
-                        <p class="facility-item-desc">[Deskripsi fasilitas ruang kelas representatif dan ventilasi alami]</p>
-                    </div>
-                </div>
-
-                {{-- Fasilitas 2: Mushola --}}
-                <div class="facility-box-card">
-                    <div class="facility-img-box">
-                        <div class="f-img-icon-wrap">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2a4 4 0 0 0-4 4v2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-4V6a4 4 0 0 0-4-4z"/>
-                            </svg>
-                            <span>[Foto Mushola]</span>
-                        </div>
-                    </div>
-                    <div class="facility-box-body">
-                        <h3 class="facility-item-title">Mushola</h3>
-                        <p class="facility-item-desc">[Deskripsi sarana ibadah salat dhuha dan pembiasaan salat berjamaah]</p>
-                    </div>
-                </div>
-
-                {{-- Fasilitas 3: Perpustakaan --}}
-                <div class="facility-box-card">
-                    <div class="facility-img-box">
-                        <div class="f-img-icon-wrap">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                            </svg>
-                            <span>[Foto Perpustakaan]</span>
-                        </div>
-                    </div>
-                    <div class="facility-box-body">
-                        <h3 class="facility-item-title">Perpustakaan</h3>
-                        <p class="facility-item-desc">[Deskripsi ruang baca santri serta integrasi literasi digital madrasah]</p>
-                    </div>
-                </div>
-
-                {{-- Fasilitas 4: Lapangan --}}
-                <div class="facility-box-card">
-                    <div class="facility-img-box">
-                        <div class="f-img-icon-wrap">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="m4.93 4.93 4.24 4.24"/>
-                                <path d="m14.83 9.17 4.24-4.24"/>
-                                <path d="m14.83 14.83 4.24 4.24"/>
-                                <path d="m9.17 14.83-4.24 4.24"/>
-                            </svg>
-                            <span>[Foto Lapangan]</span>
-                        </div>
-                    </div>
-                    <div class="facility-box-body">
-                        <h3 class="facility-item-title">Lapangan</h3>
-                        <p class="facility-item-desc">[Deskripsi area upacara bendera, olahraga, dan aktivitas santri luar ruangan]</p>
-                    </div>
-                </div>
-
+            <div class="facilities-four-grid teacher-profile-grid">
+                <article class="facility-box-card"><div class="facility-img-box"><div class="f-img-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div></div><div class="facility-box-body"><h3 class="facility-item-title">Guru Kelas</h3><p class="facility-item-desc">Profil guru kelas dan informasi pendampingan belajar siswa.</p></div></article>
+                <article class="facility-box-card"><div class="facility-img-box"><div class="f-img-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div></div><div class="facility-box-body"><h3 class="facility-item-title">Guru Pendidikan Agama</h3><p class="facility-item-desc">Profil pendidik yang membina pembelajaran dan karakter keislaman.</p></div></article>
+                <article class="facility-box-card"><div class="facility-img-box"><div class="f-img-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div></div><div class="facility-box-body"><h3 class="facility-item-title">Guru Olahraga dan Seni</h3><p class="facility-item-desc">Profil pendidik yang mendukung kesehatan, kreativitas, dan minat siswa.</p></div></article>
+                <article class="facility-box-card"><div class="facility-img-box"><div class="f-img-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div></div><div class="facility-box-body"><h3 class="facility-item-title">Tenaga Kependidikan</h3><p class="facility-item-desc">Profil staf yang mendukung layanan dan kegiatan madrasah.</p></div></article>
             </div>
         </section>
 
         {{-- ========================================================
              PART 3 — SECTION 1: BERITA & AGENDA TERKINI
              ======================================================== --}}
-        <section class="section-block" id="berita">
-            <div class="section-title-split">
-                <div>
-                    <span class="section-pre-tag">INFORMASI PUBLIK</span>
-                    <h2 class="section-heading">Berita &amp; Agenda Terkini</h2>
-                </div>
+        <section class="section-block" id="prestasi">
+            <div class="section-title-wrap">
+                <span class="section-pre-tag">KATALOG SISWA</span>
+                <h2 class="section-heading">Katalog Prestasi Siswa</h2>
+                <p class="section-caption">Ruang informasi untuk menampilkan capaian dan karya siswa MI Assaidiyyah.</p>
             </div>
-
-            <div class="news-three-grid public-news-placeholder">
-                
-                {{-- Card Berita 1 --}}
-                <article class="news-box-card">
-                    <div class="news-img-placeholder">
-                        <div class="n-img-icon-wrap">
-                            <span>[Placeholder Foto Berita]</span>
-                        </div>
-                    </div>
-                    <div class="news-box-body">
-                        <div class="news-meta-category-date">
-                            <span class="n-category">[Kategori Berita]</span>
-                            <span class="n-bullet">•</span>
-                            <span class="n-date">[Tanggal Publikasi]</span>
-                        </div>
-                        <h3 class="news-item-title">[Judul Berita 1]</h3>
-                        <p class="news-item-summary">[Ringkasan atau kutipan teks berita resmi madrasah terkait kegiatan akademik, rapat wali murid, atau agenda madrasah.]</p>
-                        <a href="#" class="news-read-more-link">Baca Selengkapnya &rarr;</a>
-                    </div>
-                </article>
-
-                {{-- Card Berita 2 --}}
-                <article class="news-box-card">
-                    <div class="news-img-placeholder">
-                        <div class="n-img-icon-wrap">
-                            <span>[Placeholder Foto Berita]</span>
-                        </div>
-                    </div>
-                    <div class="news-box-body">
-                        <div class="news-meta-category-date">
-                            <span class="n-category">[Kategori Berita]</span>
-                            <span class="n-bullet">•</span>
-                            <span class="n-date">[Tanggal Publikasi]</span>
-                        </div>
-                        <h3 class="news-item-title">[Judul Berita 2]</h3>
-                        <p class="news-item-summary">[Ringkasan teks berita resmi madrasah terkait pengumuman asesmen sumatif, kalender akademik, dan kegiatan santri.]</p>
-                        <a href="#" class="news-read-more-link">Baca Selengkapnya &rarr;</a>
-                    </div>
-                </article>
-
-                {{-- Card Berita 3 --}}
-                <article class="news-box-card">
-                    <div class="news-img-placeholder">
-                        <div class="n-img-icon-wrap">
-                            <span>[Placeholder Foto Berita]</span>
-                        </div>
-                    </div>
-                    <div class="news-box-body">
-                        <div class="news-meta-category-date">
-                            <span class="n-category">[Kategori Berita]</span>
-                            <span class="n-bullet">•</span>
-                            <span class="n-date">[Tanggal Publikasi]</span>
-                        </div>
-                        <h3 class="news-item-title">[Judul Berita 3]</h3>
-                        <p class="news-item-summary">[Ringkasan teks pengumuman partisipasi keikutsertaan santri madrasah pada ajang kompetisi sains dan seni Islam.]</p>
-                        <a href="#" class="news-read-more-link">Baca Selengkapnya &rarr;</a>
-                    </div>
-                </article>
-
+            <div class="facilities-four-grid achievement-grid">
+                <article class="facility-box-card"><div class="facility-img-box"><div class="f-img-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4"/></svg></div></div><div class="facility-box-body"><h3 class="facility-item-title">Prestasi Akademik</h3><p class="facility-item-desc">Informasi lomba, olimpiade, dan capaian akademik siswa akan ditampilkan di sini.</p></div></article>
+                <article class="facility-box-card"><div class="facility-img-box"><div class="f-img-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4"/></svg></div></div><div class="facility-box-body"><h3 class="facility-item-title">Prestasi Keagamaan</h3><p class="facility-item-desc">Informasi capaian siswa dalam kegiatan dan kompetisi keagamaan akan ditampilkan di sini.</p></div></article>
+                <article class="facility-box-card"><div class="facility-img-box"><div class="f-img-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4"/></svg></div></div><div class="facility-box-body"><h3 class="facility-item-title">Prestasi Olahraga dan Seni</h3><p class="facility-item-desc">Informasi karya, pertandingan, dan kegiatan kreatif siswa akan ditampilkan di sini.</p></div></article>
             </div>
-            <div class="dashboard-announcement-panel public-announcement-panel">@include('shared.announcement-controls', ['announcementStats' => [['key' => 'total', 'label' => 'Total Publikasi', 'value' => 0], ['key' => 'active', 'label' => 'Informasi Terbit', 'value' => 0], ['key' => 'agenda', 'label' => 'Agenda Mendatang', 'value' => 0], ['key' => 'archive', 'label' => 'Arsip Berita', 'value' => 0]], 'announcementTabs' => [['value' => 'all', 'label' => 'Semua Informasi'], ['value' => 'announcement', 'label' => 'Pengumuman'], ['value' => 'agenda', 'label' => 'Agenda'], ['value' => 'news', 'label' => 'Berita']], 'announcementCategories' => ['Akademik', 'Kegiatan Madrasah', 'Kesiswaan', 'Informasi Umum'], 'announcementSearch' => 'Cari berita dan agenda madrasah'])<div class="shared-announcement-empty"><span class="shared-announcement-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h2l8 5V4l-8 5H5a2 2 0 0 0-2 2Z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg></span><strong>Belum Ada Pengumuman Diterbitkan</strong><p>Berita, agenda, dan pengumuman resmi madrasah akan ditampilkan di sini jika tersedia.</p></div></div>
         </section>
 
         {{-- ========================================================
@@ -620,8 +475,8 @@
                         <li><a href="#beranda">Beranda Utama</a></li>
                         <li><a href="#profil">Profil &amp; Visi Misi</a></li>
                         <li><a href="#program">Program Unggulan</a></li>
-                        <li><a href="#fasilitas">Fasilitas Madrasah</a></li>
-                        <li><a href="#berita">Warta Berita &amp; Agenda</a></li>
+                        <li><a href="#guru">Profil Guru</a></li>
+                        <li><a href="#prestasi">Katalog Prestasi Siswa</a></li>
                     </ul>
                 </div>
 

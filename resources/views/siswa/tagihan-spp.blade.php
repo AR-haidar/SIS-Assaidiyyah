@@ -125,7 +125,7 @@
                 </div>
                 <div class="spp-student-fields">
                     <div class="spp-banner-field">
-                        <span class="spp-banner-key">Nama Santri / Siswa</span>
+                        <span class="spp-banner-key">Nama Siswa</span>
                         <span class="spp-banner-val">—</span>
                     </div>
                     <div class="spp-banner-field">
@@ -227,7 +227,9 @@
                                 <th>AKSI</th>
                             </tr>
                         </thead>
-                        <tbody data-student-invoices></tbody>
+                        <tbody data-student-invoices>
+                            {{-- Backend integration target: render tagihan milik siswa aktif; frontend menampilkan empty state jika daftar kosong. --}}
+                        </tbody>
                     </table>
                 </div>
             </div>
