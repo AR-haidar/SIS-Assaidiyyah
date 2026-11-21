@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('divalidasi_oleh')->nullable()->constrained('pengguna');
             $table->timestamp('divalidasi_pada')->nullable();
             $table->enum('sumber', ['biometrik', 'manual']);
-            $table->foreignId('berkas_pendukung_id')->nullable()->constrained('berkas');
             $table->unique(['pegawai_id', 'tanggal'], 'uq_presensi_pegawai_tanggal');
             $table->index('tanggal', 'idx_presensi_pegawai_tanggal');
             $table->index('status_validasi', 'idx_presensi_pegawai_validasi');
