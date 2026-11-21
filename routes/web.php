@@ -153,3 +153,19 @@ Route::get('/perpustakaan-digital/buku/{id}', function ($id) {
 Route::get('/perpustakaan-digital/buku/{id}/baca', function ($id) {
     return view('halaman-baca-buku', ['bookId' => $id]);
 });
+
+Route::prefix('humas')->group(function () {
+    Route::get('/dashboard', fn () => view('humas.dashboard'));
+    Route::get('/guru/tambah', fn () => view('humas.guru-tambah'));
+    $modules = [
+        'beranda' => ['beranda', 'Kelola Konten Beranda', ['Badge / Label', 'Judul Utama', 'Deskripsi', 'Teks Tombol CTA', 'Banner Utama']],
+        'profil' => ['profil', 'Kelola Profil & Visi Misi', ['Profil Madrasah', 'Deskripsi Sekolah', 'Visi Madrasah', 'Daftar Misi']],
+        'program' => ['program', 'Kelola Program & Ekstrakurikuler', ['Nama Program', 'Kategori Program', 'Deskripsi', 'Gambar Program', 'Urutan Tampilan']],
+        'guru' => ['guru', 'Kelola Profil Guru Landing Page', ['Nama Guru', 'Jabatan / Bidang Mengajar', 'Deskripsi Singkat', 'Foto Guru', 'Urutan Tampilan']],
+        'prestasi' => ['prestasi', 'Kelola Prestasi Siswa', ['Judul Prestasi', 'Kategori Prestasi', 'Deskripsi', 'Nama Peraih', 'Tahun / Tanggal', 'Foto Dokumentasi']],
+        'kontak' => ['kontak', 'Kelola Kontak & Media Resmi', ['Alamat Sekolah', 'Nomor Telepon', 'WhatsApp', 'Email', 'Tautan Media Sosial']],
+    ];
+    foreach ($modules as $slug => [$view, $title, $fields]) {
+        Route::get('/' . $slug, fn () => view('humas.' . $view, ['slug' => $slug, 'title' => $title, 'fields' => $fields]));
+    }
+});

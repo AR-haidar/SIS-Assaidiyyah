@@ -6,7 +6,7 @@
     <title>Perpustakaan Digital - MI Assaidiyyah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/css/home.css', 'resources/css/perpustakaan-digital.css', 'resources/js/app.js'])
 </head>
 <body class="home-page dlib-public-page">

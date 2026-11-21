@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -7,8 +8,7 @@
 @source "../**/*.vue";
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Inter', sans-serif;
 }
 
 /* Consistent separators and readable rows for data tables across every role. */
@@ -34,9 +34,9 @@ body:is(.operator-page,.keuangan-page,.kepala-sekolah-page) :is(p,span,small,lab
 
 .shared-announcement-empty{min-height:190px;padding:24px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:#fff;text-align:center}
 .shared-announcement-icon{width:44px;height:44px;margin-bottom:3px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #dce8f6;border-radius:12px;background:#edf4fc;color:#3674b9}
-.shared-announcement-empty>strong,.shared-announcement-empty>.empty-title{margin:0;color:#173f75;font-size:16px;line-height:1.4;font-weight:600}
+.shared-announcement-empty>strong,.shared-announcement-empty>.empty-title{margin:0;color:#173f75;font-size:16px;line-height:1.4;font-weight: 400}
 .shared-announcement-empty>p,.shared-announcement-empty>.empty-desc{max-width:520px;margin:0;color:#718096;font-size:12px;line-height:1.6}
-.shared-announcement-action{min-height:34px;margin-top:6px;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:5px;background:#2168c6;color:#fff;font-size:11px;font-weight:600;text-decoration:none}
+.shared-announcement-action{min-height:34px;margin-top:6px;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:5px;background:#2168c6;color:#fff;font-size:11px;font-weight: 400;text-decoration:none}
 .shared-announcement-action:hover{background:#1959ad}
 .shared-announcement-empty-compact{min-height:110px;padding:14px 12px;gap:5px}
 .shared-announcement-empty-compact .shared-announcement-icon{width:32px;height:32px;border-radius:9px}
@@ -46,7 +46,7 @@ body:is(.operator-page,.keuangan-page,.kepala-sekolah-page) :is(p,span,small,lab
 .shared-announcement-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}
 .shared-announcement-stats article{position:relative;min-width:0;min-height:66px;padding:12px 40px 10px 14px;border:1px solid #e6ecf4;border-radius:7px;background:#fff;box-shadow:0 1px 2px rgba(23,63,117,.035)}
 .shared-announcement-stats article>span{display:block;color:#718096;font-size:9px;letter-spacing:.35px;text-transform:uppercase}
-.shared-announcement-stats article>strong{display:block;margin-top:4px;color:#173f75;font-size:20px;line-height:1;font-weight:650}
+.shared-announcement-stats article>strong{display:block;margin-top:4px;color:#173f75;font-size:20px;line-height:1;font-weight: 400}
 .shared-announcement-stats article>i{position:absolute;top:13px;right:12px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:5px;background:#edf4fc;color:#3979bd;font-size:15px;font-style:normal}
 .shared-announcement-tabs{min-height:44px;padding:8px 10px 0;display:flex;align-items:center;gap:6px;overflow-x:auto;border:1px solid #e6ecf4;border-bottom:0;border-radius:7px 7px 0 0;background:#fff}
 .shared-announcement-tabs button{min-height:27px;padding:0 12px;border:0;border-radius:15px;background:#f5f7fa;color:#718096;font:inherit;font-size:10px;white-space:nowrap;cursor:pointer}
@@ -58,13 +58,13 @@ body:is(.operator-page,.keuangan-page,.kepala-sekolah-page) :is(p,span,small,lab
 .shared-announcement-filter-button:hover{background:#dceaff}
 .student-finance-announcements>article{padding:12px 18px;border-top:1px solid #edf1f6;color:#536b89;font-size:11px}.student-finance-announcements>article h4{margin:0 0 4px;color:#173f75;font-size:13px}.student-finance-announcements>article p{margin:0 0 5px;line-height:1.5}.student-finance-announcements>article small{color:#718096;font-size:9px}
 .dashboard-announcement-panel{margin:16px 0;padding:16px;border:1px solid #e3e9f2;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(23,63,117,.04)}
-.dashboard-announcement-panel>h2{margin:0;padding-bottom:12px;border-bottom:1px solid #edf1f6;color:#173f75;font-size:15px;font-weight:650}
+.dashboard-announcement-panel>h2{margin:0;padding-bottom:12px;border-bottom:1px solid #edf1f6;color:#173f75;font-size:15px;font-weight: 400}
 .dashboard-announcement-panel .shared-announcement-empty{min-height:165px;background:#fff}
 .announcement-table-card{overflow:hidden;border:1px solid #e3e7ee;border-radius:7px;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.08)}
 .announcement-table-scroll{width:100%;overflow-x:auto}
 .announcement-table-scroll table{width:100%;border-collapse:collapse;text-align:left}
 .announcement-table-scroll thead{background:#f8fafc}
-.announcement-table-scroll th{height:38px;padding:0 12px;color:#536b89;font-size:9px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;white-space:nowrap}
+.announcement-table-scroll th{height:38px;padding:0 12px;color:#536b89;font-size:9px;font-weight: 400;letter-spacing:.3px;text-transform:uppercase;white-space:nowrap}
 .announcement-table-scroll td{padding:10px 12px;border-top:1px solid #edf1f6;color:#536b89;font-size:11px;vertical-align:middle}
 .announcement-table-scroll td small{display:block;margin-top:3px;color:#8794a8;font-size:9px;line-height:1.4}
 .announcement-table-scroll td[colspan]{height:230px;padding:0}
@@ -75,3 +75,18 @@ body:is(.operator-page,.keuangan-page,.kepala-sekolah-page) :is(p,span,small,lab
 @media(max-width:760px){.shared-announcement-filters{grid-template-columns:1fr 1fr}.shared-announcement-search{grid-column:1/-1}.shared-announcement-filter-button{grid-column:1/-1}.shared-announcement-stats{gap:7px}}
 @media(max-width:520px){.shared-announcement-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.shared-announcement-stats article{min-height:60px;padding:10px 36px 9px 10px}.shared-announcement-stats article>span{font-size:8px}.shared-announcement-stats article>strong{font-size:17px}.shared-announcement-filters{grid-template-columns:1fr;padding:9px}.shared-announcement-search,.shared-announcement-filter-button{grid-column:auto}.shared-announcement-tabs{padding-left:7px;padding-right:7px}.shared-announcement-tabs button{padding:0 9px;font-size:9px}}
 .topbar-user-info .topbar-user-nip{display:none!important}
+/* Use the shared brand blue for every native button across the application. */
+button,[role="button"],input[type="button"],input[type="submit"],input[type="reset"],a.primary,a.operator-primary-button,a.btn,a[class*="-button"]{background-color:#206BC7!important;border-color:#206BC7!important;color:#fff!important}
+button,[role="button"],input[type="button"],input[type="submit"],input[type="reset"],a.primary,a.operator-primary-button,a.btn,a[class*="-button"]{border-radius:6px!important;font-family: 'Inter', sans-serif; font-weight: 400;cursor:pointer;transition:filter .15s ease,box-shadow .15s ease,transform .15s ease}
+button:hover:not(:disabled),[role="button"]:hover,input[type="button"]:hover,input[type="submit"]:hover,input[type="reset"]:hover,a.primary:hover,a.operator-primary-button:hover,a.btn:hover,a[class*="-button"]:hover{filter:brightness(.96);box-shadow:0 2px 5px rgba(32,107,199,.18)}
+button:active:not(:disabled),[role="button"]:active,input[type="button"]:active,input[type="submit"]:active,input[type="reset"]:active{transform:translateY(1px)}
+button:focus-visible,[role="button"]:focus-visible,input[type="button"]:focus-visible,input[type="submit"]:focus-visible,input[type="reset"]:focus-visible,a.primary:focus-visible,a.operator-primary-button:focus-visible,a.btn:focus-visible,a[class*="-button"]:focus-visible{outline:3px solid rgba(32,107,199,.28);outline-offset:2px}
+button:disabled,input[type="button"]:disabled,input[type="submit"]:disabled,input[type="reset"]:disabled{opacity:.55;cursor:not-allowed}
+
+/* Project-wide typography: Inter regular, with 36px bold page titles. */
+html, body, * { font-family: 'Inter', sans-serif !important; font-weight: 400 !important; }
+h1 { font-size: 36px !important; font-weight: 700 !important; line-height: 1.2; }
+
+/* Keep the topbar sidebar toggle in its original neutral style. */
+button.sidebar-toggle-btn { background-color: #f5f8fc !important; border-color: #dfe7f1 !important; color: #536b89 !important; }
+button.sidebar-toggle-btn:hover:not(:disabled) { background-color: #edf3fa !important; border-color: #dfe7f1 !important; color: #173f75 !important; filter: none !important; box-shadow: none !important; }

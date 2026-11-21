@@ -13,7 +13,7 @@
 }
 
 body.siswa-page {
-    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #edf3fa;
     color: #173f75;
     min-height: 100vh;
@@ -99,7 +99,7 @@ body.siswa-page {
 
 .topbar-school-name {
     font-size: 14.5px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
     line-height: 1.2;
 }
@@ -139,7 +139,7 @@ body.siswa-page {
     background-color: #173f75;
     color: #ffffff;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 400;
     padding: 3px 9px;
     border-radius: 6px;
 }
@@ -158,7 +158,7 @@ body.siswa-page {
 
 .topbar-user-role {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
     color: #173f75;
     line-height: 1.2;
 }
@@ -187,6 +187,14 @@ body.siswa-page {
     background-color: #dfe7f1;
     color: #173f75;
 }
+
+/* Shared academic and account colors across role topbars. */
+.topbar-semester-box{color:#206BC7;border-color:#d5e4f6}
+.topbar-semester-box svg{color:#206BC7}
+.semester-badge{background-color:#206BC7}
+.topbar-user-role{color:#206BC7}
+.topbar-avatar-box{background-color:#eaf3ff;border-color:#d5e4f6;color:#206BC7}
+.topbar-avatar-box:hover{background-color:#dceaff;color:#206BC7}
 
 /* =============================================
    LAYOUT: SIDEBAR + MAIN
@@ -235,7 +243,7 @@ body.siswa-page {
     padding: 10px 12px;
     border-radius: 9px;
     font-size: 13.5px;
-    font-weight: 500;
+    font-weight: 400;
     color: #536b89;
     text-decoration: none;
     cursor: pointer;
@@ -251,7 +259,7 @@ body.siswa-page {
 .sidebar-nav-item.active {
     background-color: #173f75;
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .sidebar-nav-item svg {
@@ -288,7 +296,7 @@ body.siswa-page {
 
 .sidebar-user-name {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
     color: #173f75;
     line-height: 1.2;
 }
@@ -323,7 +331,7 @@ body.siswa-page {
 
 .dashboard-header-left h1 {
     font-size: 24px;
-    font-weight: 800;
+    font-weight: 400;
     color: #173f75;
     letter-spacing: -0.5px;
     line-height: 1.2;
@@ -366,13 +374,13 @@ body.siswa-page {
 .identity-card-label {
     font-size: 11px;
     color: #7185a1;
-    font-weight: 500;
+    font-weight: 400;
     display: block;
 }
 
 .identity-card-value {
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
     display: block;
 }
@@ -415,7 +423,7 @@ body.siswa-page {
 
 .card-section-title {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
     letter-spacing: -0.2px;
 }
@@ -431,7 +439,7 @@ body.siswa-page {
     align-items: center;
     gap: 6px;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.5px;
     color: #059669;
     background-color: #ecfdf5;
@@ -480,7 +488,7 @@ body.siswa-page {
 
 .pasfoto-label {
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 400;
     color: #7185a1;
     letter-spacing: 0.5px;
 }
@@ -520,7 +528,7 @@ body.siswa-page {
 
 .field-key {
     font-size: 10.5px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.5px;
     color: #7185a1;
     margin-bottom: 6px;
@@ -529,7 +537,7 @@ body.siswa-page {
 
 .field-value {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 400;
     color: #173f75;
 }
 
@@ -571,7 +579,7 @@ body.siswa-page {
 
 .presensi-stat-label {
     font-size: 11.5px;
-    font-weight: 600;
+    font-weight: 400;
     color: #7185a1;
     text-transform: uppercase;
     letter-spacing: 0.4px;
@@ -580,7 +588,7 @@ body.siswa-page {
 
 .presensi-stat-value {
     font-size: 26px;
-    font-weight: 800;
+    font-weight: 400;
     color: #173f75;
     letter-spacing: -0.5px;
     line-height: 1;
@@ -605,13 +613,13 @@ body.siswa-page {
 
 .progress-title {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
     color: #3d5f87;
 }
 
 .progress-percent {
     font-size: 20px;
-    font-weight: 800;
+    font-weight: 400;
     color: #173f75;
     letter-spacing: -0.5px;
 }
@@ -664,7 +672,7 @@ body.siswa-page {
 
 .presensi-detail-link {
     font-size: 12.5px;
-    font-weight: 600;
+    font-weight: 400;
     color: #173f75;
     text-decoration: none;
     white-space: nowrap;
@@ -702,7 +710,7 @@ body.siswa-page {
 
 .spp-field-key {
     font-size: 10.5px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.5px;
     color: #7185a1;
     text-transform: uppercase;
@@ -710,13 +718,13 @@ body.siswa-page {
 
 .spp-field-value {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 400;
     color: #173f75;
 }
 
 .spp-field-value.big {
     font-size: 24px;
-    font-weight: 800;
+    font-weight: 400;
     letter-spacing: -0.5px;
 }
 
@@ -747,8 +755,8 @@ body.siswa-page {
     padding: 10px 14px;
     border-radius: 9px;
     font-size: 12.5px;
-    font-weight: 600;
-    font-family: 'Inter', inherit;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
     cursor: pointer;
     text-decoration: none;
     transition: all 0.15s ease;
@@ -812,7 +820,7 @@ body.siswa-page {
 
 .pengumuman-header-text h3 {
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
     letter-spacing: -0.2px;
 }
@@ -826,7 +834,7 @@ body.siswa-page {
 .pengumuman-badge {
     display: inline-block;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 400;
     color: #3d5f87;
     background-color: #edf3fa;
     border: 1px solid #dfe7f1;
@@ -859,7 +867,7 @@ body.siswa-page {
 
 .empty-title {
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
     margin-bottom: 8px;
 }
@@ -898,7 +906,7 @@ body.siswa-page {
     align-items: center;
     gap: 6px;
     font-size: 12.5px;
-    font-weight: 600;
+    font-weight: 400;
     color: #173f75;
     text-decoration: none;
     transition: gap 0.15s ease;
@@ -963,7 +971,7 @@ body.siswa-page {
     background-color: #ffffff;
     color: #536b89;
     font-size: 13.5px;
-    font-weight: 500;
+    font-weight: 400;
     text-decoration: none;
     white-space: nowrap;
     transition: all 0.15s ease;

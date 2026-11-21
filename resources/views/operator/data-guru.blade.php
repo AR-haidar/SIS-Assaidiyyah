@@ -13,6 +13,12 @@
             </a>
         </header>
 
+        <section class="operator-student-import" aria-label="Impor guru dari Excel atau CSV">
+            <div><strong>Impor data guru dari Excel atau CSV</strong><p>Pilih .xlsx atau .csv. Data dari sheet guru dan tenaga kependidikan akan ditambahkan; NIP/NUPTK duplikat dilewati.</p></div>
+            <label class="operator-primary-button operator-student-import-button" style="margin-block:14px;min-height:40px;padding-inline:16px;">Pilih File XLSX / CSV<input type="file" accept=".xlsx,.csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv" data-teacher-file hidden></label>
+            <p class="operator-student-import-message" data-teacher-import-message role="status" aria-live="polite"></p>
+        </section>
+
         <section class="operator-teacher-stats" aria-label="Ringkasan data guru">
             <article><span>Total Guru &amp; Staff Terdaftar</span><strong>&mdash;</strong></article>
             <article><span>Tugas Tambahan / Wali Kelas</span><strong>&mdash;</strong></article>
@@ -36,12 +42,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>No</th><th>Nama Guru</th><th>NIP / ID Pegawai</th><th>NUPTK</th><th>Jabatan / Tugas</th><th>Status Kepegawaian</th><th>Aksi</th>
+                            <th>No</th><th>Nama Lengkap</th><th>NIK</th><th>NUPTK</th><th>Status Kepegawaian</th><th>NIP</th><th>Jenis Kelamin</th><th>Tempat Lahir</th><th>Tanggal Lahir</th><th>Nomor Handphone</th><th>Email</th><th>Email Akun Madrasah</th><th>Tugas</th><th>Mata Pelajaran</th><th>Penempatan</th><th>Total JTM</th><th>Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody data-operator-teachers>
                         <tr>
-                            <td colspan="7" class="operator-teacher-empty">
+                            <td colspan="17" class="operator-teacher-empty">
                                 <strong>Belum Ada Data Guru Dimuat</strong>
                                 <p>Daftar pendidik dan tenaga kependidikan akan ditampilkan di sini.</p>
                                 <a class="operator-primary-button" href="{{ url('/operator/data-guru/tambah') }}">
@@ -53,7 +59,7 @@
                     </tbody>
                 </table>
             </div>
-            <footer>Menampilkan <strong>0</strong> dari <strong>0</strong> guru</footer>
+            <footer class="operator-teacher-pagination"><span>Menampilkan <strong data-teacher-visible>0</strong> dari <strong data-teacher-total>0</strong> guru</span><nav aria-label="Navigasi halaman guru"><button type="button" data-teacher-prev aria-label="Halaman sebelumnya">&lsaquo;</button><span data-teacher-page>1</span><button type="button" data-teacher-next aria-label="Halaman berikutnya">&rsaquo;</button></nav></footer>
         </section>
     </section>
 @endsection

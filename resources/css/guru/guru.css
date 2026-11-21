@@ -1,6 +1,6 @@
 /* Tema role Guru */
 .guru-page {
-     font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+     font-family: 'Inter', sans-serif;
      background: #f5f8fc;
      color: #173f75;
 
@@ -20,7 +20,7 @@
      color: #173f75;
      font-size: 24px;
      line-height: 1.25;
-     font-weight: 650;
+     font-weight: 400;
      letter-spacing: -.35px;
 
 }
@@ -60,12 +60,12 @@
      color: #173f75;
      font-size: 20px;
      line-height: 1;
-     font-weight: 650;
+     font-weight: 400;
 
 }
 .guru-dashboard-stats article small {
      font-size: 10px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .guru-shortcuts {
@@ -98,7 +98,7 @@
      margin-top: 8px;
      color: #173f75;
      font-size: 10px;
-     font-weight: 550;
+     font-weight: 400;
 
 }
 .guru-shortcut-card p {
@@ -173,7 +173,7 @@
 .guru-photo-placeholder strong {
      color: #173f75;
      font-size: 9px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .guru-photo-placeholder small {
@@ -203,7 +203,7 @@
 .guru-profile-summary strong {
      color: #173f75;
      font-size: 9px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .guru-profile-details {
@@ -227,7 +227,7 @@
      background: #f5f8fc;
      color: #173f75;
      font-size: 9px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .guru-profile-fields {
@@ -255,7 +255,7 @@
 .guru-profile-fields article strong {
      color: #173f75;
      font-size: 9px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .guru-profile-fields .guru-field-wide {
@@ -359,7 +359,7 @@
      margin-top: 4px;
      color: #173f75;
      font-size: 12px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .guru-attendance-stats article > small {
@@ -388,7 +388,7 @@
 .guru-attendance-table-heading h2 {
      color: #173f75;
      font-size: 10px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .guru-attendance-table-heading span {
@@ -418,7 +418,7 @@
      padding: 0 14px;
      color: #173f75;
      font-size: 8px;
-     font-weight: 650;
+     font-weight: 400;
      letter-spacing: .3px;
      text-transform: uppercase;
      white-space: nowrap;
@@ -437,7 +437,7 @@
 .guru-attendance-empty strong {
      color: #173f75;
      font-size: 9px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .guru-attendance-empty p {
@@ -538,9 +538,9 @@
 .guru-page .guru-shortcut-card{min-height:190px;padding:21px;border-radius:10px;display:flex;flex-direction:column;align-items:flex-start;box-shadow:0 3px 10px rgba(23,63,117,.055)}
 .guru-page .guru-shortcut-icon{width:44px;height:44px;border-radius:10px}
 .guru-page .guru-shortcut-icon svg{width:22px;height:22px}
-.guru-page .guru-shortcut-card h2{margin:14px 0 0;font-size:16px!important;line-height:1.4;font-weight:650}
+.guru-page .guru-shortcut-card h2{margin:14px 0 0;font-size:16px!important;line-height:1.4;font-weight: 400}
 .guru-page .guru-shortcut-card p{min-height:0;margin:7px 0 16px;font-size:13px!important;line-height:1.55}
-.guru-page .guru-shortcut-card>a{min-height:40px;margin-top:auto;padding:0 15px;gap:8px;border-radius:7px;background:#2168c6;font-size:12px!important;font-weight:600;box-shadow:0 2px 5px rgba(33,104,198,.16);transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
+.guru-page .guru-shortcut-card>a{min-height:40px;margin-top:auto;padding:0 15px;gap:8px;border-radius:7px;background:#2168c6;font-size:12px!important;font-weight: 400;box-shadow:0 2px 5px rgba(33,104,198,.16);transition:background .18s ease,transform .18s ease,box-shadow .18s ease}
 .guru-page .guru-shortcut-card>a svg{width:15px;height:15px}
 .guru-page .guru-shortcut-card>a:hover{background:#1959ad;transform:translateY(-1px);box-shadow:0 4px 9px rgba(33,104,198,.2)}
 .guru-page .dashboard-announcement-panel>h2{font-size:16px!important}
@@ -559,18 +559,18 @@
 .guru-photo-placeholder{min-height:172px;margin-bottom:14px;padding:16px;border-radius:8px;background:#f5f8fc}
 .guru-photo-placeholder>span{width:58px;height:58px;margin-bottom:10px;border-radius:15px}
 .guru-photo-placeholder>span svg{width:30px;height:30px}
-.guru-photo-placeholder strong{font-size:14px!important;font-weight:600}
+.guru-photo-placeholder strong{font-size:14px!important;font-weight: 400}
 .guru-photo-placeholder small{font-size:12px!important;line-height:1.5}
 .guru-profile-summary{min-height:64px;margin-top:10px;padding:10px;border:1px solid #e7edf5;border-radius:7px;text-align:left}
 .guru-profile-summary span{font-size:11px!important;line-height:1.4}
-.guru-profile-summary strong{margin-top:3px;font-size:14px!important;font-weight:600}
+.guru-profile-summary strong{margin-top:3px;font-size:14px!important;font-weight: 400}
 .guru-profile-details{gap:16px}
 .guru-profile-section{padding:18px;border-radius:10px;box-shadow:0 2px 8px rgba(23,63,117,.045)}
-.guru-profile-section>h2{min-height:42px;margin-bottom:14px;padding:11px 14px;border-radius:6px;font-size:14px!important;font-weight:650}
+.guru-profile-section>h2{min-height:42px;margin-bottom:14px;padding:11px 14px;border-radius:6px;font-size:14px!important;font-weight: 400}
 .guru-profile-fields{gap:12px}
 .guru-profile-fields article{min-height:60px;padding:11px 14px;border:1px solid #edf1f6;border-radius:7px}
 .guru-profile-fields article span{font-size:12px!important;line-height:1.45}
-.guru-profile-fields article strong{margin-top:3px;font-size:14px!important;font-weight:600}
+.guru-profile-fields article strong{margin-top:3px;font-size:14px!important;font-weight: 400}
 @media(max-width:900px){.guru-profile-layout{grid-template-columns:220px minmax(0,1fr);gap:14px}}
 @media(max-width:700px){.guru-profile-layout{grid-template-columns:1fr}.guru-profile-card{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.guru-photo-placeholder{grid-column:1/-1;grid-row:auto}.guru-profile-summary{margin-top:0}}
 @media(max-width:480px){.guru-profile-card,.guru-profile-fields{grid-template-columns:1fr}.guru-profile-summary{min-height:55px}.guru-profile-section{padding:13px}.guru-profile-fields .guru-field-wide{grid-column:auto}}
@@ -579,26 +579,26 @@
 .guru-attendance-page .guru-page-heading{margin-bottom:20px}
 .guru-attendance-page .guru-page-heading h1{font-size:27px!important;line-height:1.25}
 .guru-attendance-filter{margin-bottom:18px;padding:18px;grid-template-columns:repeat(3,minmax(0,1fr)) 160px;gap:14px;border-radius:10px;box-shadow:0 2px 8px rgba(23,63,117,.045)}
-.guru-attendance-filter label{gap:7px;font-size:12px!important;font-weight:600}
+.guru-attendance-filter label{gap:7px;font-size:12px!important;font-weight: 400}
 .guru-attendance-filter select{height:42px;padding:0 12px;border:1px solid #e2eaf3;border-radius:7px;background:#f8fafc;color:#405875;font-size:13px!important}
-.guru-filter-button{min-height:42px;padding:0 14px;gap:8px;border-radius:7px;font-size:12px!important;font-weight:600;box-shadow:0 2px 5px rgba(33,104,198,.16);transition:background .18s ease,transform .18s ease}
+.guru-filter-button{min-height:42px;padding:0 14px;gap:8px;border-radius:7px;font-size:12px!important;font-weight: 400;box-shadow:0 2px 5px rgba(33,104,198,.16);transition:background .18s ease,transform .18s ease}
 .guru-filter-button svg{width:17px;height:17px}
 .guru-filter-button:hover{transform:translateY(-1px)}
 .guru-attendance-stats{gap:12px;margin-bottom:18px}
 .guru-attendance-stats article{min-height:108px;padding:15px 16px;border-radius:10px;box-shadow:0 2px 8px rgba(23,63,117,.04)}
 .guru-attendance-stats article>div{gap:10px}
-.guru-attendance-stats article>div span{font-size:12px!important;line-height:1.4;font-weight:600}
+.guru-attendance-stats article>div span{font-size:12px!important;line-height:1.4;font-weight: 400}
 .guru-stat-icon{width:34px;height:34px;flex:none;border-radius:8px;font-size:15px!important}
 .guru-stat-icon svg{width:17px;height:17px}
-.guru-attendance-stats article>strong{margin-top:10px;font-size:22px;font-weight:650;line-height:1.15}
+.guru-attendance-stats article>strong{margin-top:10px;font-size:22px;font-weight: 400;line-height:1.15}
 .guru-attendance-stats article>small{margin-top:5px;font-size:12px!important;line-height:1.4}
 .guru-attendance-table-card{border-radius:10px;box-shadow:0 2px 8px rgba(23,63,117,.045)}
 .guru-attendance-table-heading{min-height:60px;padding:0 18px}
-.guru-attendance-table-heading h2{font-size:16px!important;font-weight:650}
+.guru-attendance-table-heading h2{font-size:16px!important;font-weight: 400}
 .guru-attendance-table-heading span{padding:7px 10px;border-radius:6px;font-size:12px!important}
 .guru-attendance-table th{height:46px;padding:0 16px;font-size:12px!important;letter-spacing:.35px}
 .guru-attendance-empty{min-height:190px;padding:28px 18px}
-.guru-attendance-empty strong{font-size:15px!important;font-weight:600;line-height:1.45}
+.guru-attendance-empty strong{font-size:15px!important;font-weight: 400;line-height:1.45}
 .guru-attendance-empty p{max-width:560px;margin-top:8px;font-size:13px!important;line-height:1.6}
 @media(max-width:900px){.guru-attendance-filter{grid-template-columns:repeat(2,minmax(0,1fr))}.guru-filter-button{min-height:42px}}
 @media(max-width:700px){.guru-attendance-stats{gap:9px}.guru-attendance-stats article{min-height:100px;padding:13px}.guru-attendance-table-heading{align-items:flex-start;flex-direction:column;padding:14px 16px;gap:8px}}

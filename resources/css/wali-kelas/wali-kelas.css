@@ -1,6 +1,6 @@
 /* Dashboard wali kelas */
 .wali-page {
-     font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+     font-family: 'Inter', sans-serif;
      background: #f5f8fc;
 
 }
@@ -17,7 +17,7 @@
      color: #173f75;
      font-size: 30px;
      line-height: 1.2;
-     font-weight: 700;
+     font-weight: 400;
      letter-spacing: -0.6px;
 
 }
@@ -52,7 +52,7 @@
      margin-top: 3px;
      color: #173f75;
      font-size: 15px;
-     font-weight: 650;
+     font-weight: 400;
 
 }
 .wali-class-meta {
@@ -78,7 +78,7 @@
 }
 .wali-class-meta strong {
      color: #173f75;
-     font-weight: 600;
+     font-weight: 400;
 
 }
 .wali-stat-grid {
@@ -100,7 +100,7 @@
 .wali-stat-card h2 {
      color: #637895;
      font-size: 11px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .wali-stat-card p {
@@ -108,7 +108,7 @@
      color: #173f75;
      font-size: 32px;
      line-height: 1;
-     font-weight: 700;
+     font-weight: 400;
 
 }
 .wali-students-card {
@@ -132,7 +132,7 @@
      color: #173f75;
      font-size: 19px;
      line-height: 1.3;
-     font-weight: 600;
+     font-weight: 400;
 
 }
 .wali-table-heading p {
@@ -183,7 +183,7 @@
      color: #1766d1;
      font: inherit;
      font-size: 12px;
-     font-weight: 500;
+     font-weight: 400;
      white-space: nowrap;
 
 }
@@ -206,7 +206,7 @@
      padding: 0 15px;
      color: #173f75;
      font-size: 10px;
-     font-weight: 700;
+     font-weight: 400;
      letter-spacing: .25px;
      text-transform: uppercase;
      white-space: nowrap;
@@ -385,7 +385,7 @@
      color: #173f75;
      font-size: 23px;
      line-height: 1;
-     font-weight: 650;
+     font-weight: 400;
 
 }
 .wali-data-filter {
@@ -498,7 +498,7 @@
      border-bottom: 1px solid #e5ebf3;
      color: #173f75;
      font-size: 11px;
-     font-weight: 600;
+     font-weight: 400;
      text-transform: uppercase;
      white-space: nowrap;
 
@@ -521,7 +521,7 @@
 .wali-data-empty strong {
      color: #173f75;
      font-size: 14px;
-     font-weight: 600;
+     font-weight: 400;
 
 }
 .wali-data-empty p {
@@ -649,7 +649,7 @@
      color: #173f75;
      font-size: 30px;
      line-height: 1.1;
-     font-weight: 650;
+     font-weight: 400;
 
 }
 .wali-attendance-workspace {
@@ -673,7 +673,7 @@
 .wali-attendance-chart-card h2, .wali-attendance-table-card h2 {
      color: #173f75;
      font-size: 18px;
-     font-weight: 550;
+     font-weight: 400;
 
 }
 .wali-attendance-chart {
@@ -782,7 +782,7 @@
      padding: 0 9px;
      color: #173f75;
      font-size: 10px;
-     font-weight: 650;
+     font-weight: 400;
      text-transform: uppercase;
      white-space: nowrap;
 
@@ -800,7 +800,7 @@
 .wali-attendance-empty strong {
      color: #173f75;
      font-size: 13px;
-     font-weight: 600;
+     font-weight: 400;
 
 }
 .wali-attendance-empty p {
@@ -1007,7 +1007,7 @@
      color: #173f75;
      font-size: 20px;
      line-height: 1;
-     font-weight: 650;
+     font-weight: 400;
 
 }
 .wali-finance-stat-card small {
@@ -1034,7 +1034,7 @@
      gap: 7px;
      color: #26384e;
      font-size: 12px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .wali-finance-search-control, .wali-finance-field select {
@@ -1120,9 +1120,9 @@
 
 }
 .wali-finance-category-list{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px solid #e7edf5;background:#f8fafc}
-.wali-finance-category-label{color:#52657d;font-size:11px;font-weight:650;white-space:nowrap}
+.wali-finance-category-label{color:#52657d;font-size:11px;font-weight: 400;white-space:nowrap}
 .wali-finance-category-pills{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:7px}
-.wali-finance-category-pills span{padding:5px 10px;border:1px solid #dce7f4;border-radius:16px;background:#fff;color:#365d8d;font-size:10px;font-weight:550;white-space:nowrap}
+.wali-finance-category-pills span{padding:5px 10px;border:1px solid #dce7f4;border-radius:16px;background:#fff;color:#365d8d;font-size:10px;font-weight: 400;white-space:nowrap}
 @media(max-width:640px){.wali-finance-category-list{align-items:flex-start;flex-direction:column;gap:9px}.wali-finance-category-pills{justify-content:flex-start}}
 .wali-finance-table-scroll {
      overflow-x: auto;
@@ -1143,7 +1143,7 @@
      padding: 0 16px;
      color: #173f75;
      font-size: 10px;
-     font-weight: 650;
+     font-weight: 400;
      letter-spacing: .25px;
      text-transform: uppercase;
      white-space: nowrap;
@@ -1171,7 +1171,7 @@
 .wali-finance-empty strong {
      color: #173f75;
      font-size: 19px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .wali-finance-empty p {

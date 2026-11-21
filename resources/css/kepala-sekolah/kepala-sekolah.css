@@ -1,6 +1,6 @@
 /* Palet dan struktur konten Kepala Sekolah */
 .kepala-sekolah-page {
-     font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+     font-family: 'Inter', sans-serif;
      background: #f5f8fc;
      color: #173f75;
 
@@ -20,7 +20,7 @@
      color: #173f75;
      font-size: 24px;
      line-height: 1.25;
-     font-weight: 650;
+     font-weight: 400;
      letter-spacing: -.35px;
 
 }
@@ -68,7 +68,7 @@
      color: #173f75;
      font-size: 21px;
      line-height: 1.1;
-     font-weight: 650;
+     font-weight: 400;
 
 }
 .ks-dashboard-grid {
@@ -98,7 +98,7 @@
 .ks-panel h2 {
      color: #173f75;
      font-size: 15px;
-     font-weight: 600;
+     font-weight: 400;
 
 }
 .ks-panel-heading {
@@ -201,7 +201,7 @@
      margin-top: 2px;
      color: #173f75;
      font-size: 11px;
-     font-weight: 600;
+     font-weight: 400;
 
 }
 .ks-dot {
@@ -247,7 +247,7 @@
 }
 .ks-budget-progress b {
      color: #536b89;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .ks-progress-track {
@@ -276,7 +276,7 @@
      background: #f5f8fc;
      color: #173f75;
      font-size: 8px;
-     font-weight: 650;
+     font-weight: 400;
 
 }
 .ks-mini-table td {
@@ -301,7 +301,7 @@
 .ks-announcement-empty strong {
      color: #173f75;
      font-size: 10px;
-     font-weight: 650;
+     font-weight: 400;
 
 }
 .ks-announcement-empty p {
@@ -480,7 +480,7 @@
      padding: 0 9px;
      color: #173f75;
      font-size: 8px;
-     font-weight: 600;
+     font-weight: 400;
      letter-spacing: .25px;
      text-transform: uppercase;
      white-space: nowrap;
@@ -499,7 +499,7 @@
 .ks-empty-state strong {
      color: #173f75;
      font-size: 13px;
-     font-weight: 600;
+     font-weight: 400;
 
 }
 .ks-empty-state p {
@@ -642,7 +642,7 @@
 }
 .ks-attendance-kpis article > strong small {
      font-size: 9px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .ks-matrix-title {
@@ -657,7 +657,7 @@
 .ks-matrix-title h2 {
      color: #173f75;
      font-size: 12px;
-     font-weight: 600;
+     font-weight: 400;
 
 }
 .ks-matrix-title > span {
@@ -751,7 +751,7 @@
 .ks-payment-table-heading strong {
      color: #173f75;
      font-size: 10px;
-     font-weight: 600;
+     font-weight: 400;
 
 }
 .ks-payment-table-heading span, .ks-payment-table-heading small {
@@ -778,7 +778,7 @@
      background: #f5f8fc;
      color: #173f75;
      font-size: 12px;
-     font-weight: 600;
+     font-weight: 400;
 
 }
 .ks-school-fields {
@@ -812,7 +812,7 @@
 .ks-school-fields article > strong {
      color: #173f75;
      font-size: 9px;
-     font-weight: 500;
+     font-weight: 400;
 
 }
 .ks-school-fields .ks-school-status {

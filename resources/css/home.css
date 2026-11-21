@@ -13,7 +13,7 @@ body.home-page {
     min-height: 100vh;
     background-color: #f5f8fc;
     color: #173f75;
-    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
 }
@@ -72,7 +72,7 @@ body.home-page {
 
 .brand-title {
     font-size: 15px;
-    font-weight: 800;
+    font-weight: 400;
     letter-spacing: 0.3px;
     color: #173f75;
     line-height: 1.2;
@@ -93,7 +93,7 @@ body.home-page {
 
 .nav-link {
     font-size: 13.5px;
-    font-weight: 500;
+    font-weight: 400;
     color: #536b89;
     text-decoration: none;
     padding: 6px 2px;
@@ -107,7 +107,7 @@ body.home-page {
 
 .nav-link.active {
     color: #173f75;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .navbar-action {
@@ -123,7 +123,7 @@ body.home-page {
     background-color: #173f75;
     color: #ffffff;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
     padding: 8px 16px;
     border-radius: 8px;
     text-decoration: none;
@@ -163,7 +163,7 @@ body.home-page {
 
 .section-pre-tag {
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.8px;
     color: #2168c6;
     margin-bottom: 6px;
@@ -172,7 +172,7 @@ body.home-page {
 
 .section-heading {
     font-size: 28px;
-    font-weight: 800;
+    font-weight: 400;
     color: #173f75;
     letter-spacing: -0.5px;
     line-height: 1.25;
@@ -195,12 +195,12 @@ body.home-page {
 .section-title-right-label {
     font-size: 12.5px;
     color: #7185a1;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .section-link-right {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
     color: #2168c6;
     text-decoration: none;
     display: inline-flex;
@@ -234,7 +234,7 @@ body.home-page {
     border: 1px solid #dbeafe;
     color: #2168c6;
     font-size: 11.5px;
-    font-weight: 600;
+    font-weight: 400;
     padding: 4px 12px;
     border-radius: 6px;
     margin-bottom: 16px;
@@ -242,7 +242,7 @@ body.home-page {
 
 .hero-headline {
     font-size: 36px;
-    font-weight: 800;
+    font-weight: 400;
     line-height: 1.2;
     letter-spacing: -0.6px;
     color: #173f75;
@@ -287,7 +287,7 @@ body.home-page {
     background-color: #2168c6;
     color: #ffffff;
     font-size: 13.5px;
-    font-weight: 600;
+    font-weight: 400;
     padding: 10px 20px;
     border-radius: 8px;
     text-decoration: none;
@@ -303,7 +303,7 @@ body.home-page {
     border: 1.5px solid #dbeafe;
     color: #2168c6;
     font-size: 13.5px;
-    font-weight: 600;
+    font-weight: 400;
     padding: 9px 18px;
     border-radius: 8px;
     text-decoration: none;
@@ -361,7 +361,7 @@ body.home-page {
 
 .hero-photo-title {
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
     margin-bottom: 4px;
 }
@@ -412,7 +412,7 @@ body.home-page {
 
 .visimisi-card-title-left {
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 400;
     letter-spacing: 0.5px;
     color: #173f75;
     text-transform: uppercase;
@@ -441,7 +441,7 @@ body.home-page {
 .visi-quote-text {
     font-size: 14px;
     font-style: italic;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
     line-height: 1.45;
 }
@@ -488,7 +488,7 @@ body.home-page {
     background-color: #2168c6;
     color: #ffffff;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 400;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -503,7 +503,7 @@ body.home-page {
 
 .misi-item-title {
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
 }
 
@@ -563,7 +563,7 @@ body.home-page {
     background-color: #eff6ff;
     color: #2168c6;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 400;
     padding: 3px 10px;
     border-radius: 6px;
     margin-bottom: 10px;
@@ -571,7 +571,7 @@ body.home-page {
 
 .program-item-name {
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
     margin-bottom: 6px;
 }
@@ -596,7 +596,7 @@ body.home-page {
 }
 
 .program-detail-link {
-    font-weight: 600;
+    font-weight: 400;
     color: #2168c6;
     text-decoration: none;
 }
@@ -652,7 +652,7 @@ body.home-page {
 
 .facility-item-title {
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
 }
 
@@ -714,7 +714,7 @@ body.home-page {
     gap: 6px;
     font-size: 11.5px;
     color: #2168c6;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 8px;
 }
 
@@ -729,7 +729,7 @@ body.home-page {
 
 .news-item-title {
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
     margin-bottom: 8px;
     line-height: 1.35;
@@ -745,7 +745,7 @@ body.home-page {
 
 .news-read-more-link {
     font-size: 12.5px;
-    font-weight: 600;
+    font-weight: 400;
     color: #2168c6;
     text-decoration: none;
 }
@@ -780,7 +780,7 @@ body.home-page {
     background-color: #eff6ff;
     color: #2168c6;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 400;
     padding: 4px 12px;
     border-radius: 6px;
     margin-bottom: 12px;
@@ -788,7 +788,7 @@ body.home-page {
 
 .dlib-banner-heading {
     font-size: 28px;
-    font-weight: 800;
+    font-weight: 400;
     color: #173f75;
     letter-spacing: -0.5px;
     margin-bottom: 12px;
@@ -816,7 +816,7 @@ body.home-page {
     background-color: #2168c6;
     color: #ffffff;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
     padding: 10px 18px;
     border-radius: 8px;
     text-decoration: none;
@@ -865,7 +865,7 @@ body.home-page {
 
 .dlib-preview-text-main {
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
     line-height: 1.35;
 }
@@ -917,7 +917,7 @@ body.home-page {
 
 .c-info-label {
     font-size: 10.5px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.5px;
     color: #173f75;
     text-transform: uppercase;
@@ -925,7 +925,7 @@ body.home-page {
 
 .c-info-val {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
     color: #173f75;
 }
 
@@ -957,7 +957,7 @@ body.home-page {
 
 .map-placeholder-title {
     font-size: 12.5px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
 }
 
@@ -977,7 +977,7 @@ body.home-page {
 
 .c-form-heading {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
     margin-bottom: 20px;
 }
@@ -996,7 +996,7 @@ body.home-page {
 
 .form-field-label {
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 400;
     color: #536b89;
 }
 
@@ -1007,7 +1007,7 @@ body.home-page {
     border: 1.5px solid #dfe7f1;
     border-radius: 7px;
     font-size: 13px;
-    font-family: 'Inter', inherit;
+    font-family: 'Inter', sans-serif;
     color: #173f75;
     background-color: #ffffff;
     outline: none;
@@ -1032,8 +1032,8 @@ body.home-page {
     background-color: #2168c6;
     color: #ffffff;
     font-size: 13px;
-    font-weight: 600;
-    font-family: 'Inter', inherit;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
     cursor: pointer;
     transition: background-color 0.15s ease;
     margin-top: 4px;
@@ -1075,7 +1075,7 @@ body.home-page {
 
 .dark-footer-brand-title {
     font-size: 18px;
-    font-weight: 800;
+    font-weight: 400;
     color: #ffffff;
     margin-bottom: 12px;
     letter-spacing: -0.2px;
@@ -1091,12 +1091,12 @@ body.home-page {
 .dark-footer-akreditasi-text {
     font-size: 11.5px;
     color: #dfe7f1;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .dark-footer-col-heading {
     font-size: 11.5px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.8px;
     color: #dfe7f1;
     text-transform: uppercase;
@@ -1130,7 +1130,7 @@ body.home-page {
 
 .dark-footer-highlight-item {
     color: #dfe7f1 !important;
-    font-weight: 500;
+    font-weight: 400;
     margin-top: 4px;
 }
 
@@ -1235,5 +1235,5 @@ body.home-page {
 /* Penanda posisi aktif pada navigasi publik */
 .nav-link{padding-bottom:8px}
 .nav-link::after{position:absolute;right:2px;bottom:1px;left:2px;height:2px;border-radius:2px;background:#2168c6;content:"";transform:scaleX(0);transform-origin:left center;transition:transform .16s ease}
-.nav-link.active{color:#2168c6;font-weight:600}
+.nav-link.active{color:#2168c6;font-weight: 400}
 .nav-link.active::after{transform:scaleX(1)}

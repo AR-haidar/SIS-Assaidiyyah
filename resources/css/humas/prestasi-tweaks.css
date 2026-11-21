@@ -1,0 +1,5 @@
+.humas-achievements .achievement-form fieldset label{min-height:68px;align-items:flex-start;gap:9px;padding:10px 12px}
+.humas-achievements .achievement-form fieldset input[type=radio]{width:14px;min-width:14px;height:14px;margin:2px 0 0;padding:0;flex:none;border:0;background:transparent}
+.humas-achievements .achievement-form fieldset label span{min-width:0;flex:1;display:grid;align-content:start;gap:3px}
+.humas-achievements .achievement-form fieldset label strong{line-height:1.3}
+.humas-achievements .achievement-form fieldset label small{display:block;max-width:none;line-height:1.4;overflow-wrap:normal}

@@ -15,7 +15,7 @@ body.login-page {
     flex-direction: column;
     justify-content: space-between;
     background-color: #edf3fa;
-    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 /* =============================================
@@ -56,7 +56,7 @@ body.login-page {
 
 .topbar-brand {
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.5px;
     color: #173f75;
 }
@@ -75,7 +75,7 @@ body.login-page {
     border: 1px solid #dfe7f1;
     border-radius: 6px;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 400;
     color: #3d5f87;
     text-decoration: none;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
@@ -140,7 +140,7 @@ body.login-page {
 
 .login-logo {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 400;
     color: #173f75;
     letter-spacing: -0.3px;
 }
@@ -191,7 +191,7 @@ body.login-page {
     background: transparent;
     border-radius: 8px;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 400;
     color: #8a9fba;
     cursor: pointer;
     position: relative;
@@ -223,7 +223,7 @@ body.login-page {
 
 .form-label {
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 400;
     color: #3d5f87;
 }
 
@@ -336,7 +336,7 @@ body.login-page {
     border: none;
     border-radius: 9px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 400;
     cursor: pointer;
     transition: background 0.2s, transform 0.1s;
     margin-bottom: 20px;
@@ -390,7 +390,7 @@ body.login-page {
     display: block;
     color: #3d5f87;
     font-size: 12.5px;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 3px;
 }
 
@@ -403,7 +403,7 @@ body.login-page {
 
 .helpdesk a {
     color: #7185a1;
-    font-weight: 500;
+    font-weight: 400;
     text-decoration: none;
 }
 
@@ -457,7 +457,7 @@ body.login-page {
 .panel-tagline {
     text-align: left;
     font-size: 19px;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 1.45;
     margin-bottom: 14px;
     letter-spacing: -0.2px;
@@ -523,7 +523,7 @@ body.login-page {
     align-items: center;
     gap: 6px;
     color: #7185a1;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .bottombar-icon {
@@ -594,3 +594,14 @@ body.login-page {
         padding: 36px 28px;
     }
 }
+
+/* Restore the original neutral Staf/Guru and Wali Murid tabs. */
+.login-page .tab-switch .tab-btn { background: transparent !important; background-color: transparent !important; border-color: transparent !important; color: #8a9fba !important; box-shadow: none !important; filter: none !important; transform: none !important; }
+.login-page .tab-switch .tab-btn.active { background: transparent !important; color: #173f75 !important; }
+
+/* Match the login role selector: blue active tab, light neutral inactive tab. */
+.login-page .tab-switch { background: #eef2ff !important; border: 1px solid #dfe7f1; border-radius: 11px; }
+.login-page .tab-switch .tab-indicator { display: none; }
+.login-page .tab-switch .tab-btn { background: transparent !important; color: #3d4655 !important; border-color: transparent !important; box-shadow: none !important; filter: none !important; transform: none !important; }
+.login-page .tab-switch .tab-btn.active { background: #206bc7 !important; color: #fff !important; box-shadow: 0 2px 4px rgba(32,107,199,.2) !important; }
+.login-page .tab-switch .tab-btn:hover:not(.active) { background: #e4eaf8 !important; color: #173f75 !important; }
