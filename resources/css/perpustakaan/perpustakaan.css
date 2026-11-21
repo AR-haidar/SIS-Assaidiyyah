@@ -1,0 +1,259 @@
+/* Dashboard Perpustakaan Digital */
+.perpustakaan-page{background:#f7f8fc;color:#173f75;font-family:'Inter',sans-serif}
+.perpustakaan-page .perpustakaan-main{display:block;min-width:0;padding:20px 19px 30px;overflow-x:hidden}
+.perpustakaan-dashboard{width:100%;min-width:0;color:#173f75}
+.perpustakaan-dashboard-heading{margin:0 0 20px}
+.perpustakaan-dashboard-heading h1{margin:0;color:#173f75;font-size:19px;line-height:1.35;font-weight:650;letter-spacing:-.25px}
+.perpustakaan-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:31px}
+.perpustakaan-summary-card{min-width:0;min-height:177px;padding:19px 20px;display:flex;flex-direction:column;align-items:flex-start;border:1px solid #e5e7eb;border-radius:8px;background:#fff;box-shadow:0 1px 1px rgba(15,23,42,.12)}
+.perpustakaan-summary-card>span{color:#7185a1;font-size:9px;letter-spacing:.45px;text-transform:uppercase}
+.perpustakaan-summary-card h2{margin:7px 0 0;color:#173f75;font-size:16px;line-height:1.35;font-weight:600}
+.perpustakaan-summary-card>strong{margin-top:auto;color:#173f75;font-size:25px;line-height:1;font-weight:650}
+.perpustakaan-quick-card{padding:18px 20px}
+.perpustakaan-quick-card h2{margin-top:6px}
+.perpustakaan-quick-card p{margin:3px 0 9px;color:#7185a1;font-size:8px;line-height:1.4}
+.perpustakaan-quick-card>a{width:100%;min-height:29px;padding:0 8px;display:flex;align-items:center;justify-content:center;gap:5px;border-radius:3px;font-size:9px;text-decoration:none}
+.perpustakaan-quick-primary{background:#2168c6;color:#fff}
+.perpustakaan-quick-primary:hover{background:#1959ad}
+.perpustakaan-quick-secondary{margin-top:4px;background:#fff;color:#075bb5}
+.perpustakaan-collection-heading{margin:0 0 12px}
+.perpustakaan-collection-heading h2{margin:0;color:#173f75;font-size:19px;line-height:1.35;font-weight:600}
+.perpustakaan-collection-heading p{margin:2px 0 0;color:#7185a1;font-size:11px;line-height:1.4}
+.perpustakaan-catalog-card{min-height:377px;overflow:hidden;border:1px solid #edf1f6;border-radius:8px;background:#fff}
+.perpustakaan-catalog-toolbar{min-height:48px;padding:0 19px;display:flex;align-items:center;gap:8px;background:#f8fafc}
+.perpustakaan-catalog-toolbar h3{margin:0 auto 0 0;color:#173f75;font-size:12px;font-weight:500}
+.perpustakaan-search{width:228px;height:27px;padding:0 8px;display:flex;align-items:center;gap:7px;background:#fff;color:#a2afc0}
+.perpustakaan-search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#173f75;font:inherit;font-size:9px}
+.perpustakaan-search input::placeholder{color:#a2afc0;opacity:1}
+.perpustakaan-filter-button{width:27px;height:27px;display:flex;align-items:center;justify-content:center;border:0;border-radius:3px;background:#fff;color:#7185a1;cursor:pointer}
+.perpustakaan-catalog-empty{min-height:328px;padding:40px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.perpustakaan-catalog-empty>strong{color:#173f75;font-size:15px;line-height:1.4;font-weight:600}
+.perpustakaan-catalog-empty>p{margin:4px 0 18px;color:#7185a1;font-size:10px;line-height:1.65}
+.perpustakaan-catalog-empty>a{min-height:30px;padding:0 13px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border-radius:3px;background:#2168c6;color:#fff;font-size:9px;text-decoration:none}
+.perpustakaan-catalog-empty>a:hover{background:#1959ad}
+.perpustakaan-catalog-empty>a span{font-size:14px;line-height:1}
+.perpustakaan-page .sidebar-nav-item.active{background:#2168c6;color:#fff;font-weight:600}
+.perpustakaan-page .sidebar-nav-item.active:hover{background:#1959ad;color:#fff}
+@media(max-width:760px){.perpustakaan-page .perpustakaan-main{padding:17px 14px 26px}.perpustakaan-summary{gap:10px}.perpustakaan-summary-card{padding:15px;min-height:160px}.perpustakaan-quick-card{padding:14px}.perpustakaan-catalog-card{min-height:350px}}
+@media(max-width:560px){.perpustakaan-dashboard-heading h1{font-size:18px}.perpustakaan-summary{grid-template-columns:1fr;gap:8px;margin-bottom:24px}.perpustakaan-summary-card{min-height:110px}.perpustakaan-quick-card{min-height:150px}.perpustakaan-collection-heading h2{font-size:18px}.perpustakaan-catalog-toolbar{padding:9px 11px;flex-wrap:wrap}.perpustakaan-catalog-toolbar h3{width:100%}.perpustakaan-search{flex:1;width:auto}.perpustakaan-catalog-empty{min-height:280px;padding:28px 14px}.perpustakaan-catalog-empty>strong{font-size:13px}.perpustakaan-catalog-empty>p{font-size:9px}.perpustakaan-desktop-break{display:none}}
+
+/* Data Buku Perpustakaan */
+.perpustakaan-books{width:100%;min-width:0;color:#173f75;font-family:'Inter',sans-serif}
+.perpustakaan-books-heading{margin:0 0 17px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.perpustakaan-books-heading h1{margin:0;color:#173f75;font-size:19px;line-height:1.35;font-weight:650;letter-spacing:-.2px}
+.perpustakaan-add-book{min-height:30px;padding:0 11px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border-radius:3px;background:#2168c6;color:#fff;font-size:9px;text-decoration:none;white-space:nowrap}
+.perpustakaan-add-book:hover{background:#1959ad}
+.perpustakaan-add-book span{font-size:14px;line-height:1}
+.perpustakaan-book-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.perpustakaan-book-stats article{min-width:0;min-height:67px;padding:11px 13px;display:flex;flex-direction:column;justify-content:center;gap:4px;border:1px solid #edf1f6;border-radius:7px;background:#fff}
+.perpustakaan-book-stats article>span{color:#7185a1;font-size:8px;line-height:1.35}
+.perpustakaan-book-stats article>strong{color:#173f75;font-size:18px;line-height:1.15;font-weight:650}
+.perpustakaan-book-stats article>strong.ready{color:#075bb5;font-size:10px}
+.perpustakaan-book-table-card{min-width:0;overflow:hidden;border:1px solid #e3e7ee;border-radius:7px;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.1)}
+.perpustakaan-book-filters{min-height:58px;padding:10px 18px;display:grid;grid-template-columns:minmax(180px,1.45fr) minmax(120px,.9fr) minmax(105px,.72fr) auto auto;align-items:center;gap:8px}
+.perpustakaan-book-filters>label{min-width:0}
+.perpustakaan-book-filters select,.perpustakaan-book-search{width:100%;height:30px;border:0;border-radius:3px;background:#f7f9fc;color:#536b89;font:inherit;font-size:9px}
+.perpustakaan-book-filters select{padding:0 9px}
+.perpustakaan-book-search{padding:0 10px;display:flex;align-items:center;gap:8px;color:#7185a1}
+.perpustakaan-book-search input{width:100%;min-width:0;height:100%;border:0;outline:0;background:transparent;color:#173f75;font:inherit;font-size:9px}
+.perpustakaan-book-search input::placeholder{color:#7185a1;opacity:1}
+.perpustakaan-book-filters>button{height:30px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border:0;border-radius:3px;font:inherit;font-size:8px;white-space:nowrap;cursor:pointer}
+.perpustakaan-filter-submit{background:#e8f1ff;color:#075bb5}
+.perpustakaan-filter-reset{background:#fff;color:#536b89}
+.perpustakaan-book-table-scroll{width:100%;overflow-x:auto}
+.perpustakaan-book-table-scroll table{width:100%;border-collapse:collapse;text-align:left}
+.perpustakaan-book-table-scroll thead{background:#f8fafc}
+.perpustakaan-book-table-scroll th{height:38px;padding:0 12px;color:#173f75;font-size:8px;font-weight:600;letter-spacing:.35px;text-transform:uppercase;white-space:nowrap}
+.perpustakaan-book-empty{height:236px;padding:20px;text-align:center;vertical-align:middle}
+.perpustakaan-book-empty strong{display:block;color:#173f75;font-size:17px;line-height:1.4;font-weight:600}
+.perpustakaan-book-empty p{margin:3px 0 20px;color:#7185a1;font-size:10px;line-height:1.6}
+.perpustakaan-book-empty>a{min-height:30px;padding:0 13px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border-radius:3px;background:#2168c6;color:#fff;font-size:9px;text-decoration:none}
+.perpustakaan-book-empty>a:hover{background:#1959ad}
+.perpustakaan-book-empty>a span{font-size:14px;line-height:1}
+.perpustakaan-book-pagination{min-height:39px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;color:#7185a1;font-size:9px}
+.perpustakaan-book-pagination strong{color:#173f75;font-weight:500}
+.perpustakaan-book-pagination nav{display:flex;align-items:center;gap:4px}
+.perpustakaan-book-pagination nav button,.perpustakaan-book-pagination nav span{width:25px;height:25px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:3px;background:#f7f9fc;color:#a2afc0;font:inherit;font-size:12px}
+.perpustakaan-book-pagination nav span{background:#e8f1ff;color:#075bb5}
+@media(max-width:850px){.perpustakaan-book-filters{grid-template-columns:minmax(150px,1.2fr) minmax(110px,.8fr) minmax(100px,.7fr) auto}.perpustakaan-filter-reset{grid-column:4;grid-row:2;justify-self:end}.perpustakaan-filter-submit{grid-column:3;grid-row:2;justify-self:end}}
+@media(max-width:560px){.perpustakaan-books-heading h1{font-size:18px}.perpustakaan-book-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.perpustakaan-book-filters{grid-template-columns:1fr 1fr;padding:10px}.perpustakaan-book-search{grid-column:1/-1}.perpustakaan-book-filters>label:nth-of-type(2){grid-column:1/-1}.perpustakaan-book-filters>button{grid-row:auto;grid-column:auto;justify-self:stretch}.perpustakaan-book-table-scroll table{min-width:650px}.perpustakaan-book-empty{height:205px}.perpustakaan-book-empty strong{font-size:15px}.perpustakaan-book-empty p{font-size:9px}.perpustakaan-book-pagination{padding:0 10px}}
+
+/* Kategori Buku Perpustakaan */
+.perpustakaan-categories{width:100%;min-width:0;color:#173f75;font-family:'Inter',sans-serif}
+.perpustakaan-categories-heading{margin:0 0 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.perpustakaan-categories-heading h1{margin:0;color:#173f75;font-size:20px;line-height:1.35;font-weight:650;letter-spacing:-.25px}
+.perpustakaan-add-category{min-height:30px;padding:0 11px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border-radius:3px;background:#2168c6;color:#fff;font-size:9px;text-decoration:none;white-space:nowrap}
+.perpustakaan-add-category:hover{background:#1959ad}
+.perpustakaan-category-stat{width:min(100%,320px);min-height:79px;margin:0 0 29px;padding:16px;display:flex;flex-direction:column;justify-content:center;gap:5px;border:1px solid #edf1f6;border-radius:7px;background:#fff}
+.perpustakaan-category-stat>span{color:#7185a1;font-size:9px}
+.perpustakaan-category-stat>strong{display:flex;align-items:baseline;gap:5px;color:#536b89;font-size:10px;font-weight:400}
+.perpustakaan-category-stat>strong b{color:#173f75;font-size:21px;line-height:1;font-weight:650}
+.perpustakaan-category-table-card{min-width:0;overflow:hidden;border:1px solid #edf1f6;border-radius:7px;background:#fff}
+.perpustakaan-category-toolbar{min-height:54px;padding:0 15px;display:flex;align-items:center;gap:8px;background:#f8fafc}
+.perpustakaan-category-toolbar>div{margin-right:auto;display:flex;align-items:center;gap:7px}
+.perpustakaan-category-toolbar h2{margin:0;color:#173f75;font-size:10px;font-weight:650;letter-spacing:.35px;text-transform:uppercase}
+.perpustakaan-category-count{padding:3px 5px;border-radius:3px;background:#e8f1ff;color:#075bb5;font-size:8px}
+.perpustakaan-category-search{width:250px;height:29px;padding:0 9px;display:flex;align-items:center;gap:7px;background:#fff;color:#a2afc0}
+.perpustakaan-category-search input{width:100%;min-width:0;height:100%;border:0;outline:0;background:transparent;color:#173f75;font:inherit;font-size:9px}
+.perpustakaan-category-search input::placeholder{color:#a2afc0;opacity:1}
+.perpustakaan-category-filter{width:29px;height:29px;display:flex;align-items:center;justify-content:center;border:0;border-radius:3px;background:#fff;color:#7185a1;cursor:pointer}
+.perpustakaan-category-table-scroll{width:100%;overflow-x:auto}
+.perpustakaan-category-table-scroll table{width:100%;border-collapse:collapse;text-align:left}
+.perpustakaan-category-table-scroll thead{background:#f8fafc}
+.perpustakaan-category-table-scroll th{height:37px;padding:0 13px;color:#173f75;font-size:9px;font-weight:650;letter-spacing:.35px;text-transform:uppercase;white-space:nowrap}
+.perpustakaan-category-empty{height:270px;padding:20px;text-align:center;vertical-align:middle}
+.perpustakaan-category-empty strong{display:block;color:#173f75;font-size:16px;line-height:1.4;font-weight:600}
+.perpustakaan-category-empty p{margin:4px 0 22px;color:#7185a1;font-size:10px;line-height:1.65}
+.perpustakaan-category-empty>a{min-height:31px;padding:0 13px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border-radius:3px;background:#2168c6;color:#fff;font-size:9px;text-decoration:none}
+.perpustakaan-category-empty>a:hover{background:#1959ad}
+.perpustakaan-category-pagination{min-height:38px;padding:0 15px;display:flex;align-items:center;justify-content:space-between;background:#f8fafc;color:#7185a1;font-size:9px}
+.perpustakaan-category-pagination nav{display:flex;align-items:center;gap:4px}
+.perpustakaan-category-pagination nav button,.perpustakaan-category-pagination nav span{width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:3px;background:#fff;color:#a2afc0;font:inherit;font-size:12px}
+.perpustakaan-category-pagination nav span{background:#e8f1ff;color:#075bb5}
+@media(max-width:600px){.perpustakaan-categories-heading h1{font-size:18px}.perpustakaan-category-stat{margin-bottom:20px}.perpustakaan-category-toolbar{padding:9px 11px;flex-wrap:wrap}.perpustakaan-category-toolbar>div{width:100%}.perpustakaan-category-search{flex:1;width:auto}.perpustakaan-category-empty{height:230px;padding:16px}.perpustakaan-category-empty strong{font-size:14px}.perpustakaan-category-empty p{font-size:9px}.perpustakaan-category-desktop-break{display:none}.perpustakaan-category-pagination{padding:0 10px}}
+
+/* Form tambah Data Buku Perpustakaan */
+.perpustakaan-add-book-page{width:100%;min-width:0;color:#173f75;font-family:'Inter',sans-serif}
+.perpustakaan-form-back{margin:0 0 8px;display:inline-flex;align-items:center;gap:3px;color:#075bb5;font-size:8px;text-decoration:none}
+.perpustakaan-form-back:hover{text-decoration:underline}
+.perpustakaan-add-book-page>h1{margin:0 0 11px;color:#173f75;font-size:15px;line-height:1.35;font-weight:650}
+.perpustakaan-add-book-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(220px,.9fr);align-items:start;gap:14px}
+.perpustakaan-book-primary-column,.perpustakaan-book-secondary-column{min-width:0}
+.perpustakaan-book-secondary-column{display:grid;gap:14px}
+.perpustakaan-book-info-card,.perpustakaan-book-cover-card,.perpustakaan-book-digital-card{min-width:0;overflow:hidden;border:1px solid #edf1f6;border-radius:7px;background:#fff}
+.perpustakaan-book-form-heading,.perpustakaan-book-side-heading{min-height:40px;padding:9px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.perpustakaan-book-form-heading h2,.perpustakaan-book-side-heading h2{margin:0;color:#173f75;font-size:11px;line-height:1.35;font-weight:550}
+.perpustakaan-book-form-heading p,.perpustakaan-book-side-heading p{margin:2px 0 0;color:#7185a1;font-size:7px;line-height:1.35}
+.perpustakaan-book-form-heading>span{padding:3px 5px;background:#eaf2ff;color:#2168c6;font-size:7px;white-space:nowrap}
+.perpustakaan-book-form-heading>span b,.perpustakaan-book-field b,.perpustakaan-digital-field b{color:#d84949;font-weight:600}
+.perpustakaan-book-fields{padding:0 14px 14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 10px}
+.perpustakaan-book-field{min-width:0;display:flex;flex-direction:column;gap:4px;color:#173f75;font-size:8px;line-height:1.35}
+.perpustakaan-book-field>span:first-child{display:flex;align-items:center;justify-content:space-between;gap:5px}
+.perpustakaan-book-field>span small{color:#7185a1;font-size:6px;font-weight:400}
+.perpustakaan-book-field .perpustakaan-book-input-icon{position:relative;min-width:0;display:flex;align-items:center}
+.perpustakaan-book-input-icon>svg{position:absolute;left:7px;flex:none;color:#7185a1}
+.perpustakaan-book-field input,.perpustakaan-book-field select,.perpustakaan-book-field textarea{width:100%;min-width:0;height:25px;padding:0 8px;border:0;border-radius:2px;background:#f7f9fc;color:#173f75;font:inherit;font-size:8px}
+.perpustakaan-book-input-icon input,.perpustakaan-book-input-icon select{padding-left:25px}
+.perpustakaan-book-field input::placeholder,.perpustakaan-book-field textarea::placeholder{color:#7185a1;opacity:1}
+.perpustakaan-book-field.full{grid-column:1/-1}
+.perpustakaan-book-field textarea{height:83px;padding:8px;resize:vertical}
+.perpustakaan-book-form-actions{margin:14px 10px 0;display:flex;align-items:center;gap:6px}
+.perpustakaan-book-form-actions>a,.perpustakaan-book-form-actions>button{min-height:24px;padding:0 11px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border:0;border-radius:2px;background:#eaf2ff;color:#173f75;font:inherit;font-size:8px;text-decoration:none;cursor:pointer}
+.perpustakaan-book-form-actions>button{min-width:105px;background:#075bb5;color:#fff;box-shadow:0 1px 2px rgba(15,23,42,.2)}
+.perpustakaan-book-form-actions>button:hover{background:#064d99}
+.perpustakaan-book-side-heading>span{color:#7185a1;font-size:7px}
+.perpustakaan-book-cover-card{padding-bottom:12px}
+.perpustakaan-cover-upload{position:relative;margin:0 13px;padding:9px;display:flex;flex-direction:column;align-items:center;border-radius:4px;background:#f7f9fc;text-align:center;cursor:pointer}
+.perpustakaan-cover-preview{width:90px;height:120px;margin-bottom:7px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:3px;background:#edf3fc}
+.perpustakaan-cover-preview strong{color:#075bb5;font-size:7px;font-weight:500}
+.perpustakaan-cover-preview small,.perpustakaan-cover-help{color:#7185a1;font-size:6px}
+.perpustakaan-cover-help{margin-bottom:7px}
+.perpustakaan-cover-button{width:100%;min-height:23px;display:flex;align-items:center;justify-content:center;gap:4px;border-radius:3px;background:#e8f1ff;color:#075bb5;font-size:7px}
+.perpustakaan-cover-upload input,.perpustakaan-digital-upload input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.perpustakaan-book-digital-card{padding-bottom:12px}
+.perpustakaan-book-digital-card>.perpustakaan-book-side-heading{display:block;min-height:42px}
+.perpustakaan-digital-field{margin:0 13px;display:flex;flex-direction:column;gap:5px;color:#173f75;font-size:8px}
+.perpustakaan-digital-upload{position:relative;min-height:100px;padding:10px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-radius:4px;background:#f7f9fc;text-align:center;cursor:pointer}
+.perpustakaan-digital-icon{width:30px;height:30px;margin-bottom:2px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:#e4efff;color:#2168c6}
+.perpustakaan-digital-upload strong{color:#173f75;font-size:7px;font-weight:500}
+.perpustakaan-digital-upload small{color:#7185a1;font-size:6px}
+.perpustakaan-file-types{display:flex;gap:4px;margin-top:2px}
+.perpustakaan-file-types i{padding:2px 4px;background:#fff;color:#7185a1;font-size:6px;font-style:normal}
+.perpustakaan-publication-status{margin:10px 13px 0;padding:0;border:0}
+.perpustakaan-publication-status legend{margin-bottom:5px;padding:0;color:#173f75;font-size:8px}
+.perpustakaan-publication-status label{width:calc(50% - 3px);min-height:43px;padding:6px 5px;display:inline-flex;vertical-align:top;align-items:flex-start;gap:4px;border-radius:3px;background:#f7f9fc;cursor:pointer}
+.perpustakaan-publication-status input{width:10px;height:10px;margin:2px 0 0;accent-color:#2168c6}
+.perpustakaan-publication-status label span{display:flex;flex-direction:column;gap:3px}
+.perpustakaan-publication-status strong{color:#173f75;font-size:7px;line-height:1.3;font-weight:500}
+.perpustakaan-publication-status small{color:#7185a1;font-size:6px}
+@media(max-width:700px){.perpustakaan-add-book-grid{grid-template-columns:minmax(0,1.15fr) minmax(210px,.85fr)}}
+@media(max-width:540px){.perpustakaan-add-book-grid{grid-template-columns:1fr}.perpustakaan-book-secondary-column{grid-row:2}.perpustakaan-book-fields{padding:0 11px 12px;gap:9px}.perpustakaan-book-field:not(.full){grid-column:1/-1}.perpustakaan-book-form-heading,.perpustakaan-book-side-heading{padding-right:11px;padding-left:11px}.perpustakaan-book-form-actions{margin:11px 0 0}.perpustakaan-book-form-actions>*{flex:1}.perpustakaan-cover-preview{width:105px;height:140px}}
+
+/* Form tambah Kategori Buku Perpustakaan */
+.perpustakaan-add-category-page{width:100%;min-width:0;color:#173f75;font-family:'Inter',sans-serif}
+.perpustakaan-category-back{margin:0 0 14px;display:inline-flex;align-items:center;gap:4px;color:#075bb5;font-size:10px;text-decoration:none}
+.perpustakaan-category-back:hover{text-decoration:underline}
+.perpustakaan-add-category-page>h1{margin:0 0 15px;color:#173f75;font-size:21px;line-height:1.35;font-weight:650;letter-spacing:-.25px}
+.perpustakaan-category-form{width:min(100%,740px)}
+.perpustakaan-category-form-card{overflow:hidden;border:1px solid #edf1f6;border-radius:8px;background:#fff}
+.perpustakaan-category-form-heading{min-height:65px;padding:13px 28px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.perpustakaan-category-form-heading h2{margin:0;color:#173f75;font-size:17px;line-height:1.35;font-weight:500}
+.perpustakaan-category-form-heading p{margin:2px 0 0;color:#7185a1;font-size:10px;line-height:1.4}
+.perpustakaan-category-form-heading>span{padding:5px 8px;background:#f7f9fc;color:#7185a1;font-size:9px;white-space:nowrap}
+.perpustakaan-category-form-heading>span b,.perpustakaan-category-field b,.perpustakaan-category-status legend b{color:#d84949;font-weight:600}
+.perpustakaan-category-fields{padding:7px 28px 28px;display:grid;gap:16px}
+.perpustakaan-category-field{min-width:0;display:flex;flex-direction:column;gap:7px;color:#173f75;font-size:12px;line-height:1.35}
+.perpustakaan-category-field>span:first-child{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.perpustakaan-category-field>span small{color:#7185a1;font-size:10px;font-weight:400}
+.perpustakaan-category-input-icon{position:relative;display:flex;align-items:center}
+.perpustakaan-category-input-icon>svg{position:absolute;left:11px;color:#7185a1}
+.perpustakaan-category-field input,.perpustakaan-category-field textarea{width:100%;min-width:0;height:36px;padding:0 12px;border:1px solid #edf1f6;border-radius:4px;background:#fff;color:#173f75;font:inherit;font-size:12px}
+.perpustakaan-category-input-icon input{padding-left:36px}
+.perpustakaan-category-field input::placeholder,.perpustakaan-category-field textarea::placeholder{color:#7185a1;opacity:1}
+.perpustakaan-category-field textarea{height:103px;padding:12px;resize:vertical}
+.perpustakaan-category-status{margin:0;padding:0;border:0}
+.perpustakaan-category-status legend{margin-bottom:7px;padding:0;color:#173f75;font-size:12px}
+.perpustakaan-category-status label{width:calc(50% - 4px);min-height:77px;padding:12px;display:inline-flex;vertical-align:top;align-items:flex-start;gap:8px;border-radius:7px;background:#f7f9fc;cursor:pointer}
+.perpustakaan-category-status input{width:12px;height:12px;margin:3px 0 0;accent-color:#2168c6}
+.perpustakaan-category-status label span{display:flex;flex-direction:column;gap:3px}
+.perpustakaan-category-status strong{color:#173f75;font-size:13px;line-height:1.3;font-weight:600}
+.perpustakaan-category-status small{max-width:230px;color:#7185a1;font-size:10px;line-height:1.45}
+.perpustakaan-category-form-actions{display:flex;justify-content:flex-end;align-items:center;gap:8px}
+.perpustakaan-category-form-actions>a,.perpustakaan-category-form-actions>button{min-height:34px;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:4px;background:#eaf2ff;color:#075bb5;font:inherit;font-size:11px;text-decoration:none;cursor:pointer}
+.perpustakaan-category-form-actions>button{background:#2168c6;color:#fff;box-shadow:0 1px 2px rgba(15,23,42,.15)}
+.perpustakaan-category-form-actions>button:hover{background:#1959ad}
+@media(max-width:560px){.perpustakaan-add-category-page>h1{font-size:19px}.perpustakaan-category-form-heading{padding:12px 15px}.perpustakaan-category-form-heading h2{font-size:15px}.perpustakaan-category-form-heading p{font-size:9px}.perpustakaan-category-fields{padding:6px 15px 16px;gap:14px}.perpustakaan-category-field{font-size:11px}.perpustakaan-category-field>span small{font-size:8px}.perpustakaan-category-status label{width:100%;margin-bottom:6px;min-height:62px}.perpustakaan-category-form-actions{justify-content:stretch}.perpustakaan-category-form-actions>*{flex:1}}
+
+/* Form edit Data Buku Perpustakaan */
+.perpustakaan-edit-book-page{width:100%;min-width:0;color:#173f75;font-family:'Inter',sans-serif}
+.perpustakaan-edit-book-heading{margin:0 0 17px}
+.perpustakaan-edit-book-heading h1{margin:0;color:#173f75;font-size:17px;line-height:1.35;font-weight:650}
+.perpustakaan-edit-book-heading p{margin:4px 0 0;color:#7185a1;font-size:10px;line-height:1.45}
+.perpustakaan-edit-book-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(230px,.92fr);align-items:start;gap:15px}
+.perpustakaan-edit-book-primary,.perpustakaan-edit-book-side{min-width:0}
+.perpustakaan-edit-book-side{display:grid;gap:14px}
+.perpustakaan-edit-info-card,.perpustakaan-edit-cover-card,.perpustakaan-edit-digital-card{min-width:0;overflow:hidden;border:1px solid #edf1f6;border-radius:7px;background:#fff}
+.perpustakaan-edit-card-heading{min-height:39px;padding:9px 13px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#f8fafc}
+.perpustakaan-edit-card-heading h2{margin:0;color:#173f75;font-size:12px;line-height:1.35;font-weight:550}
+.perpustakaan-edit-card-heading>span{padding:3px 5px;background:#eaf2ff;color:#2168c6;font-size:7px;white-space:nowrap}
+.perpustakaan-edit-card-heading>span b,.perpustakaan-edit-field b,.perpustakaan-edit-digital-field b{color:#d84949;font-weight:600}
+.perpustakaan-edit-book-fields{padding:14px 15px 16px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 11px}
+.perpustakaan-edit-field{min-width:0;display:flex;flex-direction:column;gap:5px;color:#173f75;font-size:9px;line-height:1.35}
+.perpustakaan-edit-field>span:first-child{display:flex;align-items:center;justify-content:space-between;gap:5px}
+.perpustakaan-edit-field>span small{color:#7185a1;font-size:7px;font-weight:400}
+.perpustakaan-edit-field input,.perpustakaan-edit-field select,.perpustakaan-edit-field textarea{width:100%;min-width:0;height:31px;padding:0 10px;border:0;border-radius:3px;background:#f7f9fc;color:#173f75;font:inherit;font-size:9px}
+.perpustakaan-edit-field input::placeholder,.perpustakaan-edit-field textarea::placeholder{color:#7185a1;opacity:1}
+.perpustakaan-edit-field.full{grid-column:1/-1}
+.perpustakaan-edit-field textarea{height:142px;padding:11px;resize:vertical}
+.perpustakaan-edit-input-icon{position:relative;min-width:0;display:flex;align-items:center}
+.perpustakaan-edit-input-icon>svg{position:absolute;left:9px;color:#7185a1}
+.perpustakaan-edit-input-icon input{padding-left:30px}
+.perpustakaan-edit-actions{margin:24px 10px 0;display:flex;align-items:center;gap:8px}
+.perpustakaan-edit-actions>a,.perpustakaan-edit-actions>button{min-height:29px;padding:0 11px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border:0;border-radius:3px;background:#eaf2ff;color:#173f75;font:inherit;font-size:9px;text-decoration:none;white-space:nowrap;cursor:pointer}
+.perpustakaan-edit-actions>button.delete{background:#ffe0dc;color:#b42318}
+.perpustakaan-edit-actions>button.save{background:#2168c6;color:#fff;box-shadow:0 1px 2px rgba(15,23,42,.2)}
+.perpustakaan-edit-actions>button.save:hover{background:#1959ad}
+.perpustakaan-edit-cover-card{padding-bottom:12px}
+.perpustakaan-edit-cover-card .perpustakaan-edit-card-heading{background:#fff}
+.perpustakaan-edit-card-heading>span{background:transparent}
+.perpustakaan-edit-cover-upload{position:relative;margin:0 13px;display:flex;flex-direction:column;align-items:center;cursor:pointer}
+.perpustakaan-edit-cover-preview{width:145px;height:193px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;border:1px solid #edf1f6;border-radius:5px;background:#f7f9fc;color:#173f75;font-size:8px;text-align:center}
+.perpustakaan-edit-cover-button{width:100%;min-height:27px;display:flex;align-items:center;justify-content:center;gap:5px;border-radius:3px;background:#e8f1ff;color:#075bb5;font-size:9px}
+.perpustakaan-edit-cover-upload>small{margin-top:5px;color:#7185a1;font-size:7px;text-align:center}
+.perpustakaan-edit-cover-upload input,.perpustakaan-edit-digital-upload input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.perpustakaan-edit-digital-card{padding-bottom:13px}
+.perpustakaan-edit-digital-card>.perpustakaan-edit-card-heading{min-height:42px}
+.perpustakaan-edit-digital-field{margin:0 13px;display:flex;flex-direction:column;gap:6px;color:#173f75;font-size:9px}
+.perpustakaan-edit-digital-upload{position:relative;min-height:100px;padding:12px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:4px;background:#f7f9fc;text-align:center;cursor:pointer}
+.perpustakaan-edit-digital-upload strong{color:#173f75;font-size:8px;line-height:1.4;font-weight:500}
+.perpustakaan-edit-digital-upload small{color:#7185a1;font-size:7px}
+.perpustakaan-edit-digital-upload>span{padding:5px 8px;border-radius:2px;background:#fff;color:#075bb5;font-size:7px}
+.perpustakaan-edit-publication{margin:12px 13px 0;padding:0;border:0}
+.perpustakaan-edit-publication legend{margin-bottom:6px;padding:0;color:#173f75;font-size:9px}
+.perpustakaan-edit-publication label{width:calc(50% - 3px);min-height:40px;padding:6px;display:inline-flex;vertical-align:top;align-items:flex-start;gap:4px;border-radius:3px;background:#f7f9fc;cursor:pointer}
+.perpustakaan-edit-publication input{width:10px;height:10px;margin:2px 0 0;accent-color:#2168c6}
+.perpustakaan-edit-publication label span{display:flex;flex-direction:column;gap:2px}
+.perpustakaan-edit-publication strong{color:#173f75;font-size:7px;line-height:1.3;font-weight:500}
+.perpustakaan-edit-publication small{color:#7185a1;font-size:6px}
+@media(max-width:700px){.perpustakaan-edit-book-grid{grid-template-columns:minmax(0,1.15fr) minmax(210px,.85fr)}}
+@media(max-width:540px){.perpustakaan-edit-book-heading h1{font-size:16px}.perpustakaan-edit-book-grid{grid-template-columns:1fr}.perpustakaan-edit-book-side{grid-row:2}.perpustakaan-edit-book-fields{padding:12px;gap:11px}.perpustakaan-edit-field:not(.full){grid-column:1/-1}.perpustakaan-edit-field textarea{height:120px}.perpustakaan-edit-actions{margin:13px 0 0;flex-wrap:wrap}.perpustakaan-edit-actions>*{flex:1}.perpustakaan-edit-cover-preview{width:155px;height:205px}}
