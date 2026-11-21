@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_lengkap', 150)->nullable();
             $table->boolean('aktif')->default(true);
             $table->timestamp('terakhir_login')->nullable();
+            $table->string('remember_token', 100)->nullable();
             $table->timestamp('dibuat_pada')->useCurrent();
             $table->timestamp('diubah_pada')->useCurrent();
             $table->timestamp('dihapus_pada')->nullable();
