@@ -15,7 +15,7 @@
 body.siswa-page {
     font-family: 'Inter', sans-serif;
     background-color: #edf3fa;
-    color: #173f75;
+    color: #206BC7;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -63,7 +63,7 @@ body.siswa-page {
 
 .sidebar-toggle-btn:hover {
     background: #edf3fa;
-    color: #173f75;
+    color: #206BC7;
 }
 
 .topbar-brand-wrap {
@@ -100,7 +100,7 @@ body.siswa-page {
 .topbar-school-name {
     font-size: 14.5px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
     line-height: 1.2;
 }
 
@@ -136,7 +136,7 @@ body.siswa-page {
 }
 
 .semester-badge {
-    background-color: #173f75;
+    background-color: #206BC7;
     color: #ffffff;
     font-size: 11px;
     font-weight: 400;
@@ -159,7 +159,7 @@ body.siswa-page {
 .topbar-user-role {
     font-size: 13px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
     line-height: 1.2;
 }
 
@@ -185,7 +185,7 @@ body.siswa-page {
 
 .topbar-avatar-box:hover {
     background-color: #dfe7f1;
-    color: #173f75;
+    color: #206BC7;
 }
 
 /* Shared academic and account colors across role topbars. */
@@ -253,11 +253,11 @@ body.siswa-page {
 
 .sidebar-nav-item:hover {
     background-color: #edf3fa;
-    color: #173f75;
+    color: #206BC7;
 }
 
 .sidebar-nav-item.active {
-    background-color: #173f75;
+    background-color: #206BC7;
     color: #ffffff;
     font-weight: 400;
 }
@@ -297,7 +297,7 @@ body.siswa-page {
 .sidebar-user-name {
     font-size: 13px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
     line-height: 1.2;
 }
 
@@ -332,7 +332,7 @@ body.siswa-page {
 .dashboard-header-left h1 {
     font-size: 24px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
     letter-spacing: -0.5px;
     line-height: 1.2;
     margin-bottom: 4px;
@@ -381,7 +381,7 @@ body.siswa-page {
 .identity-card-value {
     font-size: 13px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
     display: block;
 }
 
@@ -399,7 +399,7 @@ body.siswa-page {
 
 .btn-refresh-icon:hover {
     background-color: #edf3fa;
-    color: #173f75;
+    color: #206BC7;
 }
 
 /* =============================================
@@ -424,7 +424,7 @@ body.siswa-page {
 .card-section-title {
     font-size: 16px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
     letter-spacing: -0.2px;
 }
 
@@ -538,7 +538,7 @@ body.siswa-page {
 .field-value {
     font-size: 14px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
 }
 
 /* =============================================
@@ -589,14 +589,14 @@ body.siswa-page {
 .presensi-stat-value {
     font-size: 26px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
     letter-spacing: -0.5px;
     line-height: 1;
 }
 
 .presensi-stat-item.hadir .presensi-stat-value { color: #059669; }
 .presensi-stat-item.izin .presensi-stat-value { color: #d97706; }
-.presensi-stat-item.sakit .presensi-stat-value { color: #2168c6; }
+.presensi-stat-item.sakit .presensi-stat-value { color: #206BC7; }
 .presensi-stat-item.alpa .presensi-stat-value { color: #dc2626; }
 
 /* Kotak Progress Kehadiran */
@@ -614,13 +614,13 @@ body.siswa-page {
 .progress-title {
     font-size: 13px;
     font-weight: 400;
-    color: #3d5f87;
+    color: #206BC7;
 }
 
 .progress-percent {
     font-size: 20px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
     letter-spacing: -0.5px;
 }
 
@@ -635,7 +635,7 @@ body.siswa-page {
 
 .progress-bar-fill {
     height: 100%;
-    background-color: #173f75;
+    background-color: #206BC7;
     border-radius: 99px;
     width: 0%;
     transition: width 0.6s ease;
@@ -673,7 +673,7 @@ body.siswa-page {
 .presensi-detail-link {
     font-size: 12.5px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
     text-decoration: none;
     white-space: nowrap;
     transition: color 0.15s ease;
@@ -719,7 +719,7 @@ body.siswa-page {
 .spp-field-value {
     font-size: 14px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
 }
 
 .spp-field-value.big {
@@ -764,18 +764,18 @@ body.siswa-page {
 }
 
 .btn-spp-primary {
-    background-color: #173f75;
+    background-color: #206BC7;
     color: #ffffff;
-    border-color: #173f75;
+    border-color: #206BC7;
 }
 
 .btn-spp-primary:hover {
-    background-color: #315d91;
+    background-color: #206BC7;
 }
 
 .btn-spp-secondary {
     background-color: #ffffff;
-    color: #3d5f87;
+    color: #206BC7;
 }
 
 .btn-spp-secondary:hover {
@@ -810,7 +810,7 @@ body.siswa-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #3d5f87;
+    color: #206BC7;
     flex-shrink: 0;
 }
 
@@ -821,7 +821,7 @@ body.siswa-page {
 .pengumuman-header-text h3 {
     font-size: 15px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
     letter-spacing: -0.2px;
 }
 
@@ -835,7 +835,7 @@ body.siswa-page {
     display: inline-block;
     font-size: 11px;
     font-weight: 400;
-    color: #3d5f87;
+    color: #206BC7;
     background-color: #edf3fa;
     border: 1px solid #dfe7f1;
     padding: 4px 10px;
@@ -868,7 +868,7 @@ body.siswa-page {
 .empty-title {
     font-size: 15px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
     margin-bottom: 8px;
 }
 
@@ -907,7 +907,7 @@ body.siswa-page {
     gap: 6px;
     font-size: 12.5px;
     font-weight: 400;
-    color: #173f75;
+    color: #206BC7;
     text-decoration: none;
     transition: gap 0.15s ease;
 }
@@ -980,7 +980,7 @@ body.siswa-page {
 .sidebar-home-link:hover {
     border-color: #8a9fba;
     background-color: #edf3fa;
-    color: #173f75;
+    color: #206BC7;
 }
 
 .sidebar-home-link:focus-visible {

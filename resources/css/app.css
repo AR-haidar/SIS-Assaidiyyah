@@ -33,32 +33,32 @@ body :is(.operator-teacher-table-scroll,.operator-student-table-scroll,.operator
 body:is(.operator-page,.keuangan-page,.kepala-sekolah-page) :is(p,span,small,label,button,a,th,td,input,select,textarea){font-size:12px!important}
 
 .shared-announcement-empty{min-height:190px;padding:24px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:#fff;text-align:center}
-.shared-announcement-icon{width:44px;height:44px;margin-bottom:3px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #dce8f6;border-radius:12px;background:#edf4fc;color:#3674b9}
-.shared-announcement-empty>strong,.shared-announcement-empty>.empty-title{margin:0;color:#173f75;font-size:16px;line-height:1.4;font-weight: 400}
+.shared-announcement-icon{width:44px;height:44px;margin-bottom:3px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #dce8f6;border-radius:12px;background:#edf4fc;color:#206BC7}
+.shared-announcement-empty>strong,.shared-announcement-empty>.empty-title{margin:0;color:#206BC7;font-size:16px;line-height:1.4;font-weight: 400}
 .shared-announcement-empty>p,.shared-announcement-empty>.empty-desc{max-width:520px;margin:0;color:#718096;font-size:12px;line-height:1.6}
-.shared-announcement-action{min-height:34px;margin-top:6px;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:5px;background:#2168c6;color:#fff;font-size:11px;font-weight: 400;text-decoration:none}
-.shared-announcement-action:hover{background:#1959ad}
+.shared-announcement-action{min-height:34px;margin-top:6px;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:5px;background:#206BC7;color:#fff;font-size:11px;font-weight: 400;text-decoration:none}
+.shared-announcement-action:hover{background:#1956a3}
 .shared-announcement-empty-compact{min-height:110px;padding:14px 12px;gap:5px}
 .shared-announcement-empty-compact .shared-announcement-icon{width:32px;height:32px;border-radius:9px}
 .shared-announcement-empty-compact>strong{font-size:12px}
 .shared-announcement-empty-compact>p{font-size:10px}
 .shared-announcement-controls{margin:14px 0 12px}
 .shared-announcement-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}
-.shared-announcement-stats article{position:relative;min-width:0;min-height:66px;padding:12px 40px 10px 14px;border:1px solid #e6ecf4;border-radius:7px;background:#fff;box-shadow:0 1px 2px rgba(23,63,117,.035)}
+.shared-announcement-stats article{position:relative;min-width:0;min-height:66px;padding:12px 40px 10px 14px;border:1px solid #e6ecf4;border-radius:7px;background:#fff;box-shadow:0 1px 2px rgba(32,107,199,.035)}
 .shared-announcement-stats article>span{display:block;color:#718096;font-size:9px;letter-spacing:.35px;text-transform:uppercase}
-.shared-announcement-stats article>strong{display:block;margin-top:4px;color:#173f75;font-size:20px;line-height:1;font-weight: 400}
-.shared-announcement-stats article>i{position:absolute;top:13px;right:12px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:5px;background:#edf4fc;color:#3979bd;font-size:15px;font-style:normal}
+.shared-announcement-stats article>strong{display:block;margin-top:4px;color:#206BC7;font-size:20px;line-height:1;font-weight: 400}
+.shared-announcement-stats article>i{position:absolute;top:13px;right:12px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:5px;background:#edf4fc;color:#206BC7;font-size:15px;font-style:normal}
 .shared-announcement-tabs{min-height:44px;padding:8px 10px 0;display:flex;align-items:center;gap:6px;overflow-x:auto;border:1px solid #e6ecf4;border-bottom:0;border-radius:7px 7px 0 0;background:#fff}
 .shared-announcement-tabs button{min-height:27px;padding:0 12px;border:0;border-radius:15px;background:#f5f7fa;color:#718096;font:inherit;font-size:10px;white-space:nowrap;cursor:pointer}
-.shared-announcement-tabs button.active{background:#eaf2ff;color:#2168c6}
+.shared-announcement-tabs button.active{background:#eaf2ff;color:#206BC7}
 .shared-announcement-filters{padding:12px;display:grid;grid-template-columns:minmax(180px,1.5fr) minmax(130px,.85fr) minmax(110px,.7fr) 135px;gap:8px;align-items:center;border:1px solid #e6ecf4;border-radius:0 0 7px 7px;background:#fff}
 .shared-announcement-search,.shared-announcement-filters>label:not(.shared-announcement-search){height:36px;padding:0 10px;display:flex;align-items:center;gap:8px;border:1px solid #edf1f6;border-radius:4px;background:#f8fafc;color:#718096}
 .shared-announcement-search input,.shared-announcement-filters select{width:100%;min-width:0;height:100%;border:0;outline:0;background:transparent;color:#405875;font:inherit;font-size:10px}
-.shared-announcement-filter-button{min-height:36px;padding:0 11px;display:flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:4px;background:#eaf2ff;color:#2168c6;font:inherit;font-size:10px;cursor:pointer}
+.shared-announcement-filter-button{min-height:36px;padding:0 11px;display:flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:4px;background:#eaf2ff;color:#206BC7;font:inherit;font-size:10px;cursor:pointer}
 .shared-announcement-filter-button:hover{background:#dceaff}
-.student-finance-announcements>article{padding:12px 18px;border-top:1px solid #edf1f6;color:#536b89;font-size:11px}.student-finance-announcements>article h4{margin:0 0 4px;color:#173f75;font-size:13px}.student-finance-announcements>article p{margin:0 0 5px;line-height:1.5}.student-finance-announcements>article small{color:#718096;font-size:9px}
-.dashboard-announcement-panel{margin:16px 0;padding:16px;border:1px solid #e3e9f2;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(23,63,117,.04)}
-.dashboard-announcement-panel>h2{margin:0;padding-bottom:12px;border-bottom:1px solid #edf1f6;color:#173f75;font-size:15px;font-weight: 400}
+.student-finance-announcements>article{padding:12px 18px;border-top:1px solid #edf1f6;color:#536b89;font-size:11px}.student-finance-announcements>article h4{margin:0 0 4px;color:#206BC7;font-size:13px}.student-finance-announcements>article p{margin:0 0 5px;line-height:1.5}.student-finance-announcements>article small{color:#718096;font-size:9px}
+.dashboard-announcement-panel{margin:16px 0;padding:16px;border:1px solid #e3e9f2;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(32,107,199,.04)}
+.dashboard-announcement-panel>h2{margin:0;padding-bottom:12px;border-bottom:1px solid #edf1f6;color:#206BC7;font-size:15px;font-weight: 400}
 .dashboard-announcement-panel .shared-announcement-empty{min-height:165px;background:#fff}
 .announcement-table-card{overflow:hidden;border:1px solid #e3e7ee;border-radius:7px;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.08)}
 .announcement-table-scroll{width:100%;overflow-x:auto}
@@ -78,7 +78,7 @@ body:is(.operator-page,.keuangan-page,.kepala-sekolah-page) :is(p,span,small,lab
 /* Use the shared brand blue for every native button across the application. */
 button,[role="button"],input[type="button"],input[type="submit"],input[type="reset"],a.primary,a.operator-primary-button,a.btn,a[class*="-button"]{background-color:#206BC7!important;border-color:#206BC7!important;color:#fff!important}
 button,[role="button"],input[type="button"],input[type="submit"],input[type="reset"],a.primary,a.operator-primary-button,a.btn,a[class*="-button"]{border-radius:6px!important;font-family: 'Inter', sans-serif; font-weight: 400;cursor:pointer;transition:filter .15s ease,box-shadow .15s ease,transform .15s ease}
-button:hover:not(:disabled),[role="button"]:hover,input[type="button"]:hover,input[type="submit"]:hover,input[type="reset"]:hover,a.primary:hover,a.operator-primary-button:hover,a.btn:hover,a[class*="-button"]:hover{filter:brightness(.96);box-shadow:0 2px 5px rgba(32,107,199,.18)}
+button:hover:not(:disabled),[role="button"]:hover,input[type="button"]:hover,input[type="submit"]:hover,input[type="reset"]:hover,a.primary:hover,a.operator-primary-button:hover,a.btn:hover,a[class*="-button"]:hover{background-color:#1956a3!important;border-color:#1956a3!important;color:#fff!important;filter:none;box-shadow:0 2px 5px rgba(25,86,163,.2)}
 button:active:not(:disabled),[role="button"]:active,input[type="button"]:active,input[type="submit"]:active,input[type="reset"]:active{transform:translateY(1px)}
 button:focus-visible,[role="button"]:focus-visible,input[type="button"]:focus-visible,input[type="submit"]:focus-visible,input[type="reset"]:focus-visible,a.primary:focus-visible,a.operator-primary-button:focus-visible,a.btn:focus-visible,a[class*="-button"]:focus-visible{outline:3px solid rgba(32,107,199,.28);outline-offset:2px}
 button:disabled,input[type="button"]:disabled,input[type="submit"]:disabled,input[type="reset"]:disabled{opacity:.55;cursor:not-allowed}
@@ -89,4 +89,31 @@ h1 { font-size: 36px !important; font-weight: 700 !important; line-height: 1.2; 
 
 /* Keep the topbar sidebar toggle in its original neutral style. */
 button.sidebar-toggle-btn { background-color: #f5f8fc !important; border-color: #dfe7f1 !important; color: #536b89 !important; }
-button.sidebar-toggle-btn:hover:not(:disabled) { background-color: #edf3fa !important; border-color: #dfe7f1 !important; color: #173f75 !important; filter: none !important; box-shadow: none !important; }
+button.sidebar-toggle-btn:hover:not(:disabled) { background-color: #edf3fa !important; border-color: #dfe7f1 !important; color: #206BC7 !important; filter: none !important; box-shadow: none !important; }
+
+/* Primary action colors for Guru and Kepala Sekolah roles. */
+body.guru-page :is(.guru-filter-button,.shared-announcement-filter-button,.shared-announcement-action),
+body.kepala-sekolah-page :is(.ks-primary-button,.ks-filter-button,.shared-announcement-filter-button,.shared-announcement-action) { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
+body.guru-page :is(.guru-filter-button,.shared-announcement-filter-button,.shared-announcement-action):hover,
+body.kepala-sekolah-page :is(.ks-primary-button,.ks-filter-button,.shared-announcement-filter-button,.shared-announcement-action):hover { background-color: #1956a3 !important; border-color: #1956a3 !important; color: #fff !important; filter: none !important; box-shadow: 0 2px 5px rgba(25,86,163,.2) !important; }
+/* Preserve tabs, outline controls, pagination, uploads, and sidebar toggles as secondary actions. */
+body.guru-page .shared-announcement-tabs button,
+body.kepala-sekolah-page .ks-filter-tabs button { background-color: #f5f8fc !important; border-color: #dfe7f1 !important; color: #7185a1 !important; box-shadow: none !important; filter: none !important; }
+body.guru-page .shared-announcement-tabs button.active,
+body.kepala-sekolah-page .ks-filter-tabs button.selected { background-color: #eaf2ff !important; border-color: #dfe7f1 !important; color: #206BC7 !important; }
+body.kepala-sekolah-page .ks-outline-button { background-color: #fff !important; border-color: #dfe7f1 !important; color: #206BC7 !important; box-shadow: none !important; filter: none !important; }
+body.kepala-sekolah-page .ks-pagination button { background-color: #fff !important; border-color: #dfe7f1 !important; color: #7185a1 !important; box-shadow: none !important; filter: none !important; }
+body.kepala-sekolah-page .ks-pagination button:disabled { background-color: #f8fafc !important; color: #a0aec0 !important; }
+body.kepala-sekolah-page .ks-school-fields .ks-document-field button { background: transparent !important; background-color: transparent !important; border-color: transparent !important; color: #206BC7 !important; box-shadow: none !important; filter: none !important; }
+body.kepala-sekolah-page .ks-school-fields .ks-document-field button:hover { color: #1956a3 !important; text-decoration: underline; }
+
+/* One brand blue for headings, active navigation, filters, and topbar accents. */
+body :is(h1,h2,h3,h4,h5,h6) { color: #206BC7 !important; }
+body :is(.sidebar-nav-item.active,[aria-current='page'].sidebar-nav-item) { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
+body .sidebar-nav-item:not(.active):hover { color: #206BC7 !important; }
+body :is(button.active,button.selected,[role='tab'][aria-selected='true']) { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
+body :is(button.active,button.selected,[role='tab'][aria-selected='true']):hover:not(:disabled) { background-color: #1956a3 !important; border-color: #1956a3 !important; color: #fff !important; }
+body :is(.badge-primary,.badge-blue,.badge.active,.status-badge.active,.semester-badge) { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
+body :is(.topbar-school-name,.topbar-brand,.topbar-user-role,.topbar-logo-slot,.topbar-avatar-box) { color: #206BC7 !important; }
+body .topbar-semester-box .semester-badge { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
+body .nav-link.active { color: #206BC7 !important; }

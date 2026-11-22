@@ -274,7 +274,7 @@
                                 </div>
                                 <div class="dd-list-row">
                                     <span class="dd-list-label">Tingkat Kehadiran</span>
-                                    <span class="dd-list-value" style="color:#2563eb; font-weight: 400;">— %</span>
+                                    <span class="dd-list-value" style="color:#206BC7; font-weight: 400;">— %</span>
                                 </div>
                             </div>
 

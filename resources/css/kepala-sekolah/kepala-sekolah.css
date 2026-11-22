@@ -2,14 +2,14 @@
 .kepala-sekolah-page {
      font-family: 'Inter', sans-serif;
      background: #f5f8fc;
-     color: #173f75;
+     color: #206BC7;
 
 }
 .kepala-main {
      width: 100%;
      min-width: 0;
      padding: 24px 18px 40px;
-     color: #173f75;
+     color: #206BC7;
 
 }
 .ks-page-heading {
@@ -17,7 +17,7 @@
 
 }
 .ks-page-heading h1 {
-     color: #173f75;
+     color: #206BC7;
      font-size: 24px;
      line-height: 1.25;
      font-weight: 400;
@@ -65,7 +65,7 @@
 .ks-summary-card strong {
      display: block;
      margin-top: 1px;
-     color: #173f75;
+     color: #206BC7;
      font-size: 21px;
      line-height: 1.1;
      font-weight: 400;
@@ -96,7 +96,7 @@
 
 }
 .ks-panel h2 {
-     color: #173f75;
+     color: #206BC7;
      font-size: 15px;
      font-weight: 400;
 
@@ -115,7 +115,7 @@
 
 }
 .ks-panel-heading > a {
-     color: #1766d1;
+     color: #206BC7;
      font-size: 10px;
      text-decoration: none;
 
@@ -199,7 +199,7 @@
 .ks-attendance-legend b {
      display: block;
      margin-top: 2px;
-     color: #173f75;
+     color: #206BC7;
      font-size: 11px;
      font-weight: 400;
 
@@ -212,11 +212,11 @@
 
 }
 .ks-dot.hadir {
-     background: #2168c6;
+     background: #206BC7;
 
 }
 .ks-dot.izin {
-     background: #3285f6;
+     background: #206BC7;
 
 }
 .ks-dot.sakit {
@@ -262,7 +262,7 @@
      width: 0;
      height: 100%;
      display: block;
-     background: #2168c6;
+     background: #206BC7;
 
 }
 .ks-mini-table, .ks-data-table {
@@ -274,7 +274,7 @@
 .ks-mini-table th {
      padding: 7px 9px;
      background: #f5f8fc;
-     color: #173f75;
+     color: #206BC7;
      font-size: 8px;
      font-weight: 400;
 
@@ -299,7 +299,7 @@
 
 }
 .ks-announcement-empty strong {
-     color: #173f75;
+     color: #206BC7;
      font-size: 10px;
      font-weight: 400;
 
@@ -321,7 +321,7 @@
      gap: 4px;
      border: 0;
      border-radius: 4px;
-     background: #2168c6;
+     background: #206BC7;
      color: #fff;
      font: inherit;
      font-size: 9px;
@@ -330,7 +330,7 @@
 
 }
 .ks-primary-button:hover, .ks-filter-button:hover {
-     background: #1959ad;
+     background: #1956a3;
 
 }
 /* Pengumuman */
@@ -362,7 +362,7 @@
 .ks-announcement-stat strong {
      display: block;
      margin-top: 2px;
-     color: #173f75;
+     color: #206BC7;
      font-size: 16px;
 
 }
@@ -374,7 +374,7 @@
      justify-content: center;
      border-radius: 4px;
      background: #eaf2ff;
-     color: #2168c6;
+     color: #206BC7;
      font-size: 13px;
      font-style: normal;
 
@@ -407,7 +407,7 @@
 }
 .ks-filter-tabs button.selected {
      background: #eaf2ff;
-     color: #1766d1;
+     color: #206BC7;
 
 }
 .ks-announcement-filter-row {
@@ -453,7 +453,7 @@
      gap: 5px;
      border: 0;
      border-radius: 4px;
-     background: #2168c6;
+     background: #206BC7;
      color: #fff;
      font: inherit;
      font-size: 9px;
@@ -478,7 +478,7 @@
 .ks-data-table th {
      height: 34px;
      padding: 0 9px;
-     color: #173f75;
+     color: #206BC7;
      font-size: 8px;
      font-weight: 400;
      letter-spacing: .25px;
@@ -497,7 +497,7 @@
 
 }
 .ks-empty-state strong {
-     color: #173f75;
+     color: #206BC7;
      font-size: 13px;
      font-weight: 400;
 
@@ -548,7 +548,7 @@
      justify-content: center;
      border-radius: 2px;
      background: #e6efff;
-     color: #17457d;
+     color: #206BC7;
 
 }
 /* Rekap Absensi */
@@ -563,7 +563,7 @@
      align-items: center;
      justify-content: space-between;
      gap: 10px;
-     color: #1766d1;
+     color: #206BC7;
      font-size: 9px;
 
 }
@@ -635,7 +635,7 @@
 .ks-attendance-kpis article > strong {
      display: block;
      margin-top: 6px;
-     color: #173f75;
+     color: #206BC7;
      font-size: 19px;
      line-height: 1;
 
@@ -655,7 +655,7 @@
 
 }
 .ks-matrix-title h2 {
-     color: #173f75;
+     color: #206BC7;
      font-size: 12px;
      font-weight: 400;
 
@@ -690,7 +690,7 @@
      border: 1px solid #edf1f6;
      border-radius: 4px;
      background: #fff;
-     color: #1766d1;
+     color: #206BC7;
      font: inherit;
      font-size: 9px;
      white-space: nowrap;
@@ -730,7 +730,7 @@
 .ks-payment-kpis article strong {
      display: block;
      margin-top: 6px;
-     color: #173f75;
+     color: #206BC7;
      font-size: 16px;
 
 }
@@ -749,7 +749,7 @@
 
 }
 .ks-payment-table-heading strong {
-     color: #173f75;
+     color: #206BC7;
      font-size: 10px;
      font-weight: 400;
 
@@ -776,7 +776,7 @@
      min-height: 37px;
      padding: 11px 14px;
      background: #f5f8fc;
-     color: #173f75;
+     color: #206BC7;
      font-size: 12px;
      font-weight: 400;
 
@@ -810,13 +810,13 @@
 
 }
 .ks-school-fields article > strong {
-     color: #173f75;
+     color: #206BC7;
      font-size: 9px;
      font-weight: 400;
 
 }
 .ks-school-fields .ks-school-status {
-     color: #1766d1;
+     color: #206BC7;
 
 }
 .ks-school-fields .ks-accreditation {
@@ -824,16 +824,16 @@
      padding: 3px 5px;
      border-radius: 2px;
      background: #eaf2ff;
-     color: #1766d1;
+     color: #206BC7;
      font-size: 8px;
 
 }
 .ks-school-fields .ks-document-field button {
      padding: 0;
      border: 0;
-     border-bottom: 1px dotted #2168c6;
+     border-bottom: 1px dotted #206BC7;
      background: transparent;
-     color: #1766d1;
+     color: #206BC7;
      font: inherit;
      font-size: 8px;
      text-align: left;
@@ -942,7 +942,7 @@
 
 }
 .ks-field-icon {
-     color: #1766d1;
+     color: #206BC7;
      font-size: 11px;
 
 }
@@ -953,7 +953,7 @@
 
 }
 .ks-payment-label svg {
-     color: #1766d1;
+     color: #206BC7;
 
 }
 .ks-sync-dot, .ks-school-status i {
@@ -966,11 +966,11 @@
 }
 .ks-school-status i {
      margin-right: 4px;
-     background: #2168c6;
+     background: #206BC7;
 
 }
 .ks-outline-button svg {
-     color: #1766d1;
+     color: #206BC7;
      vertical-align: -2px;
 
 }
