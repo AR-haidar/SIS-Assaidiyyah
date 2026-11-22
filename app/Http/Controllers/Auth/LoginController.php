@@ -71,12 +71,28 @@ class LoginController extends Controller
 
     public function destroy(Request $request): RedirectResponse
     {
+        $pengguna = $request->user();
+
+        if ($pengguna !== null) {
+            // Catat ke log_aktivitas sebelum sesi pengguna dihapus
+            \App\Models\LogAktivitas::create([
+                'pengguna_id' => $pengguna->id,
+                'modul' => 'auth',
+                'aksi' => 'logout',
+                'objek' => 'pengguna',
+                'objek_id' => $pengguna->id,
+                'ringkasan' => 'Keluar dari sistem',
+                'waktu' => now(),
+            ]);
+        }
+
+        $request->session()->forget('peran_aktif');
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('status', 'Anda berhasil keluar dari sistem.');
     }
 
     /**
