@@ -12,29 +12,27 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
         then: function (): void {
-            $daftarPeran = [
-                'operator',
-                'guru',
-                'wali_kelas',
-                'kepala',
-                'keuangan',
-                'pustakawan',
-                'siswa',
-                'humas',
+            $peranConfig = [
+                'operator' => 'operator',
+                'guru' => 'guru',
+                'wali_kelas' => 'wali-kelas',
+                'kepala' => 'kepala-sekolah',
+                'keuangan' => 'keuangan',
+                'pustakawan' => 'perpustakaan',
+                'siswa' => 'siswa',
+                'humas' => 'humas',
             ];
 
-            foreach ($daftarPeran as $peran) {
+            foreach ($peranConfig as $peran => $prefix) {
                 Route::middleware(['web', 'auth', 'peran:' . $peran])
-                    ->prefix(str_replace('_', '-', $peran))
+                    ->prefix($prefix)
                     ->name($peran . '.')
                     ->group(base_path("routes/{$peran}.php"));
             }
         },
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->alias([
-            'peran' => PastikanPeran::class,
-        ]);
+        $middleware->alias(['peran' => PastikanPeran::class]);
         $middleware->redirectUsersTo('/pilih-peran');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
