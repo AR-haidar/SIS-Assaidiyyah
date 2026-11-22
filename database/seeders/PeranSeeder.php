@@ -21,6 +21,7 @@ class PeranSeeder extends Seeder
             'keuangan' => 'Keuangan',
             'pustakawan' => 'Pustakawan',
             'siswa' => 'Siswa / Orang Tua',
+            'humas' => 'Humas',
         ];
 
         foreach ($peran as $kode => $nama) {

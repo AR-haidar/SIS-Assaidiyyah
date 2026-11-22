@@ -13,5 +13,9 @@ class DatabaseSeeder extends Seeder
             ReferensiSeeder::class,
             JenisTagihanSeeder::class,
         ]);
+
+        if (app()->environment('local')) {
+            $this->call(AkunDemoSeeder::class);
+        }
     }
 }
