@@ -1,33 +1,77 @@
 const keyFor = section => `humas-demo-${section}`;
 const activityKey = 'humas-demo-activity';
-const getActivities = () => JSON.parse(localStorage.getItem(activityKey) || '[]');
+const defaultActivities = [
+    { section: 'Beranda', slug: 'beranda', title: 'Banner SPMB 2025/2026 Gelombang I', description: 'Teks pengumuman & tanggal seleksi', status: 'Published', updatedAt: '2025-03-21T08:30:00+07:00', displayTime: 'Hari ini, 08:30 WIB' },
+    { section: 'Prestasi Siswa', slug: 'prestasi', title: "Juara 1 Tahfidz Qur'an 5 Juz Kab. Cianjur", description: 'Santriwati M. Haikal - Kelas VI', status: 'Published', updatedAt: '2025-03-20T14:15:00+07:00', displayTime: 'Kemarin, 14:15 WIB' },
+    { section: 'Profil Guru', slug: 'guru', title: 'Pembaruan Profil Guru Kelas III & IV', description: 'Penyesuaian riwayat penugasan ajar', status: 'Draft', updatedAt: '2025-03-20T11:20:00+07:00', displayTime: '20 Mar 2025, 11:20 WIB' },
+    { section: 'Program & Ekstra', slug: 'program', title: 'Jadwal Latihan Pramuka & Pencak Silat', description: 'Dokumentasi latihan lapangan baru', status: 'Published', updatedAt: '2025-03-19T09:40:00+07:00', displayTime: '19 Mar 2025, 09:40 WIB' },
+    { section: 'Kontak & Lokasi', slug: 'kontak', title: 'Hotline WhatsApp Humas Khusus SPMB', description: 'Penyelarasan nomor narahubung wali murid', status: 'Draft', updatedAt: '2025-03-18T16:05:00+07:00', displayTime: '18 Mar 2025, 16:05 WIB' }
+];
+const getActivities = () => {
+    const stored = localStorage.getItem(activityKey);
+    return stored === null ? defaultActivities : JSON.parse(stored);
+};
 const safeText = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
 let activityPage = 1;
+let activityStatusFilter = '';
+
 function renderHumasDashboard() {
     const body = document.querySelector('[data-humas-activities]');
     if (!body) return;
-    const query = document.querySelector('[data-humas-activity-search]')?.value.trim().toLowerCase() || '';
-    const all = getActivities();
-    const filtered = all.filter(item => `${item.section} ${item.title} ${item.status}`.toLowerCase().includes(query));
-    const pageSize = 5, pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
-    activityPage = Math.min(activityPage, pageCount);
-    const pageItems = filtered.slice((activityPage - 1) * pageSize, activityPage * pageSize);
-    body.innerHTML = pageItems.length ? pageItems.map((item, index) => {
-        const date = new Date(item.updatedAt);
-        const when = Number.isNaN(date.valueOf()) ? '—' : new Intl.DateTimeFormat('id-ID', { dateStyle: 'medium', timeStyle: 'short' }).format(date);
-        return `<tr><td>${(activityPage - 1) * pageSize + index + 1}</td><td>• ${safeText(item.section)}</td><td>${safeText(item.title)}</td><td><span class="humas-status ${item.status === 'Published' ? 'published' : 'draft'}">${safeText(item.status)}</span></td><td>${safeText(when)}</td><td><a href="/humas/${safeText(item.slug)}" aria-label="Edit ${safeText(item.title)}">✎</a> <a href="/humas/${safeText(item.slug)}" aria-label="Lihat ${safeText(item.title)}">◎</a></td></tr>`;
-    }).join('') : '<tr><td colspan="6">' + (all.length ? 'Tidak ada aktivitas yang cocok dengan pencarian.' : 'Belum ada aktivitas tersimpan. Simpan konten dari halaman pengelolaan untuk melihat riwayat di sini.') + '</td></tr>';
-    document.querySelector('[data-humas-activity-count]').textContent = all.length ? `Menampilkan ${pageItems.length} dari ${filtered.length} aktivitas (${all.length} total)` : 'Belum ada aktivitas tersimpan';
-    document.querySelector('[data-humas-page]').textContent = activityPage;
-    document.querySelector('[data-humas-prev]').disabled = activityPage <= 1;
-    document.querySelector('[data-humas-next]').disabled = activityPage >= pageCount;
-    document.querySelectorAll('[data-humas-shortcut]').forEach(card => {
-        const saved = JSON.parse(localStorage.getItem(keyFor(card.dataset.humasShortcut)) || 'null');
-        const label = card.querySelector('[data-humas-card-status]');
-        if (saved) label.textContent = `${saved.fields?.status || 'Draft'} · diperbarui ${new Intl.DateTimeFormat('id-ID', { dateStyle: 'medium' }).format(new Date(saved.updatedAt))}`;
-    });
-}
 
+    const query = (document.querySelector('[data-humas-activity-search]')?.value || '').trim().toLowerCase();
+    const all = getActivities();
+    const filtered = all.filter(item => {
+        const matchesQuery = `${item.section} ${item.title} ${item.description || ''} ${item.status}`.toLowerCase().includes(query);
+        return matchesQuery && (!activityStatusFilter || item.status === activityStatusFilter);
+    });
+    const pageSize = 5;
+    const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
+    activityPage = Math.min(activityPage, pageCount);
+    const start = (activityPage - 1) * pageSize;
+    const pageItems = filtered.slice(start, start + pageSize);
+
+    body.innerHTML = pageItems.length ? pageItems.map((item, index) => {
+        const status = item.status || 'Draft';
+        const date = new Date(item.updatedAt);
+        const formattedDate = Number.isNaN(date.valueOf()) ? '—' : new Intl.DateTimeFormat('id-ID', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }).format(date);
+        const when = item.displayTime || formattedDate;
+        const slug = safeText(item.slug || item.section.toLowerCase().replace(/[^a-z0-9]+/g, '-'));
+        const title = safeText(item.title);
+        const description = item.description ? `<small>${safeText(item.description)}</small>` : '';
+        return `<tr>
+            <td>${start + index + 1}</td>
+            <td><span class="humas-activity-section ${slug}"><i aria-hidden="true">●</i>${safeText(item.section)}</span></td>
+            <td><strong>${title}</strong>${description}</td>
+            <td><span class="humas-status ${status.toLowerCase()}">${safeText(status)}</span></td>
+            <td>${safeText(when)}</td>
+            <td class="humas-activity-actions"><a href="/humas/${slug}" title="Edit konten" aria-label="Edit ${title}">✎</a><a href="/humas/${slug}" title="Lihat konten" aria-label="Lihat ${title}">◎</a></td>
+        </tr>`;
+    }).join('') : '<tr><td colspan="6" class="humas-empty">Tidak ada aktivitas yang cocok.</td></tr>';
+
+    const count = document.querySelector('[data-humas-activity-count]');
+    if (count) {
+        const isDefaultPreview = !query && !activityStatusFilter && all.length === defaultActivities.length && all[0]?.title === defaultActivities[0].title;
+        count.textContent = isDefaultPreview
+            ? 'Menampilkan 5 dari 42 riwayat konten'
+            : `Menampilkan ${pageItems.length ? start + 1 : 0}-${start + pageItems.length} dari ${filtered.length} riwayat konten`;
+    }
+    const pageButton = document.querySelector('[data-humas-page]');
+    if (pageButton) {
+        pageButton.textContent = String(activityPage);
+        pageButton.setAttribute('aria-label', `Halaman ${activityPage} dari ${pageCount}`);
+    }
+    const previous = document.querySelector('[data-humas-prev]');
+    const next = document.querySelector('[data-humas-next]');
+    if (previous) previous.disabled = activityPage <= 1;
+    if (next) next.disabled = activityPage >= pageCount;
+    const filterButton = document.querySelector('[data-humas-activity-filter]');
+    if (filterButton) {
+        filterButton.classList.toggle('active', Boolean(activityStatusFilter));
+        filterButton.title = activityStatusFilter ? `Filter: ${activityStatusFilter} (klik untuk mengubah)` : 'Filter status';
+        filterButton.setAttribute('aria-pressed', String(Boolean(activityStatusFilter)));
+    }
+}
 const programPage = document.querySelector('[data-humas-programs]');
 if (programPage) {
     const samplePrograms = [
@@ -69,10 +113,10 @@ if (programPage) {
         programPage.querySelector('[data-program-drafts]').textContent = String(programs.filter(item => item.status === 'Draft').length).padStart(2,'0');
         programPage.querySelector('[data-program-all-count]').textContent = programs.length;
         const pagination = programPage.querySelector('[data-program-pagination]');
-        pagination.innerHTML = `<button type="button" data-program-page="${page - 1}" ${page <= 1 ? 'disabled' : ''}>‹</button>${Array.from({length:pages},(_,i)=>`<button type="button" class="${i + 1 === page ? 'active' : ''}" data-program-page="${i + 1}">${i + 1}</button>`).join('')}<button type="button" data-program-page="${page + 1}" ${page >= pages ? 'disabled' : ''}>›</button>`;
+        pagination.innerHTML = `<button type="button" data-program-page="${page - 1}" aria-label="Halaman sebelumnya" ${page <= 1 ? 'disabled' : ''}>‹</button>${Array.from({length:pages},(_,i)=>`<button type="button" class="${i + 1 === page ? 'active' : ''}" data-program-page="${i + 1}" ${i + 1 === page ? 'aria-current="page"' : ''}>${i + 1}</button>`).join('')}<button type="button" data-program-page="${page + 1}" aria-label="Halaman berikutnya" ${page >= pages ? 'disabled' : ''}>›</button>`;
         pagination.querySelectorAll('[data-program-page]').forEach(button => button.addEventListener('click', () => { page = Number(button.dataset.programPage); renderPrograms(); }));
     };
-    programPage.querySelectorAll('[data-program-category]').forEach(button => button.addEventListener('click', () => { activeCategory = button.dataset.programCategory; page = 1; programPage.querySelectorAll('[data-program-category]').forEach(tab => tab.classList.toggle('active', tab === button)); renderPrograms(); }));
+    programPage.querySelectorAll('[data-program-category]').forEach(button => button.addEventListener('click', () => { activeCategory = button.dataset.programCategory; page = 1; programPage.querySelectorAll('[data-program-category]').forEach(tab => { const selected = tab === button; tab.classList.toggle('active', selected); tab.setAttribute('aria-pressed', String(selected)); }); renderPrograms(); }));
     search.addEventListener('input', () => { page = 1; renderPrograms(); });
     statusFilter.addEventListener('change', () => { page = 1; renderPrograms(); });
     programPage.querySelector('[data-program-sort]').addEventListener('click', () => { sortAscending = sortAscending === null ? true : !sortAscending; renderPrograms(); });
@@ -104,6 +148,7 @@ if (programPage) {
 }
 renderHumasDashboard();
 document.querySelector('[data-humas-activity-search]')?.addEventListener('input', () => { activityPage = 1; renderHumasDashboard(); });
+document.querySelector('[data-humas-activity-filter]')?.addEventListener('click', () => { activityStatusFilter = activityStatusFilter === '' ? 'Published' : activityStatusFilter === 'Published' ? 'Draft' : ''; activityPage = 1; renderHumasDashboard(); });
 document.querySelector('[data-humas-prev]')?.addEventListener('click', () => { activityPage--; renderHumasDashboard(); });
 document.querySelector('[data-humas-next]')?.addEventListener('click', () => { activityPage++; renderHumasDashboard(); });
 document.querySelector('[data-humas-sync]')?.addEventListener('click', () => alert('Pemeriksaan selesai. Konten tersimpan di browser; sinkronisasi ke Landing Page memerlukan backend yang belum tersedia.'));
@@ -190,8 +235,24 @@ if (profileEditor) {
     vision.addEventListener('input', refreshVision);
     refreshVision();
     function renderMissions() {
-        list.innerHTML = readMissions().map((mission, index) => `<li><span class="humas-mission-grip" aria-hidden="true">⠿</span><span class="humas-mission-index">${index + 1}</span><span class="humas-mission-text">${safeText(mission)}<small>Dibuat: Humas Madrasah　•　Tampil Aktif</small></span><span class="humas-mission-actions"><button type="button" data-mission-up="${index}" aria-label="Naikkan urutan" ${index === 0 ? 'disabled' : ''}>⌃</button><button type="button" data-mission-edit="${index}" aria-label="Edit misi">✎</button><button type="button" data-mission-delete="${index}" aria-label="Hapus misi">♜</button><button type="button" data-mission-down="${index}" aria-label="Turunkan urutan" ${index === readMissions().length - 1 ? 'disabled' : ''}>⌄</button></span></li>`).join('');
-        list.querySelectorAll('[data-mission-edit]').forEach(button => button.addEventListener('click', () => { const items = readMissions(); const changed = prompt('Edit butir misi', items[Number(button.dataset.missionEdit)]); if (changed?.trim()) { items[Number(button.dataset.missionEdit)] = changed.trim(); localStorage.setItem(missionKey, JSON.stringify(items)); renderMissions(); } }));
+        list.innerHTML = readMissions().map((mission, index) => `<li><span class="humas-mission-grip" aria-hidden="true">⠿</span><span class="humas-mission-index">${index + 1}</span><span class="humas-mission-text">${safeText(mission)}<small>Dibuat: Humas Madrasah　•　Tampil Aktif</small></span><span class="humas-mission-actions"><button type="button" data-mission-up="${index}" aria-label="Naikkan urutan" ${index === 0 ? 'disabled' : ''}>⌃</button><button type="button" data-mission-edit="${index}" aria-label="Edit misi" title="Edit misi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 4 4 4M4 20l4-.8L19 8a2.12 2.12 0 0 0-3-3L5 16l-1 4Z"/></svg></button><button type="button" data-mission-delete="${index}" aria-label="Hapus misi" title="Hapus misi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6m4-6v6M5 7l1 14h12l1-14M9 7V4h6v3"/></svg></button><button type="button" data-mission-down="${index}" aria-label="Turunkan urutan" ${index === readMissions().length - 1 ? 'disabled' : ''}>⌄</button></span></li>`).join('');
+        let draggedMissionIndex = null;
+        list.querySelectorAll('li').forEach((row, index) => {
+            row.draggable = true;
+            row.addEventListener('dragstart', event => { draggedMissionIndex = index; event.dataTransfer.effectAllowed = 'move'; row.classList.add('dragging'); });
+            row.addEventListener('dragend', () => { draggedMissionIndex = null; row.classList.remove('dragging'); });
+            row.addEventListener('dragover', event => event.preventDefault());
+            row.addEventListener('drop', event => {
+                event.preventDefault();
+                const targetIndex = index;
+                if (draggedMissionIndex === null || draggedMissionIndex === targetIndex) return;
+                const items = readMissions();
+                const [moved] = items.splice(draggedMissionIndex, 1);
+                items.splice(targetIndex, 0, moved);
+                localStorage.setItem(missionKey, JSON.stringify(items));
+                renderMissions();
+            });
+        });        list.querySelectorAll('[data-mission-edit]').forEach(button => button.addEventListener('click', () => { const items = readMissions(); const changed = prompt('Edit butir misi', items[Number(button.dataset.missionEdit)]); if (changed?.trim()) { items[Number(button.dataset.missionEdit)] = changed.trim(); localStorage.setItem(missionKey, JSON.stringify(items)); renderMissions(); } }));
         list.querySelectorAll('[data-mission-delete]').forEach(button => button.addEventListener('click', () => { if (!confirm('Hapus butir misi ini?')) return; const items = readMissions(); items.splice(Number(button.dataset.missionDelete), 1); localStorage.setItem(missionKey, JSON.stringify(items)); renderMissions(); }));
         list.querySelectorAll('[data-mission-up], [data-mission-down]').forEach(button => button.addEventListener('click', () => { const items = readMissions(); const index = Number(button.dataset.missionUp ?? button.dataset.missionDown); const target = index + (button.hasAttribute('data-mission-up') ? -1 : 1); if (target < 0 || target >= items.length) return; [items[index], items[target]] = [items[target], items[index]]; localStorage.setItem(missionKey, JSON.stringify(items)); renderMissions(); }));
     }
@@ -252,14 +313,14 @@ if (teacherEditor) {
         const pageSize = 5, pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
         page = Math.min(page, pageCount);
         const current = filtered.slice((page - 1) * pageSize, page * pageSize);
-        rows.innerHTML = current.length ? current.map(item => `<tr><td>${item.index + 1}</td><td><span class="humas-teacher-grip" aria-hidden="true">⠿</span><input class="humas-teacher-order" type="number" min="1" value="${item.order || item.index + 1}" data-teacher-order="${item.index}" aria-label="Urutan tampilan"></td><td>${item.photo ? `<img class="humas-teacher-photo" src="${item.photo}" alt="Foto ${safeText(item.name)}">` : '<span class="humas-teacher-photo-placeholder">—</span>'}</td><td>${safeText(item.name)}</td><td><span class="humas-teacher-badge">${safeText(item.role)}</span></td><td><em>${safeText(item.description)}</em></td><td><label><input class="humas-teacher-visibility" type="checkbox" data-teacher-visibility="${item.index}" ${item.status === 'Published' ? 'checked' : ''}>${item.status === 'Published' ? 'Tampil Aktif' : 'Disembunyikan'}</label></td><td><span class="humas-teacher-actions"><button type="button" data-teacher-edit="${item.index}" aria-label="Edit">✎</button><button type="button" data-teacher-delete="${item.index}" aria-label="Hapus">🗑</button></span></td></tr>`).join('') : '<tr><td colspan="8">Belum ada profil guru. Tambahkan profil untuk mulai mengelola sorotan landing page.</td></tr>';
+        rows.innerHTML = current.length ? current.map(item => `<tr><td>${item.index + 1}</td><td><span class="humas-teacher-grip" aria-hidden="true">⠿</span><input class="humas-teacher-order" type="number" min="1" value="${item.order || item.index + 1}" data-teacher-order="${item.index}" aria-label="Urutan tampilan"></td><td>${item.photo ? `<img class="humas-teacher-photo" src="${item.photo}" alt="Foto ${safeText(item.name)}">` : '<span class="humas-teacher-photo-placeholder">—</span>'}</td><td>${safeText(item.name)}</td><td><span class="humas-teacher-badge">${safeText(item.role)}</span></td><td><em>${safeText(item.description)}</em></td><td><label><input class="humas-teacher-visibility" type="checkbox" data-teacher-visibility="${item.index}" ${item.status === 'Published' ? 'checked' : ''}>${item.status === 'Published' ? 'Tampil Aktif' : 'Disembunyikan'}</label></td><td><span class="humas-teacher-actions"><button type="button" data-teacher-edit="${item.index}" aria-label="Edit profil" title="Edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 4 4 4M4 20l4-.8L19 8a2.12 2.12 0 0 0-3-3L5 16l-1 4Z"/></svg></button><button type="button" data-teacher-delete="${item.index}" aria-label="Hapus profil" title="Hapus"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6m4-6v6M5 7l1 14h12l1-14M9 7V4h6v3"/></svg></button></span></td></tr>`).join('') : '<tr><td colspan="8">Belum ada profil guru. Tambahkan profil untuk mulai mengelola sorotan landing page.</td></tr>';
         rows.querySelectorAll('tr').forEach((row,index) => { if (current[index]?.meta && row.cells[3]) row.cells[3].innerHTML = `${safeText(current[index].name)}<small>${safeText(current[index].meta)}</small>`; });
         teacherEditor.querySelector('[data-teacher-published]').textContent = `${all.filter(item => item.status === 'Published').length} Guru`;
         teacherEditor.querySelector('[data-teacher-draft]').textContent = `${all.filter(item => item.status !== 'Published').length} Profil`;
-        teacherEditor.querySelector('[data-teacher-summary]').textContent = filtered.length ? `Menampilkan ${(page - 1) * pageSize + 1}-${(page - 1) * pageSize + current.length} dari ${filtered.length} profil` : 'Belum ada profil guru tersimpan.';
-        teacherEditor.querySelector('[data-teacher-page]').textContent = page;
-        teacherEditor.querySelector('[data-teacher-prev]').disabled = page <= 1;
-        teacherEditor.querySelector('[data-teacher-next]').disabled = page >= pageCount;
+        teacherEditor.querySelector('[data-teacher-summary]').textContent = filtered.length ? `Menampilkan ${(page - 1) * pageSize + 1}-${(page - 1) * pageSize + current.length} dari ${filtered.length} data sorotan aktif di landing page` : 'Belum ada profil guru tersimpan.';
+        const pagination = teacherEditor.querySelector('[data-teacher-pagination]');
+        pagination.innerHTML = `<button type="button" data-teacher-page="${page - 1}" aria-label="Halaman sebelumnya" ${page <= 1 ? 'disabled' : ''}>‹</button>${Array.from({length:pageCount},(_,index)=>`<button type="button" class="${index + 1 === page ? 'active' : ''}" data-teacher-page="${index + 1}" ${index + 1 === page ? 'aria-current="page"' : ''}>${index + 1}</button>`).join('')}<button type="button" data-teacher-page="${page + 1}" aria-label="Halaman berikutnya" ${page >= pageCount ? 'disabled' : ''}>›</button>`;
+        pagination.querySelectorAll('[data-teacher-page]').forEach(button => button.addEventListener('click', () => { page = Number(button.dataset.teacherPage); renderTeachers(); }));
         const featured = all.filter(item => item.status === 'Published').sort((a, b) => (a.order || 0) - (b.order || 0)).slice(0, 3);
         teacherEditor.querySelector('[data-teacher-preview-cards]').innerHTML = featured.map(item => `<article>${item.photo ? `<img src="${item.photo}" alt="${safeText(item.name)}">` : '<div class="humas-teacher-photo-placeholder">Foto belum ditambahkan</div>'}<h3>${safeText(item.name)}</h3><span>${safeText(item.role)}</span><p>“${safeText(item.description)}”</p></article>`).join('') || '<p class="humas-teacher-empty">Belum ada profil Published untuk pratinjau.</p>';
         rows.querySelectorAll('[data-teacher-edit]').forEach(button => button.addEventListener('click', () => openTeacher(Number(button.dataset.teacherEdit))));
@@ -296,9 +357,6 @@ if (teacherEditor) {
     });
     teacherEditor.querySelectorAll('[name="search"], [name="role"], [name="visibility"]').forEach(control => { control.addEventListener('input', () => { page = 1; renderTeachers(); }); control.addEventListener('change', () => { page = 1; renderTeachers(); }); });
     teacherEditor.querySelector('[data-teacher-filter-form]').addEventListener('submit', event => { event.preventDefault(); page = 1; renderTeachers(); });
-    teacherEditor.querySelector('[data-teacher-prev]').addEventListener('click', () => { page--; renderTeachers(); });
-    teacherEditor.querySelector('[data-teacher-next]').addEventListener('click', () => { page++; renderTeachers(); });
-    teacherEditor.querySelector('[data-teacher-sort]').addEventListener('click', () => { const sorted = getTeachers().sort((a, b) => (a.order || 0) - (b.order || 0)); setTeachers(sorted); renderTeachers(); alert('Daftar sudah diurutkan berdasarkan nomor urutan tampilan.'); });
     teacherEditor.querySelector('[data-teacher-publish]')?.addEventListener('click', () => { const items = getTeachers(); items.forEach(item => item.status = 'Published'); setTeachers(items); renderTeachers(); alert('Semua profil ditandai Published di browser ini.'); });
     renderTeachers();
 }

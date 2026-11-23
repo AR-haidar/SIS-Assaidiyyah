@@ -1,16 +1,65 @@
 @extends('humas.layout')
+
 @section('title', 'Dashboard Humas')
+
 @section('content')
 <section class="humas-content">
-    <div class="humas-breadcrumb">CMS Humas › <strong>Dashboard</strong></div>
-    <header class="humas-dashboard-heading"><div><h1>Dashboard Humas &amp; CMS Landing Page</h1><p>Pusat tata kelola konten, publikasi informasi, dan media<br>publik MI Assa'idiyyah Cipanas.</p></div><div class="humas-heading-actions"><a href="{{ url('/') }}">↗ Lihat Landing Page Live</a><button type="button" data-humas-sync>↻ Sinkronisasi Web</button></div></header>
-    <div class="humas-notice"><span class="humas-notice-icon">♢</span><div><strong>Catatan Batasan &amp; Kewenangan Humas <small>Kebijakan Sistem</small></strong><p>Peran Humas difokuskan pada pembaruan teks deskripsi, kurasi foto/galeri, publikasi pengumuman, dan transparansi prestasi landing page. Struktur tata letak grid dan desain visual antarmuka publik bersifat permanen. Modul Perpustakaan Digital dikelola secara mandiri oleh staf Admin Perpustakaan.</p></div></div>
-    <h2 class="humas-section-title">Akses Cepat Pengelolaan Modul</h2><p class="humas-section-subtitle">Arahkan suntingan langsung ke seksi landing page yang dituju.</p>
-    <div class="humas-shortcuts">
-        @foreach([['beranda','⌂','Beranda & Banner Utama','Hero headline, slider informasi, kutipan sambutan Kepala Madrasah, & tombol CTA pendaftaran.'],['profil','♜','Profil & Visi Misi','Sejarah singkat madrasah, visi resmi, butir misi, serta tujuan strategis kelembagaan Cipanas.'],['program','◇','Program & Ekstrakurikuler','Program tahfidz, kurikulum madrasah, kepramukaan, drum band, sains club, & olahraga.'],['guru','♧','Profil Guru & Tenaga Pendidik','Showcase jajaran dewan asatidz/guru, bidang studi, foto resmi pengajar, dan staf tata usaha.'],['prestasi','♜','Prestasi Siswa','Galeri medali, kejuaraan MTQ tingkat kabupaten/provinsi, olimpiade matematika, dan sertifikat.'],['kontak','ⓘ','Kontak, Lokasi & Medsos','Alamat Cipanas, koordinat Google Maps, nomor WhatsApp Humas, email, IG, dan saluran YouTube.']] as [$slug,$icon,$label,$description])
-        <a class="humas-shortcut" href="{{ url('/humas/'.$slug) }}" data-humas-shortcut="{{ $slug }}"><span class="humas-shortcut-icon">{{ $icon }}</span><div class="humas-shortcut-main"><strong>{{ $label }}</strong><p>{{ $description }}</p></div><footer><span data-humas-card-status>Belum ada data tersimpan</span><b>Kelola {{ $label }} →</b></footer></a>
-        @endforeach
-    </div>
-    <section class="humas-activity"><header><div><strong>Aktivitas Pembaruan Terakhir</strong><p>Log penyuntingan konten landing page oleh tim Humas</p></div><input type="search" data-humas-activity-search placeholder="Cari konten…" aria-label="Cari aktivitas"></header><div class="humas-activity-scroll"><table><thead><tr><th>No</th><th>Bagian Halaman</th><th>Judul / Objek Konten</th><th>Status</th><th>Terakhir Disunting</th><th>Aksi</th></tr></thead><tbody data-humas-activities></tbody></table></div><footer><span data-humas-activity-count>Belum ada aktivitas tersimpan</span><nav><button type="button" data-humas-prev disabled>‹</button><button class="active" data-humas-page>1</button><button type="button" data-humas-next disabled>›</button></nav></footer></section>
+    <header class="humas-dashboard-heading">
+        <div>
+            <h1>Dashboard Humas &amp; CMS Landing Page</h1>
+            <p>Pusat tata kelola konten, publikasi informasi, dan media publik MI Assa'iyyah Cipanas.</p>
+        </div>
+        <div class="humas-heading-actions">
+            <a href="{{ url('/') }}" aria-label="Lihat Landing Page Live">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7m-1-6-9 9M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6"/></svg>
+                <span>Lihat Landing Page Live</span>
+            </a>
+        </div>
+    </header>
+
+    <aside class="humas-notice">
+        <div>
+            <strong>Catatan Batasan &amp; Kewenangan Humas</strong>
+            <p>Peran Humas difokuskan pada pembaruan teks deskripsi, kurasi foto/galeri, publikasi pengumuman, dan transparansi prestasi landing page. Struktur tata letak grid dan desain visual antarmuka publik bersifat permanen. Modul Perpustakaan Digital dikelola secara mandiri oleh staf Admin Perpustakaan.</p>
+        </div>
+    </aside>
+
+    <section class="humas-activity" aria-labelledby="humas-activity-title">
+        <header>
+            <div class="humas-activity-heading">
+                <strong id="humas-activity-title">Aktivitas Pembaruan Terakhir</strong>
+                <p>Log penyuntingan konten landing page oleh tim Humas</p>
+            </div>
+            <div class="humas-activity-tools">
+                <input type="search" data-humas-activity-search placeholder="Cari konten..." aria-label="Cari aktivitas konten">
+                <button type="button" data-humas-activity-filter aria-label="Filter status aktivitas" title="Filter status">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10m-7 6h4"/></svg>
+                </button>
+            </div>
+        </header>
+        <div class="humas-activity-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>BAGIAN<br>HALAMAN</th>
+                        <th>JUDUL / OBJEK<br>KONTEN</th>
+                        <th>STATUS</th>
+                        <th>TERAKHIR<br>DISUNTING</th>
+                        <th>AKSI</th>
+                    </tr>
+                </thead>
+                <tbody data-humas-activities></tbody>
+            </table>
+        </div>
+        <footer>
+            <span data-humas-activity-count>Menampilkan 5 dari 42 riwayat konten</span>
+            <nav aria-label="Halaman aktivitas">
+                <button type="button" data-humas-prev aria-label="Halaman sebelumnya">‹</button>
+                <button type="button" class="active" data-humas-page aria-current="page">1</button>
+                <button type="button" data-humas-next aria-label="Halaman berikutnya">›</button>
+            </nav>
+        </footer>
+    </section>
 </section>
 @endsection

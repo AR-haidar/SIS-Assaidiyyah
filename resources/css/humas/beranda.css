@@ -1,1 +1,41 @@
 .humas-home-editor{width:100%;max-width:1180px;margin:0 auto;color:#206BC7}.humas-home-heading{margin:0 0 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:22px}.humas-home-heading h1{margin:0;font-size:22px;line-height:1.3;font-weight: 400;letter-spacing:-.3px}.humas-home-heading p{max-width:650px;margin:5px 0 0;color:#7185a1;font-size:13px;line-height:1.5}.humas-home-top-actions{width:190px;flex:none;display:grid;gap:7px}.humas-home-top-actions a,.humas-home-top-actions button{height:36px;display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid #edf1f6;border-radius:4px;background:#fff;color:#206BC7;font:inherit;font-size:12px;text-decoration:none;cursor:pointer}.humas-home-top-actions button{border-color:#206BC7;background:#206BC7;color:#fff}.humas-home-form{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.95fr);align-items:start;gap:18px}.humas-home-card{min-width:0;overflow:hidden;border:1px solid #e7edf5;border-radius:8px;background:#fff;box-shadow:0 1px 2px #206BC708}.humas-home-card>header{min-height:48px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#f8fafc}.humas-home-card>header strong{font-size:14px}.humas-home-card>header span{color:#7185a1;font-size:11px}.humas-home-fields{padding:16px 22px 18px;display:grid;gap:15px}.humas-home-fields label{display:flex;flex-direction:column;gap:6px;font-size:11px}.humas-home-fields input,.humas-home-fields textarea{width:100%;padding:10px 12px;border:0;border-radius:4px;background:#f7f9fc;color:#206BC7;font:inherit;font-size:13px;line-height:1.5;resize:vertical}.humas-home-fields textarea{min-height:72px}.humas-home-fields label:nth-child(2) textarea{min-height:78px}.humas-home-fields label:nth-child(3) textarea{min-height:112px}.humas-home-fields label>small{color:#7185a1;font-size:10px;line-height:1.45}.humas-home-count{align-self:flex-end}.humas-home-banner{padding-bottom:16px}.humas-home-banner>p{margin:12px 20px;color:#7185a1;font-size:11px;line-height:1.5}.humas-home-image-wrap{position:relative;min-height:192px;margin:0 20px;display:grid;place-items:center;overflow:hidden;border-radius:6px;background:#f1f5fa;color:#7185a1;font-size:12px}.humas-home-image-wrap img{width:100%;height:192px;object-fit:cover}.humas-home-image-caption{position:absolute;right:0;bottom:0;left:0;padding:9px 12px;background:linear-gradient(transparent,#206BC7d9);color:#fff;font-size:11px}.humas-home-image-actions{margin:10px 20px;display:flex;gap:8px}.humas-home-image-actions label,.humas-home-image-actions button{height:34px;flex:1;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid #edf1f6;border-radius:4px;background:#fff;color:#206BC7;font:inherit;font-size:11px;cursor:pointer}.humas-home-image-actions button{flex:none;padding:0 13px;color:#c43b3b}.humas-home-upload{min-height:145px;margin:0 20px;padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;border-radius:6px;background:#f8fafc;color:#206BC7;text-align:center;cursor:pointer}.humas-home-upload strong{font-size:12px}.humas-home-upload small{max-width:270px;color:#7185a1;font-size:10px;line-height:1.4}.humas-home-upload span{font-size:11px}.humas-home-actions{grid-column:1/-1;margin-top:24px;display:flex;justify-content:flex-end;gap:9px}.humas-home-actions a,.humas-home-actions button{min-height:36px;padding:0 15px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #edf1f6;border-radius:4px;background:#fff;color:#206BC7;font:inherit;font-size:12px;text-decoration:none;cursor:pointer}.humas-home-actions button.primary{border-color:#206BC7;background:#206BC7;color:#fff}@media(max-width:800px){.humas-home-form{grid-template-columns:1fr}.humas-home-actions{grid-column:auto}}@media(max-width:560px){.humas-home-heading{flex-direction:column}.humas-home-top-actions{width:100%;grid-template-columns:1fr 1fr}.humas-home-actions{flex-wrap:wrap}.humas-home-actions>*{flex:1}}
+
+/* Beranda Humas: komposisi editor mengikuti referensi, shell topbar/sidebar tetap dari layout. */
+.humas-page .siswa-main .humas-home-editor{width:100%;max-width:1180px;margin:8px auto 0}
+.humas-page .siswa-main .humas-home-heading{margin:0 0 24px;display:block}
+.humas-page .siswa-main .humas-home-heading h1{margin:0;color:#173f75;font-size:24px;font-weight:700;line-height:1.3;letter-spacing:-.35px}
+.humas-page .siswa-main .humas-home-heading p{max-width:660px;margin:4px 0 0;color:#7185a1;font-size:15px;line-height:1.45}
+.humas-page .siswa-main .humas-home-form{grid-template-columns:minmax(0,1.35fr) minmax(300px,.95fr);gap:22px;align-items:start}
+.humas-page .siswa-main .humas-home-card{border:0;border-radius:9px;background:#fff;box-shadow:0 1px 3px rgba(23,63,117,.04)}
+.humas-page .siswa-main .humas-home-card>header{min-height:48px;padding:0 24px;background:#f8f9fb}
+.humas-page .siswa-main .humas-home-card>header strong{color:#173f75;font-size:16px;font-weight:700}
+.humas-page .siswa-main .humas-home-card>header span{font-size:12px}
+.humas-page .siswa-main .humas-home-fields{padding:16px 24px 20px;gap:15px}
+.humas-page .siswa-main .humas-home-fields label{gap:6px;color:#173f75;font-size:12px}
+.humas-page .siswa-main .humas-home-fields input,.humas-page .siswa-main .humas-home-fields textarea{padding:10px 12px;border-radius:4px;background:#f8f9fb;color:#172b45;font-size:14px}
+.humas-page .siswa-main .humas-home-fields input{height:36px}
+.humas-page .siswa-main .humas-home-fields textarea{min-height:78px}
+.humas-page .siswa-main .humas-home-fields label:nth-child(2) textarea{min-height:82px}
+.humas-page .siswa-main .humas-home-fields label:nth-child(3) textarea{min-height:112px}
+.humas-page .siswa-main .humas-home-fields label>small{font-size:12px;line-height:1.45}
+.humas-page .siswa-main .humas-home-count{align-self:flex-end}
+.humas-page .siswa-main .humas-home-banner{padding-bottom:20px}
+.humas-page .siswa-main .humas-home-banner>p{margin:12px 24px;color:#7185a1;font-size:12px;line-height:1.45}
+.humas-page .siswa-main .humas-home-image-wrap{min-height:194px;margin:0 24px;border-radius:7px}
+.humas-page .siswa-main .humas-home-image-wrap img{height:194px;object-fit:cover}
+.humas-page .siswa-main .humas-home-image-actions{margin:10px 24px;gap:8px}
+.humas-page .siswa-main .humas-home-image-actions label,.humas-page .siswa-main .humas-home-image-actions button{height:36px;font-size:14px}
+.humas-page .siswa-main .humas-home-upload{min-height:180px;margin:0 24px;padding:16px 20px;gap:7px;background:#f8f9fb}
+.humas-page .siswa-main .humas-home-upload-icon{color:#206bc7;font-size:19px;line-height:1}
+.humas-page .siswa-main .humas-home-upload strong{font-size:14px}
+.humas-page .siswa-main .humas-home-upload small{max-width:300px;font-size:12px}
+.humas-page .siswa-main .humas-home-browse{margin-top:3px;color:#206bc7;font-size:13px}
+.humas-page .siswa-main .humas-home-file-row{display:flex;align-items:center;justify-content:center;gap:6px;color:#7185a1;font-size:12px}
+.humas-page .siswa-main .humas-home-file-row input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.humas-page .siswa-main .humas-home-file-button{display:none}
+.humas-page .siswa-main .humas-home-actions{grid-column:1/-1;margin-top:34px;gap:9px}
+.humas-page .siswa-main .humas-home-actions a,.humas-page .siswa-main .humas-home-actions button{min-height:38px;padding:0 16px;font-size:14px}
+@media(max-width:800px){.humas-page .siswa-main .humas-home-editor{max-width:100%}.humas-page .siswa-main .humas-home-form{grid-template-columns:1fr}.humas-page .siswa-main .humas-home-actions{grid-column:auto;margin-top:8px}}
+@media(max-width:560px){.humas-page .siswa-main .humas-home-actions{flex-wrap:wrap}.humas-page .siswa-main .humas-home-actions>*{flex:1}}
+/* Lebar editor mengikuti gutter konten topbar, tidak dibatasi max-width. */
+.humas-page .siswa-main .humas-home-editor{width:100%;max-width:none;margin:8px 0 0}
