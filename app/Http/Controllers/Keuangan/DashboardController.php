@@ -27,24 +27,37 @@ class DashboardController extends Controller
             'ditolak'   => (int) ($hitung[StatusVerifikasi::Ditolak->value] ?? 0),
         ];
 
+        // 10 pengajuan tertua yang menunggu; daftar lengkap ada di halaman Pembayaran Siswa.
         $antrean = Pembayaran::query()
             ->menunggu()
             ->with([
-                'tagihan.siswa',
                 'tagihan.jenisTagihan',
+                'tagihan.siswa.rombel',
             ])
             ->when($filterJenis, fn ($q) => $q->whereHas(
-                'tagihan', fn ($t) => $t->where('jenis_tagihan_id', $filterJenis)
+                'tagihan',
+                fn ($t) => $t->where('jenis_tagihan_id', $filterJenis),
             ))
             ->orderBy('tanggal_pengajuan')
-            ->paginate(10)
-            ->withQueryString();
+            ->limit(10)
+            ->get();
+
+        // Kelas = rombel siswa pada tahun ajaran yang sama dengan tagihan.
+        $antrean->each(function (Pembayaran $pembayaran): void {
+            $tagihan = $pembayaran->tagihan;
+
+            $pembayaran->setAttribute(
+                'kelas',
+                $tagihan?->siswa?->rombel
+                    ->firstWhere('tahun_ajaran_id', $tagihan->tahun_ajaran_id)?->nama,
+            );
+        });
 
         return view('keuangan.dashboard', [
-            'jumlah'        => $jumlah,
-            'antrean'       => $antrean,
-            'jenisTagihan'  => JenisTagihan::where('aktif', true)->orderBy('nama')->get(),
-            'filterJenis'   => $filterJenis,
+            'jumlah'       => $jumlah,
+            'antrean'      => $antrean,
+            'jenisTagihan' => JenisTagihan::where('aktif', true)->orderBy('nama')->get(),
+            'filterJenis'  => $filterJenis,
         ]);
     }
 }
