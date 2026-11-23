@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\JenisAkun;
+use Database\Factories\PenggunaFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -12,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Pengguna extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\PenggunaFactory> */
+    /** @use HasFactory<PenggunaFactory> */
     use HasFactory;
 
     use SoftDeletes;

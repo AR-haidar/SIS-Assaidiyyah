@@ -150,22 +150,20 @@
     //     return view('halaman-baca-buku', ['bookId' => $id]);
     // });
 
-
-
     use App\Http\Controllers\Auth\LoginController;
-    use App\Http\Controllers\Auth\PeranController;
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\PeranController;
+use Illuminate\Support\Facades\Route;
 
-    Route::middleware('guest')->group(function (): void {
-        Route::get('/login', [LoginController::class, 'create'])->name('login');
-        Route::post('/login', [LoginController::class, 'store'])->name('login.store');
-    });
+Route::middleware('guest')->group(function (): void {
+    Route::get('/login', [LoginController::class, 'create'])->name('login');
+    Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+});
 
-    Route::middleware('auth')->group(function (): void {
-        Route::post('/keluar', [LoginController::class, 'destroy'])->name('logout');
-        Route::get('/pilih-peran', [PeranController::class, 'index'])->name('peran.pilih');
-    });
+Route::middleware('auth')->group(function (): void {
+    Route::post('/keluar', [LoginController::class, 'destroy'])->name('logout');
+    Route::get('/pilih-peran', [PeranController::class, 'index'])->name('peran.pilih');
+});
 
-    foreach (glob(__DIR__ . '/modules/publik/*.php') ?: [] as $berkas) {
-        require $berkas;
-    }
+foreach (glob(__DIR__.'/modules/publik/*.php') ?: [] as $berkas) {
+    require $berkas;
+}

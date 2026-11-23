@@ -14,7 +14,9 @@ class Pembayaran extends Model
     use SoftDeletes;
 
     public const CREATED_AT = 'tanggal_pengajuan';
+
     public const UPDATED_AT = 'diubah_pada';
+
     public const DELETED_AT = 'dihapus_pada';
 
     protected $table = 'pembayaran';
