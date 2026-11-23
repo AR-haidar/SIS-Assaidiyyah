@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LibraryController;
 
 Route::get('/', function () {
     return view('home');
@@ -128,20 +129,25 @@ Route::get('/keuangan/pengumuman/{id}/edit', function ($id) {
 Route::get('/perpustakaan/dashboard', function () {
     return view('perpustakaan.dashboard');
 });
-Route::get('/perpustakaan/data-buku', function () {
-    return view('perpustakaan.data-buku');
-});
-Route::get('/perpustakaan/kategori-buku', function () {
-    return view('perpustakaan.kategori-buku');
-});
+Route::get('/perpustakaan/data-buku', [LibraryController::class, 'books']);
+Route::post('/perpustakaan/data-buku', [LibraryController::class, 'storeBook'])->name('library.books.store');
+Route::put('/perpustakaan/data-buku/{book}', [LibraryController::class, 'updateBook'])->name('library.books.update');
+Route::delete('/perpustakaan/data-buku/{book}', [LibraryController::class, 'deleteBook'])->name('library.books.delete');
+Route::get('/perpustakaan/kategori-buku', [LibraryController::class, 'categories']);
+Route::post('/perpustakaan/kategori-buku', [LibraryController::class, 'storeCategory'])->name('library.categories.store');
+Route::put('/perpustakaan/kategori-buku/{category}', [LibraryController::class, 'updateCategory'])->name('library.categories.update');
+Route::delete('/perpustakaan/kategori-buku/{category}', [LibraryController::class, 'deleteCategory'])->name('library.categories.delete');
 Route::get('/perpustakaan/data-buku/tambah', function () {
     return view('perpustakaan.tambah-data-buku');
 });
 Route::get('/perpustakaan/kategori-buku/tambah', function () {
     return view('perpustakaan.tambah-kategori-buku');
 });
-Route::get('/perpustakaan/data-buku/edit', function () {
-    return view('perpustakaan.edit-data-buku');
+Route::get('/perpustakaan/data-buku/{book}/edit', function (\App\Models\Book $book) {
+    return view('perpustakaan.edit-data-buku', ['book' => $book, 'categories' => \App\Models\BookCategory::orderBy('name')->get()]);
+});
+Route::get('/perpustakaan/kategori-buku/{category}/edit', function (\App\Models\BookCategory $category) {
+    return view('perpustakaan.edit-kategori-buku', compact('category'));
 });
 
 Route::get('/perpustakaan-digital', function () {

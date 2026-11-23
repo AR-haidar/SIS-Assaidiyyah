@@ -1,5 +1,7 @@
 /* Dashboard Perpustakaan Digital */
 .perpustakaan-page{background:#f7f8fc;color:#206BC7;font-family: 'Inter', sans-serif}
+.perpustakaan-topbar-logo{width:54px;height:42px;flex:0 0 54px;object-fit:contain;display:block}
+@media(max-width:560px){.perpustakaan-topbar-logo{width:42px;height:34px;flex-basis:42px}}
 .perpustakaan-page .perpustakaan-main{display:block;min-width:0;padding:20px 19px 30px;overflow-x:hidden}
 .perpustakaan-dashboard{width:100%;min-width:0;color:#206BC7}
 .perpustakaan-dashboard-heading{margin:0 0 20px}
@@ -257,3 +259,42 @@
 .perpustakaan-edit-publication small{color:#7185a1;font-size:6px}
 @media(max-width:700px){.perpustakaan-edit-book-grid{grid-template-columns:minmax(0,1.15fr) minmax(210px,.85fr)}}
 @media(max-width:540px){.perpustakaan-edit-book-heading h1{font-size:16px}.perpustakaan-edit-book-grid{grid-template-columns:1fr}.perpustakaan-edit-book-side{grid-row:2}.perpustakaan-edit-book-fields{padding:12px;gap:11px}.perpustakaan-edit-field:not(.full){grid-column:1/-1}.perpustakaan-edit-field textarea{height:120px}.perpustakaan-edit-actions{margin:13px 0 0;flex-wrap:wrap}.perpustakaan-edit-actions>*{flex:1}.perpustakaan-edit-cover-preview{width:155px;height:205px}}
+
+/* Aksi dan notifikasi tabel perpustakaan */
+.perpustakaan-row-actions{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.perpustakaan-row-actions form{margin:0}
+.perpustakaan-action-edit,.perpustakaan-action-delete{min-height:25px;padding:0 9px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:4px;font:inherit;font-size:9px;text-decoration:none;cursor:pointer}
+.perpustakaan-action-edit{background:#e8f1ff;color:#206BC7}
+.perpustakaan-action-delete{background:#fff0ee;color:#b42318}
+.perpustakaan-flash{margin:0 0 14px;padding:10px 13px;border-radius:5px;font-size:12px}
+.perpustakaan-flash.success{background:#eaf7ef;color:#167442}
+.perpustakaan-flash.error,.field-error{background:#fff0ee;color:#b42318}
+.field-error{display:block;padding:4px 0;font-size:11px}
+.perpustakaan-category-table-scroll td,.perpustakaan-book-table-scroll td{padding:9px 12px;border-bottom:1px solid #edf1f6;color:#536b89;font-size:10px}
+@media(max-width:560px){.perpustakaan-row-actions{gap:4px}.perpustakaan-action-edit,.perpustakaan-action-delete{padding:0 7px}}
+
+/* Lebar dan grid form tambah perpustakaan */
+.perpustakaan-add-book-page .perpustakaan-category-form,
+.perpustakaan-add-category-page .perpustakaan-category-form{width:100%;max-width:none}
+.perpustakaan-add-book-page .perpustakaan-category-form-card,
+.perpustakaan-add-category-page .perpustakaan-category-form-card{width:100%;min-width:0}
+.perpustakaan-add-book-page .perpustakaan-category-fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 22px;padding:18px 28px 26px}
+.perpustakaan-add-book-page .perpustakaan-category-field.full-width,
+.perpustakaan-add-book-page .perpustakaan-category-status,
+.perpustakaan-add-book-page .perpustakaan-category-form-actions,
+.perpustakaan-add-category-page .perpustakaan-category-field.full-width,
+.perpustakaan-add-category-page .perpustakaan-category-status,
+.perpustakaan-add-category-page .perpustakaan-category-form-actions{grid-column:1/-1}
+.perpustakaan-add-book-page .perpustakaan-category-field input,
+.perpustakaan-add-book-page .perpustakaan-category-field select,
+.perpustakaan-add-book-page .perpustakaan-category-field textarea{height:38px;border:1px solid #edf1f6;border-radius:4px;background:#fff;font-size:12px}
+.perpustakaan-add-book-page .perpustakaan-category-field textarea{height:110px;padding:10px;resize:vertical}
+.perpustakaan-add-book-page .perpustakaan-category-field input[type=file]{height:auto;min-height:38px;padding:7px 10px;background:#f7f9fc}
+.perpustakaan-add-book-page .perpustakaan-category-status{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.perpustakaan-add-book-page .perpustakaan-category-status legend{grid-column:1/-1;margin-bottom:0}
+.perpustakaan-add-book-page .perpustakaan-category-status label{width:auto;min-height:48px;margin:0;padding:10px;align-items:center}
+.perpustakaan-add-book-page .perpustakaan-category-fields>.perpustakaan-category-form-actions{margin-top:0}
+.perpustakaan-add-category-page .perpustakaan-category-fields{grid-template-columns:minmax(0,1fr);gap:16px;padding:10px 28px 28px}
+.perpustakaan-add-category-page .perpustakaan-category-form-actions{margin-top:2px}
+@media(max-width:850px){.perpustakaan-add-book-page .perpustakaan-category-fields{grid-template-columns:minmax(0,1fr);gap:14px;padding:16px 20px 22px}}
+@media(max-width:560px){.perpustakaan-add-book-page .perpustakaan-category-fields,.perpustakaan-add-category-page .perpustakaan-category-fields{gap:13px;padding:14px 15px 18px}.perpustakaan-add-book-page .perpustakaan-category-status{grid-template-columns:1fr}.perpustakaan-add-book-page .perpustakaan-category-form-actions,.perpustakaan-add-category-page .perpustakaan-category-form-actions{justify-content:stretch}.perpustakaan-add-book-page .perpustakaan-category-form-actions>* ,.perpustakaan-add-category-page .perpustakaan-category-form-actions>*{flex:1}}
