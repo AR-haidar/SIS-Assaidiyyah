@@ -3,15 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PrestasiSekolah extends Model
 {
-    use HasFactory;
     use SoftDeletes;
+
+    protected $table = 'prestasi_sekolah';
 
     public const CREATED_AT = 'dibuat_pada';
 
@@ -19,15 +19,11 @@ class PrestasiSekolah extends Model
 
     public const DELETED_AT = 'dihapus_pada';
 
-    protected $table = 'prestasi_sekolah';
-
-    /**
-     * @var list<string>
-     */
     protected $fillable = [
         'judul',
         'deskripsi',
         'tingkat',
+        'kategori',
         'tahun',
         'tanggal',
         'foto_berkas_id',
@@ -35,18 +31,13 @@ class PrestasiSekolah extends Model
         'aktif',
     ];
 
-    /**
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
+            'tahun' => 'integer',
             'tanggal' => 'date',
             'urutan' => 'integer',
             'aktif' => 'boolean',
-            'dibuat_pada' => 'datetime',
-            'diubah_pada' => 'datetime',
-            'dihapus_pada' => 'datetime',
         ];
     }
 
@@ -59,11 +50,11 @@ class PrestasiSekolah extends Model
     }
 
     /**
-     * @param  Builder<static>  $query
-     * @return Builder<static>
+     * @param  Builder<PrestasiSekolah>  $query
+     * @return Builder<PrestasiSekolah>
      */
     public function scopeAktif(Builder $query): Builder
     {
-        return $query->where('aktif', true)->orderBy('urutan')->orderByDesc('id');
+        return $query->where('aktif', true)->orderBy('urutan')->orderByDesc('tahun');
     }
 }

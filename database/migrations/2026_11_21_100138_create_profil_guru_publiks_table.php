@@ -10,18 +10,18 @@ return new class extends Migration
     {
         Schema::create('profil_guru_publik', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('pegawai_id')->constrained('pegawai');
-            $table->string('jabatan_tampil', 120)->nullable();
+            $table->foreignId('pegawai_id')->nullable()->constrained('pegawai');
+            $table->string('nama_tampil', 150);
+            $table->string('jabatan_tampil', 150)->nullable();
             $table->text('bio_singkat')->nullable();
             $table->foreignId('foto_berkas_id')->nullable()->constrained('berkas');
             $table->smallInteger('urutan')->default(0);
-            $table->boolean('tampil')->default(true);
+            $table->boolean('aktif')->default(true);
             $table->timestamp('dibuat_pada')->useCurrent();
             $table->timestamp('diubah_pada')->useCurrent();
             $table->timestamp('dihapus_pada')->nullable();
 
-            $table->unique('pegawai_id');
-            $table->index(['tampil', 'urutan']);
+            $table->index(['aktif', 'urutan']);
         });
     }
 

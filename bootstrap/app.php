@@ -14,22 +14,22 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
         then: function (): void {
-            $peranConfig = [
+            $portalPeran = [
                 'operator' => 'operator',
                 'guru' => 'guru',
                 'wali_kelas' => 'wali-kelas',
                 'kepala' => 'kepala-sekolah',
                 'keuangan' => 'keuangan',
                 'pustakawan' => 'perpustakaan',
-                'siswa' => 'siswa',
                 'humas' => 'humas',
+                'siswa' => 'siswa',
             ];
 
-            foreach ($peranConfig as $peran => $prefix) {
-                Route::middleware(['web', 'auth', 'peran:'.$peran])
-                    ->prefix($prefix)
-                    ->name($peran.'.')
-                    ->group(base_path("routes/{$peran}.php"));
+            foreach ($portalPeran as $kode => $prefixUrl) {
+                Route::middleware(['web', 'auth', 'peran:'.$kode])
+                    ->prefix($prefixUrl)
+                    ->name($kode.'.')
+                    ->group(base_path("routes/{$kode}.php"));
             }
         },
     )

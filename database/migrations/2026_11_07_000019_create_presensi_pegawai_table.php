@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('presensi_pegawai', function (Blueprint $table) {
+        Schema::create('presensi_pegawai', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('pegawai_id')->constrained('pegawai');
             $table->date('tanggal');
@@ -18,12 +18,12 @@ return new class extends Migration
             $table->foreignId('divalidasi_oleh')->nullable()->constrained('pengguna');
             $table->timestamp('divalidasi_pada')->nullable();
             $table->enum('sumber', ['biometrik', 'manual']);
-            $table->unique(['pegawai_id', 'tanggal'], 'uq_presensi_pegawai_tanggal');
-            $table->index('tanggal', 'idx_presensi_pegawai_tanggal');
-            $table->index('status_validasi', 'idx_presensi_pegawai_validasi');
             $table->timestamp('dibuat_pada')->useCurrent();
             $table->timestamp('diubah_pada')->useCurrent();
             $table->timestamp('dihapus_pada')->nullable();
+
+            $table->unique(['pegawai_id', 'tanggal']);
+            $table->index(['tanggal', 'status_validasi']);
         });
     }
 

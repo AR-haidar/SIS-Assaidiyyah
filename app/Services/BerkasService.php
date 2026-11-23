@@ -12,14 +12,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BerkasService
 {
-    public function __construct(
-        private readonly string $disk = 'public',
-    ) {}
+    public const DISK_PRIVATE = 'local';
 
-    public function simpan(UploadedFile $file, string $folder = 'umum'): Berkas
-    {
+    public const DISK_PUBLIC = 'public';
+
+    public function simpan(
+        UploadedFile $file,
+        string $folder = 'umum',
+        string $disk = self::DISK_PRIVATE,
+    ): Berkas {
         $folderBersih = trim($folder, '/');
-        $path = $file->store($folderBersih, $this->disk);
+        $path = $file->store($folderBersih, $disk);
 
         if (! is_string($path) || $path === '') {
             throw new \RuntimeException('Gagal menyimpan berkas ke penyimpanan.');
@@ -39,15 +42,26 @@ class BerkasService
         return Berkas::query()->create([
             'nama_asli' => $file->getClientOriginalName(),
             'path' => $path,
+            'disk' => $disk,
             'mime' => $mime,
             'ukuran_byte' => is_numeric($ukuranByte) ? (int) $ukuranByte : 0,
             'diunggah_oleh' => is_numeric($pengunggahId) ? (int) $pengunggahId : null,
         ]);
     }
 
-    public function ganti(?Berkas $lama, UploadedFile $baru, string $folder = 'umum'): Berkas
+    public function simpanPublik(UploadedFile $file, string $folder = 'publik'): Berkas
     {
-        $berkasBaru = $this->simpan($baru, $folder);
+        return $this->simpan($file, $folder, self::DISK_PUBLIC);
+    }
+
+    public function ganti(
+        ?Berkas $lama,
+        UploadedFile $baru,
+        string $folder = 'umum',
+        ?string $disk = null,
+    ): Berkas {
+        $targetDisk = $disk ?? ($lama?->disk ?: self::DISK_PRIVATE);
+        $berkasBaru = $this->simpan($baru, $folder, $targetDisk);
 
         if ($lama instanceof Berkas) {
             $this->hapus($lama);
@@ -62,7 +76,7 @@ class BerkasService
             return;
         }
 
-        $storage = $this->storage();
+        $storage = $this->storage($berkas->disk ?: self::DISK_PRIVATE);
 
         if ($berkas->path !== '' && $storage->exists($berkas->path)) {
             $storage->delete($berkas->path);
@@ -73,7 +87,7 @@ class BerkasService
 
     public function respons(Berkas $berkas, Request $request, bool $unduh = false): Response
     {
-        $storage = $this->storage();
+        $storage = $this->storage($berkas->disk ?: self::DISK_PRIVATE);
 
         abort_unless(
             $berkas->path !== '' && $storage->exists($berkas->path),
@@ -91,10 +105,10 @@ class BerkasService
         return $storage->response($berkas->path, $berkas->nama_asli, $headers);
     }
 
-    private function storage(): FilesystemAdapter
+    private function storage(string $disk): FilesystemAdapter
     {
         /** @var FilesystemAdapter $adapter */
-        $adapter = Storage::disk($this->disk);
+        $adapter = Storage::disk($disk);
 
         return $adapter;
     }
