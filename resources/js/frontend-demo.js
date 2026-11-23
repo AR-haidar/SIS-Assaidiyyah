@@ -1,6 +1,100 @@
 const read = key => JSON.parse(localStorage.getItem(`sis-demo-${key}`) || '[]');
 const write = (key, data) => localStorage.setItem(`sis-demo-${key}`, JSON.stringify(data));
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+
+const studentXlsxInput = document.querySelector('[data-student-xlsx]');
+studentXlsxInput?.addEventListener('change', async () => {
+    const file = studentXlsxInput.files?.[0];
+    const message = document.querySelector('[data-student-import-message]');
+    if (!file) return;
+    message.textContent = 'Membaca file Excel…';
+    try {
+        const XLSX = await import('xlsx');
+        const isCsv = file.name.toLowerCase().endsWith('.csv');
+        if (!isCsv && !file.name.toLowerCase().endsWith('.xlsx')) throw new Error('Format file harus .xlsx atau .csv.');
+        const workbook = isCsv
+            ? XLSX.read(await file.text(), { type: 'string', raw: false, cellDates: true })
+            : XLSX.read(await file.arrayBuffer(), { type: 'array', cellDates: true });
+        const imported = [];
+        const headers = ['No', 'Nama Lengkap', 'NISN', 'NIK', 'Tempat Lahir', 'Tanggal Lahir', 'Tingkat - Rombel', 'Umur', 'Status', 'Jenis Kelamin', 'Alamat', 'No Telepon', 'Kebutuhan Khusus', 'Disabilitas', 'Nomor KIP/PIP', 'Nama Ayah Kandung', 'Nama Ibu Kandung', 'Nama Wali'];
+        const normalize = value => String(value ?? '').trim().toLowerCase();
+        const valueText = value => value instanceof Date ? value.toISOString().slice(0, 10) : String(value ?? '').trim();
+        for (const sheetName of workbook.SheetNames) {
+            const rows = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1, defval: '', raw: false });
+            const headerRow = rows.findIndex(row => row.some(cell => normalize(cell) === 'nama lengkap') && row.some(cell => normalize(cell) === 'nisn'));
+            if (headerRow < 0) continue;
+            const columns = Object.fromEntries(headers.map(header => [header, rows[headerRow].findIndex(cell => normalize(cell) === normalize(header))]));
+            for (const row of rows.slice(headerRow + 1)) {
+                const get = header => columns[header] < 0 ? '' : valueText(row[columns[header]]);
+                const name = get('Nama Lengkap');
+                const nisn = get('NISN').replace(/\D/g, '').padStart(10, '0');
+                if (!name || !nisn || /^0+$/.test(nisn)) continue;
+                const placement = get('Tingkat - Rombel').match(/kelas\s*(\d+)\s*(?:-|\s)\s*(\w+)?/i);
+                imported.push({
+                    name, nisn, nik: get('NIK').replace(/^'/, ''), grade: placement?.[1] || '', rombel: placement?.[2] || '',
+                    gender: get('Jenis Kelamin') || '—', status: get('Status') || 'Aktif', birthPlace: get('Tempat Lahir'),
+                    birthDate: get('Tanggal Lahir'), age: get('Umur'), levelRombel: get('Tingkat - Rombel'), address: get('Alamat'), phone: get('No Telepon'), father: get('Nama Ayah Kandung'),
+                    mother: get('Nama Ibu Kandung'), guardian: get('Nama Wali'), specialNeeds: get('Kebutuhan Khusus'),
+                    disability: get('Disabilitas'), kip: get('Nomor KIP/PIP')
+                });
+            }
+        }
+        if (!imported.length) throw new Error('Tidak ditemukan baris siswa. Pastikan header kolom sesuai file contoh.');
+        const students = read('students');
+        const knownNisn = new Set(students.map(student => String(student.nisn || '').replace(/\D/g, '').padStart(10, '0')));
+        let added = 0, duplicates = 0;
+        for (const student of imported) {
+            if (knownNisn.has(student.nisn)) { duplicates++; continue; }
+            knownNisn.add(student.nisn);
+            students.push(student);
+            added++;
+        }
+        write('students', students);
+        renderOperatorStudents();
+        message.textContent = `Impor selesai: ${added} siswa ditambahkan, ${duplicates} duplikat dilewati dari ${imported.length} baris.`;
+    } catch (error) {
+        message.textContent = error.message || 'File gagal dibaca. Pastikan file berformat .xlsx.';
+    } finally {
+        studentXlsxInput.value = '';
+    }
+});
+
+const teacherFileInput = document.querySelector('[data-teacher-file]');
+teacherFileInput?.addEventListener('change', async () => {
+    const file = teacherFileInput.files?.[0];
+    const message = document.querySelector('[data-teacher-import-message]');
+    if (!file) return;
+    message.textContent = 'Membaca file…';
+    try {
+        const XLSX = await import('xlsx');
+        const isCsv = file.name.toLowerCase().endsWith('.csv');
+        if (!isCsv && !file.name.toLowerCase().endsWith('.xlsx')) throw new Error('Format file harus .xlsx atau .csv.');
+        const workbook = isCsv ? XLSX.read(await file.text(), { type: 'string', raw: false }) : XLSX.read(await file.arrayBuffer(), { type: 'array', cellDates: true });
+        const teachers = JSON.parse(localStorage.getItem('sis-demo-teachers') || '[]');
+        const key = value => String(value ?? '').trim().toLowerCase();
+        let added = 0, duplicates = 0;
+        for (const sheetName of workbook.SheetNames) {
+            const rows = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1, defval: '', raw: false });
+            const headerIndex = rows.findIndex(row => row.some(cell => key(cell) === 'nama lengkap') && row.some(cell => key(cell) === 'status kepegawaian'));
+            if (headerIndex < 0) continue;
+            const headers = rows[headerIndex].map(key);
+            const get = (row, name) => String(row[headers.indexOf(key(name))] ?? '').trim().replace(/^'/, '');
+            for (const row of rows.slice(headerIndex + 1)) {
+                const name = get(row, 'Nama Lengkap');
+                if (!name) continue;
+                const nip = get(row, 'NIP'), nuptk = get(row, 'NUPTK');
+                if (teachers.some(item => (nip && item.nip === nip) || (nuptk && item.nuptk === nuptk))) { duplicates++; continue; }
+                teachers.push({ name, nik: get(row, 'NIK'), nuptk, status: get(row, 'Status Kepegawaian'), nip, gender: get(row, 'Jenis Kelamin'), birthPlace: get(row, 'Tempat Lahir'), birthDate: get(row, 'Tanggal Lahir'), phone: get(row, 'Nomor Handphone'), email: get(row, 'Email'), accountEmail: get(row, 'Email Akun Madrasah Digital') || get(row, 'Email Akun Madrasah Hebat'), task: get(row, 'Tugas'), subject: get(row, 'Mata Pelajaran'), placement: get(row, 'Penempatan'), jtm: get(row, 'Total JTM') });
+                added++;
+            }
+        }
+        if (!added && !duplicates) throw new Error('Header file tidak cocok dengan format Daftar GTK.');
+        localStorage.setItem('sis-demo-teachers', JSON.stringify(teachers));
+        renderOperatorTeachers();
+        message.textContent = `Impor selesai: ${added} data ditambahkan, ${duplicates} duplikat dilewati.`;
+    } catch (error) { message.textContent = error.message || 'File gagal dibaca.'; }
+    finally { teacherFileInput.value = ''; }
+});
 if (!localStorage.getItem('sis-demo-invoices')) write('invoices', [
     { student: 'Muhammad Rizki — Kelas 5B', type: 'Infaq', amount: 150000, issuedAt: '2026-11-01', dueAt: '2026-11-30', status: 'Belum Dibayar', note: 'Infaq bulanan' },
     { student: 'Muhammad Rizki — Kelas 5B', type: 'Uang Buku', amount: 85000, issuedAt: '2026-11-01', dueAt: '2026-12-10', status: 'Menunggu Verifikasi', note: 'Buku semester' },
@@ -8,11 +102,18 @@ if (!localStorage.getItem('sis-demo-invoices')) write('invoices', [
     { student: 'Muhammad Rizki — Kelas 5B', type: 'Seragam', amount: 175000, issuedAt: '2026-11-01', dueAt: '2026-11-15', status: 'Jatuh Tempo', note: 'Seragam olahraga' },
     { student: 'Muhammad Rizki — Kelas 5B', type: 'Tagihan Lainnya', amount: 50000, issuedAt: '2026-11-01', dueAt: '2026-12-30', status: 'Belum Dibayar', note: 'Iuran kegiatan' },
 ]);
-if (!localStorage.getItem('sis-demo-students')) write('students', [
-    { name: 'Ahmad Fauzi', nisn: '0012345678', grade: '1', rombel: 'A', gender: 'Laki-laki', status: 'Aktif' },
-    { name: 'Siti Aminah', nisn: '0012345679', grade: '2', rombel: 'B', gender: 'Perempuan', status: 'Aktif' },
-    { name: 'Muhammad Rizki', nisn: '0012345680', grade: '5', rombel: 'B', gender: 'Laki-laki', status: 'Aktif' },
-]);
+const starterStudents = [
+    { number: '1', name: 'AANG BAZUL ASYHAB', nisn: '3186263592', nik: '3203281607180007', birthPlace: 'CIANJUR', birthDate: '2018-07-16', levelRombel: 'Kelas 2 - 01', grade: '2', rombel: '01', age: '8 th, 0 bln', status: 'Aktif', gender: 'Laki-laki', address: 'KP. BELAKANG KULON RT 002/005 CIPANAS, CIPANAS, KABUPATEN CIANJUR, JAWA BARAT, 43253, 43253', phone: '', specialNeeds: 'Tidak Ada', disability: 'Tidak Ada', kip: '', father: 'MOCH FIRMAN SYAHID', mother: 'NURHASANAH', guardian: 'MOCH FIRMAN SYAHID' },
+    { number: '2', name: 'ALIFAH NASHA SETIAWAN', nisn: '3197460008', nik: '3203285511190002', birthPlace: 'CIANJUR', birthDate: '2019-11-15', levelRombel: 'Kelas 2 - 01', grade: '2', rombel: '01', age: '6 th, 8 bln', status: 'Aktif', gender: 'Perempuan', address: 'KP. PARABON RT 002/003 CILOTO, CIPANAS, KABUPATEN CIANJUR, JAWA BARAT, 43253, 43253', phone: '', specialNeeds: 'Tidak Ada', disability: 'Tidak Ada', kip: '', father: 'H. USEP SETIAWAN, SH', mother: 'DWIDA AGUSTINA SUHERMAN', guardian: 'H. USEP SETIAWAN, SH' },
+    { number: '3', name: 'ALISYA PUTRI RAMADANI', nisn: '3181126135', nik: '3203286905180005', birthPlace: 'CIANJUR', birthDate: '2018-05-29', levelRombel: 'Kelas 2 - 01', grade: '2', rombel: '01', age: '8 th, 1 bln', status: 'Aktif', gender: 'Perempuan', address: 'KP. NEGLASARI RT 001/002 CIPANAS, CIPANAS, KABUPATEN CIANJUR, JAWA BARAT, 43255, 43255', phone: '', specialNeeds: 'Tidak Ada', disability: 'Tidak Ada', kip: '', father: 'JAENAL SODIKIN', mother: 'ERNAWATI FEBIOLA SE', guardian: 'JAENAL SODIKIN' },
+];
+const savedStudents = localStorage.getItem('sis-demo-students');
+if (!savedStudents) write('students', starterStudents);
+else {
+    const existingStudents = JSON.parse(savedStudents);
+    const oldDemoNisn = new Set(['0012345678', '0012345679', '0012345680']);
+    if (existingStudents.length === 3 && existingStudents.every(student => oldDemoNisn.has(String(student.nisn)))) write('students', starterStudents);
+}
 
 document.querySelectorAll('select[name="kelas"]').forEach(select => {
     const rombel = document.querySelector('select[name="rombel"]');
@@ -112,21 +213,57 @@ function renderStudentAnnouncements() {
     const items = read('announcements');
     target.innerHTML = items.length ? items.map(item => `<article><h4>${escapeHtml(item.title)}</h4><p>${escapeHtml(item.body)}</p><small>${escapeHtml(item.publishedAt)} · ${escapeHtml(item.attachment || 'Tanpa lampiran')}</small></article>`).join('') : `<div class="shared-announcement-empty shared-announcement-empty-compact"><span class="shared-announcement-icon" aria-hidden="true">📣</span><strong>Belum Ada Informasi Keuangan</strong><p>Pengumuman keuangan madrasah akan tampil di sini.</p></div>`;
 }
+let studentPage = 1;
 function renderOperatorStudents() {
     const body = document.querySelector('[data-operator-students]'); if (!body) return;
     const form = document.querySelector('.operator-student-filters'); const query = form?.querySelector('input[type="search"]').value.toLowerCase() || '';
     const grade = form?.querySelector('[data-student-filter="kelas"]').value || ''; const rombel = form?.querySelector('[data-student-filter="rombel"]').value || '';
     const students = read('students').map((student, id) => ({ ...student, id })).filter(student => (!query || `${student.name} ${student.nisn}`.toLowerCase().includes(query)) && (!grade || student.grade === grade) && (!rombel || student.rombel === rombel));
-    body.innerHTML = students.map((student, index) => `<tr><td>${index + 1}</td><td>${escapeHtml(student.name)}</td><td>${escapeHtml(student.nisn)}</td><td>Kelas ${escapeHtml(student.grade)}</td><td>${escapeHtml(student.rombel)}</td><td>${escapeHtml(student.gender)}</td><td>${escapeHtml(student.status)}</td><td><a href="/operator/data-siswa/${student.id}/edit">Edit</a></td></tr>`).join('') || '<tr><td colspan="8">Tidak ada siswa untuk filter yang dipilih.</td></tr>';
+    const pageSize = 15, pageCount = Math.max(1, Math.ceil(students.length / pageSize));
+    studentPage = Math.min(studentPage, pageCount);
+    const visibleStudents = students.slice((studentPage - 1) * pageSize, studentPage * pageSize);
+    body.innerHTML = visibleStudents.map(student => `<tr><td>${escapeHtml(student.id + 1)}</td><td>${escapeHtml(student.name || '—')}</td><td>${escapeHtml(student.nisn || '—')}</td><td>${escapeHtml(student.nik || '—')}</td><td>${escapeHtml(student.birthPlace || '—')}</td><td>${escapeHtml(student.birthDate || '—')}</td><td>${escapeHtml(student.levelRombel || (student.grade ? `Kelas ${student.grade}${student.rombel ? ` - ${student.rombel}` : ''}` : '—'))}</td><td>${escapeHtml(student.age || '—')}</td><td>${escapeHtml(student.status || '—')}</td><td>${escapeHtml(student.gender || '—')}</td><td>${escapeHtml(student.address || '—')}</td><td>${escapeHtml(student.phone || '—')}</td><td>${escapeHtml(student.specialNeeds || '—')}</td><td>${escapeHtml(student.disability || '—')}</td><td>${escapeHtml(student.kip || '—')}</td><td>${escapeHtml(student.father || '—')}</td><td>${escapeHtml(student.mother || '—')}</td><td>${escapeHtml(student.guardian || '—')}</td><td><a href="/operator/data-siswa/${student.id}/edit">Edit</a></td></tr>`).join('') || '<tr><td colspan="19">Tidak ada siswa untuk filter yang dipilih.</td></tr>';
     const total = read('students');
     const visibleCount = document.querySelector('[data-visible-students]'); const totalCount = document.querySelector('[data-total-students]');
-    if (visibleCount) visibleCount.textContent = students.length;
+    if (visibleCount) visibleCount.textContent = visibleStudents.length;
     if (totalCount) totalCount.textContent = total.length;
+    document.querySelector('[data-student-page]').textContent = studentPage;
+    document.querySelector('[data-student-prev]').disabled = studentPage <= 1;
+    document.querySelector('[data-student-next]').disabled = studentPage >= pageCount;
     document.querySelectorAll('.operator-student-stats article strong').forEach((stat, index) => {
         const count = index === 0 ? total.length : total.filter(student => index === 1 ? student.gender === 'Laki-laki' : student.gender === 'Perempuan').length;
         stat.textContent = `${count} ${index === 2 ? 'Siswi' : 'Siswa'}`;
     });
 }
+let teacherPage = 1;
+function renderOperatorTeachers() {
+    const body = document.querySelector('[data-operator-teachers]');
+    if (!body) return;
+    const form = document.querySelector('.operator-teacher-filters');
+    const query = form?.querySelector('input[type="search"]')?.value.trim().toLowerCase() || '';
+    const all = JSON.parse(localStorage.getItem('sis-demo-teachers') || '[]');
+    const teachers = all.map((teacher, id) => ({ ...teacher, id })).filter(teacher => !query || `${teacher.name} ${teacher.nip} ${teacher.nuptk}`.toLowerCase().includes(query));
+    const pageSize = 15, pageCount = Math.max(1, Math.ceil(teachers.length / pageSize));
+    teacherPage = Math.min(teacherPage, pageCount);
+    const visibleTeachers = teachers.slice((teacherPage - 1) * pageSize, teacherPage * pageSize);
+    body.innerHTML = visibleTeachers.map(teacher => `<tr><td>${teacher.id + 1}</td><td>${escapeHtml(teacher.name || '—')}</td><td>${escapeHtml(teacher.nik || '—')}</td><td>${escapeHtml(teacher.nuptk || '—')}</td><td>${escapeHtml(teacher.status || '—')}</td><td>${escapeHtml(teacher.nip || '—')}</td><td>${escapeHtml(teacher.gender || '—')}</td><td>${escapeHtml(teacher.birthPlace || '—')}</td><td>${escapeHtml(teacher.birthDate || '—')}</td><td>${escapeHtml(teacher.phone || '—')}</td><td>${escapeHtml(teacher.email || '—')}</td><td>${escapeHtml(teacher.accountEmail || '—')}</td><td>${escapeHtml(teacher.task || '—')}</td><td>${escapeHtml(teacher.subject || '—')}</td><td>${escapeHtml(teacher.placement || '—')}</td><td>${escapeHtml(teacher.jtm || '—')}</td><td>—</td></tr>`).join('') || '<tr><td colspan="17">Belum ada data guru.</td></tr>';
+    document.querySelector('[data-teacher-visible]').textContent = visibleTeachers.length;
+    document.querySelector('[data-teacher-total]').textContent = all.length;
+    document.querySelector('[data-teacher-page]').textContent = teacherPage;
+    document.querySelector('[data-teacher-prev]').disabled = teacherPage <= 1;
+    document.querySelector('[data-teacher-next]').disabled = teacherPage >= pageCount;
+    const stats = document.querySelectorAll('.operator-teacher-stats article strong');
+    if (stats[0]) stats[0].textContent = all.length;
+    if (stats[1]) stats[1].textContent = all.filter(teacher => teacher.task && /wali kelas/i.test(teacher.task)).length;
+}
+renderOperatorTeachers();
+document.querySelectorAll('.operator-teacher-filters').forEach(form => {
+    form.addEventListener('input', () => { teacherPage = 1; renderOperatorTeachers(); });
+    form.addEventListener('submit', event => { event.preventDefault(); teacherPage = 1; renderOperatorTeachers(); });
+    form.addEventListener('reset', () => setTimeout(() => { teacherPage = 1; renderOperatorTeachers(); }));
+});
+document.querySelector('[data-teacher-prev]')?.addEventListener('click', () => { teacherPage--; renderOperatorTeachers(); });
+document.querySelector('[data-teacher-next]')?.addEventListener('click', () => { teacherPage++; renderOperatorTeachers(); });
 function renderTeacherAttendance() {
     const body = document.querySelector('[data-teacher-attendance]'); if (!body) return;
     const rows = [
@@ -148,7 +285,9 @@ document.querySelectorAll('[data-dashboard-bills]').forEach(el => { const pendin
 document.querySelectorAll('[data-bill-count]').forEach(el => { const count = currentStudentInvoices().filter(item => ['Belum Dibayar', 'Jatuh Tempo'].includes(item.status)).length; el.textContent = count; el.hidden = !count; });
 document.querySelectorAll('[data-keuangan-filters]').forEach(form => { form.addEventListener('input', renderKeuanganRows); form.addEventListener('change', renderKeuanganRows); form.addEventListener('reset', () => setTimeout(renderKeuanganRows)); });
 document.querySelectorAll('[data-attendance-filters]').forEach(form => form.addEventListener('submit', event => { event.preventDefault(); renderTeacherAttendance(); }));
-document.querySelectorAll('.operator-student-filters').forEach(form => { form.addEventListener('input', renderOperatorStudents); form.addEventListener('change', renderOperatorStudents); form.addEventListener('reset', () => setTimeout(renderOperatorStudents)); });
+document.querySelectorAll('.operator-student-filters').forEach(form => { form.addEventListener('input', () => { studentPage = 1; renderOperatorStudents(); }); form.addEventListener('change', () => { studentPage = 1; renderOperatorStudents(); }); form.addEventListener('reset', () => setTimeout(() => { studentPage = 1; renderOperatorStudents(); })); });
+document.querySelector('[data-student-prev]')?.addEventListener('click', () => { studentPage--; renderOperatorStudents(); });
+document.querySelector('[data-student-next]')?.addEventListener('click', () => { studentPage++; renderOperatorStudents(); });
 document.querySelectorAll('.spp-filter-card select').forEach(select => select.addEventListener('change', renderStudentInvoices));
 document.querySelectorAll('[data-apply-student-filters]').forEach(button => button.addEventListener('click', renderStudentInvoices));
 

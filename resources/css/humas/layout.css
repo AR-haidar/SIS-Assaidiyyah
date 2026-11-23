@@ -1,0 +1,12 @@
+.humas-page .siswa-topbar{display:flex}.humas-page .siswa-layout{min-height:calc(100vh - 64px);padding-top:0}.humas-page .siswa-sidebar{position:fixed;top:64px;bottom:0;left:0;width:264px;min-width:264px;height:auto}.humas-page .siswa-main.humas-main{width:calc(100% - 264px);min-height:calc(100vh - 64px);margin-left:264px;padding:24px;transition:width .22s ease,margin .22s ease}.humas-page #humasSidebar.collapsed{width:0;min-width:0;padding:0;overflow:hidden;border:0}.humas-page #humasSidebar.collapsed+.humas-main{width:100%;margin-left:0}@media(max-width:768px){.humas-page .siswa-sidebar{position:fixed;top:64px;bottom:0;left:0;width:264px;height:auto;transform:translateX(0);z-index:200;box-shadow:4px 0 20px rgba(0,0,0,.08)}.humas-page #humasSidebar.collapsed{width:264px;min-width:264px;transform:translateX(-100%)}.humas-page .siswa-main.humas-main{width:100%;margin-left:0;padding:20px 16px}}
+.humas-page .humas-content{width:100%;max-width:1440px;margin:0 auto}.humas-page .humas-activity{width:100%;max-width:none}
+.humas-page .humas-home-editor{max-width:1440px;margin-right:auto;margin-left:auto}
+.humas-page .humas-profile-page{max-width:1440px;margin-right:auto;margin-left:auto}
+.humas-page .humas-home-form{column-gap:14px}
+.humas-page .humas-profile-grid{column-gap:14px}
+.humas-page .humas-profile-heading{padding-right:0;padding-left:0}
+.humas-page .humas-profile-actions{margin-right:0;margin-left:0}
+.humas-page .humas-profile-heading{align-items:flex-start;justify-content:flex-start}
+.humas-page .humas-profile-heading>div{width:auto!important;max-width:none;flex:1 1 auto}
+.humas-page .humas-profile-heading p{max-width:900px}
+.humas-page .humas-profile-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}

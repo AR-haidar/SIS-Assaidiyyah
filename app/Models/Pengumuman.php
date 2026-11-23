@@ -15,7 +15,9 @@ class Pengumuman extends Model
     use SoftDeletes;
 
     public const CREATED_AT = 'dibuat_pada';
+
     public const UPDATED_AT = 'diubah_pada';
+
     public const DELETED_AT = 'dihapus_pada';
 
     protected $table = 'pengumuman';
@@ -31,9 +33,6 @@ class Pengumuman extends Model
         'tayang_selesai',
         'gambar_berkas_id',
         'dibuat_oleh',
-        'ditinjau_oleh',
-        'ditinjau_pada',
-        'catatan_peninjauan',
     ];
 
     protected $casts = [
@@ -41,7 +40,6 @@ class Pengumuman extends Model
         'disematkan' => 'boolean',
         'tanggal_terbit' => 'datetime',
         'tayang_selesai' => 'datetime',
-        'ditinjau_pada' => 'datetime',
     ];
 
     public function kategori(): BelongsTo
@@ -57,11 +55,6 @@ class Pengumuman extends Model
     public function pembuat(): BelongsTo
     {
         return $this->belongsTo(Pengguna::class, 'dibuat_oleh');
-    }
-
-    public function peninjau(): BelongsTo
-    {
-        return $this->belongsTo(Pengguna::class, 'ditinjau_oleh');
     }
 
     public function sasaran(): HasMany

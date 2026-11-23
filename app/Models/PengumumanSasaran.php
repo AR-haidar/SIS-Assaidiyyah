@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PengumumanSasaran extends Model
 {
     public const CREATED_AT = 'dibuat_pada';
+
     public const UPDATED_AT = 'diubah_pada';
 
     protected $table = 'pengumuman_sasaran';
