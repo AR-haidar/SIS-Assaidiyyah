@@ -10,7 +10,9 @@ class PesanKontak extends Model
     use SoftDeletes;
 
     public const CREATED_AT = 'dikirim_pada';
+
     public const UPDATED_AT = null;
+
     public const DELETED_AT = 'dihapus_pada';
 
     protected $table = 'pesan_kontak';

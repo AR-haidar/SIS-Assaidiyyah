@@ -12,7 +12,9 @@ class PermohonanPerubahanData extends Model
     use SoftDeletes;
 
     public const CREATED_AT = 'diajukan_pada';
+
     public const UPDATED_AT = 'diubah_pada';
+
     public const DELETED_AT = 'dihapus_pada';
 
     protected $table = 'permohonan_perubahan_data';
