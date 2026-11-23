@@ -5,8 +5,14 @@ namespace App\Http\Controllers\Keuangan;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Keuangan\TolakPembayaranRequest;
 use App\Models\Pembayaran;
+use App\Models\Rombel;
+use App\Models\Tagihan;
+use App\Models\TahunAjaran;
+use App\Models\JenisTagihan;
 use App\Services\BerkasService;
 use App\Services\Keuangan\PembayaranService;
+use App\Services\Keuangan\RekapTagihanQuery;
+use App\Enums\StatusVerifikasi;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -17,6 +23,52 @@ class PembayaranController extends Controller
         private PembayaranService $service,
         private BerkasService $berkas,
     ) {}
+
+    public function index(Request $request, RekapTagihanQuery $rekap): View
+    {
+        $tahunAjaran = TahunAjaran::aktif()->first();
+        $tahunId = $tahunAjaran?->id;
+
+        $status = $request->query('status');
+
+        $filter = [
+            'q'      => trim((string) $request->query('q', '')),
+            'jenis'  => $request->integer('jenis') ?: null,
+            'rombel' => $request->integer('rombel') ?: null,
+            'status' => is_string($status) && array_key_exists($status, RekapTagihanQuery::OPSI_STATUS)
+                ? $status
+                : null,
+        ];
+
+        $tagihan = $rekap->daftar($tahunId, $filter)
+            ->with([
+                'jenisTagihan',
+                'pembayaran', // wajib: status_pembayaran dihitung dari sini (hindari N+1)
+                'siswa.rombel' => fn ($q) => $q->where('rombel.tahun_ajaran_id', $tahunId),
+            ])
+            ->orderBy('jatuh_tempo')
+            ->orderBy('id')
+            ->paginate(15)
+            ->withQueryString();
+
+        $tagihan->getCollection()->each(function (Tagihan $t): void {
+            $t->setAttribute('label_status', RekapTagihanQuery::labelStatus($t));
+
+            // Pembayaran yang berlaku (menunggu/disetujui), untuk link ke halaman detail.
+            $t->setRelation('pembayaranAktif', $t->pembayaran->first(
+                fn ($p) => in_array($p->status_verifikasi, [StatusVerifikasi::Menunggu, StatusVerifikasi::Disetujui], true)
+            ));
+        });
+
+        return view('keuangan.pembayaran-siswa', [
+            'tagihan'      => $tagihan,
+            'stat'         => $rekap->ringkasan($tahunId),
+            'filter'       => $filter,
+            'opsiStatus'   => RekapTagihanQuery::OPSI_STATUS,
+            'jenisTagihan' => JenisTagihan::where('aktif', true)->orderBy('nama')->get(),
+            'rombelList'   => Rombel::where('tahun_ajaran_id', $tahunId)->orderBy('tingkat')->orderBy('nama')->get(),
+        ]);
+    }
 
     public function show(Pembayaran $pembayaran): View
     {
