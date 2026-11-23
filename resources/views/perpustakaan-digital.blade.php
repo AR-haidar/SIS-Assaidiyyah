@@ -6,17 +6,17 @@
     <title>Perpustakaan Digital - MI Assaidiyyah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/css/home.css', 'resources/css/perpustakaan-digital.css', 'resources/js/app.js'])
 </head>
 <body class="home-page dlib-public-page">
     <header class="navbar">
-        <div class="navbar-container">
-            <a href="{{ url('/') }}" class="navbar-brand">
+        <div class="navbar-container" style="width:100%; max-width:1800px; margin:0 auto; padding:12px 32px; display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:16px;">
+            <a href="{{ url('/') }}" class="navbar-brand" style="justify-self:start;">
                 <div class="logo-slot" title="MI Assaidiyyah"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
                 <div class="brand-text"><span class="brand-title">MI ASSA'IDIYYAH</span><span class="brand-subtitle">Madrasah Ibtidaiyah Unggulan Cipanas</span></div>
             </a>
-            <nav class="navbar-menu" aria-label="Navigasi utama">
+            <nav class="navbar-menu" aria-label="Navigasi utama" style="justify-self:center;">
                 <a href="{{ url('/') }}#beranda" class="nav-link">Beranda</a>
                 <a href="{{ url('/') }}#profil" class="nav-link">Profile &amp; Visi Misi</a>
                 <a href="{{ url('/') }}#program" class="nav-link">Program</a>
@@ -25,11 +25,11 @@
                 <a href="{{ url('/perpustakaan-digital') }}" class="nav-link active">Perpustakaan</a>
                 <a href="{{ url('/') }}#kontak" class="nav-link">Kontak</a>
             </nav>
-            <div class="navbar-action"><a href="{{ url('/login') }}" class="btn-portal"><span class="btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span>Portal Login</span></a></div>
+            <div class="navbar-action" style="justify-self:end;"><a href="{{ url('/login') }}" class="btn-portal"><span class="btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span>Portal Login</span></a></div>
         </div>
     </header>
 
-    <main class="dlib-public-main">
+    <main class="dlib-public-main" style="width:100%; max-width:1800px; margin:0 auto; padding:28px 32px 40px; box-sizing:border-box;">
         <header class="dlib-public-heading"><h1>Perpustakaan Digital</h1><p>Jelajahi koleksi pustaka digital dan baca naskah buku yang tersedia secara daring</p></header>
         <section class="dlib-public-controls" aria-label="Pencarian dan kategori buku">
             <div class="dlib-public-control-row">

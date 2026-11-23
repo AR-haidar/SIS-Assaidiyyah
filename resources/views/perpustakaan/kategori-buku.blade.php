@@ -2,27 +2,17 @@
 @section('title', 'Kategori Buku')
 @section('content')
 <section class="perpustakaan-categories">
-    <header class="perpustakaan-categories-heading">
-        <h1>Kategori Buku</h1>
-        <a href="{{ url('/perpustakaan/kategori-buku/tambah') }}" class="perpustakaan-add-category"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Tambah Kategori</a>
-    </header>
-
-    <section class="perpustakaan-category-stat" aria-label="Jumlah kategori aktif">
-        <span>Total Kategori Aktif</span>
-        <strong><b>-</b> Kategori</strong>
-    </section>
-
-    <section class="perpustakaan-category-table-card" aria-label="Daftar kategori buku">
-        <header class="perpustakaan-category-toolbar">
-            <div><h2>Daftar Kategori</h2><span class="perpustakaan-category-count">0 Item</span></div>
-            <label class="perpustakaan-category-search"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input type="search" placeholder="Cari nama kategori..." aria-label="Cari nama kategori"></label>
-            <button type="button" class="perpustakaan-category-filter" aria-label="Filter kategori"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10m-7 6h4"/></svg></button>
-        </header>
-        <div class="perpustakaan-category-table-scroll"><table>
-            <thead><tr><th>No</th><th>Nama Kategori</th><th>Deskripsi</th><th>Jumlah Buku</th><th>Status</th></tr></thead>
-            <tbody><tr><td colspan="5" class="perpustakaan-category-empty"><strong>Belum Ada Kategori Buku Ditambahkan</strong><p>Belum ada klasifikasi bidang buku yang dibuat. Tambahkan kategori<br class="perpustakaan-category-desktop-break"> baru untuk memudahkan pengelompokan buku.</p><a href="{{ url('/perpustakaan/kategori-buku/tambah') }}"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Tambah Kategori Baru</a></td></tr></tbody>
-        </table></div>
-        <footer class="perpustakaan-category-pagination"><span>Menampilkan 0 dari 0 kategori</span><nav aria-label="Navigasi halaman"><button type="button" disabled aria-label="Halaman sebelumnya">&lsaquo;</button><span>1</span><button type="button" disabled aria-label="Halaman selanjutnya">&rsaquo;</button></nav></footer>
-    </section>
+    @if(session('success'))<div class="perpustakaan-flash success" role="status">{{ session('success') }}</div>@endif
+    @if(session('error'))<div class="perpustakaan-flash error" role="alert">{{ session('error') }}</div>@endif
+    <header class="perpustakaan-categories-heading"><h1>Kategori Buku</h1><a href="{{ url('/perpustakaan/kategori-buku/tambah') }}" class="perpustakaan-add-category">+ Tambah Kategori</a></header>
+    <section class="perpustakaan-category-stat"><span>Total Kategori</span><strong><b>{{ $categories->count() }}</b> Kategori</strong></section>
+    <section class="perpustakaan-category-table-card"><header class="perpustakaan-category-toolbar"><div><h2>Daftar Kategori</h2><span class="perpustakaan-category-count">{{ $categories->count() }} Item</span></div><label class="perpustakaan-category-search"><input type="search" name="search" form="category-filter" value="{{ request('search') }}" placeholder="Cari nama kategori..."></label><button type="submit" form="category-filter" class="perpustakaan-category-filter" aria-label="Cari kategori">⌕</button><form id="category-filter" method="GET" action="{{ url('/perpustakaan/kategori-buku') }}"></form></header>
+    <div class="perpustakaan-category-table-scroll"><table><thead><tr><th>No</th><th>Nama Kategori</th><th>Deskripsi</th><th>Jumlah Buku</th><th>Status</th><th>Aksi</th></tr></thead><tbody>
+    @forelse($categories as $category)
+        <tr><td>{{ $loop->iteration }}</td><td>{{ $category->name }}</td><td>{{ $category->description }}</td><td>{{ $category->books_count }}</td><td>{{ $category->status === 'active' ? 'Aktif' : 'Nonaktif' }}</td><td class="perpustakaan-row-actions"><a class="perpustakaan-action-edit" href="{{ url('/perpustakaan/kategori-buku/'.$category->id.'/edit') }}">Edit</a><form method="POST" action="{{ route('library.categories.delete', $category) }}" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">@csrf @method('DELETE')<button class="perpustakaan-action-delete" type="submit">Hapus</button></form></td></tr>
+    @empty
+        <tr><td colspan="6" class="perpustakaan-category-empty"><strong>Belum Ada Kategori Buku Ditambahkan</strong><p>Tambahkan kategori untuk memudahkan pengelompokan buku.</p><a href="{{ url('/perpustakaan/kategori-buku/tambah') }}">+ Tambah Kategori Baru</a></td></tr>
+    @endforelse
+    </tbody></table></div><footer class="perpustakaan-category-pagination"><span>Menampilkan {{ $categories->count() }} dari {{ $categories->count() }} kategori</span></footer></section>
 </section>
 @endsection
