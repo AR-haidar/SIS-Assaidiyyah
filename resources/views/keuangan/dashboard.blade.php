@@ -23,7 +23,7 @@
 @forelse ($antrean as $pembayaran)
 <tr>
 <td>{{ $loop->iteration }}</td>
-<td>{{ $pembayaran->tagihan?->siswa?->nama_lengkap ?? '—' }}</td>
+<td><a href="{{ route('keuangan.pembayaran.show', $pembayaran) }}">{{ $pembayaran->tagihan?->siswa?->nama_lengkap ?? '—' }}</a></td>
 <td>{{ $pembayaran->kelas ?? '—' }}</td>
 <td>{{ $pembayaran->tagihan?->jenisTagihan?->nama ?? '—' }}</td>
 <td>Rp {{ number_format((float) $pembayaran->nominal, 0, ',', '.') }}</td>
