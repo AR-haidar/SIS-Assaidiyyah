@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class LogAktivitas extends Model
 {
     public const CREATED_AT = 'waktu';
+
     public const UPDATED_AT = null;
 
     protected $table = 'log_aktivitas';

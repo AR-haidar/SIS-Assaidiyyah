@@ -1,5 +1,5 @@
 @extends('perpustakaan.layout')
-@section('title', 'Tambah Kategori Buku')
+@section('title','Tambah Kategori Buku')
 @section('content')
 <section class="perpustakaan-add-category-page">
     <a href="{{ route('pustakawan.kategori-buku.index') }}" class="perpustakaan-category-back"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/><path d="M20 12H9"/></svg>Kembali ke Kategori Buku</a>

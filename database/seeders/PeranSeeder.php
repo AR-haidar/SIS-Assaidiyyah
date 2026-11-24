@@ -7,25 +7,24 @@ use Illuminate\Database\Seeder;
 
 class PeranSeeder extends Seeder
 {
-    /**
-     * Daftar peran adalah asumsi berdasarkan prototype.
-     * Tata Usaha dipetakan ke peran operator (sesuai konfirmasi).
-     */
     public function run(): void
     {
-        $peran = [
-            'operator' => 'Operator / Tata Usaha',
-            'guru' => 'Guru',
-            'wali_kelas' => 'Wali Kelas',
-            'kepala' => 'Kepala Madrasah',
-            'keuangan' => 'Keuangan',
-            'pustakawan' => 'Pustakawan',
-            'siswa' => 'Siswa / Orang Tua',
-            'humas' => 'Humas',
+        $daftarPeran = [
+            ['kode' => 'operator', 'nama' => 'Operator'],
+            ['kode' => 'guru', 'nama' => 'Guru'],
+            ['kode' => 'wali_kelas', 'nama' => 'Wali Kelas'],
+            ['kode' => 'kepala', 'nama' => 'Kepala Sekolah'],
+            ['kode' => 'keuangan', 'nama' => 'Keuangan'],
+            ['kode' => 'pustakawan', 'nama' => 'Pustakawan'],
+            ['kode' => 'humas', 'nama' => 'Humas'],
+            ['kode' => 'siswa', 'nama' => 'Siswa'],
         ];
 
-        foreach ($peran as $kode => $nama) {
-            Peran::updateOrCreate(['kode' => $kode], ['nama' => $nama]);
+        foreach ($daftarPeran as $item) {
+            Peran::query()->updateOrCreate(
+                ['kode' => $item['kode']],
+                ['nama' => $item['nama']]
+            );
         }
     }
 }

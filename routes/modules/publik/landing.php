@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Publik\BerandaController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'home')->name('publik.beranda');
+Route::get('/', [BerandaController::class, 'index'])->name('publik.beranda');

@@ -23,6 +23,7 @@ class ReferensiSeeder extends Seeder
                 'lulus' => 'Lulus',
                 'pindah' => 'Pindah',
                 'keluar' => 'Keluar',
+                'tidak_aktif' => 'Tidak Aktif',
             ],
             'status_kepegawaian' => [
                 'pns' => 'PNS',
@@ -30,11 +31,15 @@ class ReferensiSeeder extends Seeder
                 'gty' => 'Guru Tetap Yayasan',
                 'gtt' => 'Guru Tidak Tetap',
                 'honorer' => 'Honorer',
+                'non_pns' => 'Non PNS',
             ],
             'jenis_gtk' => [
                 'guru_kelas' => 'Guru Kelas',
                 'guru_mapel' => 'Guru Mata Pelajaran',
                 'tenaga_kependidikan' => 'Tenaga Kependidikan',
+                'kepala_madrasah' => 'Kepala Madrasah',
+                'tata_usaha' => 'Tata Usaha',
+                'operator_pendataan' => 'Operator Pendataan',
             ],
             'pendidikan_terakhir' => [
                 'sma' => 'SMA/MA/Sederajat',

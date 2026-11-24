@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamp('dihapus_pada')->nullable();
         });
 
-        DB::statement("CREATE UNIQUE INDEX uq_tahun_ajaran_aktif ON tahun_ajaran (aktif) WHERE aktif = true AND dihapus_pada IS NULL");
+        DB::statement('CREATE UNIQUE INDEX uq_tahun_ajaran_aktif ON tahun_ajaran (aktif) WHERE aktif = true AND dihapus_pada IS NULL');
     }
 
     public function down(): void

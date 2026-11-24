@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\JenisKelamin;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,7 +13,9 @@ class Pegawai extends Model
     use SoftDeletes;
 
     public const CREATED_AT = 'dibuat_pada';
+
     public const UPDATED_AT = 'diubah_pada';
+
     public const DELETED_AT = 'dihapus_pada';
 
     protected $table = 'pegawai';
@@ -35,10 +38,13 @@ class Pegawai extends Model
         'mata_pelajaran_diampu',
         'nomor_sk_pengangkatan',
         'pasfoto_berkas_id',
+        'jenis_kelamin',
+        'penempatan',
     ];
 
     protected $casts = [
         'tanggal_lahir' => 'date',
+        'jenis_kelamis' => JenisKelamin::class,
     ];
 
     public function pengguna(): BelongsTo

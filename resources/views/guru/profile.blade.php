@@ -2,7 +2,37 @@
 @section('title', 'Profile Guru')
 @section('page-class', 'guru-profile-page')
 @section('content')
-    <header class="guru-page-heading"><h1>Profil</h1></header>
+    @php
+        $pegawai = $pegawai ?? ($guru ?? null);
+        $user = auth()->user();
+
+        $namaLengkap = $pegawai->nama_lengkap ?? ($pegawai->nama ?? ($user?->nama_lengkap ?? ($user?->nama ?? '-')));
+        $nip = $pegawai->nip ?? '-';
+        $nuptk = $pegawai->nuptk ?? '-';
+        $nik = $pegawai->nik ?? '-';
+        $statusKepegawaian =
+            $pegawai->status_kepegawaian_nama ??
+            ($pegawai->statusKepegawaian?->nama ?? ($pegawai->status_kepegawaian ?? '-'));
+        $pendidikanTerakhir =
+            $pegawai->pendidikan_terakhir_nama ??
+            ($pegawai->pendidikanTerakhir?->nama ?? ($pegawai->pendidikan_terakhir ?? '-'));
+
+        $tempatLahir = $pegawai->tempat_lahir ?? null;
+        $tanggalLahir = !empty($pegawai?->tanggal_lahir)
+            ? \Illuminate\Support\Carbon::parse($pegawai->tanggal_lahir)->translatedFormat('d M Y')
+            : null;
+        $ttl = $tempatLahir || $tanggalLahir ? ($tempatLahir ?? '-') . ', ' . ($tanggalLahir ?? '-') : '-';
+
+        $jenisKelamin = $pegawai->jenis_kelamin ?? '-';
+        $telepon = $pegawai->no_whatsapp ?? ($pegawai->no_hp ?? ($pegawai->telepon ?? '-'));
+        $email = $pegawai->email ?? ($user?->email ?? '-');
+        $alamat = $pegawai->alamat ?? '-';
+
+        $fotoUrl = $fotoUrl ?? ($pegawai->foto_url ?? ($pegawai->pasfoto_url ?? null));
+    @endphp
+    <header class="guru-page-heading">
+        <h1>Profil</h1>
+    </header>
     <div class="guru-profile-layout">
         <aside class="guru-profile-card">
             @if ($adaPasfoto)

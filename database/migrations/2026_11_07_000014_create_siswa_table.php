@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('siswa', function (Blueprint $table) {
+        Schema::create('siswa', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('pengguna_id')->nullable()->unique()->constrained('pengguna');
             $table->string('nis', 20)->nullable()->unique();
@@ -23,18 +23,23 @@ return new class extends Migration
             $table->foreignId('status_masuk_id')->nullable()->constrained('referensi');
             $table->foreignId('status_kesiswaan_id')->nullable()->constrained('referensi');
             $table->enum('status_data', ['draft', 'terverifikasi'])->default('draft');
+            $table->string('kebutuhan_khusus', 100)->nullable();
+            $table->string('disabilitas', 100)->nullable();
+            $table->string('nomor_kip_pip', 50)->nullable();
             $table->string('nama_ayah', 150)->nullable();
             $table->char('nik_ayah', 16)->nullable();
             $table->foreignId('pekerjaan_ayah_id')->nullable()->constrained('referensi');
             $table->string('nama_ibu', 150)->nullable();
             $table->char('nik_ibu', 16)->nullable();
+            $table->string('nama_wali', 150)->nullable();
             $table->string('no_whatsapp_orang_tua', 20)->nullable();
-            $table->index('nama_lengkap', 'idx_siswa_nama');
-            $table->index('status_data', 'idx_siswa_status_data');
-            $table->index('no_whatsapp_orang_tua', 'idx_siswa_whatsapp_orang_tua');
             $table->timestamp('dibuat_pada')->useCurrent();
             $table->timestamp('diubah_pada')->useCurrent();
             $table->timestamp('dihapus_pada')->nullable();
+
+            $table->index('nama_lengkap');
+            $table->index('status_data');
+            $table->index('no_whatsapp_orang_tua');
         });
     }
 
