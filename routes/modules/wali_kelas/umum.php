@@ -1,7 +1,11 @@
 <?php
 
+// routes/modules/wali_kelas/umum.php
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Presensi\PresensiSiswaController;
+use App\Http\Controllers\WaliKelas\SiswaRombelController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'wali-kelas.dashboard')->name('dashboard');
-Route::view('/data-siswa', 'wali-kelas.data-siswa')->name('siswa.index');
-Route::view('/presensi-absensi', 'wali-kelas.presensi-absensi')->name('presensi.index');
+Route::get('/', [DashboardController::class, 'waliKelas'])->name('dashboard');
+Route::get('/data-siswa', [SiswaRombelController::class, 'index'])->name('siswa.index');
+Route::get('/presensi-absensi', [PresensiSiswaController::class, 'rekapWaliKelas'])->name('presensi.index');

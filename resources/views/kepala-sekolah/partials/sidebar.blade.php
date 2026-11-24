@@ -1,3 +1,4 @@
+@php($menuPeran = request()->routeIs('humas.*') ? 'humas' : 'kepala')
 <aside class="siswa-sidebar" id="kepalaSidebar">
     <a href="{{ url('/') }}" class="sidebar-home-link" aria-label="Kembali ke beranda">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -9,9 +10,9 @@
         <span>Kembali ke Beranda</span>
     </a>
     <nav class="sidebar-nav" aria-label="Navigasi kepala sekolah">
-        <a href="{{ url('/kepala-sekolah/dashboard') }}"
-            class="sidebar-nav-item {{ request()->is('kepala-sekolah/dashboard') ? 'active' : '' }}"
-            @if (request()->is('kepala-sekolah/dashboard')) aria-current="page" @endif>
+        <a href="{{ route($menuPeran . '.dashboard') }}"
+            class="sidebar-nav-item {{ request()->routeIs($menuPeran . '.dashboard') ? 'active' : '' }}"
+            @if (request()->routeIs($menuPeran . '.dashboard')) aria-current="page" @endif>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
@@ -21,9 +22,9 @@
                 <rect x="14" y="14" width="7" height="7" rx="1" />
             </svg>Dashboard
         </a>
-        <a href="{{ url('/kepala-sekolah/rekap-absensi') }}"
-            class="sidebar-nav-item {{ request()->is('kepala-sekolah/rekap-absensi') ? 'active' : '' }}"
-            @if (request()->is('kepala-sekolah/rekap-absensi')) aria-current="page" @endif>
+        <a href="{{ route($menuPeran . '.rekap_absensi.index') }}"
+            class="sidebar-nav-item {{ request()->routeIs($menuPeran . '.rekap_absensi.index') ? 'active' : '' }}"
+            @if (request()->routeIs($menuPeran . '.rekap_absensi.index')) aria-current="page" @endif>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
@@ -34,9 +35,9 @@
                 <path d="m9 16 2 2 4-4" />
             </svg>Rekap Absensi
         </a>
-        <a href="{{ url('/kepala-sekolah/rekap-pembayaran') }}"
-            class="sidebar-nav-item {{ request()->is('kepala-sekolah/rekap-pembayaran') ? 'active' : '' }}"
-            @if (request()->is('kepala-sekolah/rekap-pembayaran')) aria-current="page" @endif>
+        <a href="{{ route($menuPeran . '.rekap_pembayaran.index') }}"
+            class="sidebar-nav-item {{ request()->routeIs($menuPeran . '.rekap_pembayaran.index') ? 'active' : '' }}"
+            @if (request()->routeIs($menuPeran . '.rekap_pembayaran.index')) aria-current="page" @endif>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
@@ -45,9 +46,9 @@
                 <path d="M16 15h2" />
             </svg>Rekap Pembayaran
         </a>
-        <a href="{{ url('/kepala-sekolah/data-sekolah') }}"
-            class="sidebar-nav-item {{ request()->is('kepala-sekolah/data-sekolah') ? 'active' : '' }}"
-            @if (request()->is('kepala-sekolah/data-sekolah')) aria-current="page" @endif>
+        <a href="{{ route($menuPeran . '.sekolah.show') }}"
+            class="sidebar-nav-item {{ request()->routeIs($menuPeran . '.sekolah.show') ? 'active' : '' }}"
+            @if (request()->routeIs($menuPeran . '.sekolah.show')) aria-current="page" @endif>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
@@ -56,9 +57,9 @@
                 <path d="M9 21v-8h6v8" />
             </svg>Data Sekolah
         </a>
-        <a href="{{ url('/kepala-sekolah/pengumuman') }}"
-            class="sidebar-nav-item {{ request()->is('kepala-sekolah/pengumuman') ? 'active' : '' }}"
-            @if (request()->is('kepala-sekolah/pengumuman')) aria-current="page" @endif>
+        <a href="{{ route($menuPeran . '.pengumuman.index') }}"
+            class="sidebar-nav-item {{ request()->routeIs($menuPeran . '.pengumuman.index') ? 'active' : '' }}"
+            @if (request()->routeIs($menuPeran . '.pengumuman.index')) aria-current="page" @endif>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" aria-hidden="true">

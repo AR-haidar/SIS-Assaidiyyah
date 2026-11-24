@@ -11,7 +11,7 @@ enum StatusPengumuman: string
     public function label(): string
     {
         return match ($this) {
-            self::Draft => 'Draft',
+            self::Draft => 'Draf',
             self::Terbit => 'Terbit',
             self::Arsip => 'Arsip',
         };
@@ -22,10 +22,11 @@ enum StatusPengumuman: string
      */
     public static function opsi(): array
     {
-        return [
-            self::Draft->value => self::Draft->label(),
-            self::Terbit->value => self::Terbit->label(),
-            self::Arsip->value => self::Arsip->label(),
-        ];
+        $opsi = [];
+        foreach (self::cases() as $kasus) {
+            $opsi[$kasus->value] = $kasus->label();
+        }
+
+        return $opsi;
     }
 }

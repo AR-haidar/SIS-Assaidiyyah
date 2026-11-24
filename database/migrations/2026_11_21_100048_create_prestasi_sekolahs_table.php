@@ -12,8 +12,9 @@ return new class extends Migration
             $table->id();
             $table->string('judul', 200);
             $table->text('deskripsi')->nullable();
-            $table->string('tingkat', 60)->nullable();
-            $table->string('tahun', 20)->nullable();
+            $table->string('tingkat', 100)->nullable();
+            $table->string('kategori', 100)->nullable();
+            $table->smallInteger('tahun')->nullable();
             $table->date('tanggal')->nullable();
             $table->foreignId('foto_berkas_id')->nullable()->constrained('berkas');
             $table->smallInteger('urutan')->default(0);

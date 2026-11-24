@@ -106,12 +106,10 @@
                 </header>
                 <div class="perpustakaan-book-media-body">
                     <label class="perpustakaan-book-upload perpustakaan-cover-upload" data-validation-surface>
-                        <span class="perpustakaan-cover-preview">
-                            @if ($buku->sampul)
-                                <img src="{{ route('pustakawan.data-buku.sampul', $buku) }}" alt="Sampul {{ $buku->judul }}">
-                            @else
-                                Pratinjau Sampul Buku (3:4)
-                            @endif
+                        <span class="perpustakaan-cover-preview" data-cover-preview>
+                            <img data-cover-image alt="Sampul {{ $buku->judul }}"
+                                @if ($buku->sampul) src="{{ route('pustakawan.data-buku.sampul', $buku) }}" @else hidden @endif>
+                            <span data-cover-placeholder @if ($buku->sampul) hidden @endif>Pratinjau Sampul Buku (3:4)</span>
                         </span>
                         <span class="perpustakaan-cover-button action-button">
                             <x-perpustakaan.icon name="image-plus" size="14" />

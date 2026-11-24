@@ -8,6 +8,7 @@ use App\Models\Berkas;
 use App\Models\Buku;
 use App\Models\KategoriBuku;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +32,7 @@ class BukuController extends Controller
         ]);
 
         $buku = Buku::query()
-            ->with('kategori')
+            ->with(['kategori', 'sampul:id'])
             ->when(isset($filter['q']), function ($query) use ($filter): void {
                 $kata = $filter['q'];
                 $query->where(function ($query) use ($kata): void {
@@ -93,9 +94,17 @@ class BukuController extends Controller
 
     public function destroy(Buku $buku): RedirectResponse
     {
-        $buku->delete();
+        try {
+            if ($buku->delete()) {
+                return redirect()->route('pustakawan.data-buku.index')
+                    ->with('status', 'Buku berhasil dihapus dari daftar.');
+            }
+        } catch (QueryException $exception) {
+            report($exception);
+        }
 
-        return redirect()->route('pustakawan.data-buku.index')->with('status', 'Buku berhasil dihapus dari daftar.');
+        return redirect()->route('pustakawan.data-buku.edit', $buku)
+            ->withErrors(['simpan' => 'Buku gagal dihapus. Silakan coba kembali.']);
     }
 
     public function sampul(Buku $buku): StreamedResponse
@@ -199,9 +208,7 @@ class BukuController extends Controller
 
                 $rekaman->save();
 
-                if ((int) $kategoriSaatIni !== $kategoriId) {
-                    $rekaman->kategori()->sync([$kategoriId]);
-                }
+                $rekaman->kategori()->sync([$kategoriId]);
             });
         } catch (Throwable $exception) {
             Storage::disk('local')->delete($pathTerunggah);

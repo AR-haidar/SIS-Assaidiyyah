@@ -3,7 +3,12 @@ body.siswa-page.perpustakaan-page {
     --perpustakaan-nav-active: #deebfc;
     --perpustakaan-nav-text: #185aa9;
     background-color: #f5f6fc;
+    color: #173f75;
 }
+
+.perpustakaan-page .topbar-school-name { color: #173f75; font-weight: 700; }
+.perpustakaan-page .topbar-user-role { color: #173f75; font-weight: 600; }
+.perpustakaan-page .semester-badge { background-color: #173f75; font-weight: 600; }
 
 .perpustakaan-page .siswa-topbar {
     border-bottom-color: #e8edf5;

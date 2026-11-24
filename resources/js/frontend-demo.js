@@ -179,10 +179,13 @@ function renderAnnouncements() {
     const items = read('announcements'); if (!items.length) return;
     list.innerHTML = items.map((item, index) => `<tr><td>${index + 1}</td><td>${escapeHtml(item.title)}<small class="announcement-table-description">${escapeHtml(item.body)}</small></td><td>${escapeHtml(item.publishedAt)}</td><td>${escapeHtml(item.attachment || 'Tanpa lampiran')}</td><td><a class="keuangan-button" href="/keuangan/pengumuman/${index}/edit">Edit</a></td></tr>`).join('');
 }
+function currentStudentInvoices() {
+    return Array.isArray(window.studentInvoices) ? window.studentInvoices : [];
+}
 function renderStudentInvoices() {
     const body = document.querySelector('[data-student-invoices]'); if (!body) return;
     // Data tagihan siswa disediakan backend untuk siswa yang sedang login; jangan tampilkan fixture keuangan demo sebagai tagihan nyata.
-    let items = Array.isArray(window.studentInvoices) ? window.studentInvoices : [];
+    let items = currentStudentInvoices();
     const selectors = document.querySelectorAll('.spp-filter-card select');
     const category = selectors[1]?.value; const status = selectors[2]?.value;
     if (category && category !== 'all') items = items.filter(item => category === 'Lainnya' ? !['Infaq', 'Uang Buku', 'Wisata', 'Seragam'].includes(item.type) : item.type === category);

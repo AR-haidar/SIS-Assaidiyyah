@@ -66,7 +66,15 @@
                     @forelse ($buku as $item)
                         <tr class="perpustakaan-list-row perpustakaan-book-row">
                             <td>{{ $buku->firstItem() + $loop->index }}</td>
-                            <td>{{ $item->judul }}</td>
+                            <td>
+                                <div class="flex items-center gap-2" data-cover-preview>
+                                    @if ($item->sampul)
+                                        <img data-cover-image src="{{ route('pustakawan.data-buku.sampul', $item) }}" alt="Sampul {{ $item->judul }}" class="h-12 w-9 shrink-0 rounded object-cover" loading="lazy">
+                                    @endif
+                                    <span data-cover-placeholder @if ($item->sampul) hidden @endif class="h-12 w-9 shrink-0 rounded bg-slate-100 text-center leading-[3rem]" aria-label="Belum ada sampul">—</span>
+                                    <span>{{ $item->judul }}</span>
+                                </div>
+                            </td>
                             <td>{{ $item->penulis }}</td>
                             <td>{{ $item->kategori->pluck('nama')->join(', ') ?: '—' }}</td>
                             <td>

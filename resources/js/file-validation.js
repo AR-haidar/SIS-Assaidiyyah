@@ -7,6 +7,58 @@ export function getFileValidationMessage(input) {
     return invalidType ? input.dataset.fileTypeMessage : tooLarge ? input.dataset.fileSizeMessage : '';
 }
 
+for (const preview of document.querySelectorAll('[data-cover-preview]')) {
+    const image = preview.querySelector('[data-cover-image]');
+    if (!image) continue;
+
+    const placeholders = preview.querySelectorAll('[data-cover-placeholder]');
+    const input = preview.closest('label')?.querySelector('input[type="file"]');
+    let original = image.getAttribute('src');
+    let temporaryUrl;
+
+    function toggleImage(show) {
+        image.hidden = !show;
+        for (const placeholder of placeholders) placeholder.hidden = show;
+    }
+
+    image.addEventListener('load', () => toggleImage(true));
+    image.addEventListener('error', () => {
+        if (temporaryUrl) {
+            URL.revokeObjectURL(temporaryUrl);
+            temporaryUrl = undefined;
+            if (original) {
+                image.src = original;
+                return;
+            }
+        } else {
+            original = null;
+        }
+
+        image.removeAttribute('src');
+        toggleImage(false);
+    });
+
+    if (original && image.complete && !image.naturalWidth) {
+        original = null;
+        image.removeAttribute('src');
+        toggleImage(false);
+    }
+
+    input?.addEventListener('change', () => {
+        if (temporaryUrl) URL.revokeObjectURL(temporaryUrl);
+
+        const file = input.files[0];
+        temporaryUrl = file && !getFileValidationMessage(input) ? URL.createObjectURL(file) : undefined;
+        const source = temporaryUrl || original;
+        if (source) {
+            image.src = source;
+        } else {
+            image.removeAttribute('src');
+            toggleImage(false);
+        }
+    });
+}
+
 function validateFile(input) {
     const message = getFileValidationMessage(input);
     input.setCustomValidity(message);

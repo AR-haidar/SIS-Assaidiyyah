@@ -14,11 +14,66 @@ use Illuminate\View\View;
 
 class KategoriBukuController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        return view('perpustakaan.kategori-buku', [
-            'kategoriBuku' => KategoriBuku::query()->withCount('buku')->orderBy('nama')->get(),
+        $filter = $request->validate([
+            'q' => ['nullable', 'string', 'max:100'],
+            'status' => ['nullable', 'in:active,inactive'],
         ]);
+
+        $kategori = KategoriBuku::query()
+            ->when(isset($filter['status']), fn ($query) => $query->where('aktif', $filter['status'] === 'active'));
+
+        if (isset($filter['q'])) {
+            $kata = mb_strtolower($filter['q']);
+            $pola = '%'.addcslashes($filter['q'], '\\%_').'%';
+            $mirip = [];
+
+            if (preg_match('/^\p{L}{4,}$/u', $kata)) {
+                foreach ((clone $kategori)->select('id', 'nama')->cursor() as $calon) {
+                    $kataNama = preg_split('/[^\p{L}]+/u', mb_strtolower($calon->nama), -1, PREG_SPLIT_NO_EMPTY);
+
+                    foreach ($kataNama as $bagian) {
+                        if ($this->miripSatuKata($kata, $bagian)) {
+                            $mirip[] = $calon->id;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            $kategori->where(fn ($query) => $query->whereLike('nama', $pola)->orWhereIntegerInRaw('id', $mirip));
+        }
+
+        return view('perpustakaan.kategori-buku', [
+            'kategoriBuku' => $kategori
+                ->withCount('buku')
+                ->orderBy('nama')
+                ->paginate(12)
+                ->withQueryString(),
+            'totalAktif' => KategoriBuku::where('aktif', true)->count(),
+            'filter' => $filter,
+        ]);
+    }
+
+    private function miripSatuKata(string $kata, string $bagian): bool
+    {
+        if (levenshtein($kata, $bagian) === 1) {
+            return true;
+        }
+
+        $huruf = mb_str_split($kata);
+        $calon = mb_str_split($bagian);
+        if (count($huruf) !== count($calon)) {
+            return false;
+        }
+
+        $beda = array_keys(array_diff_assoc($huruf, $calon));
+
+        return count($beda) === 2
+            && $beda[1] === $beda[0] + 1
+            && $huruf[$beda[0]] === $calon[$beda[1]]
+            && $huruf[$beda[1]] === $calon[$beda[0]];
     }
 
     public function store(Request $request): RedirectResponse

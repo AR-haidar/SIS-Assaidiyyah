@@ -3,6 +3,7 @@ import laravel from 'laravel-vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+    server: { host: '127.0.0.1' },
     plugins: [
         laravel({
             input: [
@@ -34,6 +35,7 @@ export default defineConfig({
                 'resources/css/keuangan/revisi.css',
                 'resources/css/perpustakaan/perpustakaan.css',
                 'resources/js/app.js',
+                'resources/js/pembaca-pdf.js',
                 'resources/js/frontend-demo.js',
                 'resources/js/humas.js'
             ],

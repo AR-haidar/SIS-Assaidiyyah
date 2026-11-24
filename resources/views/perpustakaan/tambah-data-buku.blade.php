@@ -113,9 +113,10 @@
                 </header>
                 <div class="perpustakaan-book-media-body">
                     <label class="perpustakaan-book-upload perpustakaan-cover-upload" data-validation-surface>
-                        <span class="perpustakaan-cover-preview">
-                            <strong>Pratinjau Sampul</strong>
-                            <small>Belum ada gambar</small>
+                        <span class="perpustakaan-cover-preview" data-cover-preview>
+                            <img data-cover-image alt="Pratinjau sampul buku" hidden>
+                            <strong data-cover-placeholder>Pratinjau Sampul</strong>
+                            <small data-cover-placeholder>Belum ada gambar</small>
                         </span>
                         <small id="tambah-sampul-keterangan">Pratinjau Sampul Buku (3:4) · Format JPG / PNG maks. {{ Buku::MAKS_SAMPUL_MB }} MB</small>
                         <span class="perpustakaan-cover-button action-button">
