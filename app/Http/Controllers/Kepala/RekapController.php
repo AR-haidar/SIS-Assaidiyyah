@@ -40,7 +40,7 @@ class RekapController extends Controller
                 $sakit = $logs->filter(fn ($p) => ($p->status?->value ?? (string) $p->status) === 'sakit')->count();
                 $alpa = $logs->filter(fn ($p) => ($p->status?->value ?? (string) $p->status) === 'alpa')->count();
 
-                $totalSiswa = $rombel->keanggotaanRombel()->count();
+                $totalSiswa = $rombel->keanggotaan()->count();
 
                 return [
                     'kelas' => $rombel->nama,
@@ -112,7 +112,7 @@ class RekapController extends Controller
                     ->sum('nominal');
                 $tunggakan = max(0.0, $target - $realisasi);
                 $rasio = $target > 0 ? round(($realisasi / $target) * 100, 1) : 0.0;
-                $jumlahSiswa = $rombel->keanggotaanRombel()->count();
+                $jumlahSiswa = $rombel->keanggotaan()->count();
 
                 return [
                     'kelas' => $rombel->nama,

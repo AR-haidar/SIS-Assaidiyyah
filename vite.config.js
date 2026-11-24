@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/css/login.css',
                 'resources/css/home.css',
+                'resources/css/landing.css',
                 'resources/css/perpustakaan-digital.css',
                 'resources/css/detail-buku.css',
                 'resources/css/halaman-baca-buku.css',
@@ -35,6 +36,7 @@ export default defineConfig({
                 'resources/css/keuangan/revisi.css',
                 'resources/css/perpustakaan/perpustakaan.css',
                 'resources/js/app.js',
+                'resources/js/landing.js',
                 'resources/js/pembaca-pdf.js',
                 'resources/js/frontend-demo.js',
                 'resources/js/humas.js'

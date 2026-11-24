@@ -25,7 +25,7 @@ class TagihanController extends Controller
         $jenisTagihanId = $request->query('jenis_tagihan_id');
         $tahunAjaranId = $request->query('tahun_ajaran_id');
         $rombelId = $request->query('rombel_id');
-        $status = trim((string) $request->query('status', ''));
+        $status = trim((string) $request->query('status', $request->query('status_verifikasi', '')));
 
         $daftarTagihan = Tagihan::query()
             ->with([

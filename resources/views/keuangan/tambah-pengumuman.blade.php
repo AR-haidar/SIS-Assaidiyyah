@@ -1,8 +1,8 @@
 @extends('keuangan.layout')
-@section('title', isset($pengumuman) ? 'Edit Pengumuman Keuangan' : 'Tambah Pengumuman Keuangan')
+@section('title', ($pengumuman->exists ?? false) ? 'Edit Pengumuman Keuangan' : 'Tambah Pengumuman Keuangan')
 @section('content')
     @php
-        $isEdit = isset($pengumuman);
+        $isEdit = $pengumuman->exists ?? false;
         $daftarKategori = $daftarKategori ?? collect();
         $urlIndex = \Illuminate\Support\Facades\Route::has('keuangan.pengumuman.index')
             ? route('keuangan.pengumuman.index')

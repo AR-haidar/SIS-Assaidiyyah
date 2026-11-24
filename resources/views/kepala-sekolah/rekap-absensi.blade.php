@@ -40,8 +40,8 @@
                     <option value="">Pilih periode</option>
                     @foreach ($daftarPeriode as $periode)
                         @php
-                            $val = is_object($periode) ? $periode->nilai ?? ($periode->kode ?? $periode->id) : $periode;
-                            $lbl = is_object($periode) ? $periode->label ?? ($periode->nama ?? $val) : $periode;
+                            $val = data_get($periode, 'nilai') ?? data_get($periode, 'kode') ?? data_get($periode, 'id') ?? (is_string($periode) ? $periode : '');
+                            $lbl = data_get($periode, 'label') ?? data_get($periode, 'nama') ?? $val;
                         @endphp
                         <option value="{{ $val }}" @selected((string) request('periode') === (string) $val)>{{ $lbl }}</option>
                     @endforeach

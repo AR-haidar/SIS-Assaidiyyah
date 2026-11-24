@@ -20,7 +20,7 @@ Route::prefix('tagihan')->name('tagihan.')->group(function (): void {
 });
 
 Route::prefix('pembayaran')->name('pembayaran.')->group(function (): void {
-    Route::get('/', [PembayaranController::class, 'index'])->name('index');
+    Route::get('/', [TagihanController::class, 'index'])->name('index');
     Route::get('/{pembayaran}', [PembayaranController::class, 'show'])->name('show');
     Route::post('/{pembayaran}/verifikasi', [PembayaranController::class, 'verifikasi'])->name('verifikasi');
     Route::get('/{pembayaran}/bukti', [PembayaranController::class, 'bukti'])->name('bukti');

@@ -4,10 +4,10 @@
 @section('content')
     @php
         $ringkasanPresensi = $ringkasanPresensi ?? ($ringkasan ?? []);
-        $tingkatKehadiran = $ringkasanPresensi['tingkat_kehadiran'] ?? null;
-        $hariHadir = $ringkasanPresensi['hadir'] ?? null;
-        $hariIzin = $ringkasanPresensi['izin'] ?? null;
-        $hariSakit = $ringkasanPresensi['sakit'] ?? null;
+        $tingkatKehadiran = $tingkatKehadiran ?? $ringkasanPresensi['tingkat_kehadiran'] ?? null;
+        $hariHadir = $hariHadir ?? $ringkasanPresensi['hadir'] ?? null;
+        $hariIzin = $hariIzin ?? $ringkasanPresensi['izin'] ?? null;
+        $hariSakit = $hariSakit ?? $ringkasanPresensi['sakit'] ?? null;
 
         $daftarPengumuman = $daftarPengumuman ?? collect();
         $statistikPengumuman = $statistikPengumuman ?? [

@@ -20,7 +20,7 @@
         <form id="pencarian-kategori" action="{{ route('pustakawan.kategori-buku.index') }}" method="GET" hidden></form>
         <header class="perpustakaan-list-toolbar perpustakaan-category-toolbar">
             <div class="perpustakaan-category-toolbar-heading">
-                <h2 style="font-size: 14px; font-weight: 650; letter-spacing: .35px; text-transform: uppercase;">Daftar Kategori</h2>
+                <h2>Daftar Kategori</h2>
                 <span class="perpustakaan-category-count">{{ $kategoriBuku->total() }} Item</span>
             </div>
             <label class="perpustakaan-list-search">

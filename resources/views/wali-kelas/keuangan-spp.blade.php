@@ -17,7 +17,7 @@
         $daftarTahunAjaran = $daftarTahunAjaran ?? collect();
         $daftarJenisTagihan = $daftarJenisTagihan ?? collect();
         $isPaginator = $daftarSiswa instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator;
-        $pegawai = $pegawai ?? ($request->user()?->pegawai ?? null);
+        $pegawai = $pegawai ?? auth()->user()?->pegawai;
         $rombelDiampu = $rombelDiampu ?? null;
         $taAktif = $daftarTahunAjaran->firstWhere('aktif', true);
     @endphp

@@ -34,7 +34,7 @@ class PresensiSiswaController extends Controller
 
         $daftarSiswa = Siswa::query()
             ->with([
-                'presensiSiswa' => fn ($q) => $q->whereDate('tanggal', $tanggal),
+                'presensi' => fn ($q) => $q->whereDate('tanggal', $tanggal),
                 'keanggotaanRombel.rombel',
             ])
             ->when($rombelTerpilih instanceof Rombel, function ($q) use ($rombelTerpilih): void {
@@ -74,7 +74,7 @@ class PresensiSiswaController extends Controller
             ->first();
 
         $daftarSiswa = Siswa::query()
-            ->with(['presensiSiswa' => function ($q) use ($bulan, $tahun): void {
+            ->with(['presensi' => function ($q) use ($bulan, $tahun): void {
                 if ($bulan !== '' && is_numeric($bulan)) {
                     $q->whereMonth('tanggal', (int) $bulan);
                 }
@@ -82,14 +82,12 @@ class PresensiSiswaController extends Controller
                     $q->whereYear('tanggal', (int) $tahun);
                 }
             }])
-            ->when($rombel instanceof Rombel, function ($q) use ($rombel): void {
-                $q->whereHas('keanggotaanRombel', fn ($sub) => $sub->where('rombel_id', $rombel->getKey()));
-            })
+            ->whereHas('keanggotaanRombel', fn ($q) => $q->where('rombel_id', $rombel?->getKey() ?? 0))
             ->orderBy('nama_lengkap')
             ->get();
 
         $rekapSiswa = $daftarSiswa->map(function (Siswa $siswa): array {
-            $logs = $siswa->presensiSiswa;
+            $logs = $siswa->presensi;
             $hadir = $logs->filter(fn ($p) => ($p->status?->value ?? (string) $p->status) === 'hadir')->count();
             $izin = $logs->filter(fn ($p) => ($p->status?->value ?? (string) $p->status) === 'izin')->count();
             $sakit = $logs->filter(fn ($p) => ($p->status?->value ?? (string) $p->status) === 'sakit')->count();

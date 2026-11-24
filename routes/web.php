@@ -17,6 +17,14 @@ Route::middleware('auth')->group(function (): void {
 
     Route::get('/ganti-sandi', [KataSandiController::class, 'edit'])->name('sandi.edit');
     Route::put('/ganti-sandi', [KataSandiController::class, 'update'])->name('sandi.update');
+
+    Route::middleware('peran:kepala')->prefix('kepala')->group(function (): void {
+        Route::get('/', fn () => redirect()->route('kepala.dashboard'));
+        Route::get('/rekap-absensi', fn () => redirect()->route('kepala.rekap_absensi.index'));
+        Route::get('/rekap-pembayaran', fn () => redirect()->route('kepala.rekap_pembayaran.index'));
+        Route::get('/data-sekolah', fn () => redirect()->route('kepala.sekolah.show'));
+        Route::get('/pengumuman', fn () => redirect()->route('kepala.pengumuman.index'));
+    });
 });
 
 foreach (glob(__DIR__.'/modules/publik/*.php') ?: [] as $berkas) {

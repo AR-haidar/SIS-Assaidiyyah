@@ -79,20 +79,20 @@ body:is(.operator-page,.keuangan-page,.kepala-sekolah-page) :is(p,span,small,lab
 @media(max-width:520px){.shared-announcement-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.shared-announcement-stats article{min-height:60px;padding:10px 36px 9px 10px}.shared-announcement-stats article>span{font-size:8px}.shared-announcement-stats article>strong{font-size:17px}.shared-announcement-filters{grid-template-columns:1fr;padding:9px}.shared-announcement-search,.shared-announcement-filter-button{grid-column:auto}.shared-announcement-tabs{padding-left:7px;padding-right:7px}.shared-announcement-tabs button{padding:0 9px;font-size:9px}}
 .topbar-user-info .topbar-user-nip{display:none!important}
 /* Use the shared brand blue for every native button across the application. */
-button,[role="button"],input[type="button"],input[type="submit"],input[type="reset"],a.primary,a.operator-primary-button,a.btn,a[class*="-button"]{background-color:#206BC7!important;border-color:#206BC7!important;color:#fff!important}
-button,[role="button"],input[type="button"],input[type="submit"],input[type="reset"],a.primary,a.operator-primary-button,a.btn,a[class*="-button"]{border-radius:6px!important;font-family: 'Inter', sans-serif; font-weight: 400;cursor:pointer;transition:filter .15s ease,box-shadow .15s ease,transform .15s ease}
-button:hover:not(:disabled),[role="button"]:hover,input[type="button"]:hover,input[type="submit"]:hover,input[type="reset"]:hover,a.primary:hover,a.operator-primary-button:hover,a.btn:hover,a[class*="-button"]:hover{background-color:#1956a3!important;border-color:#1956a3!important;color:#fff!important;filter:none;box-shadow:0 2px 5px rgba(25,86,163,.2)}
-button:active:not(:disabled),[role="button"]:active,input[type="button"]:active,input[type="submit"]:active,input[type="reset"]:active{transform:translateY(1px)}
-button:focus-visible,[role="button"]:focus-visible,input[type="button"]:focus-visible,input[type="submit"]:focus-visible,input[type="reset"]:focus-visible,a.primary:focus-visible,a.operator-primary-button:focus-visible,a.btn:focus-visible,a[class*="-button"]:focus-visible{outline:3px solid rgba(32,107,199,.28);outline-offset:2px}
-button:disabled,input[type="button"]:disabled,input[type="submit"]:disabled,input[type="reset"]:disabled{opacity:.55;cursor:not-allowed}
+:where(body:not(.perpustakaan-page)) button,:where(body:not(.perpustakaan-page)) [role="button"],:where(body:not(.perpustakaan-page)) input[type="button"],:where(body:not(.perpustakaan-page)) input[type="submit"],:where(body:not(.perpustakaan-page)) input[type="reset"],:where(body:not(.perpustakaan-page)) a.primary,:where(body:not(.perpustakaan-page)) a.operator-primary-button,:where(body:not(.perpustakaan-page)) a.btn,:where(body:not(.perpustakaan-page)) a[class*="-button"]{background-color:#206BC7!important;border-color:#206BC7!important;color:#fff!important}
+:where(body:not(.perpustakaan-page)) button,:where(body:not(.perpustakaan-page)) [role="button"],:where(body:not(.perpustakaan-page)) input[type="button"],:where(body:not(.perpustakaan-page)) input[type="submit"],:where(body:not(.perpustakaan-page)) input[type="reset"],:where(body:not(.perpustakaan-page)) a.primary,:where(body:not(.perpustakaan-page)) a.operator-primary-button,:where(body:not(.perpustakaan-page)) a.btn,:where(body:not(.perpustakaan-page)) a[class*="-button"]{border-radius:6px!important;font-family: 'Inter', sans-serif; font-weight: 400;cursor:pointer;transition:filter .15s ease,box-shadow .15s ease,transform .15s ease}
+:where(body:not(.perpustakaan-page)) button:hover:not(:disabled),:where(body:not(.perpustakaan-page)) [role="button"]:hover,:where(body:not(.perpustakaan-page)) input[type="button"]:hover,:where(body:not(.perpustakaan-page)) input[type="submit"]:hover,:where(body:not(.perpustakaan-page)) input[type="reset"]:hover,:where(body:not(.perpustakaan-page)) a.primary:hover,:where(body:not(.perpustakaan-page)) a.operator-primary-button:hover,:where(body:not(.perpustakaan-page)) a.btn:hover,:where(body:not(.perpustakaan-page)) a[class*="-button"]:hover{background-color:#1956a3!important;border-color:#1956a3!important;color:#fff!important;filter:none;box-shadow:0 2px 5px rgba(25,86,163,.2)}
+:where(body:not(.perpustakaan-page)) button:active:not(:disabled),:where(body:not(.perpustakaan-page)) [role="button"]:active,:where(body:not(.perpustakaan-page)) input[type="button"]:active,:where(body:not(.perpustakaan-page)) input[type="submit"]:active,:where(body:not(.perpustakaan-page)) input[type="reset"]:active{transform:translateY(1px)}
+:where(body:not(.perpustakaan-page)) button:focus-visible,:where(body:not(.perpustakaan-page)) [role="button"]:focus-visible,:where(body:not(.perpustakaan-page)) input[type="button"]:focus-visible,:where(body:not(.perpustakaan-page)) input[type="submit"]:focus-visible,:where(body:not(.perpustakaan-page)) input[type="reset"]:focus-visible,:where(body:not(.perpustakaan-page)) a.primary:focus-visible,:where(body:not(.perpustakaan-page)) a.operator-primary-button:focus-visible,:where(body:not(.perpustakaan-page)) a.btn:focus-visible,:where(body:not(.perpustakaan-page)) a[class*="-button"]:focus-visible{outline:3px solid rgba(32,107,199,.28);outline-offset:2px}
+:where(body:not(.perpustakaan-page)) button:disabled,:where(body:not(.perpustakaan-page)) input[type="button"]:disabled,:where(body:not(.perpustakaan-page)) input[type="submit"]:disabled,:where(body:not(.perpustakaan-page)) input[type="reset"]:disabled{opacity:.55;cursor:not-allowed}
 
 /* Project-wide typography: Inter regular, with 36px bold page titles. */
-html, body, * { font-family: 'Inter', sans-serif !important; font-weight: 400 !important; }
-h1 { font-size: 36px !important; font-weight: 700 !important; line-height: 1.2; }
+html:not(:has(body.perpustakaan-page)), :where(body:not(.perpustakaan-page)), :where(body:not(.perpustakaan-page)) * { font-family: 'Inter', sans-serif !important; font-weight: 400 !important; }
+:where(body:not(.perpustakaan-page)) h1 { font-size: 36px !important; font-weight: 700 !important; line-height: 1.2; }
 
 /* Keep the topbar sidebar toggle in its original neutral style. */
-button.sidebar-toggle-btn { background-color: #f5f8fc !important; border-color: #dfe7f1 !important; color: #536b89 !important; }
-button.sidebar-toggle-btn:hover:not(:disabled) { background-color: #edf3fa !important; border-color: #dfe7f1 !important; color: #206BC7 !important; filter: none !important; box-shadow: none !important; }
+:where(body:not(.perpustakaan-page)) button.sidebar-toggle-btn{ background-color: #f5f8fc !important; border-color: #dfe7f1 !important; color: #536b89 !important; }
+:where(body:not(.perpustakaan-page)) button.sidebar-toggle-btn:hover:not(:disabled){ background-color: #edf3fa !important; border-color: #dfe7f1 !important; color: #206BC7 !important; filter: none !important; box-shadow: none !important; }
 
 /* Primary action colors for Guru and Kepala Sekolah roles. */
 body.guru-page :is(.guru-filter-button,.shared-announcement-filter-button,.shared-announcement-action),
@@ -111,12 +111,12 @@ body.kepala-sekolah-page .ks-school-fields .ks-document-field button { backgroun
 body.kepala-sekolah-page .ks-school-fields .ks-document-field button:hover { color: #1956a3 !important; text-decoration: underline; }
 
 /* One brand blue for headings, active navigation, filters, and topbar accents. */
-body :is(h1,h2,h3,h4,h5,h6) { color: #206BC7 !important; }
-body :is(.sidebar-nav-item.active,[aria-current='page'].sidebar-nav-item) { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
-body .sidebar-nav-item:not(.active):hover { color: #206BC7 !important; }
-body :is(button.active,button.selected,[role='tab'][aria-selected='true']) { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
-body :is(button.active,button.selected,[role='tab'][aria-selected='true']):hover:not(:disabled) { background-color: #1956a3 !important; border-color: #1956a3 !important; color: #fff !important; }
-body :is(.badge-primary,.badge-blue,.badge.active,.status-badge.active,.semester-badge) { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
-body :is(.topbar-school-name,.topbar-brand,.topbar-user-role,.topbar-logo-slot,.topbar-avatar-box) { color: #206BC7 !important; }
-body .topbar-semester-box .semester-badge { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
-body .nav-link.active { color: #206BC7 !important; }
+:where(body:not(.perpustakaan-page)) :is(h1,h2,h3,h4,h5,h6) { color: #206BC7 !important; }
+:where(body:not(.perpustakaan-page)) :is(.sidebar-nav-item.active,[aria-current='page'].sidebar-nav-item) { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
+:where(body:not(.perpustakaan-page)) .sidebar-nav-item:not(.active):hover { color: #206BC7 !important; }
+:where(body:not(.perpustakaan-page)) :is(button.active,button.selected,[role='tab'][aria-selected='true']) { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
+:where(body:not(.perpustakaan-page)) :is(button.active,button.selected,[role='tab'][aria-selected='true']):hover:not(:disabled) { background-color: #1956a3 !important; border-color: #1956a3 !important; color: #fff !important; }
+:where(body:not(.perpustakaan-page)) :is(.badge-primary,.badge-blue,.badge.active,.status-badge.active,.semester-badge) { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
+:where(body:not(.perpustakaan-page)) :is(.topbar-school-name,.topbar-brand,.topbar-user-role,.topbar-logo-slot,.topbar-avatar-box) { color: #206BC7 !important; }
+:where(body:not(.perpustakaan-page)) .topbar-semester-box .semester-badge { background-color: #206BC7 !important; border-color: #206BC7 !important; color: #fff !important; }
+:where(body:not(.perpustakaan-page)) .nav-link.active { color: #206BC7 !important; }

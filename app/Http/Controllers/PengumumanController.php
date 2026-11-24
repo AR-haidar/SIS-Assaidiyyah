@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\StatusPengumuman;
 use App\Models\Pengumuman;
+use App\Models\Referensi;
 use App\Support\LogAktivitas;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,9 +18,9 @@ class PengumumanController extends Controller
         $prefix = $this->prefixPeran($request);
         $cari = trim((string) $request->query('q', $request->query('search', '')));
         $statusFilter = trim((string) $request->query('status', ''));
-        $kategoriFilter = trim((string) $request->query('kategori', $request->query('category', '')));
+        $kategoriFilter = trim((string) $request->query('kategori_id', $request->query('kategori', $request->query('category', ''))));
 
-        $daftarPengumuman = Pengumuman::query()
+        $daftarPengumuman = Pengumuman::query()->with('kategori')
             ->when($statusFilter !== '' && $statusFilter !== 'all' && $statusFilter !== 'published', function ($q) use ($statusFilter): void {
                 $q->where('status', $statusFilter);
             })
@@ -27,13 +28,17 @@ class PengumumanController extends Controller
                 $q->where('status', StatusPengumuman::Terbit->value);
             })
             ->when($kategoriFilter !== '' && $kategoriFilter !== 'Semua Kategori', function ($q) use ($kategoriFilter): void {
-                $q->where('kategori', $kategoriFilter);
+                if (ctype_digit($kategoriFilter)) {
+                    $q->where('kategori_id', (int) $kategoriFilter);
+                } else {
+                    $q->whereHas('kategori', fn ($kategori) => $kategori->where('label', $kategoriFilter));
+                }
             })
             ->when($cari !== '', function ($q) use ($cari): void {
                 $q->where(function ($sub) use ($cari): void {
                     $sub->where('judul', 'like', '%'.$cari.'%')
                         ->orWhere('nomor_surat', 'like', '%'.$cari.'%')
-                        ->orWhere('ringkasan', 'like', '%'.$cari.'%');
+                        ->orWhere('isi', 'like', '%'.$cari.'%');
                 });
             })
             ->orderByDesc('tanggal_terbit')
@@ -57,12 +62,8 @@ class PengumumanController extends Controller
         return view($viewName, [
             'daftarPengumuman' => $daftarPengumuman,
             'statistik' => $statistik,
-            'daftarKategori' => Pengumuman::query()
-                ->whereNotNull('kategori')
-                ->where('kategori', '!=', '')
-                ->distinct()
-                ->orderBy('kategori')
-                ->pluck('kategori'),
+            'daftarKategori' => Referensi::query()->kelompok('kategori_pengumuman')
+                ->orderBy('label')->get(),
             'filter' => [
                 'q' => $cari,
                 'status' => $statusFilter,

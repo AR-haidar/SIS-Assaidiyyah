@@ -1,8 +1,8 @@
 @extends('operator.layout')
-@section('title', isset($pengumuman) ? 'Edit Pengumuman' : 'Buat Pengumuman')
+@section('title', ($pengumuman->exists ?? false) ? 'Edit Pengumuman' : 'Buat Pengumuman')
 @section('content')
     @php
-        $isEdit = isset($pengumuman);
+        $isEdit = $pengumuman->exists ?? false;
         $daftarKategori = $daftarKategori ?? collect();
         $daftarRombel = $daftarRombel ?? collect();
         $urlIndex = \Illuminate\Support\Facades\Route::has('operator.pengumuman.index')
