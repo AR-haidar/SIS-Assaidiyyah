@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\StatusPengumuman;
 use App\Models\Pengumuman;
+use App\Support\LogAktivitas;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -87,38 +88,64 @@ class PengumumanController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $prefix = $this->prefixPeran($request);
-
-        $validated = $request->validate([
+        $data = $request->validate([
             'judul' => ['required', 'string', 'max:200'],
             'kategori' => ['nullable', 'string', 'max:100'],
-            'nomor_surat' => ['nullable', 'string', 'max:120'],
+            'nomor_surat' => ['nullable', 'string', 'max:100'],
             'tanggal_terbit' => ['nullable', 'date'],
-            'sasaran' => ['nullable', 'string', 'max:120'],
-            'ringkasan' => ['nullable', 'string', 'max:2000'],
+            'sasaran' => ['nullable', 'string', 'max:150'],
+            'ringkasan' => ['nullable', 'string'],
             'isi' => ['nullable', 'string'],
-            'status' => ['nullable', 'string', 'in:draft,terbit,arsip'],
+            'status' => ['required', 'in:draft,terbit,arsip'],
         ]);
 
-        $status = $validated['status'] ?? StatusPengumuman::Terbit->value;
-
-        Pengumuman::query()->create([
-            'judul' => $validated['judul'],
-            'kategori' => $validated['kategori'] ?? null,
-            'nomor_surat' => $validated['nomor_surat'] ?? null,
-            'tanggal_terbit' => $validated['tanggal_terbit'] ?? now()->toDateString(),
-            'sasaran' => $validated['sasaran'] ?? null,
-            'ringkasan' => $validated['ringkasan'] ?? null,
-            'isi' => $validated['isi'] ?? ($validated['ringkasan'] ?? ''),
-            'status' => $status,
+        $pengumuman = Pengumuman::query()->create([
+            'judul' => $data['judul'],
+            'nomor_surat' => $data['nomor_surat'] ?? null,
+            'isi' => $data['isi'] ?? ($data['ringkasan'] ?? null),
+            'status' => $data['status'],
+            'tanggal_terbit' => $data['status'] === 'terbit'
+                ? ($data['tanggal_terbit'] ?? now())
+                : ($data['tanggal_terbit'] ?? null),
             'dibuat_oleh' => $request->user()?->getKey(),
         ]);
 
-        $routeIndex = "{$prefix}.pengumuman.index";
+        LogAktivitas::catat(
+            modul: 'pengumuman',
+            aksi: 'simpan_pengumuman',
+            objek: $pengumuman,
+            ringkasan: "Menyimpan pengumuman '{$pengumuman->judul}' dengan status {$data['status']}.",
+        );
 
         return redirect()
-            ->route(Route::has($routeIndex) ? $routeIndex : 'operator.pengumuman.index')
+            ->route($this->prefixRoute().'pengumuman.index')
             ->with('status', 'Pengumuman berhasil disimpan.');
+    }
+
+    private function prefixRoute(?Request $request = null): string
+    {
+        $request ??= request();
+        $routeName = (string) ($request->route()?->getName() ?? '');
+
+        if (str_starts_with($routeName, 'keuangan.')) {
+            return 'keuangan.';
+        }
+
+        if (str_starts_with($routeName, 'kepala.')) {
+            return 'kepala.';
+        }
+
+        if (str_starts_with($routeName, 'operator.')) {
+            return 'operator.';
+        }
+
+        $peranAktif = (string) session('peran_aktif', 'operator');
+
+        return match ($peranAktif) {
+            'keuangan' => 'keuangan.',
+            'kepala' => 'kepala.',
+            default => 'operator.',
+        };
     }
 
     public function edit(Request $request, Pengumuman $pengumuman): View
