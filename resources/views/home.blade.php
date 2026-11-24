@@ -39,7 +39,7 @@
                 <a href="#program" class="nav-link">Program</a>
                 <a href="#guru" class="nav-link">Profil Guru</a>
                 <a href="#prestasi" class="nav-link">Prestasi Siswa</a>
-                <a href="{{ url('/perpustakaan-digital') }}" data-section="#perpustakaan" class="nav-link">Perpustakaan</a>
+                <a href="{{ route('publik.perpustakaan.index') }}" data-section="#perpustakaan" class="nav-link">Perpustakaan</a>
                 <a href="#kontak" class="nav-link">Kontak</a>
             </nav>
 
@@ -329,7 +329,7 @@
                         [Deskripsi Layanan: Akses modul pembelajaran tematik Kemenag, buku pegangan santri, dan literatur Islam secara daring tanpa proses sirkulasi fisik. Pembaca terautentikasi dapat langsung membuka katalog bacaan secara cuma-cuma.]
                     </p>
                     <div class="dlib-actions-row">
-                        <a href="{{ url('/perpustakaan-digital') }}" class="btn-open-dlib">
+                        <a href="{{ route('publik.perpustakaan.index') }}" class="btn-open-dlib">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>

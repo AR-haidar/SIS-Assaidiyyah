@@ -1,56 +1,214 @@
 @extends('perpustakaan.layout')
+@use(App\Models\Buku)
+@use(App\Enums\StatusPublikasiBuku)
 @section('title', 'Tambah Data Buku')
 @section('content')
-<section class="perpustakaan-add-book-page">
-    <a href="{{ url('/perpustakaan/data-buku') }}" class="perpustakaan-form-back"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/><path d="M20 12H9"/></svg>Kembali ke Data Buku</a>
-    <h1>Data Buku</h1>
+<section class="perpustakaan-book-form-page">
+    <header class="perpustakaan-book-page-heading">
+        <a href="{{ route('pustakawan.data-buku.index') }}" class="perpustakaan-form-back"
+            data-confirm-dialog="batalkan-tambah-buku">
+            <x-perpustakaan.icon name="back" />
+            Kembali ke Data Buku
+        </a>
+        <h1>Data Buku</h1>
+    </header>
 
-    <form class="perpustakaan-add-book-form">
-        <div class="perpustakaan-add-book-grid">
-            <div class="perpustakaan-book-primary-column">
-                <section class="perpustakaan-book-info-card">
-                    <header class="perpustakaan-book-form-heading"><div><h2>Informasi Pokok Buku</h2><p>Data bibliografi dasar untuk pengindeksan perpustakaan</p></div><span><b>*</b> Wajib Diisi</span></header>
-                    <div class="perpustakaan-book-fields">
-                        <label class="perpustakaan-book-field full"><span>Judul Buku <b>*</b><small>Maks. 250 karakter</small></span><input type="text" maxlength="250" placeholder="Masukkan judul lengkap buku..." required></label>
-                        <label class="perpustakaan-book-field full"><span>Penulis <b>*</b></span><span class="perpustakaan-book-input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><input type="text" placeholder="Nama penulis atau penyusun naskah..." required></span></label>
-                        <label class="perpustakaan-book-field full"><span>Kategori <b>*</b></span><span class="perpustakaan-book-input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13 11 4H4v7l9 9a2 2 0 0 0 3 0l4-4a2 2 0 0 0 0-3z"/><circle cx="7.5" cy="7.5" r=".5"/></svg><select required><option value="">Pilih Kategori Buku</option></select></span></label>
-                        <label class="perpustakaan-book-field"><span>Penerbit <small>(opsional)</small></span><span class="perpustakaan-book-input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9h.01M9 13h.01M9 17h.01"/></svg><input type="text" placeholder="Nama penerbit resmi..."></span></label>
-                        <label class="perpustakaan-book-field"><span>Tahun Terbit <small>(opsional)</small></span><span class="perpustakaan-book-input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><input type="number" placeholder="Contoh: 2024"></span></label>
-                        <label class="perpustakaan-book-field full"><span>Deskripsi / Sinopsis <b>*</b><small><span id="perpustakaanSynopsisCount">0</span> / 1000 kata</small></span><textarea maxlength="1000" placeholder="Tuliskan ringkasan sinopsis dan pengantar buku di sini..." required></textarea></label>
+    @include('perpustakaan.partials.book-form-errors')
+
+    <form id="form-tambah-buku" class="perpustakaan-book-grid" method="POST" enctype="multipart/form-data"
+        action="{{ route('pustakawan.data-buku.store') }}"
+        data-confirm-dialog="konfirmasi-simpan-buku" data-inline-validation>
+        @csrf
+        <section class="perpustakaan-book-card perpustakaan-book-info-card">
+            <header class="perpustakaan-book-card-heading">
+                <div>
+                    <h2>Informasi Pokok Buku</h2>
+                    <p>Data bibliografi dasar untuk pengindeksan perpustakaan</p>
+                </div>
+                <span class="perpustakaan-book-badge">* Wajib Diisi</span>
+            </header>
+            <div class="perpustakaan-book-fields perpustakaan-book-fields--add">
+                <div class="perpustakaan-book-field perpustakaan-book-field--full">
+                    <div class="perpustakaan-book-field-caption">
+                        <label for="tambah-judul">Judul Buku <b aria-hidden="true">*</b></label>
+                        <small id="tambah-judul-counter" class="form-field-counter">0 / {{ Buku::MAKS_JUDUL_KARAKTER }} karakter</small>
                     </div>
-                </section>
-                <div class="perpustakaan-book-form-actions"><a href="{{ url('/perpustakaan/data-buku') }}">Batal</a><button type="button"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h9"/><path d="m16 3 5 5-9 9-4 1 1-4z"/></svg>Simpan Buku</button></div>
+                    <input id="tambah-judul" type="text" name="judul" value="{{ old('judul') }}" maxlength="{{ Buku::MAKS_JUDUL_KARAKTER }}"
+                        placeholder="Masukkan judul lengkap buku..." required @error('judul') aria-invalid="true" @enderror
+                        aria-describedby="tambah-judul-counter tambah-judul-limit tambah-judul-error"
+                        data-validation-error="tambah-judul-error" data-required-message="Judul buku wajib diisi."
+                        data-character-counter="tambah-judul-counter" data-character-feedback="tambah-judul-limit">
+                    <x-form-field-message id="tambah-judul-error" :message="$errors->first('judul')" />
+                    <x-form-field-message id="tambah-judul-limit" kind="limit" role="status" />
+                </div>
+                <div class="perpustakaan-book-field perpustakaan-book-field--full">
+                    <label for="tambah-penulis">Penulis <b aria-hidden="true">*</b></label>
+                    <span class="perpustakaan-book-control perpustakaan-book-control--icon">
+                        <x-perpustakaan.icon name="user" class="perpustakaan-book-control-icon" />
+                        <input id="tambah-penulis" type="text" name="penulis" value="{{ old('penulis') }}" maxlength="{{ Buku::MAKS_NAMA_KARAKTER }}"
+                            placeholder="Nama penulis atau penyusun naskah..." required @error('penulis') aria-invalid="true" @enderror
+                            aria-describedby="tambah-penulis-error" data-validation-error="tambah-penulis-error"
+                            data-required-message="Nama penulis wajib diisi.">
+                    </span>
+                    <x-form-field-message id="tambah-penulis-error" :message="$errors->first('penulis')" />
+                </div>
+                <div class="perpustakaan-book-field perpustakaan-book-field--full">
+                    <label for="tambah-kategori">Kategori <b aria-hidden="true">*</b></label>
+                    <span class="perpustakaan-book-control perpustakaan-book-control--icon">
+                        <x-perpustakaan.icon name="category" class="perpustakaan-book-control-icon" />
+                        <select id="tambah-kategori" name="kategori_buku_id" required aria-describedby="tambah-kategori-error"
+                            @error('kategori_buku_id') aria-invalid="true" @enderror
+                            data-validation-error="tambah-kategori-error" data-required-message="Pilih kategori buku.">
+                            <option value="">Pilih Kategori Buku</option>
+                            @foreach ($kategoriBuku as $kategori)
+                                <option value="{{ $kategori->id }}" @selected(old('kategori_buku_id') == $kategori->id)>{{ $kategori->nama }}</option>
+                            @endforeach
+                        </select>
+                        <x-perpustakaan.icon name="chevron-down" size="14" class="perpustakaan-book-select-chevron" />
+                    </span>
+                    <x-form-field-message id="tambah-kategori-error" :message="$errors->first('kategori_buku_id')" />
+                </div>
+                <label class="perpustakaan-book-field">
+                    <span>Penerbit <small>(opsional)</small></span>
+                    <span class="perpustakaan-book-control perpustakaan-book-control--icon">
+                        <x-perpustakaan.icon name="publisher" class="perpustakaan-book-control-icon" />
+                        <input type="text" name="penerbit" value="{{ old('penerbit') }}" maxlength="{{ Buku::MAKS_NAMA_KARAKTER }}"
+                            placeholder="Nama penerbit resmi..." aria-describedby="tambah-penerbit-error"
+                            data-validation-error="tambah-penerbit-error" @error('penerbit') aria-invalid="true" @enderror>
+                    </span>
+                    <x-form-field-message id="tambah-penerbit-error" :message="$errors->first('penerbit')" />
+                </label>
+                <div class="perpustakaan-book-field">
+                    <label for="tambah-tahun">Tahun Terbit <small>(opsional)</small></label>
+                    <span class="perpustakaan-book-control perpustakaan-book-control--icon">
+                        <x-perpustakaan.icon name="calendar" class="perpustakaan-book-control-icon" />
+                        <input id="tambah-tahun" type="number" name="tahun_terbit" value="{{ old('tahun_terbit') }}" min="1" max="9999"
+                            placeholder="Contoh: 2024" aria-describedby="tambah-tahun-error" @error('tahun_terbit') aria-invalid="true" @enderror
+                            data-validation-error="tambah-tahun-error" data-invalid-message="Masukkan tahun terbit dalam angka bulat antara 1 dan 9999.">
+                    </span>
+                    <x-form-field-message id="tambah-tahun-error" :message="$errors->first('tahun_terbit')" />
+                </div>
+                <div class="perpustakaan-book-field perpustakaan-book-field--full">
+                    <div class="perpustakaan-book-field-caption">
+                        <label for="perpustakaanSynopsis">Deskripsi / Sinopsis <b aria-hidden="true">*</b></label>
+                        <small id="tambah-sinopsis-counter" class="form-field-counter">0 / {{ number_format(Buku::MAKS_SINOPSIS_KARAKTER, 0, ',', '.') }} karakter</small>
+                    </div>
+                    <textarea id="perpustakaanSynopsis" name="sinopsis" maxlength="{{ Buku::MAKS_SINOPSIS_KARAKTER }}"
+                        aria-describedby="tambah-sinopsis-counter tambah-sinopsis-limit tambah-sinopsis-error"
+                        placeholder="Tuliskan ringkasan sinopsis dan pengantar buku di sini..." required
+                        @error('sinopsis') aria-invalid="true" @enderror
+                        data-validation-error="tambah-sinopsis-error" data-required-message="Deskripsi atau sinopsis wajib diisi."
+                        data-character-counter="tambah-sinopsis-counter" data-character-feedback="tambah-sinopsis-limit">{{ old('sinopsis') }}</textarea>
+                    <x-form-field-message id="tambah-sinopsis-error" :message="$errors->first('sinopsis')" />
+                    <x-form-field-message id="tambah-sinopsis-limit" kind="limit" role="status" />
+                </div>
             </div>
+        </section>
 
-            <div class="perpustakaan-book-secondary-column">
-                <section class="perpustakaan-book-cover-card">
-                    <header class="perpustakaan-book-side-heading"><h2>Cover Buku</h2><span>Rasio 3:4</span></header>
-                    <label class="perpustakaan-cover-upload">
-                        <span class="perpustakaan-cover-preview"><strong>Pratinjau Sampul</strong><small>Belum ada gambar</small></span>
-                        <small class="perpustakaan-cover-help">Pratinjau Sampul Buku (3:4) — Format JPG / PNG maks. 10MB</small>
-                        <span class="perpustakaan-cover-button"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M20 16.5v2A1.5 1.5 0 0 1 18.5 20h-13A1.5 1.5 0 0 1 4 18.5v-2"/></svg>Pilih Berkas Sampul</span>
-                        <input type="file" accept="image/jpeg,image/png" aria-label="Pilih berkas sampul buku">
+        <aside class="perpustakaan-book-media">
+            <section class="perpustakaan-book-card">
+                <header class="perpustakaan-book-card-heading">
+                    <h2>Cover Buku <small class="perpustakaan-book-optional">(opsional)</small></h2>
+                    <span class="perpustakaan-cover-ratio">Rasio 3:4</span>
+                </header>
+                <div class="perpustakaan-book-media-body">
+                    <label class="perpustakaan-book-upload perpustakaan-cover-upload" data-validation-surface>
+                        <span class="perpustakaan-cover-preview" data-cover-preview>
+                            <img data-cover-image alt="Pratinjau sampul buku" hidden>
+                            <strong data-cover-placeholder>Pratinjau Sampul</strong>
+                            <small data-cover-placeholder>Belum ada gambar</small>
+                        </span>
+                        <small id="tambah-sampul-keterangan">Pratinjau Sampul Buku (3:4) · Format JPG / PNG maks. {{ Buku::MAKS_SAMPUL_MB }} MB</small>
+                        <span class="perpustakaan-cover-button action-button">
+                            <x-perpustakaan.icon name="upload-cloud" />
+                            Pilih Berkas Sampul
+                        </span>
+                        <small id="tambah-sampul-pilihan" class="perpustakaan-selected-file" hidden></small>
+                        <input type="file" name="sampul" accept=".jpg,.jpeg,.png,image/jpeg,image/png" aria-label="Pilih berkas sampul buku"
+                            aria-describedby="tambah-sampul-keterangan tambah-sampul-error"
+                            @error('sampul') aria-invalid="true" @enderror
+                            data-file-max-bytes="{{ Buku::MAKS_SAMPUL_MB * 1024 * 1024 }}"
+                            data-file-type-message="Pilih sampul dalam format JPG atau PNG."
+                            data-file-size-message="Ukuran sampul maksimal {{ Buku::MAKS_SAMPUL_MB }} MB."
+                            data-file-selection="tambah-sampul-pilihan" data-validation-error="tambah-sampul-error">
                     </label>
-                </section>
+                    <x-form-field-message id="tambah-sampul-error" class="perpustakaan-book-error" role="alert" :message="$errors->first('sampul')" />
+                </div>
+            </section>
 
-                <section class="perpustakaan-book-digital-card">
-                    <header class="perpustakaan-book-side-heading"><div><h2>File / Konten Buku Digital</h2><p>Dokumen terbitan elektronik</p></div></header>
-                    <label class="perpustakaan-digital-field"><span>Berkas Naskah Digital (PDF) <b>*</b></span><span class="perpustakaan-digital-upload">
-                        <span class="perpustakaan-digital-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3-3 3 3"/></svg></span>
-                        <strong>Unggah Berkas Naskah Buku (Maks. 50MB)</strong><small>Tarik file ke sini atau klik untuk menelusuri folder</small><span class="perpustakaan-file-types"><i>.PDF</i><i>.EPUB</i></span><input type="file" accept=".pdf,.epub,application/pdf" aria-label="Unggah naskah digital">
-                    </span></label>
-                    <fieldset class="perpustakaan-publication-status"><legend>Status Publikasi</legend>
-                        <label><input type="radio" name="publication_status" value="published"><span><strong>Terbitkan Langsung</strong><small>Aktif Siap Baca</small></span></label>
-                        <label><input type="radio" name="publication_status" value="draft" checked><span><strong>Simpan sebagai Draf</strong><small>Akses Khusus Admin</small></span></label>
+            <section class="perpustakaan-book-card">
+                <header class="perpustakaan-book-card-heading">
+                    <div>
+                        <h2>File / Konten Buku Digital</h2>
+                        <p>Dokumen terbitan elektronik</p>
+                    </div>
+                </header>
+                <div class="perpustakaan-book-media-body">
+                    <label class="perpustakaan-book-field">
+                        <span>Berkas Naskah Digital (PDF / ePub) <b>*</b></span>
+                        <span class="perpustakaan-book-upload perpustakaan-digital-upload" data-validation-surface>
+                            <span class="perpustakaan-digital-icon"><x-perpustakaan.icon name="file-up" size="20" /></span>
+                            <strong>Unggah Berkas Naskah Buku (Maks. {{ Buku::MAKS_NASKAH_MB }} MB)</strong>
+                            <small>Tarik file ke sini atau klik untuk menelusuri folder</small>
+                            <span class="perpustakaan-file-types" aria-hidden="true"><span>.PDF</span><span>.EPUB</span></span>
+                            <small id="tambah-naskah-pilihan" class="perpustakaan-selected-file" hidden></small>
+                            <input type="file" name="naskah" accept=".pdf,.epub,application/pdf,application/epub+zip"
+                                aria-label="Unggah naskah digital" aria-describedby="tambah-naskah-error" required
+                                @error('naskah') aria-invalid="true" @enderror
+                                data-file-max-bytes="{{ Buku::MAKS_NASKAH_MB * 1024 * 1024 }}"
+                                data-file-type-message="Pilih naskah dalam format PDF atau ePub."
+                                data-file-size-message="Ukuran naskah maksimal {{ Buku::MAKS_NASKAH_MB }} MB."
+                                data-file-selection="tambah-naskah-pilihan"
+                                data-validation-error="tambah-naskah-error"
+                                data-required-message="Unggah berkas naskah digital.">
+                        </span>
+                    </label>
+                    <x-form-field-message id="tambah-naskah-error" class="perpustakaan-book-error" :message="$errors->first('naskah')" />
+                    <fieldset class="perpustakaan-publication-status">
+                        <legend>Status Publikasi <b aria-hidden="true">*</b></legend>
+                        <div class="perpustakaan-publication-options" data-validation-surface>
+                            <label>
+                                <input type="radio" name="status_publikasi" value="{{ StatusPublikasiBuku::Aktif->value }}" required
+                                    @checked(old('status_publikasi') === StatusPublikasiBuku::Aktif->value)
+                                    @error('status_publikasi') aria-invalid="true" @enderror
+                                    aria-describedby="tambah-publikasi-error" data-validation-error="tambah-publikasi-error"
+                                    data-required-message="Pilih status publikasi buku.">
+                                <span><strong>Terbitkan Langsung</strong><small>Aktif Siap Baca</small></span>
+                            </label>
+                            <label>
+                                <input type="radio" name="status_publikasi" value="{{ StatusPublikasiBuku::Draft->value }}"
+                                    @checked(old('status_publikasi', StatusPublikasiBuku::Draft->value) === StatusPublikasiBuku::Draft->value)>
+                                <span><strong>Simpan sebagai Draf</strong><small>Akses Khusus Admin</small></span>
+                            </label>
+                        </div>
+                        <x-form-field-message id="tambah-publikasi-error" class="perpustakaan-book-error" :message="$errors->first('status_publikasi')" />
                     </fieldset>
-                </section>
-            </div>
+                </div>
+            </section>
+        </aside>
+
+        <div class="perpustakaan-book-actions">
+            <a href="{{ route('pustakawan.data-buku.index') }}" class="action-button" data-confirm-dialog="batalkan-tambah-buku">Batal</a>
+            <button type="submit" class="perpustakaan-book-save action-button action-button--primary">
+                <x-perpustakaan.icon name="save" />
+                Simpan Buku
+            </button>
         </div>
     </form>
 </section>
-<script>
-const synopsisField=document.querySelector('.perpustakaan-book-field textarea');
-const synopsisCount=document.getElementById('perpustakaanSynopsisCount');
-synopsisField.addEventListener('input',function(){synopsisCount.textContent=this.value.trim()?this.value.trim().split(/\s+/).length:0;});
-</script>
+<x-confirmation-dialog
+    id="konfirmasi-simpan-buku"
+    title="Simpan buku ini?"
+    message="Pastikan informasi buku, pilihan status, dan berkas sudah sesuai sebelum melanjutkan."
+    confirm-label="Konfirmasi Simpan"
+    cancel-label="Periksa Kembali"
+/>
+<x-confirmation-dialog
+    id="batalkan-tambah-buku"
+    title="Batalkan penambahan buku?"
+    message="Jika Anda keluar, isian dan berkas yang sudah dipilih akan hilang."
+    confirm-label="Batalkan Penambahan"
+    cancel-label="Lanjut Mengisi"
+    tone="danger"
+/>
 @endsection

@@ -38,13 +38,107 @@ class KategoriBukuTest extends TestCase
             $kategori = KategoriBuku::where('nama', $nama)->firstOrFail();
             $this->assertSame($aktif, $kategori->aktif);
 
-            $this->get(route('pustakawan.kategori-buku.index'))
+            $this->get(route('pustakawan.kategori-buku.index', ['q' => $nama]))
                 ->assertOk()
                 ->assertViewHas('kategoriBuku', fn ($daftar) => $daftar->contains($kategori))
                 ->assertSee('<td>'.$nama.'</td>', false)
                 ->assertSee('Kategori pengujian')
                 ->assertSee('Kategori buku berhasil ditambahkan.');
         }
+    }
+
+    public function test_pencarian_kategori_mencocokkan_nama_dan_mempertahankan_kata_kunci(): void
+    {
+        $this->masukSebagaiPustakawan();
+        $index = route('pustakawan.kategori-buku.index');
+        $prefix = (string) Str::uuid();
+        $nama = $prefix.' Cerita Islami';
+        $lain = $prefix.' Kamus';
+        KategoriBuku::create(['nama' => $nama]);
+        KategoriBuku::create(['nama' => $lain]);
+        $dihapus = KategoriBuku::create(['nama' => $prefix.' Cerita Dihapus']);
+        $dihapus->delete();
+
+        foreach ([$nama, $prefix.' cer', strtoupper($prefix.' cerita'), $prefix.' CERITA ISLAMI'] as $kata) {
+            $this->get(route('pustakawan.kategori-buku.index', ['q' => $kata]))
+                ->assertOk()
+                ->assertSee('<td>'.$nama.'</td>', false)
+                ->assertDontSee('<td>'.$lain.'</td>', false)
+                ->assertDontSee('<td>'.$dihapus->nama.'</td>', false)
+                ->assertSee('action="'.$index.'" method="GET"', false)
+                ->assertSee('name="q" value="'.$kata.'"', false)
+                ->assertSee('<header class="perpustakaan-list-toolbar perpustakaan-category-toolbar">', false)
+                ->assertSee('type="submit" form="pencarian-kategori"', false)
+                ->assertSee('<div class="perpustakaan-list-scroll perpustakaan-category-table-scroll"', false);
+        }
+
+        foreach (['ceritaa', 'certia'] as $kata) {
+            $this->get(route('pustakawan.kategori-buku.index', ['q' => $kata]))
+                ->assertOk()
+                ->assertSee('<td>'.$nama.'</td>', false)
+                ->assertDontSee('<td>'.$lain.'</td>', false);
+        }
+
+        $this->get(route('pustakawan.kategori-buku.index', ['q' => $prefix.' tidak ada']))
+            ->assertOk()->assertSee('Kategori Buku Tidak Ditemukan');
+
+        $this->get(route('pustakawan.kategori-buku.index', ['q' => '']))
+            ->assertOk()
+            ->assertSee('name="q" value=""', false)
+            ->assertViewHas('kategoriBuku', fn ($daftar) => $daftar->total() === KategoriBuku::count());
+    }
+
+    public function test_filter_status_kategori_bekerja_bersama_pencarian(): void
+    {
+        $this->masukSebagaiPustakawan();
+        $kata = (string) Str::uuid();
+        $aktif = KategoriBuku::create(['nama' => $kata.' Satu', 'aktif' => true]);
+        $nonaktif = KategoriBuku::create(['nama' => $kata.' Dua', 'aktif' => false]);
+        $dihapus = KategoriBuku::create(['nama' => $kata.' Tiga', 'aktif' => true]);
+        $dihapus->delete();
+        $sel = fn (KategoriBuku $kategori) => '<td>'.$kategori->nama.'</td>';
+
+        $this->get(route('pustakawan.kategori-buku.index', ['q' => $kata, 'status' => '']))
+            ->assertOk()->assertSee($sel($aktif), false)->assertSee($sel($nonaktif), false)
+            ->assertDontSee($sel($dihapus), false)
+            ->assertSee('aria-label="Filter kategori"', false)
+            ->assertDontSee('name="status"', false);
+
+        foreach (['active' => [$aktif, $nonaktif], 'inactive' => [$nonaktif, $aktif]] as $status => [$cocok, $lain]) {
+            $tanpaKata = route('pustakawan.kategori-buku.index', ['status' => $status]);
+            $this->get(route('pustakawan.kategori-buku.index', ['q' => $kata, 'status' => $status]))
+                ->assertOk()->assertSee($sel($cocok), false)->assertDontSee($sel($lain), false)
+                ->assertDontSee($sel($dihapus), false)
+                ->assertViewHas('filter', ['q' => $kata, 'status' => $status]);
+
+            $this->get($tanpaKata)->assertOk()->assertSee('name="q" value=""', false)
+                ->assertViewHas('kategoriBuku', fn ($daftar) => $daftar->isNotEmpty()
+                    && $daftar->every(fn ($kategori) => $kategori->aktif === ($status === 'active')));
+        }
+    }
+
+    public function test_pagination_kategori_mempertahankan_pencarian_dan_status(): void
+    {
+        $this->masukSebagaiPustakawan();
+        $kata = (string) Str::uuid();
+
+        foreach (range(1, 13) as $nomor) {
+            KategoriBuku::create(['nama' => sprintf('%s %02d', $kata, $nomor)]);
+        }
+
+        KategoriBuku::create(['nama' => $kata.' Nonaktif', 'aktif' => false]);
+
+        $pertama = $this->get(route('pustakawan.kategori-buku.index', ['q' => $kata, 'status' => 'active']))
+            ->assertOk()
+            ->assertViewHas('kategoriBuku', fn ($daftar) => $daftar->count() === 12 && $daftar->total() === 13);
+        $berikutnya = $pertama->viewData('kategoriBuku')->nextPageUrl();
+        $pertama->assertSee('href="'.e($berikutnya).'"', false);
+
+        $this->get($berikutnya)
+            ->assertOk()
+            ->assertSee('name="q" value="'.$kata.'"', false)
+            ->assertViewHas('filter', ['q' => $kata, 'status' => 'active'])
+            ->assertSee('<td>'.$kata.' 13</td>', false);
     }
 
     public function test_input_tidak_valid_ditolak_termasuk_nama_kategori_yang_dihapus(): void

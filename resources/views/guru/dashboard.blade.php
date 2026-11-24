@@ -4,10 +4,10 @@
 @section('content')
     <header class="guru-page-heading"><h1>Dashboard Guru &amp; Staff</h1><p>Rekapitulasi Presensi Pegawai</p></header>
     <section class="guru-dashboard-stats" aria-label="Ringkasan presensi pegawai">
-        <article><span>TINGKAT KEHADIRAN<br>KUMULATIF</span><strong>- %</strong></article>
-        <article><span>TOTAL HARI HADIR KERJA</span><strong>- <small>Hari</small></strong></article>
-        <article><span>IZIN &amp; DINAS LUAR<br>RESMI</span><strong>- <small>Hari</small></strong></article>
-        <article><span>SAKIT / ALASAN MEDIS</span><strong>- <small>Hari</small></strong></article>
+        <article><span>TINGKAT KEHADIRAN<br>KUMULATIF</span><strong>{{ $tingkatKehadiran ?? '-' }} %</strong></article>
+        <article><span>TOTAL HARI HADIR KERJA</span><strong>{{ $hariHadir }} <small>Hari</small></strong></article>
+        <article><span>IZIN &amp; DINAS LUAR<br>RESMI</span><strong>{{ $hariIzin }} <small>Hari</small></strong></article>
+        <article><span>SAKIT / ALASAN MEDIS</span><strong>{{ $hariSakit }} <small>Hari</small></strong></article>
     </section>
     <section class="guru-shortcuts" aria-label="Fitur guru">
         <article class="guru-shortcut-card">

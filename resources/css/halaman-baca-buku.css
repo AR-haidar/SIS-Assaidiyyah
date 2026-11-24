@@ -51,3 +51,9 @@
 .digital-reader-main{align-items:flex-start;padding:24px 18px 32px}
 .digital-reader-paper{width:min(90vw,760px);max-width:100%;aspect-ratio:.704;min-height:900px}
 @media(max-width:520px){.digital-reader-main{padding:16px 10px 24px}.digital-reader-paper{width:92vw;min-height:720px;aspect-ratio:.68}}
+
+.digital-reader-pdf{width:100%;min-width:0;text-align:center}
+.digital-reader-pdf-page{width:100%;overflow:auto}
+.digital-reader-pdf-page>canvas{margin-inline:auto;min-height:0;max-width:none;aspect-ratio:auto}
+.digital-reader-pdf-controls{display:flex;flex-wrap:wrap;justify-content:center;height:auto;min-height:44px;padding:6px 8px}
+.digital-reader-pdf-controls button:disabled{opacity:.45;cursor:default}

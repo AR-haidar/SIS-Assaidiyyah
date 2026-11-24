@@ -5,26 +5,32 @@
     <header class="guru-page-heading"><h1>Profil</h1></header>
     <div class="guru-profile-layout">
         <aside class="guru-profile-card">
-            <div class="guru-photo-placeholder"><span><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><strong>Pasfoto Pendidik</strong><small>Format Resmi<br>3-4</small></div>
-            <div class="guru-profile-summary"><span>NAMA LENGKAP<br>&amp; GELAR</span><strong>-</strong></div>
-            <div class="guru-profile-summary"><span>Nomor Induk Pegawai<br>(NIP / ID)</span><strong>-</strong></div>
-            <div class="guru-profile-summary"><span>Status Kepegawaian</span><strong>-</strong></div>
+            @if ($adaPasfoto)
+                <div class="guru-photo-placeholder relative overflow-hidden">
+                    <img src="{{ route('guru.profil.pasfoto') }}" alt="Pasfoto Pendidik" class="absolute inset-0 h-full w-full object-contain">
+                </div>
+            @else
+                <div class="guru-photo-placeholder"><span><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><strong>Pasfoto Pendidik</strong><small>Format Resmi<br>3-4</small></div>
+            @endif
+            <div class="guru-profile-summary"><span>NAMA LENGKAP<br>&amp; GELAR</span><strong>{{ $nama ?: '-' }}</strong></div>
+            <div class="guru-profile-summary"><span>Nomor Induk Pegawai<br>(NIP / ID)</span><strong>{{ $pegawai?->nip ?: '-' }}</strong></div>
+            <div class="guru-profile-summary"><span>Status Kepegawaian</span><strong>{{ $pegawai?->statusKepegawaian?->label ?: '-' }}</strong></div>
         </aside>
         <div class="guru-profile-details">
             <section class="guru-profile-section"><h2>Identitas Pokok Kepegawaian</h2><div class="guru-profile-fields">
-                <article><span>Nama Lengkap</span><strong>-</strong></article>
-                <article><span>Nomor Induk Pegawai (NIP)</span><strong>-</strong></article>
-                <article><span>Nomor Unik Pendidik &amp; Tenaga Kependidikan (NUPTK)</span><strong>-</strong></article>
-                <article><span>Nomor Induk Kependudukan (NIK)</span><strong>-</strong></article>
-                <article><span>Status Kepegawaian</span><strong>-</strong></article>
-                <article><span>Pendidikan Terakhir</span><strong>-</strong></article>
+                <article><span>Nama Lengkap</span><strong>{{ $nama ?: '-' }}</strong></article>
+                <article><span>Nomor Induk Pegawai (NIP)</span><strong>{{ $pegawai?->nip ?: '-' }}</strong></article>
+                <article><span>Nomor Unik Pendidik &amp; Tenaga Kependidikan (NUPTK)</span><strong>{{ $pegawai?->nuptk ?: '-' }}</strong></article>
+                <article><span>Nomor Induk Kependudukan (NIK)</span><strong>{{ $pegawai?->nik ?: '-' }}</strong></article>
+                <article><span>Status Kepegawaian</span><strong>{{ $pegawai?->statusKepegawaian?->label ?: '-' }}</strong></article>
+                <article><span>Pendidikan Terakhir</span><strong>{{ $pegawai?->pendidikanTerakhir?->label ?: '-' }}</strong></article>
             </div></section>
             <section class="guru-profile-section"><h2>Informasi Pribadi &amp; Kontak Resmi</h2><div class="guru-profile-fields">
-                <article><span>Tempat, Tanggal Lahir</span><strong>-</strong></article>
+                <article><span>Tempat, Tanggal Lahir</span><strong>{{ $tempatTanggalLahir ?: '-' }}</strong></article>
                 <article><span>Jenis Kelamin</span><strong>-</strong></article>
-                <article><span>Nomor Telepon / WhatsApp</span><strong>-</strong></article>
-                <article><span>Alamat Email Resmi</span><strong>-</strong></article>
-                <article class="guru-field-wide"><span>Alamat Domisili Lengkap</span><strong>-</strong></article>
+                <article><span>Nomor Telepon / WhatsApp</span><strong>{{ $pegawai?->no_hp_wa ?: '-' }}</strong></article>
+                <article><span>Alamat Email Resmi</span><strong>{{ $pegawai?->email ?: '-' }}</strong></article>
+                <article class="guru-field-wide"><span>Alamat Domisili Lengkap</span><strong>{{ $pegawai?->alamat_domisili ?: '-' }}</strong></article>
             </div></section>
         </div>
     </div>
