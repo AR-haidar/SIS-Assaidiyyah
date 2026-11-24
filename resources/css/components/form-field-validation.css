@@ -1,0 +1,22 @@
+.form-field-message {
+    color: #a62d2a;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.form-field-message--limit,
+.form-field-counter.form-field-counter--limit {
+    color: #a62d2a;
+}
+
+[data-inline-validation] :is(input, select, textarea):is(.form-field-error-visible, .form-field-limit-reached) {
+    border-color: #b63a37;
+}
+
+[data-inline-validation] :is(input, select, textarea):is(.form-field-error-visible, .form-field-limit-reached):focus {
+    outline-color: #b63a37;
+}
+
+[data-validation-surface]:has(.form-field-error-visible) {
+    box-shadow: inset 0 0 0 1px #b63a37;
+}

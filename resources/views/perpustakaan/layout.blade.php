@@ -10,7 +10,28 @@
 <div class="siswa-layout">@include('perpustakaan.partials.sidebar')
 <main class="siswa-main perpustakaan-main">@yield('content')</main></div>
 <script>
-const toggleBtn=document.getElementById('sidebarToggle');
-const sidebar=document.getElementById('perpustakaanSidebar');
-toggleBtn.addEventListener('click',function(){sidebar.classList.toggle('collapsed');});
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const perpustakaanSidebar = document.getElementById('perpustakaanSidebar');
+    const narrowScreen = window.matchMedia('(max-width: 768px)');
+
+    function updateSidebar(expanded) {
+        const defaultExpanded = !narrowScreen.matches;
+        perpustakaanSidebar.classList.toggle('is-toggled', expanded !== defaultExpanded);
+        sidebarToggle.setAttribute('aria-expanded', String(expanded));
+    }
+
+    updateSidebar(!narrowScreen.matches);
+
+    sidebarToggle.addEventListener('click', () => {
+        updateSidebar(sidebarToggle.getAttribute('aria-expanded') === 'false');
+    });
+
+    narrowScreen.addEventListener('change', () => updateSidebar(!narrowScreen.matches));
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && narrowScreen.matches && sidebarToggle.getAttribute('aria-expanded') === 'true') {
+            updateSidebar(false);
+            sidebarToggle.focus();
+        }
+    });
 </script></body></html>
