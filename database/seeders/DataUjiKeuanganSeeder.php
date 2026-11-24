@@ -22,9 +22,7 @@ use Illuminate\Support\Facades\Storage;
  */
 class DataUjiKeuanganSeeder extends Seeder
 {
-    // PNG 1x1 piksel sebagai bukti pembayaran contoh.
-    private const PNG = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==';
-
+  
     public function run(): void
     {
         if (! app()->environment('local')) {
@@ -79,7 +77,7 @@ class DataUjiKeuanganSeeder extends Seeder
 
         // Berkas bukti contoh (file sungguhan di disk public).
         $pathBukti = 'bukti-pembayaran/demo-bukti.png';
-        Storage::disk('local')->put($pathBukti, base64_decode(self::PNG));
+        Storage::disk('local')->put($pathBukti, $this->gambarContoh());
         $bukti = Berkas::firstOrCreate(
             ['path' => $pathBukti],
             [
@@ -150,5 +148,21 @@ class DataUjiKeuanganSeeder extends Seeder
         // Siswa 4: belum membayar (tidak ada pembayaran).
 
         $this->command->info('Data uji keuangan siap: 4 siswa, 5 tagihan, 4 pembayaran.');
+    }
+
+    private function gambarContoh(): string
+    {
+        $img = imagecreatetruecolor(480, 320);
+        $latar = imagecolorallocate($img, 235, 242, 250);
+        $teks = imagecolorallocate($img, 30, 64, 120);
+        imagefilledrectangle($img, 0, 0, 480, 320, $latar);
+        imagestring($img, 5, 140, 150, 'BUKTI TRANSFER CONTOH', $teks);
+
+        ob_start();
+        imagepng($img);
+        $png = (string) ob_get_clean();
+        imagedestroy($img);
+
+        return $png;
     }
 }

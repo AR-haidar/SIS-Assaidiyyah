@@ -44,7 +44,7 @@
                 <div class="keuangan-proof-placeholder"><strong>Tidak Ada Bukti</strong><span>Pembayaran ini diinput tanpa lampiran.</span></div>
                 @endif
                 @if ($buktiUrl)
-                <a class="keuangan-proof-download" href="{{ $unduhUrl }}">Unduh Berkas</a>
+                <a class="keuangan-proof-download" href="{{ $unduhUrl }}"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></svg>Unduh Berkas</a>
                 @endif
             </section>
 
@@ -54,14 +54,14 @@
                 @if ($pembayaran->status_verifikasi === \App\Enums\StatusVerifikasi::Menunggu)
                 <form method="POST" action="{{ route('keuangan.pembayaran.setujui', $pembayaran) }}">
                 @csrf
-                <button type="submit" class="keuangan-approve">Setujui Pembayaran</button>
+                <button type="submit" class="keuangan-approve"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Setujui Pembayaran</button>
                 </form>
                 <form method="POST" action="{{ route('keuangan.pembayaran.tolak', $pembayaran) }}">
                 @csrf
                 <textarea name="alasan_penolakan" rows="3" required placeholder="Alasan penolakan (wajib)">{{ old('alasan_penolakan') }}</textarea>
                 <div class="keuangan-decision-row">
-                <button type="submit" class="keuangan-reject">Tolak Bayar</button>
-                <button type="button" class="keuangan-request-revision">Minta Revisi</button>
+                <button type="submit" class="keuangan-reject"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6m0-6-6 6"/></svg>Tolak Bayar</button>
+                <button type="button" class="keuangan-request-revision"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.6 9A7 7 0 0 1 18 6l2 2M4 16l2 2a7 7 0 0 0 12.4-3"/></svg>Minta Revisi</button>
                 </div>
                 </form>
                 @else
