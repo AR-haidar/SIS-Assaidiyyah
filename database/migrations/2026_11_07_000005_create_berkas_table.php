@@ -8,13 +8,14 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('berkas', function (Blueprint $table) {
+        Schema::create('berkas', function (Blueprint $table): void {
             $table->id();
             $table->string('nama_asli', 255);
             $table->string('path', 500);
+            $table->string('disk', 20)->default('local');
             $table->string('mime', 100);
             $table->bigInteger('ukuran_byte');
-            $table->foreignId('diunggah_oleh')->constrained('pengguna');
+            $table->foreignId('diunggah_oleh')->nullable()->constrained('pengguna');
             $table->timestamp('diunggah_pada')->useCurrent();
             $table->timestamp('diubah_pada')->useCurrent();
             $table->timestamp('dihapus_pada')->nullable();

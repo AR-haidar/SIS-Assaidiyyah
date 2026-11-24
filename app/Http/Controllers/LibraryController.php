@@ -18,8 +18,13 @@ class LibraryController extends Controller
             $search = $request->string('search')->toString();
             $query->where(fn ($builder) => $builder->where('title', 'like', "%{$search}%")->orWhere('author', 'like', "%{$search}%"));
         }
-        if ($request->filled('category')) $query->where('category_id', $request->integer('category'));
-        if ($request->filled('status')) $query->where('publication_status', $request->input('status'));
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->integer('category'));
+        }
+        if ($request->filled('status')) {
+            $query->where('publication_status', $request->input('status'));
+        }
+
         return view('perpustakaan.data-buku', [
             'books' => $query->get(),
             'categories' => BookCategory::orderBy('name')->get(),
@@ -29,7 +34,10 @@ class LibraryController extends Controller
     public function categories(Request $request): View
     {
         $query = BookCategory::withCount('books')->orderBy('name');
-        if ($request->filled('search')) $query->where('name', 'like', '%'.$request->string('search')->toString().'%');
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%'.$request->string('search')->toString().'%');
+        }
+
         return view('perpustakaan.kategori-buku', [
             'categories' => $query->get(),
         ]);
@@ -48,10 +56,15 @@ class LibraryController extends Controller
             'digital_file' => ['required', 'file', 'mimes:pdf,epub', 'max:51200'],
             'publication_status' => ['required', 'in:published,draft'],
         ]);
-        if ($request->hasFile('cover')) $data['cover_path'] = $request->file('cover')->store('library/covers', 'public');
-        if ($request->hasFile('digital_file')) $data['file_path'] = $request->file('digital_file')->store('library/books', 'public');
+        if ($request->hasFile('cover')) {
+            $data['cover_path'] = $request->file('cover')->store('library/covers', 'public');
+        }
+        if ($request->hasFile('digital_file')) {
+            $data['file_path'] = $request->file('digital_file')->store('library/books', 'public');
+        }
         unset($data['cover'], $data['digital_file']);
         Book::create($data);
+
         return redirect('/perpustakaan/data-buku')->with('success', 'Buku berhasil ditambahkan.');
     }
 
@@ -68,16 +81,22 @@ class LibraryController extends Controller
             'digital_file' => ['nullable', 'file', 'mimes:pdf,epub', 'max:51200'],
             'publication_status' => ['required', 'in:published,draft'],
         ]);
-        if ($request->hasFile('cover')) $data['cover_path'] = $request->file('cover')->store('library/covers', 'public');
-        if ($request->hasFile('digital_file')) $data['file_path'] = $request->file('digital_file')->store('library/books', 'public');
+        if ($request->hasFile('cover')) {
+            $data['cover_path'] = $request->file('cover')->store('library/covers', 'public');
+        }
+        if ($request->hasFile('digital_file')) {
+            $data['file_path'] = $request->file('digital_file')->store('library/books', 'public');
+        }
         unset($data['cover'], $data['digital_file']);
         $book->update($data);
+
         return redirect('/perpustakaan/data-buku')->with('success', 'Buku berhasil diperbarui.');
     }
 
     public function deleteBook(Book $book): RedirectResponse
     {
         $book->delete();
+
         return redirect('/perpustakaan/data-buku')->with('success', 'Buku berhasil dihapus.');
     }
 
@@ -89,6 +108,7 @@ class LibraryController extends Controller
             'status' => ['required', 'in:active,inactive'],
         ]);
         BookCategory::create($data);
+
         return redirect('/perpustakaan/kategori-buku')->with('success', 'Kategori berhasil ditambahkan.');
     }
 
@@ -100,6 +120,7 @@ class LibraryController extends Controller
             'status' => ['required', 'in:active,inactive'],
         ]);
         $category->update($data);
+
         return redirect('/perpustakaan/kategori-buku')->with('success', 'Kategori berhasil diperbarui.');
     }
 
@@ -113,6 +134,7 @@ class LibraryController extends Controller
         } catch (QueryException) {
             return back()->with('error', 'Kategori tidak dapat dihapus karena masih digunakan oleh data buku.');
         }
+
         return redirect('/perpustakaan/kategori-buku')->with('success', 'Kategori berhasil dihapus.');
     }
 }

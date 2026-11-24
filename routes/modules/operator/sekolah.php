@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SekolahController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/data-sekolah', 'operator.data-sekolah')->name('sekolah.edit');
+Route::get('/data-sekolah', [SekolahController::class, 'editOperator'])->name('sekolah.edit');
+Route::put('/data-sekolah', [SekolahController::class, 'updateOperator'])->name('sekolah.update');

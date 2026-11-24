@@ -43,6 +43,10 @@ class Siswa extends Model
         'nama_ibu',
         'nik_ibu',
         'no_whatsapp_orang_tua',
+        'kebutuhan_khusus',
+        'disabilitas',
+        'nomor_kip_pip',
+        'nama_wali',
     ];
 
     protected $casts = [
