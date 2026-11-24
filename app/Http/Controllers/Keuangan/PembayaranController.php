@@ -16,6 +16,7 @@ use App\Enums\StatusVerifikasi;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\Response;
 
 class PembayaranController extends Controller
 {
@@ -89,8 +90,16 @@ class PembayaranController extends Controller
             // Kelas = rombel siswa pada tahun ajaran yang sama dengan tagihan.
             'kelas'      => $tagihan?->siswa?->rombel
                 ->firstWhere('tahun_ajaran_id', $tagihan->tahun_ajaran_id)?->nama,
-            'buktiUrl'   => $pembayaran->bukti ? $this->berkas->url($pembayaran->bukti) : null,
+            'buktiUrl'   => $pembayaran->bukti ? route('keuangan.pembayaran.bukti', $pembayaran) : null,
+            'unduhUrl'   => $pembayaran->bukti ? route('keuangan.pembayaran.bukti', [$pembayaran, 'unduh' => 1]) : null,
         ]);
+    }
+
+    public function bukti(Request $request, Pembayaran $pembayaran): Response
+    {
+        abort_unless($pembayaran->bukti, 404);
+
+        return $this->berkas->respons($pembayaran->bukti, $request, $request->boolean('unduh'));
     }
 
     public function setujui(Request $request, Pembayaran $pembayaran): RedirectResponse

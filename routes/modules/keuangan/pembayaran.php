@@ -16,3 +16,6 @@ Route::post('/pembayaran-siswa/{pembayaran}/tolak', [PembayaranController::class
     ->whereNumber('pembayaran')->name('pembayaran.tolak');
 
 Route::get('/pembayaran-siswa', [PembayaranController::class, 'index'])->name('pembayaran.index');
+
+Route::get('/pembayaran-siswa/{pembayaran}/bukti', [PembayaranController::class, 'bukti'])
+    ->whereNumber('pembayaran')->name('pembayaran.bukti');

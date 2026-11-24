@@ -44,7 +44,7 @@
                 <div class="keuangan-proof-placeholder"><strong>Tidak Ada Bukti</strong><span>Pembayaran ini diinput tanpa lampiran.</span></div>
                 @endif
                 @if ($buktiUrl)
-                <a class="keuangan-proof-download" href="{{ $buktiUrl }}" download="{{ $pembayaran->bukti->nama_asli }}">{{-- svg yang lama dipertahankan --}}Unduh Berkas</a>
+                <a class="keuangan-proof-download" href="{{ $unduhUrl }}">Unduh Berkas</a>
                 @endif
             </section>
 
@@ -54,14 +54,14 @@
                 @if ($pembayaran->status_verifikasi === \App\Enums\StatusVerifikasi::Menunggu)
                 <form method="POST" action="{{ route('keuangan.pembayaran.setujui', $pembayaran) }}">
                 @csrf
-                <button type="submit" class="keuangan-approve">{{-- svg lama --}}Setujui Pembayaran</button>
+                <button type="submit" class="keuangan-approve">Setujui Pembayaran</button>
                 </form>
                 <form method="POST" action="{{ route('keuangan.pembayaran.tolak', $pembayaran) }}">
                 @csrf
                 <textarea name="alasan_penolakan" rows="3" required placeholder="Alasan penolakan (wajib)">{{ old('alasan_penolakan') }}</textarea>
                 <div class="keuangan-decision-row">
-                <button type="submit" class="keuangan-reject">{{-- svg lama --}}Tolak Bayar</button>
-                <button type="button" class="keuangan-request-revision">{{-- svg lama --}}Minta Revisi</button>
+                <button type="submit" class="keuangan-reject">Tolak Bayar</button>
+                <button type="button" class="keuangan-request-revision">Minta Revisi</button>
                 </div>
                 </form>
                 @else

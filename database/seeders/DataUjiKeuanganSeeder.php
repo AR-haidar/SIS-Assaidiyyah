@@ -79,13 +79,13 @@ class DataUjiKeuanganSeeder extends Seeder
 
         // Berkas bukti contoh (file sungguhan di disk public).
         $pathBukti = 'bukti-pembayaran/demo-bukti.png';
-        Storage::disk('public')->put($pathBukti, base64_decode(self::PNG));
+        Storage::disk('local')->put($pathBukti, base64_decode(self::PNG));
         $bukti = Berkas::firstOrCreate(
             ['path' => $pathBukti],
             [
                 'nama_asli'     => 'demo-bukti.png',
                 'mime'          => 'image/png',
-                'ukuran_byte'   => Storage::disk('public')->size($pathBukti),
+                'ukuran_byte'   => Storage::disk('local')->size($pathBukti),
                 'diunggah_oleh' => $petugas->id,
             ],
         );
