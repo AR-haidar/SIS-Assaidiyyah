@@ -6,7 +6,7 @@
     <title>Baca Buku - Perpustakaan Digital MI Assaidiyyah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/css/halaman-baca-buku.css', 'resources/js/app.js'])
 </head>
 <body class="digital-reader-page">

@@ -25,9 +25,9 @@
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
             </svg>Data Buku</a>
-        <a href="{{ url('/perpustakaan/kategori-buku') }}"
-            class="sidebar-nav-item {{ request()->is('perpustakaan/kategori-buku*') ? 'active' : '' }}"
-            @if (request()->is('perpustakaan/kategori-buku*')) aria-current="page" @endif><svg xmlns="http://www.w3.org/2000/svg"
+        <a href="{{ route('pustakawan.kategori-buku.index') }}"
+            class="sidebar-nav-item {{ request()->routeIs('pustakawan.kategori-buku.*') ? 'active' : '' }}"
+            @if (request()->routeIs('pustakawan.kategori-buku.*')) aria-current="page" @endif><svg xmlns="http://www.w3.org/2000/svg"
                 width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M20 13 11 4H4v7l9 9a2 2 0 0 0 3 0l4-4a2 2 0 0 0 0-3z" />

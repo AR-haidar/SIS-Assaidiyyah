@@ -1,0 +1,23 @@
+@extends('humas.layout')
+@section('title', 'Prestasi Siswa')
+@section('content')
+<section class="humas-achievements" data-humas-achievements>
+    <div class="humas-breadcrumb">CMS Humas › Pengelolaan Landing Page › <strong>Prestasi Siswa</strong></div>
+    <header class="achievement-heading"><div><h1>Kelola Prestasi Siswa</h1><p>Manajemen dokumentasi capaian kejuaraan, olimpiade, dan prestasi keagamaan untuk<br class="achievement-break"> ditampilkan di Landing Page publik.</p></div><button type="button" class="achievement-add" data-achievement-focus>＋ Tambah Prestasi Baru</button></header>
+    <div class="achievement-stats"><article><div><span>Total Prestasi Dicatat</span><strong data-achievement-total>18</strong><small>◉ 16 Aktif Publik</small></div><b>♜</b></article><article><div><span>Bidang Keagamaan</span><strong>8</strong><small>Tahfidz &amp; MTQ<br>unggulan</small></div><b>▤</b></article><article><div><span>Bidang Akademik</span><strong>6</strong><small>Sains,<br>Matematika, dll</small></div><b>♧</b></article><article><div><span>Olahraga &amp; Seni Budaya</span><strong>4</strong><small>Pencak Silat &amp; Hadroh</small></div><b>⚝</b></article></div>
+    <div class="achievement-layout"><div class="achievement-list-column">
+        <form class="achievement-filters" data-achievement-filter><label>⌕ <input name="search" type="search" placeholder="Cari nama prestasi..."></label><select name="category"><option value="">Semua Tingkat</option><option>Keagamaan</option><option>Akademik</option><option>Olahraga &amp; Seni</option></select><select name="status"><option value="">Semua Status</option><option>Published</option><option>Draft</option></select><button type="submit">Terapkan Filter</button></form>
+        <section class="achievement-table-card"><div class="achievement-table-scroll"><table><thead><tr><th>No</th><th>Dokumentasi</th><th>Nama Prestasi &amp; Kejuaraan</th><th>Kategori</th><th>Peraih</th></tr></thead><tbody data-achievement-rows></tbody></table></div><footer><span data-achievement-summary>Menampilkan 1 - 4 dari 18 data penghargaan santri</span><nav data-achievement-pagination></nav></footer></section>
+        <aside class="achievement-sync"><b>▣</b><div><strong>Sinkronisasi Etalase Landing Page</strong><p>Data berstatus <b>Published</b> otomatis disiarkan pada seksi Prestasi Siswa di halaman depan madrasah beserta gambar resolusi tinggi untuk menunjang branding madrasah saat PPDB.</p></div></aside>
+    </div>
+    <form class="achievement-form" data-achievement-form><header><span>✿</span><div><strong>Input Prestasi Siswa</strong><small>Formulir publikasi katalog kejuaraan</small></div></header>
+        <label>Nama Prestasi / Kejuaraan <small>Maks. 80 karakter</small><input name="title" required maxlength="80" placeholder="Contoh: Juara 1 Kaligrafi Kontemporer Putra Se-"></label>
+        <div class="achievement-form-row"><label>Kategori Prestasi <b>*</b><select name="category"><option>Keagamaan</option><option>Akademik</option><option>Olahraga &amp; Seni</option></select></label><label>Tingkat Kejuaraan <b>*</b><select name="level"><option>Kecamatan</option><option>Kabupaten</option><option>Provinsi</option><option>Nasional</option></select></label></div>
+        <div class="achievement-form-row"><label>Nama Peraih Prestasi <b>*</b><input name="winner" required placeholder="Nama santri atau nama tim"></label><label>Tahun / Tanggal <b>*</b><input name="date" required placeholder="Contoh: Februari 2026"></label></div>
+        <label>Informasi Singkat / Deskripsi<textarea name="description" rows="3" placeholder="Tuliskan keterangan penyelenggara, cabang lomba, atau catatan motivasi keberhasilan perolehan medali..."></textarea></label>
+        <label>Upload Foto Dokumentasi <small>JPG, PNG maks 3MB</small><span class="achievement-upload"><img data-achievement-image-preview hidden alt="Pratinjau dokumentasi"><span data-achievement-upload-copy>☁<strong>Tarik dan jatuhkan file foto di sini</strong><small>atau pilih dari perangkat Anda</small></span><input type="file" name="image" accept="image/jpeg,image/png,image/webp" data-achievement-image></span></label>
+        <fieldset><legend>Status Publikasi ke Landing Page</legend><label><input type="radio" name="visibility" value="Published" checked><span><strong>Published</strong><small>Tampil di portal publik</small></span></label><label><input type="radio" name="visibility" value="Draft"><span><strong>Draf</strong><small>Hanya arsip internal</small></span></label></fieldset>
+        <footer><button type="button" data-achievement-save="Draft">Simpan Draf</button><button class="primary" type="submit" data-achievement-save="Published">⇧ Publikasikan Prestasi</button></footer>
+    </form></div>
+</section>
+@endsection

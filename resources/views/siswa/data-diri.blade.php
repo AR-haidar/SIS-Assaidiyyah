@@ -6,7 +6,7 @@
     <title>Data Diri Siswa — SIS MI Assa'idiyyah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/css/siswa/siswa.css', 'resources/css/siswa/data-diri.css', 'resources/js/app.js'])
 </head>
 <body class="siswa-page">
@@ -274,7 +274,7 @@
                                 </div>
                                 <div class="dd-list-row">
                                     <span class="dd-list-label">Tingkat Kehadiran</span>
-                                    <span class="dd-list-value" style="color:#2563eb; font-weight:700;">— %</span>
+                                    <span class="dd-list-value" style="color:#206BC7; font-weight: 400;">— %</span>
                                 </div>
                             </div>
 

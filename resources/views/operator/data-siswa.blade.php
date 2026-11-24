@@ -10,6 +10,18 @@
             </a>
         </header>
 
+        <section class="operator-student-import" aria-label="Impor siswa dari Excel">
+            <div>
+                <strong>Impor data siswa dari Excel</strong>
+                <p>Pilih file .xlsx atau .csv. Data dari file akan ditambahkan; NISN yang sudah ada akan dilewati.</p>
+            </div>
+            <label class="operator-primary-button operator-student-import-button" style="margin-block: 14px; min-height: 40px; padding-inline: 16px;">
+                Pilih File XLSX / CSV
+                <input type="file" accept=".xlsx,.csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv" data-student-xlsx hidden>
+            </label>
+            <p class="operator-student-import-message" data-student-import-message role="status" aria-live="polite"></p>
+        </section>
+
         <section class="operator-student-stats" aria-label="Ringkasan siswa">
             <article><span>Total Siswa Aktif</span><strong>&mdash; Siswa</strong></article>
             <article><span>Siswa Laki-laki</span><strong>&mdash; Siswa</strong></article>
@@ -34,12 +46,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>No</th><th>Nama Siswa</th><th>NISN</th><th>Kelas</th><th>Rombel</th><th>Jenis Kelamin</th><th>Status Kesiswaan</th><th>Aksi</th>
+                            <th>No</th><th>Nama Lengkap</th><th>NISN</th><th>NIK</th><th>Tempat Lahir</th><th>Tanggal Lahir</th><th>Tingkat - Rombel</th><th>Umur</th><th>Status</th><th>Jenis Kelamin</th><th>Alamat</th><th>No Telepon</th><th>Kebutuhan Khusus</th><th>Disabilitas</th><th>Nomor KIP/PIP</th><th>Nama Ayah Kandung</th><th>Nama Ibu Kandung</th><th>Nama Wali</th><th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody data-operator-students>
                         <tr>
-                            <td colspan="8" class="operator-student-empty">
+                            <td colspan="19" class="operator-student-empty">
                                 <strong>Belum Ada Data Siswa Dimuat</strong>
                                 <p>Gunakan tombol di atas untuk menambah siswa baru secara manual<br class="operator-student-desktop-break"> atau sinkronkan data dari pangkalan data EMIS Kemenag.</p>
                                 <a class="operator-primary-button" href="{{ url('/operator/data-siswa/tambah') }}">
@@ -54,9 +66,9 @@
             <footer class="operator-student-table-footer">
                 <span>Menampilkan <strong data-visible-students>0</strong> dari <strong data-total-students>0</strong> siswa</span>
                 <nav aria-label="Navigasi halaman">
-                    <button type="button" aria-label="Halaman sebelumnya" disabled>&lsaquo;</button>
-                    <span class="operator-current-page">1</span>
-                    <button type="button" aria-label="Halaman berikutnya" disabled>&rsaquo;</button>
+                    <button type="button" aria-label="Halaman sebelumnya" data-student-prev disabled>&lsaquo;</button>
+                    <span class="operator-current-page" data-student-page>1</span>
+                    <button type="button" aria-label="Halaman berikutnya" data-student-next disabled>&rsaquo;</button>
                 </nav>
             </footer>
         </section>

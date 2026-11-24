@@ -14,7 +14,7 @@ return new class extends Migration
             $table->text('isi')->nullable();
             $table->string('nomor_surat', 100)->nullable();
             $table->foreignId('kategori_id')->nullable()->constrained('referensi');
-            $table->enum('status', ['draft', 'menunggu_persetujuan', 'terbit', 'ditolak', 'arsip'])->default('draft');
+            $table->enum('status', ['draft', 'terbit', 'arsip'])->default('draft');
             $table->boolean('disematkan')->default(false);
             $table->timestamp('tanggal_terbit')->nullable();
             $table->timestamp('tayang_selesai')->nullable();

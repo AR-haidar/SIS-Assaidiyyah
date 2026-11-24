@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Enums\JenisAkun;
 use App\Http\Controllers\Controller;
+use App\Models\LogAktivitas;
 use App\Models\Pengguna;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Http\RedirectResponse;
@@ -75,7 +76,7 @@ class LoginController extends Controller
 
         if ($pengguna !== null) {
             // Catat ke log_aktivitas sebelum sesi pengguna dihapus
-            \App\Models\LogAktivitas::create([
+            LogAktivitas::create([
                 'pengguna_id' => $pengguna->id,
                 'modul' => 'auth',
                 'aksi' => 'logout',
@@ -117,6 +118,6 @@ class LoginController extends Controller
     {
         $username = Str::transliterate(Str::lower(trim((string) $request->input('username'))));
 
-        return $username . '|' . $request->ip();
+        return $username.'|'.$request->ip();
     }
 }
