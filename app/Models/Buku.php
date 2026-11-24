@@ -13,6 +13,12 @@ class Buku extends Model
 {
     use SoftDeletes;
 
+    public const MAKS_SAMPUL_MB = 5;
+    public const MAKS_NASKAH_MB = 50;
+    public const MAKS_JUDUL_KARAKTER = 250;
+    public const MAKS_NAMA_KARAKTER = 150;
+    public const MAKS_SINOPSIS_KARAKTER = 1000;
+
     public const CREATED_AT = 'dibuat_pada';
     public const UPDATED_AT = 'diubah_pada';
     public const DELETED_AT = 'dihapus_pada';

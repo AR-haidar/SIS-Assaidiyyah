@@ -17,12 +17,11 @@
                 <div class="dlib-public-book-grid perpustakaan-dashboard-book-grid">
                     @foreach ($katalog as $buku)
                         <article class="dlib-public-book-card">
-                            <div class="dlib-public-cover perpustakaan-dashboard-cover">
+                            <div class="dlib-public-cover perpustakaan-dashboard-cover" data-cover-preview>
                                 @if ($buku->sampul)
-                                    <img src="{{ route('pustakawan.data-buku.sampul', $buku) }}" alt="Sampul {{ $buku->judul }}" loading="lazy">
-                                @else
-                                    <span>Sampul Buku (3:4)</span>
+                                    <img data-cover-image src="{{ route('pustakawan.data-buku.sampul', $buku) }}" alt="Sampul {{ $buku->judul }}" loading="lazy">
                                 @endif
+                                <span data-cover-placeholder @if ($buku->sampul) hidden @endif>Sampul Buku (3:4)</span>
                                 <small>E-Book {{ $buku->naskah?->mime === 'application/epub+zip' ? 'EPUB' : 'PDF' }}</small>
                             </div>
                             <span class="dlib-public-badge perpustakaan-dashboard-category">Kategori: {{ $buku->kategori->pluck('nama')->join(', ') ?: '—' }}</span>

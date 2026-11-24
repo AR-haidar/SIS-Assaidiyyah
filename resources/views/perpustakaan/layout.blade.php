@@ -10,7 +10,16 @@
 <div class="siswa-layout">@include('perpustakaan.partials.sidebar')
 <main class="siswa-main perpustakaan-main">@yield('content')</main></div>
 <script>
-const toggleBtn=document.getElementById('sidebarToggle');
-const sidebar=document.getElementById('perpustakaanSidebar');
-toggleBtn.addEventListener('click',function(){sidebar.classList.toggle('collapsed');});
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('perpustakaanSidebar');
+    const narrowScreen = window.matchMedia('(max-width: 768px)');
+
+    function updateSidebar(expanded) {
+        sidebar.classList.toggle('is-toggled', expanded !== !narrowScreen.matches);
+        sidebarToggle.setAttribute('aria-expanded', String(expanded));
+    }
+
+    updateSidebar(!narrowScreen.matches);
+    sidebarToggle.addEventListener('click', () => updateSidebar(sidebarToggle.getAttribute('aria-expanded') === 'false'));
+    narrowScreen.addEventListener('change', () => updateSidebar(!narrowScreen.matches));
 </script></body></html>

@@ -62,7 +62,7 @@ body.home-page {
     color: #536b89;
     flex-shrink: 0;
 }
-.logo-slot{width:62px;border:0;border-radius:4px;background-color:transparent;background-image:url('/images/logo-assaidiyyah.png');background-position:center;background-repeat:no-repeat;background-size:contain}
+.logo-slot{width:62px;border:0;border-radius:4px;background-color:transparent;background-image:url('../../public/images/logo-assaidiyyah.png');background-position:center;background-repeat:no-repeat;background-size:contain}
 .logo-slot svg{display:none}
 
 .brand-text {
