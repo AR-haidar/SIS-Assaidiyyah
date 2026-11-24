@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamp('dihapus_pada')->nullable();
         });
 
-        DB::statement("ALTER TABLE rombel ADD CONSTRAINT ck_rombel_tingkat CHECK (tingkat BETWEEN 1 AND 6)");
+        DB::statement('ALTER TABLE rombel ADD CONSTRAINT ck_rombel_tingkat CHECK (tingkat BETWEEN 1 AND 6)');
     }
 
     public function down(): void

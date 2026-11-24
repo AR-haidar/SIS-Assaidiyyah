@@ -14,4 +14,15 @@ enum StatusPublikasiBuku: string
             self::Aktif => 'Aktif',
         };
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public static function opsi(): array
+    {
+        return [
+            self::Draft->value => self::Draft->label(),
+            self::Aktif->value => self::Aktif->label(),
+        ];
+    }
 }

@@ -1,0 +1,71 @@
+.humas-achievements .achievement-form fieldset label{min-height:68px;align-items:flex-start;gap:9px;padding:10px 12px}
+.humas-achievements .achievement-form fieldset input[type=radio]{width:14px;min-width:14px;height:14px;margin:2px 0 0;padding:0;flex:none;border:0;background:transparent}
+.humas-achievements .achievement-form fieldset label span{min-width:0;flex:1;display:grid;align-content:start;gap:3px}
+.humas-achievements .achievement-form fieldset label strong{line-height:1.3}
+.humas-achievements .achievement-form fieldset label small{display:block;max-width:none;line-height:1.4;overflow-wrap:normal}
+.humas-page .siswa-main .humas-achievements{width:100%;max-width:none;margin:0 auto;color:#173f75}
+.humas-page .siswa-main .humas-achievements>.humas-breadcrumb{display:none}
+.humas-page .siswa-main .achievement-heading{margin:0 0 22px;align-items:center}
+.humas-page .siswa-main .achievement-heading h1{color:#173f75;font-size:30px;line-height:1.25;font-weight:700;letter-spacing:-.45px}
+.humas-page .siswa-main .achievement-heading p{max-width:690px;color:#7185a1;font-size:16px;line-height:1.5}
+.humas-page .siswa-main .achievement-add{min-height:40px;padding:0 16px;border-radius:4px;background:#206bc7;color:#fff;font-size:14px;font-weight:400}
+.humas-page .siswa-main .achievement-add:hover,.humas-page .siswa-main .achievement-filters>button:hover{background:#1956a3}
+.humas-page .siswa-main .achievement-stats{gap:14px;margin-bottom:22px}
+.humas-page .siswa-main .achievement-stats article{min-height:104px;padding:15px;border:0;border-radius:9px;box-shadow:0 1px 3px rgba(23,63,117,.05)}
+.humas-page .siswa-main .achievement-stats span{font-size:12px}
+.humas-page .siswa-main .achievement-stats strong{color:#173f75;font-size:24px;font-weight:700}
+.humas-page .siswa-main .achievement-stats small{font-size:12px}
+.humas-page .siswa-main .achievement-layout{grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:24px}
+.humas-page .siswa-main .achievement-filters{margin-bottom:14px;padding:14px;gap:8px;border:0;border-radius:9px;box-shadow:0 1px 3px rgba(23,63,117,.05)}
+.humas-page .siswa-main .achievement-filters label,.humas-page .siswa-main .achievement-filters select{height:38px;font-size:13px}
+.humas-page .siswa-main .achievement-filters>button{font-size:13px}
+.humas-page .siswa-main .achievement-table-card{border:0;border-radius:9px;box-shadow:0 1px 3px rgba(23,63,117,.05)}
+.humas-page .siswa-main .achievement-table-card table{min-width:680px}
+.humas-page .siswa-main .achievement-table-card th{height:54px;padding:12px;color:#173f75;font-size:12px;font-weight:700}
+.humas-page .siswa-main .achievement-table-card td{padding:13px 12px;font-size:13px}
+.humas-page .siswa-main .achievement-table-card td:nth-child(3){color:#173f75;font-size:15px;font-weight:700}
+.humas-page .siswa-main .achievement-table-card td:nth-child(3) small{display:block;margin-top:3px;color:#7185a1;font-size:12px;font-weight:400}
+.humas-page .siswa-main .achievement-tag{display:inline-block;padding:5px 9px;border-radius:5px;background:#eaf3ff;color:#206bc7;font-size:12px;white-space:normal}
+.humas-page .siswa-main .achievement-table-card footer{min-height:50px;font-size:12px}
+.humas-page .siswa-main .achievement-table-card nav{align-items:center;gap:5px}
+.humas-page .siswa-main .achievement-table-card nav button{width:32px;height:32px;background:transparent;color:#536b89}
+.humas-page .siswa-main .achievement-table-card nav button.active{background:#206bc7;color:#fff}
+.humas-page .siswa-main .achievement-table-card nav button:disabled{background:transparent;color:#c4cfdd}
+.humas-page .siswa-main .achievement-sync{margin-top:18px;padding:14px;border:0;border-radius:8px;background:#fff;box-shadow:0 1px 3px rgba(23,63,117,.05)}
+.humas-page .siswa-main .achievement-sync strong{color:#173f75;font-size:15px}
+.humas-page .siswa-main .achievement-sync p{font-size:12px}
+.humas-page .siswa-main .achievement-form{padding:22px 24px;gap:15px;border:0;border-radius:9px;box-shadow:0 1px 3px rgba(23,63,117,.05)}
+.humas-page .siswa-main .achievement-form>header{gap:10px}
+.humas-page .siswa-main .achievement-form>header>span{width:36px;height:36px;flex:none}
+.humas-page .siswa-main .achievement-form>header>span svg,.humas-page .siswa-main .achievement-upload>span>svg,.humas-page .siswa-main .achievement-form>footer button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.humas-page .siswa-main .achievement-form>header strong{color:#173f75;font-size:20px;font-weight:700;line-height:1.35}
+.humas-page .siswa-main .achievement-form>header small{font-size:12px;line-height:1.5}
+.humas-page .siswa-main .achievement-form>label,.humas-page .siswa-main .achievement-form-row label{font-size:14px}
+.humas-page .siswa-main .achievement-form input:not([type=file]),.humas-page .siswa-main .achievement-form select,.humas-page .siswa-main .achievement-form textarea{min-height:40px;padding:10px 12px;font-size:13px}
+.humas-page .siswa-main .achievement-form>label>small{font-size:11px}
+.humas-page .siswa-main .achievement-form-row{gap:8px}
+.humas-page .siswa-main .achievement-upload{min-height:126px}
+.humas-page .siswa-main .achievement-upload>span>svg{width:24px;height:24px}
+.humas-page .siswa-main .achievement-upload strong{font-size:13px;font-weight:700}
+.humas-page .siswa-main .achievement-upload small{font-size:12px}
+.humas-page .siswa-main .achievement-form legend{font-size:14px}
+.humas-page .siswa-main .achievement-form fieldset label{min-height:72px;font-size:13px}
+.humas-page .siswa-main .achievement-form fieldset label strong{font-size:14px}
+.humas-page .siswa-main .achievement-form fieldset label small{font-size:12px}
+.humas-page .siswa-main .achievement-form>footer{grid-template-columns:.8fr 1.2fr;gap:8px}
+.humas-page .siswa-main .achievement-form>footer button{min-height:52px;font-size:13px}
+.humas-page .siswa-main .achievement-form>footer button.primary{display:flex;align-items:center;justify-content:center;gap:6px}
+.humas-page .siswa-main .achievement-stats article:nth-child(4)>b{font-size:0}
+.humas-page .siswa-main .achievement-stats article:nth-child(4)>b::after{content:'⚽';font-size:24px;line-height:1}
+.humas-page .siswa-main .achievement-table-card nav button,
+.humas-page .siswa-main .achievement-table-card nav button:hover,
+.humas-page .siswa-main .achievement-table-card nav button:focus{border:0!important;background:transparent!important;box-shadow:none!important;color:#206bc7}
+.humas-page .siswa-main .achievement-table-card nav button.active,
+.humas-page .siswa-main .achievement-table-card nav button.active:hover,
+.humas-page .siswa-main .achievement-table-card nav button.active:focus{background:#206bc7!important;color:#fff!important}
+.humas-page .siswa-main .achievement-table-card nav button:disabled,
+.humas-page .siswa-main .achievement-table-card nav button:disabled:hover{background:transparent!important;color:#c4cfdd!important}
+.humas-page .siswa-main .achievement-table-card nav button:not(.active):not(:disabled),
+.humas-page .siswa-main .achievement-table-card nav button:not(.active):not(:disabled):hover,
+.humas-page .siswa-main .achievement-table-card nav button:not(.active):not(:disabled):focus{color:#394354!important}
+@media(max-width:760px){.humas-page .siswa-main .achievement-heading{align-items:flex-start;flex-direction:column}.humas-page .siswa-main .achievement-layout{grid-template-columns:1fr}}

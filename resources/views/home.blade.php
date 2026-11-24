@@ -6,19 +6,19 @@
     <title>Sistem Informasi & Portal Akademik MI Assaidiyyah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/css/home.css', 'resources/js/app.js'])
 </head>
-<body class="home-page">
+<body class="home-page" style="overflow-x:hidden;">
 
     {{-- ========================
          TOPBAR / NAVBAR (DIPERTAHANKAN)
          ======================== --}}
     <header class="navbar">
-        <div class="navbar-container">
+        <div class="navbar-container" style="width:100%; max-width:1800px; margin:0 auto; padding:12px 32px; display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:16px;">
 
             {{-- Sisi Kiri: Logo & Identitas --}}
-            <a href="{{ url('/') }}" class="navbar-brand">
+            <a href="{{ url('/') }}" class="navbar-brand" style="justify-self:start;">
                 <div class="logo-slot" title="Slot Logo MI Assaidiyyah">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -33,7 +33,7 @@
             </a>
 
             {{-- Sisi Tengah: Navigasi --}}
-            <nav class="navbar-menu">
+            <nav class="navbar-menu" style="justify-self:center;">
                 <a href="#beranda" class="nav-link active">Beranda</a>
                 <a href="#profil" class="nav-link">Profile &amp; Visi Misi</a>
                 <a href="#program" class="nav-link">Program</a>
@@ -44,7 +44,7 @@
             </nav>
 
             {{-- Sisi Kanan: Tombol Portal Login / Dashboard --}}
-            <div class="navbar-action">
+            <div class="navbar-action" style="justify-self:end;">
                 @if(auth()->check() || request()->query('demo_login') === '1')
                     <a href="{{ url('/siswa/dashboard') }}" class="btn-portal">
                         <span class="btn-icon">
@@ -78,12 +78,12 @@
     {{-- ========================
          MAIN CONTENT AREA
          ======================== --}}
-    <main class="home-main-container">
+    <main class="home-main-container" style="padding-top:0;">
 
         {{-- ========================================================
              PART 1 — SECTION 1: HERO SECTION
              ======================================================== --}}
-        <section class="section-hero" id="beranda">
+        <section class="section-hero" id="beranda" style="width:100vw; margin-left:calc(50% - 50vw); padding:72px max(32px, calc((100vw - 1800px) / 2 + 32px)); background:#fff; border:0; border-radius:0; box-shadow:none; box-sizing:border-box;">
             <div class="hero-left-content">
                 <span class="hero-tag-badge">Madrasah Ibtidaiyah Terakreditasi</span>
                 
@@ -115,8 +115,8 @@
 
             {{-- Kolom Kanan: Card Foto Madrasah --}}
             <div class="hero-right-visual">
-                <div class="hero-photo-card">
-                    <div class="hero-photo-inner-dashed">
+                <div class="hero-photo-card" style="display:block; width:min(100%, 520px); aspect-ratio:1 / 1; flex:0 0 auto;">
+                    <div class="hero-photo-inner-dashed" style="width:100%; height:100%; min-height:0; aspect-ratio:1 / 1;">
                         <div class="hero-photo-icon-box">
                             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -139,7 +139,7 @@
         {{-- ========================================================
              PART 1 — SECTION 2: VISI & MISI MADRASAH
              ======================================================== --}}
-        <section class="section-block" id="profil">
+        <section class="section-block" id="profil" style="width:100vw; margin-left:calc(50% - 50vw); padding:56px max(32px, calc((100vw - 1800px) / 2 + 32px)); box-sizing:border-box;">
             <div class="section-title-wrap">
                 <span class="section-pre-tag">PROFIL LEMBAGA</span>
                 <h2 class="section-heading">Visi &amp; Misi Madrasah</h2>
@@ -205,7 +205,7 @@
         {{-- ========================================================
              PART 2 — SECTION 1: PROGRAM UNGGULAN MADRASAH
              ======================================================== --}}
-        <section class="section-block" id="program">
+        <section class="section-block" id="program" style="width:100vw; margin-left:calc(50% - 50vw); padding:56px max(32px, calc((100vw - 1800px) / 2 + 32px)); background:#fff; box-sizing:border-box;">
             <div class="section-title-split">
                 <div>
                     <span class="section-pre-tag">KURIKULUM &amp; EKSTRAKURIKULER</span>
@@ -287,7 +287,7 @@
         {{-- ========================================================
              PART 2 — SECTION 2: FASILITAS PENUNJANG BELAJAR
              ======================================================== --}}
-        <section class="section-block" id="guru">
+        <section class="section-block" id="guru" style="width:100vw; margin-left:calc(50% - 50vw); padding:56px max(32px, calc((100vw - 1800px) / 2 + 32px)); box-sizing:border-box;">
             <div class="section-title-wrap">
                 <span class="section-pre-tag">TENAGA PENDIDIK</span>
                 <h2 class="section-heading">Profil Guru</h2>
@@ -304,7 +304,7 @@
         {{-- ========================================================
              PART 3 — SECTION 1: BERITA & AGENDA TERKINI
              ======================================================== --}}
-        <section class="section-block" id="prestasi">
+        <section class="section-block" id="prestasi" style="width:100vw; margin-left:calc(50% - 50vw); padding:56px max(32px, calc((100vw - 1800px) / 2 + 32px)); background:#fff; box-sizing:border-box;">
             <div class="section-title-wrap">
                 <span class="section-pre-tag">KATALOG SISWA</span>
                 <h2 class="section-heading">Katalog Prestasi Siswa</h2>
@@ -320,7 +320,7 @@
         {{-- ========================================================
              PART 3 — SECTION 2: PERPUSTAKAAN DIGITAL
              ======================================================== --}}
-        <section class="section-block" id="perpustakaan">
+        <section class="section-block" id="perpustakaan" style="width:100vw; margin-left:calc(50% - 50vw); padding:56px max(32px, calc((100vw - 1800px) / 2 + 32px)); box-sizing:border-box;">
             <div class="dlib-banner-frame">
                 <div class="dlib-banner-left">
                     <span class="dlib-tag-pill">Koleksi Literasi Madrasah</span>
@@ -363,7 +363,7 @@
         {{-- ========================================================
              PART 4 — SECTION 1: HUBUNGI KAMI
              ======================================================== --}}
-        <section class="section-block" id="kontak">
+        <section class="section-block" id="kontak" style="width:100vw; margin-left:calc(50% - 50vw); padding:56px max(32px, calc((100vw - 1800px) / 2 + 32px)); background:#fff; box-sizing:border-box;">
             <div class="section-title-wrap">
                 <span class="section-pre-tag">SEKRETARIAT MADRASAH</span>
                 <h2 class="section-heading">Hubungi Kami</h2>
@@ -403,7 +403,7 @@
                     <div class="contact-map-placeholder-card">
                         <div class="map-placeholder-inner">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="color:#2563eb;">
+                                stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="color:#206BC7;">
                                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
                                 <circle cx="12" cy="10" r="3"/>
                             </svg>
