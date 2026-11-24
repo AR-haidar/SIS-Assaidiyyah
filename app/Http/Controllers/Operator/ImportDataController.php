@@ -12,7 +12,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
-class ImporDataController extends Controller
+class ImportDataController extends Controller
 {
     public function imporSiswa(Request $request): RedirectResponse
     {
