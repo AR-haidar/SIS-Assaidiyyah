@@ -8,7 +8,7 @@ use App\Models\Pembayaran;
 use App\Models\Pengguna;
 use App\Models\Tagihan;
 use App\Services\BerkasService; // sesuaikan setelah Lead push
-use App\Support\Aktivitas;      // sesuaikan setelah Lead push
+use App\Support\LogAktivitas;      // sesuaikan setelah Lead push
 use Illuminate\Database\QueryException;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
@@ -41,7 +41,7 @@ class PembayaranService
                     'status_verifikasi'    => StatusVerifikasi::Menunggu,
                 ]);
 
-                Aktivitas::catat('keuangan', 'ajukan_pembayaran', $pembayaran,
+                LogAktivitas::catat('keuangan', 'ajukan_pembayaran', $pembayaran,
                     "Pengajuan bukti bayar tagihan #{$tagihan->id}");
 
                 return $pembayaran;
@@ -76,7 +76,7 @@ class PembayaranService
                     'diverifikasi_pada'    => now(),
                 ]);
 
-                Aktivitas::catat('keuangan', 'input_pembayaran', $pembayaran,
+                LogAktivitas::catat('keuangan', 'input_pembayaran', $pembayaran,
                     "Input manual pembayaran tagihan #{$tagihan->id}");
 
                 return $pembayaran;
@@ -122,7 +122,7 @@ class PembayaranService
                 'alasan_penolakan'  => $alasan,
             ]);
 
-            Aktivitas::catat(
+            LogAktivitas::catat(
                 'keuangan',
                 $status === StatusVerifikasi::Disetujui ? 'setujui_pembayaran' : 'tolak_pembayaran',
                 $pembayaran,

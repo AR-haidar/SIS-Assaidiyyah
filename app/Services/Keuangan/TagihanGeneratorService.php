@@ -4,7 +4,7 @@ namespace App\Services\Keuangan;
 
 use App\Models\JenisTagihan;
 use App\Models\Tagihan;
-use App\Support\Aktivitas;
+use App\Support\LogAktivitas;
 use App\Enums\StatusDataSiswa;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Carbon;
@@ -105,7 +105,7 @@ class TagihanGeneratorService
                     }
                 }
 
-                Aktivitas::catat(
+                LogAktivitas::catat(
                     'keuangan',
                     'generate_tagihan',
                     null,
@@ -232,7 +232,7 @@ class TagihanGeneratorService
                     ]);
                 }
 
-                Aktivitas::catat('keuangan', 'buat_tagihan', $tagihan,
+                LogAktivitas::catat('keuangan', 'buat_tagihan', $tagihan,
                     "Tagihan {$jenis->nama} untuk siswa #{$data['siswa_id']}");
 
                 return $tagihan;
