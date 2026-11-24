@@ -1,12 +1,16 @@
 <?php
 
+use App\Http\Controllers\PerpustakaanDigitalController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')
     ->prefix('perpustakaan-digital')
     ->name('publik.perpustakaan.')
+    ->controller(PerpustakaanDigitalController::class)
     ->group(function (): void {
-        Route::view('/', 'perpustakaan-digital')->name('index');
-        Route::view('/buku/{id}', 'detail-buku')->name('buku.detail');
-        Route::view('/buku/{id}/baca', 'halaman-baca-buku')->name('buku.baca');
+        Route::get('/', 'index')->name('index');
+        Route::get('/buku/{bookId}', 'detail')->whereNumber('bookId')->name('buku.detail');
+        Route::get('/buku/{bookId}/baca', 'baca')->whereNumber('bookId')->name('buku.baca');
+        Route::get('/buku/{bookId}/sampul', 'sampul')->whereNumber('bookId')->name('buku.sampul');
+        Route::get('/buku/{bookId}/naskah', 'naskah')->whereNumber('bookId')->name('buku.naskah');
     });

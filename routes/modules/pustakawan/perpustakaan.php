@@ -1,8 +1,14 @@
 <?php
 
+use App\Http\Controllers\Pustakawan\BukuController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'perpustakaan.dashboard')->name('dashboard');
-Route::view('/data-buku', 'perpustakaan.data-buku')->name('buku.index');
-Route::view('/data-buku/tambah', 'perpustakaan.tambah-data-buku')->name('buku.create');
-Route::view('/data-buku/edit', 'perpustakaan.edit-data-buku')->name('buku.edit');
+Route::prefix('data-buku')->name('data-buku.')->controller(BukuController::class)->group(function (): void {
+    Route::get('/', 'index')->name('index');
+    Route::get('/tambah', 'create')->name('create');
+    Route::post('/', 'store')->name('store');
+    Route::get('/{buku}/edit', 'edit')->whereNumber('buku')->name('edit');
+    Route::put('/{buku}', 'update')->whereNumber('buku')->name('update');
+    Route::delete('/{buku}', 'destroy')->whereNumber('buku')->name('destroy');
+    Route::get('/{buku}/sampul', 'sampul')->whereNumber('buku')->name('sampul');
+});

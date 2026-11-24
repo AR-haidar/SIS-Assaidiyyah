@@ -31,26 +31,48 @@
 
     <main class="dlib-public-main" style="width:100%; max-width:1800px; margin:0 auto; padding:28px 32px 40px; box-sizing:border-box;">
         <header class="dlib-public-heading"><h1>Perpustakaan Digital</h1><p>Jelajahi koleksi pustaka digital dan baca naskah buku yang tersedia secara daring</p></header>
-        <section class="dlib-public-controls" aria-label="Pencarian dan kategori buku">
+        <form class="dlib-public-controls" method="GET" action="{{ route('publik.perpustakaan.index') }}" aria-label="Pencarian dan kategori buku">
+            <button type="submit" class="sr-only">Cari buku</button>
             <div class="dlib-public-control-row">
-                <label class="dlib-public-search"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input type="search" placeholder="Cari judul atau penulis buku..." aria-label="Cari judul atau penulis buku"></label>
-                <label class="dlib-public-select"><select aria-label="Pilih kategori"><option value="">Pilih Kategori</option><option>Buku Tematik</option><option>Pendidikan Agama Islam</option><option>Kamus &amp; Ensiklopedia</option><option>Cerita Literasi</option></select></label>
-                <button type="button" class="dlib-public-reset"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>Atur Ulang</button>
+                <label class="dlib-public-search"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input type="search" name="q" value="{{ $filter['q'] ?? '' }}" maxlength="{{ \App\Models\Buku::MAKS_JUDUL_KARAKTER }}" placeholder="Cari judul atau penulis buku..." aria-label="Cari judul atau penulis buku"></label>
+                    <label class="dlib-public-select">
+                        <select name="kategori" aria-label="Pilih kategori" onchange="this.form.requestSubmit()">
+                            <option value="">Pilih Kategori</option>
+                            @foreach ($kategoriBuku as $kategori)
+                                <option value="{{ $kategori->id }}" @selected((int) ($filter['kategori'] ?? 0) === $kategori->id)>{{ $kategori->nama }}</option>
+                            @endforeach
+                        </select>
+                    </label>
+                <a href="{{ route('publik.perpustakaan.index') }}" class="dlib-public-reset"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>Atur Ulang</a>
             </div>
-            <nav class="dlib-public-categories" aria-label="Kategori koleksi"><button type="button" class="active">Semua Kategori</button><button type="button">Buku Tematik</button><button type="button">Pendidikan Agama Islam</button><button type="button">Kamus &amp; Ensiklopedia</button><button type="button">Cerita Literasi</button></nav>
-        </section>
+            <nav class="dlib-public-categories" aria-label="Kategori koleksi">
+                <button type="button" value="" @class(['active' => !isset($filter['kategori'])]) onclick="this.form.elements.kategori.value = this.value; this.form.requestSubmit()">Semua Kategori</button>
+                @foreach ($kategoriBuku as $kategori)
+                    <button type="button" value="{{ $kategori->id }}" @class(['active' => (int) ($filter['kategori'] ?? 0) === $kategori->id]) onclick="this.form.elements.kategori.value = this.value; this.form.requestSubmit()">{{ $kategori->nama }}</button>
+                @endforeach
+            </nav>
+        </form>
         <section class="dlib-public-list" aria-label="Daftar pustaka">
             <h2>Daftar Pustaka</h2>
             <div class="dlib-public-book-grid">
-                @for ($book = 1; $book <= 8; $book++)
+                @forelse ($katalog as $buku)
                     <article class="dlib-public-book-card">
-                        <div class="dlib-public-cover"><span>Sampul Buku (3:4)</span><small>E-Book PDF</small></div>
-                        <span class="dlib-public-badge">Kategori: &mdash;</span>
-                        <h3>&mdash;</h3>
-                        <p>Penulis: &mdash;</p>
-                        <footer><span>ID: LIB-SKELETON-{{ str_pad($book, 2, '0', STR_PAD_LEFT) }}</span><a href="{{ url('/perpustakaan-digital/buku/LIB-SKELETON-' . str_pad($book, 2, '0', STR_PAD_LEFT)) }}" aria-label="Baca buku {{ $book }}"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>Baca</a></footer>
+                        <div class="dlib-public-cover relative overflow-hidden">
+                            @if ($buku->sampul)
+                                <img src="{{ route('publik.perpustakaan.buku.sampul', $buku->id) }}" alt="Sampul {{ $buku->judul }}" class="absolute inset-0 h-full w-full object-contain" loading="lazy">
+                            @else
+                                <span>Sampul Buku (3:4)</span>
+                            @endif
+                            <small class="relative">E-Book {{ $buku->naskah->mime === 'application/epub+zip' ? 'EPUB' : 'PDF' }}</small>
+                        </div>
+                        <span class="dlib-public-badge">Kategori: {{ $buku->kategori->pluck('nama')->join(', ') ?: '—' }}</span>
+                        <h3>{{ $buku->judul }}</h3>
+                        <p>Penulis: {{ $buku->penulis }}</p>
+                        <footer><span>ID: {{ $buku->id }}</span><a href="{{ route('publik.perpustakaan.buku.detail', $buku->id) }}" aria-label="Baca {{ $buku->judul }}"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>Baca</a></footer>
                     </article>
-                @endfor
+                @empty
+                    <p class="col-span-full">{{ isset($filter['q']) || isset($filter['kategori']) ? 'Buku Tidak Ditemukan' : 'Belum Ada Koleksi Buku Ditambahkan' }}</p>
+                @endforelse
             </div>
         </section>
     </main>

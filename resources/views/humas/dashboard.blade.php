@@ -41,56 +41,15 @@
                     <strong id="humas-activity-title">Aktivitas Pembaruan Terakhir</strong>
                     <p>Log penyuntingan konten landing page oleh tim Humas</p>
                 </div>
-                <form method="GET" action="{{ $urlIndex }}" class="humas-activity-tools">
-                    <input type="search" name="q" value="{{ request('q') }}" data-humas-activity-search
-                        placeholder="Cari konten..." aria-label="Cari aktivitas konten">
-                    <button type="submit" data-humas-activity-filter aria-label="Filter status aktivitas"
-                        title="Filter status">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M4 6h16M7 12h10m-7 6h4" />
-                        </svg>
-                    </button>
-                </form>
-            </header>
-            <div class="humas-activity-scroll">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>NO</th>
-                            <th>BAGIAN<br>HALAMAN</th>
-                            <th>JUDUL / OBJEK<br>KONTEN</th>
-                            <th>STATUS</th>
-                            <th>TERAKHIR<br>DISUNTING</th>
-                            <th>AKSI</th>
-                        </tr>
-                    </thead>
-                    <tbody data-humas-activities>
-                        @forelse ($daftarAktivitas as $index => $log)
-                            @php
-                                $nomor = $isPaginator ? $daftarAktivitas->firstItem() + $index : $index + 1;
-                            @endphp
-                            <tr>
-                                <td>{{ $nomor }}</td>
-                                <td>{{ $log->bagian ?? '—' }}</td>
-                                <td><strong>{{ $log->judul ?? '—' }}</strong></td>
-                                <td>{{ $log->status ?? '—' }}</td>
-                                <td>{{ $log->diubah_pada ? \Carbon\Carbon::parse($log->diubah_pada)->format('d/m/Y H:i') : '—' }}
-                                </td>
-                                <td>
-                                    @if (!empty($log->tautan))
-                                        <a href="{{ $log->tautan }}">Buka</a>
-                                    @else
-                                        —
-                                    @endif
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="6">Belum ada riwayat aktivitas penyuntingan konten.</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+            </section>
+        </div>
+        <section class="ks-panel ks-announcement-summary">
+            <div class="ks-panel-heading"><h2>Pengumuman</h2><a href="{{ route('humas.pengumuman.index') }}">Kelola</a></div>
+            <div class="ks-announcement-empty">
+                <span class="shared-announcement-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h2l8 5V4l-8 5H5a2 2 0 0 0-2 2Z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg></span>
+                <strong>Belum Ada Pengumuman Diterbitkan</strong>
+                <p>Pengumuman dan instruksi resmi Kepala Madrasah akan tampil di sini untuk siswa dan dewan guru.</p>
+                <a class="ks-primary-button" href="{{ route('humas.pengumuman.index') }}"><span>+</span> Buat Pengumuman Baru</a>
             </div>
             <footer>
                 <span data-humas-activity-count>Menampilkan {{ $daftarAktivitas->count() }} dari

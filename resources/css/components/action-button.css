@@ -1,0 +1,56 @@
+:root {
+    --action-primary-background: #2168c6;
+    --action-primary-hover: #1959ad;
+    --action-secondary-background: #e8f1fc;
+    --action-secondary-hover: #d5e5fa;
+    --action-secondary-text: #173f75;
+    --action-danger-hover: #8b2924;
+}
+
+.action-button {
+    background-color: var(--action-background, var(--action-secondary-background));
+    color: var(--action-text, var(--action-secondary-text));
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.action-button--primary {
+    --action-background: var(--action-primary-background);
+    --action-hover: var(--action-primary-hover);
+    --action-text: #fff;
+}
+
+.action-button--quiet {
+    --action-background: transparent;
+}
+
+.action-button--danger {
+    --action-background: #ffdfdb;
+    --action-hover: var(--action-danger-hover);
+    --action-text: #ad2823;
+    --action-hover-text: #fff;
+    --action-focus: var(--action-danger-hover);
+}
+
+.action-button--danger-solid {
+    --action-background: #aa342d;
+    --action-text: #fff;
+}
+
+.action-button:not(:disabled):not([aria-disabled="true"]):is(:hover, :focus-visible) {
+    background-color: var(--action-hover, var(--action-secondary-hover));
+    color: var(--action-hover-text, var(--action-text, var(--action-secondary-text)));
+}
+
+.action-button:focus-visible {
+    outline: 2px solid var(--action-focus, var(--action-primary-background));
+    outline-offset: 2px;
+}
+
+.action-button:is(:disabled, [aria-disabled="true"]) {
+    cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .action-button { transition: none; }
+}

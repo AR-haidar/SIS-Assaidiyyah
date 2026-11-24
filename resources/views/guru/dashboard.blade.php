@@ -36,22 +36,10 @@
     </header>
 
     <section class="guru-dashboard-stats" aria-label="Ringkasan presensi pegawai">
-        <article>
-            <span>TINGKAT KEHADIRAN<br>KUMULATIF</span>
-            <strong>{{ $tingkatKehadiran !== null ? number_format((float) $tingkatKehadiran, 1) . ' %' : '- %' }}</strong>
-        </article>
-        <article>
-            <span>TOTAL HARI HADIR KERJA</span>
-            <strong>{{ $hariHadir !== null ? $hariHadir : '-' }} <small>Hari</small></strong>
-        </article>
-        <article>
-            <span>IZIN &amp; DINAS LUAR<br>RESMI</span>
-            <strong>{{ $hariIzin !== null ? $hariIzin : '-' }} <small>Hari</small></strong>
-        </article>
-        <article>
-            <span>SAKIT / ALASAN MEDIS</span>
-            <strong>{{ $hariSakit !== null ? $hariSakit : '-' }} <small>Hari</small></strong>
-        </article>
+        <article><span>TINGKAT KEHADIRAN<br>KUMULATIF</span><strong>{{ $tingkatKehadiran ?? '-' }} %</strong></article>
+        <article><span>TOTAL HARI HADIR KERJA</span><strong>{{ $hariHadir }} <small>Hari</small></strong></article>
+        <article><span>IZIN &amp; DINAS LUAR<br>RESMI</span><strong>{{ $hariIzin }} <small>Hari</small></strong></article>
+        <article><span>SAKIT / ALASAN MEDIS</span><strong>{{ $hariSakit }} <small>Hari</small></strong></article>
     </section>
 
     <section class="guru-shortcuts" aria-label="Fitur guru">
