@@ -3,15 +3,18 @@
 use App\Http\Controllers\Operator\SiswaController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('siswa')->name('siswa.')->group(function (): void {
-    Route::get('/', [SiswaController::class, 'index'])->name('index');
-    Route::get('/tambah', [SiswaController::class, 'create'])->name('create');
-    Route::post('/', [SiswaController::class, 'store'])->name('store');
-    Route::get('/{siswa}/edit', [SiswaController::class, 'edit'])->name('edit');
-    Route::put('/{siswa}', [SiswaController::class, 'update'])->name('update');
-    Route::post('/{siswa}/verifikasi', [SiswaController::class, 'verifikasi'])->name('verifikasi');
-    Route::post('/{siswa}/rombel', [SiswaController::class, 'aturRombel'])->name('rombel');
-    Route::post('/{siswa}/akun', [SiswaController::class, 'buatAkun'])->name('akun.buat');
-    Route::post('/{siswa}/reset-pin', [SiswaController::class, 'resetPin'])->name('akun.reset-pin');
-    Route::delete('/{siswa}', [SiswaController::class, 'destroy'])->name('destroy');
+Route::resource('siswa', SiswaController::class)
+    ->except(['show']);
+
+// Alias URL kompatibel dengan navigasi sidebar/frontend
+Route::get('data-siswa', [SiswaController::class, 'index']);
+Route::get('data-siswa/tambah', [SiswaController::class, 'create']);
+Route::get('data-siswa/{siswa}/edit', [SiswaController::class, 'edit']);
+
+Route::prefix('siswa/{siswa}')->name('siswa.')->group(function (): void {
+    Route::post('verifikasi', [SiswaController::class, 'verifikasi'])->name('verifikasi');
+    Route::post('rombel', [SiswaController::class, 'aturRombel'])->name('rombel');
+    Route::post('akun', [SiswaController::class, 'buatAkun'])->name('akun.buat');
+    Route::post('akun/reset-pin', [SiswaController::class, 'resetPin'])->name('akun.reset-pin');
+    Route::patch('akun/reset-pin', [SiswaController::class, 'resetPin']);
 });

@@ -39,12 +39,29 @@ class PembayaranController extends Controller
             ->paginate(15)
             ->withQueryString();
 
-        return view('keuangan.pembayaran.index', [
+        return view('keuangan.pembayaran-siswa', [
             'daftarPembayaran' => $daftarPembayaran,
             'opsiStatusVerifikasi' => StatusVerifikasi::opsi(),
             'filter' => [
                 'status_verifikasi' => $statusVerifikasi,
             ],
+        ]);
+    }
+
+    public function show(Pembayaran $pembayaran): View
+    {
+        $pembayaran->loadMissing([
+            'tagihan.siswa',
+            'tagihan.jenisTagihan',
+            'tagihan.tahunAjaran',
+            'metodePembayaran',
+            'buktiBerkas',
+            'verifikator',
+        ]);
+
+        return view('keuangan.detail-pembayaran', [
+            'pembayaran' => $pembayaran,
+            'opsiStatusVerifikasi' => StatusVerifikasi::opsi(),
         ]);
     }
 

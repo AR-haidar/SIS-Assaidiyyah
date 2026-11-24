@@ -108,4 +108,31 @@ class PresensiPegawaiController extends Controller
 
         return back()->with('status', 'Status validasi presensi pegawai berhasil diperbarui.');
     }
+
+    public function riwayatMandiri(Request $request): View
+    {
+        /** @var Pengguna $pengguna */
+        $pengguna = $request->user();
+        $bulan = trim((string) $request->query('bulan', ''));
+        $status = trim((string) $request->query('status', ''));
+
+        $pegawai = Pegawai::query()
+            ->where('pengguna_id', $pengguna->getKey())
+            ->first();
+
+        $riwayatPegawai = collect();
+        if ($pegawai instanceof Pegawai) {
+            $riwayatPegawai = PresensiPegawai::query()
+                ->where('pegawai_id', $pegawai->getKey())
+                ->when($bulan !== '' && is_numeric($bulan), fn ($q) => $q->whereMonth('tanggal', (int) $bulan))
+                ->when($status !== '', fn ($q) => $q->where('status', $status))
+                ->orderByDesc('tanggal')
+                ->get();
+        }
+
+        return view('guru.rekap-absensi', [
+            'pegawai' => $pegawai,
+            'riwayatPegawai' => $riwayatPegawai,
+        ]);
+    }
 }

@@ -14,6 +14,16 @@ class BuatTagihanMassalRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation(): void
+    {
+        $periode = $this->input('periode_bulan');
+        if (is_string($periode) && preg_match('/^\d{4}-\d{2}$/', trim($periode)) === 1) {
+            $this->merge([
+                'periode_bulan' => trim($periode).'-01',
+            ]);
+        }
+    }
+
     /**
      * @return array<string, array<int, mixed>>
      */

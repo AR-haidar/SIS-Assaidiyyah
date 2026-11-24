@@ -24,60 +24,59 @@ class SiswaController extends Controller
 {
     public function index(Request $request): View
     {
-        $cari = trim((string) $request->query('q', ''));
-        $statusData = trim((string) $request->query('status_data', ''));
-        $rombelId = $request->query('rombel_id');
+        $cari = trim((string) $request->query('q', $request->query('search', '')));
+        $statusFilter = trim((string) $request->query('status_data', ''));
+        $tingkatFilter = trim((string) $request->query('kelas', ''));
+        $rombelNamaFilter = trim((string) $request->query('rombel', ''));
 
-        $query = Siswa::query()
+        $daftarSiswa = Siswa::query()
             ->with([
-                'statusMasuk',
-                'statusKesiswaan',
-                'pengguna',
                 'keanggotaanRombel.rombel.tahunAjaran',
+                'pengguna',
             ])
+            ->when($statusFilter !== '', fn ($q) => $q->where('status_data', $statusFilter))
+            ->when($tingkatFilter !== '' && is_numeric($tingkatFilter), function ($q) use ($tingkatFilter): void {
+                $q->whereHas('keanggotaanRombel.rombel', fn ($sub) => $sub->where('tingkat', (int) $tingkatFilter));
+            })
+            ->when($rombelNamaFilter !== '', function ($q) use ($rombelNamaFilter): void {
+                $q->whereHas('keanggotaanRombel.rombel', fn ($sub) => $sub->where('nama', 'like', '%'.$rombelNamaFilter.'%'));
+            })
             ->when($cari !== '', function ($q) use ($cari): void {
                 $q->where(function ($sub) use ($cari): void {
                     $sub->where('nama_lengkap', 'like', '%'.$cari.'%')
                         ->orWhere('nisn', 'like', '%'.$cari.'%')
-                        ->orWhere('nis', 'like', '%'.$cari.'%')
                         ->orWhere('nik', 'like', '%'.$cari.'%');
                 });
             })
-            ->when($statusData !== '', function ($q) use ($statusData): void {
-                $q->where('status_data', $statusData);
-            })
-            ->when(is_numeric($rombelId) && (int) $rombelId > 0, function ($q) use ($rombelId): void {
-                $q->whereHas('keanggotaanRombel', function ($sub) use ($rombelId): void {
-                    $sub->where('rombel_id', (int) $rombelId);
-                });
-            })
             ->orderBy('nama_lengkap')
-            ->orderByDesc('id');
-
-        $daftarSiswa = $query->paginate(15)->withQueryString();
-
-        $daftarRombel = Rombel::query()
-            ->with('tahunAjaran')
             ->orderByDesc('id')
-            ->get();
+            ->paginate(15)
+            ->withQueryString();
 
-        return view('operator.siswa.index', [
+        $statistik = [
+            'total' => Siswa::query()->count(),
+            'laki_laki' => Siswa::query()->where('jenis_kelamin', JenisKelamin::L->value)->count(),
+            'perempuan' => Siswa::query()->where('jenis_kelamin', JenisKelamin::P->value)->count(),
+        ];
+
+        return view('operator.data-siswa', [
             'daftarSiswa' => $daftarSiswa,
-            'daftarRombel' => $daftarRombel,
+            'statistik' => $statistik,
             'opsiStatusData' => StatusDataSiswa::opsi(),
             'filter' => [
                 'q' => $cari,
-                'status_data' => $statusData,
-                'rombel_id' => is_numeric($rombelId) ? (int) $rombelId : null,
+                'status_data' => $statusFilter,
+                'kelas' => $tingkatFilter,
+                'rombel' => $rombelNamaFilter,
             ],
         ]);
     }
 
     public function create(): View
     {
-        return view('operator.siswa.form', [
-            'siswa' => null,
-            ...$this->dataPendukungForm(),
+        return view('operator.tambah-siswa', [
+            'siswa' => new Siswa(['status_data' => StatusDataSiswa::Draft]),
+            ...$this->dataFormulir(),
         ]);
     }
 
@@ -101,7 +100,7 @@ class SiswaController extends Controller
             $flash['akun_username'] = $hasilAkun['pengguna']->username;
         }
 
-        if ($request->input('aksi') === 'verifikasi') {
+        if ($request->input('status_data') === StatusDataSiswa::Terverifikasi->value || $request->input('aksi') === 'verifikasi') {
             $siswa = $verifikasiSiswa->handle($siswa);
             $flash['status'] = 'Data siswa berhasil disimpan dan diverifikasi.';
         }
@@ -114,17 +113,14 @@ class SiswaController extends Controller
     public function edit(Siswa $siswa): View
     {
         $siswa->load([
-            'statusMasuk',
-            'statusKesiswaan',
-            'pekerjaanAyah',
-            'pengguna',
-            'berkas',
             'keanggotaanRombel.rombel.tahunAjaran',
+            'berkas',
+            'pengguna',
         ]);
 
-        return view('operator.siswa.form', [
+        return view('operator.edit-siswa', [
             'siswa' => $siswa,
-            ...$this->dataPendukungForm(),
+            ...$this->dataFormulir(),
         ]);
     }
 
@@ -132,6 +128,7 @@ class SiswaController extends Controller
         SimpanSiswaRequest $request,
         Siswa $siswa,
         SimpanSiswa $simpanSiswa,
+        VerifikasiSiswa $verifikasiSiswa,
         AturRombelSiswa $aturRombelSiswa,
     ): RedirectResponse {
         $berkas = $this->ambilBerkas($request);
@@ -139,9 +136,16 @@ class SiswaController extends Controller
 
         $this->sinkronkanRombelDariRequest($request, $siswa, $aturRombelSiswa);
 
+        $flash = ['status' => 'Data siswa berhasil diperbarui.'];
+
+        if ($request->input('status_data') === StatusDataSiswa::Terverifikasi->value || $request->input('aksi') === 'verifikasi') {
+            $verifikasiSiswa->handle($siswa);
+            $flash['status'] = 'Data siswa berhasil diperbarui dan diverifikasi.';
+        }
+
         return redirect()
             ->route('operator.siswa.edit', $siswa)
-            ->with('status', 'Data siswa berhasil diperbarui.');
+            ->with($flash);
     }
 
     public function verifikasi(
@@ -170,9 +174,7 @@ class SiswaController extends Controller
         $rombel = Rombel::query()->findOrFail((int) $validated['rombel_id']);
         $aturRombelSiswa->handle($siswa, $rombel);
 
-        return redirect()
-            ->route('operator.siswa.edit', $siswa)
-            ->with('status', 'Rombel siswa berhasil diperbarui.');
+        return back()->with('status', 'Rombel siswa berhasil diperbarui.');
     }
 
     public function buatAkun(
@@ -190,13 +192,11 @@ class SiswaController extends Controller
 
         $hasil = $kelolaAkunSiswa->buatAtauResetPin($siswa, $pinInput);
 
-        return redirect()
-            ->route('operator.siswa.edit', $siswa)
-            ->with([
-                'status' => 'Akun siswa berhasil dibuat/diaktifkan.',
-                'pin_baru' => $hasil['pin_terang'],
-                'akun_username' => $hasil['pengguna']->username,
-            ]);
+        return back()->with([
+            'status' => 'Akun siswa berhasil dibuat/diaktifkan.',
+            'pin_baru' => $hasil['pin_terang'],
+            'akun_username' => $hasil['pengguna']->username,
+        ]);
     }
 
     public function resetPin(
@@ -206,21 +206,19 @@ class SiswaController extends Controller
     ): RedirectResponse {
         $validated = $request->validate([
             'pin' => ['nullable', 'digits:6'],
+            'pin_baru' => ['nullable', 'digits:6'],
         ]);
 
-        $pinInput = isset($validated['pin']) && is_string($validated['pin']) && $validated['pin'] !== ''
-            ? $validated['pin']
-            : null;
+        $pinRaw = $validated['pin_baru'] ?? $validated['pin'] ?? null;
+        $pinInput = is_string($pinRaw) && $pinRaw !== '' ? $pinRaw : null;
 
         $hasil = $kelolaAkunSiswa->buatAtauResetPin($siswa, $pinInput);
 
-        return redirect()
-            ->route('operator.siswa.edit', $siswa)
-            ->with([
-                'status' => 'PIN akun siswa berhasil direset.',
-                'pin_baru' => $hasil['pin_terang'],
-                'akun_username' => $hasil['pengguna']->username,
-            ]);
+        return back()->with([
+            'status' => 'PIN akun siswa berhasil direset.',
+            'pin_baru' => $hasil['pin_terang'],
+            'akun_username' => $hasil['pengguna']->username,
+        ]);
     }
 
     public function destroy(Siswa $siswa): RedirectResponse
@@ -229,7 +227,7 @@ class SiswaController extends Controller
 
         return redirect()
             ->route('operator.siswa.index')
-            ->with('status', 'Data siswa berhasil dihapus.');
+            ->with('status', 'Data siswa berhasil diarsipkan.');
     }
 
     /**
@@ -265,18 +263,18 @@ class SiswaController extends Controller
     /**
      * @return array<string, mixed>
      */
-    private function dataPendukungForm(): array
+    private function dataFormulir(): array
     {
         return [
             'opsiJenisKelamin' => JenisKelamin::opsi(),
-            'opsiStatusMasuk' => Referensi::query()->kelompok('status_masuk')->get(),
-            'opsiStatusKesiswaan' => Referensi::query()->kelompok('status_kesiswaan')->get(),
+            'opsiStatusData' => StatusDataSiswa::opsi(),
+            'opsiAgama' => Referensi::query()->kelompok('agama')->get(),
+            'opsiKebutuhanKhusus' => Referensi::query()->kelompok('kebutuhan_khusus')->get(),
+            'opsiDisabilitas' => Referensi::query()->kelompok('disabilitas')->get(),
             'opsiPekerjaan' => Referensi::query()->kelompok('pekerjaan')->get(),
-            'daftarRombel' => Rombel::query()
-                ->with('tahunAjaran')
-                ->orderByDesc('id')
-                ->get(),
-            'tahunAjaranAktif' => TahunAjaran::query()->aktif()->first(),
+            'opsiJenisBerkasSiswa' => Referensi::query()->kelompok('jenis_berkas_siswa')->get(),
+            'daftarTahunAjaran' => TahunAjaran::query()->orderByDesc('aktif')->orderByDesc('kode')->get(),
+            'daftarRombel' => Rombel::query()->with('tahunAjaran')->orderBy('tingkat')->orderBy('nama')->get(),
         ];
     }
 }

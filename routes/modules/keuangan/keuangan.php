@@ -14,12 +14,14 @@ Route::prefix('jenis-tagihan')->name('jenis-tagihan.')->group(function (): void 
 
 Route::prefix('tagihan')->name('tagihan.')->group(function (): void {
     Route::get('/', [TagihanController::class, 'index'])->name('index');
+    Route::get('/tambah', [TagihanController::class, 'create'])->name('create');
     Route::post('/massal', [TagihanController::class, 'buatMassal'])->name('massal');
     Route::post('/{tagihan}/pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.store');
 });
 
 Route::prefix('pembayaran')->name('pembayaran.')->group(function (): void {
     Route::get('/', [PembayaranController::class, 'index'])->name('index');
+    Route::get('/{pembayaran}', [PembayaranController::class, 'show'])->name('show');
     Route::post('/{pembayaran}/verifikasi', [PembayaranController::class, 'verifikasi'])->name('verifikasi');
     Route::get('/{pembayaran}/bukti', [PembayaranController::class, 'bukti'])->name('bukti');
 });
