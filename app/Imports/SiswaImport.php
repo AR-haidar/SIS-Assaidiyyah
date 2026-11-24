@@ -2,10 +2,10 @@
 
 namespace App\Imports;
 
-use App\Models\KeanggotaanRombel;
 use App\Models\Referensi;
 use App\Models\Rombel;
 use App\Models\Siswa;
+use App\Models\SiswaRombel;
 use App\Models\TahunAjaran;
 use App\Support\PembersihExcel;
 use Illuminate\Support\Collection;
@@ -97,7 +97,6 @@ class SiswaImport implements ToCollection, WithHeadingRow
 
     private function tempatkanKeRombel(Siswa $siswa, TahunAjaran $tahunAktif, string $tingkatRombel): void
     {
-        // Format EMIS: "Kelas 2 - 01" -> tingkat = 2, nama = "2 - 01"
         if (! preg_match('/(\d+)\s*-\s*([A-Za-z0-9]+)/', $tingkatRombel, $cocok)) {
             return;
         }
@@ -115,14 +114,9 @@ class SiswaImport implements ToCollection, WithHeadingRow
             ]
         );
 
-        KeanggotaanRombel::query()->updateOrCreate(
-            [
-                'siswa_id' => $siswa->getKey(),
-                'rombel_id' => $rombel->getKey(),
-            ],
-            [
-                'tanggal_masuk' => now()->toDateString(),
-            ]
-        );
+        SiswaRombel::query()->firstOrCreate([
+            'siswa_id' => $siswa->getKey(),
+            'rombel_id' => $rombel->getKey(),
+        ]);
     }
 }

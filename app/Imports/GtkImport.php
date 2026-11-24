@@ -58,11 +58,11 @@ class GtkImport implements ToCollection, WithHeadingRow
                         'jenis_kelamin' => PembersihExcel::jenisKelamin($row['jenis_kelamin'] ?? null),
                         'tempat_lahir' => PembersihExcel::teks($row['tempat_lahir'] ?? null),
                         'tanggal_lahir' => PembersihExcel::tanggal($row['tanggal_lahir'] ?? null),
-                        'no_hp' => PembersihExcel::nomorTelepon($row['nomor_handphone'] ?? null),
+                        'no_hp_wa' => PembersihExcel::nomorTelepon($row['nomor_handphone'] ?? null),
                         'email' => PembersihExcel::teks($row['email'] ?? null),
                         'status_kepegawaian_id' => $statusKepegawaianId,
                         'jenis_gtk_id' => $jenisGtkId,
-                        'mata_pelajaran' => PembersihExcel::teks($row['mata_pelajaran'] ?? null),
+                        'mata_pelajaran_diampu' => PembersihExcel::teks($row['mata_pelajaran'] ?? null),
                         'penempatan' => PembersihExcel::teks($row['penempatan'] ?? null),
                         'aktif' => true,
                     ]
