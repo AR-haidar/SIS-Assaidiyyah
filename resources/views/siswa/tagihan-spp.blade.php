@@ -44,7 +44,9 @@
                 <span class="topbar-user-role">Siswa</span>
                 <span class="topbar-user-nip">NIP. 198204122010011008</span>
             </div>
-            <a class="student-bell" href="#daftar-tagihan" aria-label="Notifikasi tagihan"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10 21h4"/></svg><b data-bill-count>2</b></a>
+            <a class="student-bell" href="#daftar-tagihan" aria-label="Notifikasi tagihan"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10 21h4"/></svg>
+            @if ($jumlahBelumBayar > 0)<b>{{ $jumlahBelumBayar }}</b>@endif
+            </a>
             <div class="topbar-avatar-box" title="Profil Saya">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
@@ -111,7 +113,15 @@
             <div class="spp-page-header">
                 <h1 class="spp-page-title">Tagihan</h1>
                 <p class="spp-page-sub">Informasi seluruh tagihan dan status pembayaran siswa</p>
-                <div class="frontend-bill-alert" data-dashboard-bills></div>
+                @if (session('sukses'))<p>{{ session('sukses') }}</p>@endif
+                @if ($errors->any())<p>{{ $errors->first() }}</p>@endif
+                <div class="frontend-bill-alert">
+                    @if ($jumlahBelumBayar > 0)
+                        🔔 <strong>{{ $jumlahBelumBayar }} tagihan belum dibayar</strong>: {{ $daftarBelumBayar->map(fn ($t) => ($t->jenisTagihan?->nama ?? 'Tagihan') . ' Rp ' . number_format((float) $t->nominal, 0, ',', '.') . ' (jatuh tempo ' . $t->jatuh_tempo->format('d/m/Y') . ')')->implode('; ') }}. <a href="#daftar-tagihan">Lihat detail</a>
+                    @else
+                        Tidak ada tagihan yang belum dibayar.
+                    @endif
+                </div>
             </div>
 
             {{-- 2. Card Profil Siswa Singkat (Horizontal) --}}
@@ -126,15 +136,15 @@
                 <div class="spp-student-fields">
                     <div class="spp-banner-field">
                         <span class="spp-banner-key">Nama Siswa</span>
-                        <span class="spp-banner-val">—</span>
+                        <span class="spp-banner-val">{{ $siswa->nama_lengkap ?? '—' }}</span>
                     </div>
                     <div class="spp-banner-field">
                         <span class="spp-banner-key">Nomor Induk (NISN)</span>
-                        <span class="spp-banner-val">—</span>
+                        <span class="spp-banner-val">{{ $siswa->nisn ?? '—' }}</span>
                     </div>
                     <div class="spp-banner-field">
                         <span class="spp-banner-key">Kelas</span>
-                        <span class="spp-banner-val">—</span>
+                        <span class="spp-banner-val">{{ $kelas ?? '—' }}</span>
                     </div>
                 </div>
             </div>
@@ -143,26 +153,27 @@
             <div class="spp-summary-grid">
                 <div class="spp-summary-box">
                     <span class="spp-sum-label">TOTAL KEWAJIBAN AKTIF</span>
-                    <span class="spp-sum-amount">Rp —</span>
+                    <span class="spp-sum-amount">Rp {{ number_format($total, 0, ',', '.') }}</span>
                 </div>
                 <div class="spp-summary-box">
                     <span class="spp-sum-label">TERBAYAR / TERVERIFIKASI</span>
-                    <span class="spp-sum-amount">Rp —</span>
+                    <span class="spp-sum-amount">Rp {{ number_format($terbayar, 0, ',', '.') }}</span>
                 </div>
                 <div class="spp-summary-box">
                     <span class="spp-sum-label">SISA TUNGGAKAN</span>
-                    <span class="spp-sum-amount">Rp —</span>
+                    <span class="spp-sum-amount">Rp {{ number_format($tunggakan, 0, ',', '.') }}</span>
                 </div>
             </div>
 
             {{-- 4. Card Filter Pembayaran --}}
-            <div class="spp-filter-card">
+            <form class="spp-filter-card" method="GET" action="{{ route('siswa.tagihan.index') }}">
                 <div class="spp-filter-group">
                     <label class="spp-filter-label">Periode Akademik</label>
                     <div class="spp-select-wrapper">
-                        <select class="spp-select-input">
-                            <option value="2024/2025" selected>Tahun Ajaran 2024/2025</option>
-                            <option value="2023/2024">Tahun Ajaran 2023/2024</option>
+                        <select class="spp-select-input" name="tahun">
+                            @foreach ($tahunList as $th)
+                                <option value="{{ $th->id }}" @selected($tahunId === $th->id)>Tahun Ajaran {{ $th->kode }}</option>
+                            @endforeach
                         </select>
                         <span class="spp-select-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -175,9 +186,11 @@
                 <div class="spp-filter-group">
                     <label class="spp-filter-label">Jenis Tagihan</label>
                     <div class="spp-select-wrapper">
-                        <select class="spp-select-input">
-                            <option value="all" selected>Semua Jenis</option>
-                            <option>Infaq</option><option>Uang Buku</option><option>Wisata</option><option>Seragam</option><option>Lainnya</option>
+                        <select class="spp-select-input" name="jenis">
+                            <option value="">Semua Jenis</option>
+                            @foreach ($jenisTagihan as $jenis)
+                                <option value="{{ $jenis->id }}" @selected($filter['jenis'] === $jenis->id)>{{ $jenis->nama }}</option>
+                            @endforeach
                         </select>
                         <span class="spp-select-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -190,12 +203,11 @@
                 <div class="spp-filter-group">
                     <label class="spp-filter-label">Status Pembayaran</label>
                     <div class="spp-select-wrapper">
-                        <select class="spp-select-input">
-                            <option value="all" selected>Semua Status</option>
-                            <option value="lunas">Lunas</option>
-                            <option value="belum">Belum Dibayar</option>
-                            <option value="overdue">Jatuh Tempo</option>
-                            <option value="pending">Menunggu Verifikasi</option>
+                        <select class="spp-select-input" name="status">
+                            <option value="">Semua Status</option>
+                            @foreach ($opsiStatus as $kode => $label)
+                                <option value="{{ $kode }}" @selected($filter['status'] === $kode)>{{ $label }}</option>
+                            @endforeach
                         </select>
                         <span class="spp-select-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -205,13 +217,13 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn-terapkan-spp-filter" data-apply-student-filters>
+                <button type="submit" class="btn-terapkan-spp-filter">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
                     </svg>
                     <span>Terapkan Filter</span>
                 </button>
-            </div>
+            </form>
 
             {{-- 5. Card Tabel Tagihan & Riwayat Pembayaran --}}
             <div class="spp-table-card">
@@ -227,11 +239,22 @@
                                 <th>AKSI</th>
                             </tr>
                         </thead>
-                        <tbody data-student-invoices>
-                            {{-- BACKEND: sediakan window.studentInvoices dari tagihan milik siswa yang sedang login (jenis, nominal, jatuh tempo, status, detail); biarkan array kosong bila belum ada tagihan. --}}
+                        <tbody>
+                            @forelse ($tagihan as $t)
+                                <tr>
+                                    <td>{{ $t->jenisTagihan?->nama ?? '—' }}@if ($t->periode_bulan) ({{ $t->periode_bulan->translatedFormat('M Y') }})@endif</td>
+                                    <td>Rp {{ number_format((float) $t->nominal, 0, ',', '.') }}</td>
+                                    <td>{{ $t->jatuh_tempo->format('d/m/Y') }}</td>
+                                    <td>{{ $t->label_status }}@if ($t->alasan_ditolak)<br><small>Ditolak: {{ $t->alasan_ditolak }}</small>@endif</td>
+                                    <td>@if ($t->bisa_ajukan)@include('keuangan.komponen.form-ajukan-bukti', ['item' => $t, 'metodePembayaran' => $metodePembayaran])@else—@endif</td>
+                                </tr>
+                            @empty
+                                <tr><td colspan="5" class="spp-table-empty-container">Belum ada data tagihan untuk periode ini.</td></tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
+                {{ $tagihan->links() }}
             </div>
 
         </main>
