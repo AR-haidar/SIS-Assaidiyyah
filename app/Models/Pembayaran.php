@@ -57,6 +57,11 @@ class Pembayaran extends Model
         return $this->belongsTo(Berkas::class, 'bukti_berkas_id');
     }
 
+    public function buktiBerkas(): BelongsTo
+    {
+        return $this->belongsTo(Berkas::class, 'bukti_berkas_id');
+    }
+
     public function verifikator(): BelongsTo
     {
         return $this->belongsTo(Pengguna::class, 'diverifikasi_oleh');
